@@ -1,4 +1,4 @@
-package com.awb.digital.center.support_service.exception;
+package com.awb.digital.center.technical_debt_service.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
