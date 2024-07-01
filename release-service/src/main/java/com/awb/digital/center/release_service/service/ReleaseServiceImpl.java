@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class ReleaseServiceImpl implements ReleaseService {
 
-    private ReleaseRepository repository;
+     private ReleaseRepository repository;
      private ModelMapper mapper;
 
     @Override
