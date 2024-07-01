@@ -1,1 +1,0 @@
-INSERT INTO user (id, name, email, password, role) VALUES (1, 'chaymae lazrak', 'c.lazrak@awb.com', '$2a$10$IhlfWx.KT634LT.7ajn7U.Gy6WonBi5jHPf07lbS4wiyDo01/dWSu', 'manager');
