@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c75cb9bd-9a9c-4c47-88bb-84b610e8bd79" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/ProjetStage.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/awb/digital/center/api_gateway/ApiGatewayApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/awb/digital/center/api_gateway/ApiGatewayApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../naming-server/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../naming-server/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../naming-server/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../naming-server/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../naming-server/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../naming-server/src/main/java/com/awb/digital/center/naming_server/NamingServerApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../naming-server/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../naming-server/src/test/java/com/awb/digital/center/naming_server/NamingServerApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-cloud-config-server/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-cloud-config-server/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-cloud-config-server/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-cloud-config-server/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-cloud-config-server/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-cloud-config-server/src/main/java/com/awb/digital/center/spring_cloud_config_server/SpringCloudConfigServerApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-cloud-config-server/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-cloud-config-server/src/test/java/com/awb/digital/center/spring_cloud_config_server/SpringCloudConfigServerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentification-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dependency-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../dependency-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kpi-business-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../kpi-business-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../release-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../release-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../support-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../support-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../technical-debt-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../technical-debt-service/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2idae4TlDWR4Q5Yg1S0NKffTD9Q" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ApiGatewayApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "back-end",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Dell/Desktop/ProjetStage/naming-server"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.awb.digital.center.api_gateway.ApiGatewayApplication" />
+      <module name="api-gateway" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.awb.digital.center.api_gateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ApiGatewayApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c75cb9bd-9a9c-4c47-88bb-84b610e8bd79" name="Changes" comment="" />
+      <created>1719822999912</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719822999912</updated>
+    </task>
+    <servers />
+  </component>
+</project>
