@@ -5,47 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9379923-f45f-4707-9244-360df9594255" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ProjetStage.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/awb/digital/center/api_gateway/ApiGatewayApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/test/java/com/awb/digital/center/api_gateway/ApiGatewayApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/naming-server/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/naming-server/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/naming-server/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/naming-server/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/naming-server/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/naming-server/src/main/java/com/awb/digital/center/naming_server/NamingServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/naming-server/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/naming-server/src/test/java/com/awb/digital/center/naming_server/NamingServerApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-cloud-config-server/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-cloud-config-server/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-cloud-config-server/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-cloud-config-server/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-cloud-config-server/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-cloud-config-server/src/main/java/com/awb/digital/center/spring_cloud_config_server/SpringCloudConfigServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-cloud-config-server/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-cloud-config-server/src/test/java/com/awb/digital/center/spring_cloud_config_server/SpringCloudConfigServerApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentification-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/authentification-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/authentification-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentification-service/src/main/resources/data.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kpi-business-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/kpi-business-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/release-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/release-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/support-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/support-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/technical-debt-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/technical-debt-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/awb-vision/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front/awb-vision/.vite/deps/_metadata.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +30,7 @@
     "git-widget-placeholder": "back-end",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Dell/Desktop/ProjetStage/api-gateway"
+    "last_opened_file_path": "C:/Users/Dell/Desktop/ProjetStage"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
