@@ -34,7 +34,7 @@ public class ApiGatewayConfiguration {
                         .uri("lb://support-service"))
                 .route(p -> p.path("/api/technical-debt/**")
                         .filters(f -> f.rewritePath("/api/technical-debt/(?<segment>.*)", "/api/technical-debt/${segment}"))
-                        .uri("lb://dept-technical-service"))
+                        .uri("lb://technical-debt-service"))
                 .build();
     }
 }
