@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @AllArgsConstructor
-@RequestMapping("api/technical-dept")
+@RequestMapping("api/technical-debt")
 @RestController
 public class TechnicalDebtController {
 
