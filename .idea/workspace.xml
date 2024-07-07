@@ -5,45 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9379923-f45f-4707-9244-360df9594255" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dashboard-service/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/DashboardServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/BusinessKPIController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/DependencyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/ReleaseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/SupportController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/TechnicalDeptController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/dto/BusinessKPIDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/dto/DependencyDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/dto/ReleaseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/dto/SupportDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/dto/TechnicalDeptDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/entity/BusinessKPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/entity/Dependency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/entity/Release.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/entity/Support.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/entity/TechnicalDept.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/repository/BusinessKPIRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/repository/DependencyRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/repository/ReleaseRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/repository/SupportRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/repository/TechnicalDeptRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/BusinessKPIService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/DependencyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/ReleaseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/SupportService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/TechnicalDeptService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/BusinessKPIServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/DependencyServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/ReleaseServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/SupportServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/TechnicalDeptServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard-service/src/test/java/com/awb/digital/center/dashboard_service/DashboardServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/exception/ResourceNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/DashboardServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/DashboardServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/BusinessKPIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/BusinessKPIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/DependencyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/DependencyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/ReleaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/ReleaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/SupportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/SupportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/TechnicalDebtController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/TechnicalDebtController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/controller/TechnicalDeptController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/dto/TechnicalDebtDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/dto/TechnicalDebtDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/dto/TechnicalDeptDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/entity/TechnicalDebt.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/entity/TechnicalDebt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/entity/TechnicalDept.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/repository/BusinessKPIRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/repository/BusinessKPIRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/repository/TechnicalDebtRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/repository/TechnicalDebtRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/repository/TechnicalDeptRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/BusinessKPIService.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/BusinessKPIService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/DependencyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/DependencyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/ReleaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/ReleaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/SupportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/SupportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/TechnicalDebtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/TechnicalDebtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/TechnicalDeptService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/BusinessKPIServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/BusinessKPIServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/DependencyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/DependencyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/ReleaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/ReleaseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/SupportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/SupportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/TechnicalDebtServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/TechnicalDebtServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/service/impl/TechnicalDeptServiceImpl.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
