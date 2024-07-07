@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "release")
+@Table(name = "releases")
 @Entity
 public class Release {
 
