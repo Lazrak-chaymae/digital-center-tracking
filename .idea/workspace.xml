@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9379923-f45f-4707-9244-360df9594255" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/awb/digital/center/api_gateway/ApiGatewayConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/awb/digital/center/api_gateway/ApiGatewayConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/entity/Release.java" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/entity/Release.java" afterDir="false" />
-    </list>
+    <list default="true" id="b9379923-f45f-4707-9244-360df9594255" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +24,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "back-end",
+    "git-widget-placeholder": "Front-end",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Dell/Desktop/ProjetStage/registry-server"
