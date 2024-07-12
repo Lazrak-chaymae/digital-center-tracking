@@ -11,20 +11,20 @@ const MenuList = () => {
         key='dashboard' 
         icon={<AppstoreOutlined />} 
         title="Dashboard">
-            <Menu.Item key="dashboard-1"><a href='/dashboard-underConstruction'>Dashboard en construction</a></Menu.Item>
-            <Menu.Item key="dashboard-2"><a href='/dashboard-inLaunch'>Dashboard en lancement</a></Menu.Item>
-            <Menu.Item key="dashboard-3"><a href='/technical-debt'>Dette Technique</a></Menu.Item>
-            <Menu.Item key="dashboard-4"><a href='/support'>Support Niveau 3</a></Menu.Item>
-            <Menu.Item key="dashboard-5"><a href='/kpi-business'>KPI Business</a></Menu.Item>
-            <Menu.Item key="dashboard-6"><a href='/release'>Releases</a></Menu.Item>
-            <Menu.Item key="dashboard-7"><a href='/dependency'>Dépendances</a></Menu.Item>
+            <Menu.Item key="dashboard-1"><a href='/dashboard-underConstruction' style={{ textDecoration: 'none' }}>Dashboard en construction</a></Menu.Item>
+            <Menu.Item key="dashboard-2"><a href='/dashboard-inLaunch' style={{ textDecoration: 'none' }}>Dashboard en lancement</a></Menu.Item>
+            <Menu.Item key="dashboard-3"><a href='/technical-debt' style={{ textDecoration: 'none' }}>Dette Technique</a></Menu.Item>
+            <Menu.Item key="dashboard-4"><a href='/support' style={{ textDecoration: 'none' }}>Support Niveau 3</a></Menu.Item>
+            <Menu.Item key="dashboard-5"><a href='/kpi-business' style={{ textDecoration: 'none' }}>KPI Business</a></Menu.Item>
+            <Menu.Item key="dashboard-6"><a href='/release' style={{ textDecoration: 'none' }}>Releases</a></Menu.Item>
+            <Menu.Item key="dashboard-7"><a href='/dependency' style={{ textDecoration: 'none' }}>Dépendances</a></Menu.Item>
         </Menu.SubMenu>
         <Menu.SubMenu key='projects' icon={<BarsOutlined />} title="Projets">
-        <Menu.Item key="projet-1"><a href='/project' >Projet 1</a></Menu.Item>
-        <Menu.Item key="projet-2"><a href='/project' >Projet 2</a></Menu.Item>
+        <Menu.Item key="projet-1"><a href='/project' style={{ textDecoration: 'none' }}>Projet 1</a></Menu.Item>
+        <Menu.Item key="projet-2"><a href='/project' style={{ textDecoration: 'none' }}>Projet 2</a></Menu.Item>
         </Menu.SubMenu>
         <Menu.Item key="addProject" icon={<FileAddOutlined />}>
-        <a href='/add-project' >Add project</a>
+        <a href='/add-project' style={{ textDecoration: 'none' }} >Add project</a>
             
         </Menu.Item>
      </Menu>

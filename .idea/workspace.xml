@@ -8,10 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/awsVision/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/awsVision/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awsVision/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awsVision/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awsVision/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awsVision/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/awsVision/src/components/DashboardConstComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/components/DashboardConstComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/awsVision/src/components/KPIProdComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/components/KPIProdComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/awsVision/src/components/MenuList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/components/MenuList.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
