@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9379923-f45f-4707-9244-360df9594255" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/awb/digital/center/api_gateway/CorsConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awsVision/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awsVision/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awsVision/src/components/DashboardConstComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/components/DashboardConstComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awsVision/src/components/KPIProdComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/components/KPIProdComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/awsVision/src/components/MenuList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/components/MenuList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/target/classes/com/awb/digital/center/api_gateway/ApiGatewayApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/target/classes/com/awb/digital/center/api_gateway/ApiGatewayApplication.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,19 +24,23 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2idSWp7pxGsop9B5HVQkRDFxyM7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Front-end&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dell/Desktop/ProjetStage/registry-server&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Front-end",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Dell/Desktop/ProjetStage/dashboard-service"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -47,5 +51,8 @@
       <updated>1719818994730</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
