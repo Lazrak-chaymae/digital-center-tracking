@@ -4,21 +4,40 @@ import { listKPIs } from '../services/KPIBusiness';
 
 const KPIProdComponent = () => {
     const [dataSource, setDataSource] = useState([]);
-    const [kpiType,setKpiType] = useState(['Habituels','Vedettes','Qualité']);
+    const kpiTypes = ['Habituels', 'Vedettes', 'Qualité'];
     
-    useEffect(() => {
-        const data = {};
-        for(const type of kpiType){
-            listKPIs(type).then((response) => {
-               data[type] = response.data;
-            })
-            .catch(error => {
-                console.error(error);
-            })
-        }
-        setDataSource(data); 
 
-    }, [kpiType])
+    const fetchData = async () => {
+        const data = {};
+        const promises = kpiTypes.map(async (type) => {
+            try {
+                const response = await listKPIs(type);
+                data[type] = response.data;
+            } catch (error) {
+                console.error(error);
+            }
+        });
+        await Promise.all(promises);
+        setDataSource(data);
+    };
+    useEffect(() => {
+        fetchData();
+    }, [kpiTypes]);
+
+
+    // useEffect(() => {
+    //     const data = {};
+    //     for(const type of kpiType){
+    //         listKPIs(type).then((response) => {
+    //            data[type] = response.data;
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //         })
+    //     }
+    //     setDataSource(data); 
+
+    // }, [kpiType])
 
 
 
@@ -26,7 +45,7 @@ const KPIProdComponent = () => {
         <div className='container' style={{padding : '12px'}}>
             <h3 className='text-center'>Principaux KPIs Business</h3>
             
-                {kpiType.map(type => (
+                {kpiTypes.map(type => (
                        <div key={type}>
                          <h4>{type}</h4>
                          <table className='table table-striped table-bordered'>
