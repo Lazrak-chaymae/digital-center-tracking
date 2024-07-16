@@ -2,7 +2,7 @@ import React from 'react'
 
 const DetteTechComponent = () => {
   return (
-    <div className='container'>
+    <div className='container' style={{ paddingTop : '12px'}}>
     <table className='table table-striped table-bordered'>
         <thead>
             <tr>

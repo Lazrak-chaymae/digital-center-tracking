@@ -2,7 +2,7 @@ import React from 'react'
 
 const ProjectComponent = () => {
     return (
-        <div className='container'>
+        <div className='container' style={{ paddingTop : '12px'}}>
             <div className='row'>
                 <div className='col-12'>
 
