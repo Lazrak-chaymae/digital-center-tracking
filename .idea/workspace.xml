@@ -7,7 +7,9 @@
     <list default="true" id="b9379923-f45f-4707-9244-360df9594255" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-gateway/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/.idea/workspace.xml" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/awsVision/src/components/KPIProdComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/components/KPIProdComponent.jsx" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +34,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Front-end",
+    "git-widget-placeholder": "dev",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Dell/Desktop/ProjetStage/dashboard-service"
