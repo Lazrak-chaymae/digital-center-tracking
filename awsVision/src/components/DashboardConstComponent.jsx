@@ -10,11 +10,11 @@ const DashboardConstComponent = () => {
             name: "Squad Selfcare"
         },
         {
-            id: 1,
+            id: 2,
             name: "Squad Socle"
         },
         {
-            id: 1,
+            id: 3,
             name: "Squad EER"
         },
     ]);

@@ -2,7 +2,8 @@ import React from 'react'
 
 const DependancyComponent = () => {
   return (
-    <div className='container'>
+    <div className='container' style={{ paddingTop : '12px'}}>
+      <h3>Dépendance entre équipes</h3>
     <table className='table table-striped table-bordered'>
         <thead>
             <tr>

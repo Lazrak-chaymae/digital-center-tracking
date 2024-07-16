@@ -2,8 +2,8 @@ import React from 'react'
 
 const DashboardLcmComponent = () => {
   return (
-    <div className='container'>
-    <h2 className='text-center'>Sujet en Pilote ou Généralisation</h2>
+    <div className='container' style={{ paddingTop : '12px'}}>
+    <h3 className='text-center'>Sujet en Pilote ou Généralisation</h3>
     <table className='table table-striped table-bordered'>
         <thead>
             <tr>

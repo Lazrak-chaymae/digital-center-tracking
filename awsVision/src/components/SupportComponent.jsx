@@ -2,8 +2,8 @@ import React from 'react'
 
 const SupportComponent = () => {
   return (
-    <div className='container'>
-    <h2 className='text-center'>Activité Support N3</h2>
+    <div className='container' style={{ paddingTop : '12px'}}>
+    <h3 className='text-center'>Activité Support N3</h3>
     <table className='table table-striped table-bordered'>
         <thead>
             <tr>
