@@ -16,5 +16,5 @@ public interface ProjectService {
     ProjectDto updateProject(Long id, ProjectDto project);
     InLaunchProjectDto updateInLaunchProject(Long id, InLaunchProjectDto project);
     UnderConstructionProjectDto updateUnderConstructionProject(Long id, UnderConstructionProjectDto project);
-
+    void deleteProject(Long id);
 }

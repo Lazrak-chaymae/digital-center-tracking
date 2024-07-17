@@ -5,6 +5,7 @@ import com.awb.digital.center.project_service.dto.ProjectCreationDto;
 import com.awb.digital.center.project_service.dto.ProjectDto;
 import com.awb.digital.center.project_service.dto.UnderConstructionProjectDto;
 import com.awb.digital.center.project_service.entity.Project;
+import com.awb.digital.center.project_service.entity.RemarkOrRisk;
 import com.awb.digital.center.project_service.exception.ResourceNotFoundException;
 import com.awb.digital.center.project_service.repository.ProjectRepository;
 import lombok.AllArgsConstructor;
@@ -125,5 +126,10 @@ public class ProjectServiceImpl implements ProjectService{
 
         Project savedProject = repository.save(project);
         return mapper.map(savedProject, UnderConstructionProjectDto.class);
+    }
+
+    @Override
+    public void deleteProject(Long id) {
+        repository.deleteById(id);
     }
 }
