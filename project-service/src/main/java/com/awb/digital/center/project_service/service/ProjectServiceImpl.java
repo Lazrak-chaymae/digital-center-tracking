@@ -21,20 +21,23 @@ public class ProjectServiceImpl implements ProjectService{
     private ProjectRepository repository;
     private ModelMapper mapper;
 
+
     @Override
-    public List<UnderConstructionProjectDto> getAllProjectByStatutAndSquad(String status, Long SquadId) {
-        List<Project> projects = repository.findAllByStatusAndSquad(status, SquadId);
+    public List<UnderConstructionProjectDto> getAllUnderConstructionProject(String statut, Long SquadId) {
+        List<Project> projects = repository.findAllByStatusAndSquad(statut, SquadId);
         return projects.stream()
                 .map((project -> mapper.map(project, UnderConstructionProjectDto.class)))
                 .collect(Collectors.toList());
     }
+
     @Override
-    public List<UnderConstructionProjectDto> getAllProjectByStatut(String status) {
-        List<Project> projects = repository.findAllByStatus(status);
+    public List<InLaunchProjectDto> getAllInLaunchProject(String statut, Long SquadId) {
+        List<Project> projects = repository.findAllByStatusAndSquad(statut, SquadId);
         return projects.stream()
-                .map((project -> mapper.map(project, UnderConstructionProjectDto.class)))
+                .map((project -> mapper.map(project, InLaunchProjectDto.class)))
                 .collect(Collectors.toList());
     }
+
 
     @Override
     public ProjectDto getProjectById(Long id) {

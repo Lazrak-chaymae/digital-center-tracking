@@ -15,18 +15,18 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/projects")
-public class Controller {
+public class ProjectController {
 
     private ProjectService service;
 
-    @GetMapping("/status/{status}/squad/{squadId}")
+    @GetMapping("/under-construction/status/{status}/squad/{squadId}")
     public ResponseEntity<List<UnderConstructionProjectDto>> getAllUnderConstructionProjects(@PathVariable String status, @PathVariable Long squadId) {
-        List<UnderConstructionProjectDto> projects = service.getAllProjectByStatutAndSquad(status, squadId);
+        List<UnderConstructionProjectDto> projects = service.getAllUnderConstructionProject(status, squadId);
         return ResponseEntity.ok(projects);
     }
-    @GetMapping("/status/{status}")
-    public ResponseEntity<List<UnderConstructionProjectDto>> getAllInLaunchProjects(@PathVariable String status) {
-        List<UnderConstructionProjectDto> projects = service.getAllProjectByStatut(status);
+    @GetMapping("/in-launch/status/{status}/squad/{squadId}")
+    public ResponseEntity<List<InLaunchProjectDto>> getAllInLaunchProjects(@PathVariable String status, @PathVariable Long squadId) {
+        List<InLaunchProjectDto> projects = service.getAllInLaunchProject(status, squadId);
         return ResponseEntity.ok(projects);
     }
 
