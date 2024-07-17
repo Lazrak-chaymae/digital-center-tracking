@@ -59,4 +59,10 @@ public class ProjectController {
         UnderConstructionProjectDto updatedProject = service.updateUnderConstructionProject(id, projectDto);
         return ResponseEntity.ok(updatedProject);
     }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteProject(@PathVariable Long id){
+        service.deleteProject(id);
+        return ResponseEntity.ok("project deleted successfully");
+    }
 }
