@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface ProjectService {
 
-    List<UnderConstructionProjectDto> getAllProjectByStatutAndSquad(String statut, Long SquadId);
-    List<UnderConstructionProjectDto> getAllProjectByStatut(String status);
+    List<UnderConstructionProjectDto> getAllUnderConstructionProject(String statut, Long SquadId);
+    List<InLaunchProjectDto> getAllInLaunchProject(String statut, Long SquadId);
     ProjectDto getProjectById(Long id);
     ProjectCreationDto createProject(ProjectCreationDto project);
     ProjectDto updateProject(Long id, ProjectDto project);

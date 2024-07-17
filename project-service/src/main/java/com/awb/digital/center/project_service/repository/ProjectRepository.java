@@ -8,9 +8,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {
-    List<Project> findAllByStatus(String status);
-@Query("SELECT p FROM Project p WHERE p.status = :status AND p.squad.id = :squadId")
-List<Project> findAllByStatusAndSquad(@Param("status") String status, @Param("squadId") Long squadId);
+
+    @Query("SELECT p FROM Project p WHERE p.status = :status AND p.squad.id = :squadId")
+    List<Project> findAllByStatusAndSquad(@Param("status") String status, @Param("squadId") Long squadId);
 
 
 
