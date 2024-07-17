@@ -4,45 +4,39 @@ import { listProjects, listSquads } from '../services/DashboardEnConst'
 
 const DashboardConstComponent = () => {
     const [ucProject, setUcProject] = useState([]);
-    const [squads, setSquads] = useState([
-        {
-            id: 1,
-            name: "Squad Selfcare"
-        },
-        {
-            id: 2,
-            name: "Squad Socle"
-        },
-        {
-            id: 3,
-            name: "Squad EER"
-        },
-    ]);
+    const [squads, setSquads] = useState([]);
     const navigator = useNavigate();
-
-    useEffect(() => {
-        /*
-        listSquads().then((response) => {
+    
+    const GetSquads = async () => {
+        try {
+            const response = await listSquads();
             setSquads(response.data);
-        }).catch(error => {
+        } catch (error) {
             console.error(error);
-        });
-        */
+        }
+    }
+
+    const GetProjects = async () => {
+        try {
+            const data = {};
+            for (const squad of squads) {
+                const response = await listProjects(squad.id);
+                data[squad.id] = response.data;
+            }
+            setUcProject(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    useEffect(() => {
+        GetSquads();
     }, []);
 
     useEffect(() => {
-        const data = {};
-        for (const squad of squads) {
-            listProjects(squad.id).then((response) => {
-                data[squad.id] = response.data;
-            })
-                .catch(error => {
-                    console.error(error);
-                })
+        if (squads.length > 0) {
+            GetProjects();
         }
-        setUcProject(data);
-
-    }, [squads])
+    }, [squads]);
 
     return (
         <div className='container' style={{ paddingTop : '12px'}}>
@@ -74,7 +68,7 @@ const DashboardConstComponent = () => {
                                 {ucProject[squad.id] && ucProject[squad.id].map(
                                     projet => (
                                         <tr key={projet.id}>
-                                            <td>Projet {kpi.id}</td>
+                                            <td>Projet {projet.id}</td>
                                             <td>{projet.name}</td>
                                             <td>{projet.description}</td>
                                             <td>{projet.startDate}</td>
