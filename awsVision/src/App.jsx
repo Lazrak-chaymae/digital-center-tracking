@@ -6,7 +6,7 @@ import DashboardLcmComponent from './components/DashboardLcmComponent';
 import DashboardConstComponent from './components/DashboardConstComponent';
 import SupportComponent from './components/SupportComponent';
 import ReleaseComponent from './components/ReleaseComponent';
-import DependancyComponent from './components/DependancyComponent';
+import DependencyComponent from './components/DependencyComponent';
 import DetteTechComponent from './components/DetteTechComponent';
 import KPIProdComponent from './components/KPIProdComponent';
 import AddProjectComponent from './components/AddProjectComponent';
@@ -84,7 +84,7 @@ function App() {
                 <Route path='/dashboard-underConstruction' element={<DashboardConstComponent />}></Route>
                 <Route path='/support' element={<SupportComponent />}></Route>
                 <Route path='/release' element={<ReleaseComponent />}></Route>
-                <Route path='/dependancy' element={<DependancyComponent />}></Route>
+                <Route path='/dependency' element={<DependencyComponent />}></Route>
                 <Route path='/technical-debt' element={<DetteTechComponent />}></Route>
                 <Route path='/kpi-business' element={<KPIProdComponent />}></Route>
                 <Route path='/project' element={ <ProjectComponent /> }></Route>
