@@ -17,7 +17,7 @@ const MenuList = () => {
             <Menu.Item key="dashboard-4"><a href='/support' style={{ textDecoration: 'none' }}>Support Niveau 3</a></Menu.Item>
             <Menu.Item key="dashboard-5"><a href='/kpi-business' style={{ textDecoration: 'none' }}>KPI Business</a></Menu.Item>
             <Menu.Item key="dashboard-6"><a href='/release' style={{ textDecoration: 'none' }}>Releases</a></Menu.Item>
-            <Menu.Item key="dashboard-7"><a href='/dependancy' style={{ textDecoration: 'none' }}>Dépendances</a></Menu.Item>
+            <Menu.Item key="dashboard-7"><a href='/dependency' style={{ textDecoration: 'none' }}>Dépendances</a></Menu.Item>
         </Menu.SubMenu>
         <Menu.SubMenu key='projects' icon={<BarsOutlined />} title="Projets">
         <Menu.Item key="projet-1"><a href='/project' style={{ textDecoration: 'none' }}>Projet 1</a></Menu.Item>
