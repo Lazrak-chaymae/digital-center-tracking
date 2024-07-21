@@ -15,6 +15,7 @@ import { Layout, theme, Button, Dropdown, Space } from 'antd'
 import { MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined } from '@ant-design/icons'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomeComponent from './components/HomeComponent';
+import Login from './components/Login';
 
 
 
@@ -43,6 +44,13 @@ function App() {
 
   return (
     <>
+      {/* <BrowserRouter>
+
+
+        <Routes>
+          <Route path='/login' element={<Login />}></Route>
+        </Routes>
+      </BrowserRouter> */}
       <Layout>
         <Sider collapsed={collapsed}
           collapsible
@@ -74,11 +82,11 @@ function App() {
               </Space>
             </Space>
           </Header>
-          <Content> 
+          <Content>
             <BrowserRouter>
 
-           
-                <Routes>
+
+              <Routes>
                 <Route path='/' element={<HomeComponent />}></Route>
                 <Route path='/dashboard-inLaunch' element={<DashboardLcmComponent />}></Route>
                 <Route path='/dashboard-underConstruction' element={<DashboardConstComponent />}></Route>
@@ -87,12 +95,12 @@ function App() {
                 <Route path='/dependency' element={<DependencyComponent />}></Route>
                 <Route path='/technical-debt' element={<DetteTechComponent />}></Route>
                 <Route path='/kpi-business' element={<KPIProdComponent />}></Route>
-                <Route path='/project' element={ <ProjectComponent /> }></Route>
+                <Route path='/project' element={<ProjectComponent />}></Route>
                 <Route path='/add-project' element={<AddProjectComponent />}></Route>
-                
-                </Routes>
+
+              </Routes>
             </BrowserRouter>
-            
+
           </Content>
         </Layout>
       </Layout>

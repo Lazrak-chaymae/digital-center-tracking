@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c75cb9bd-9a9c-4c47-88bb-84b610e8bd79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/awb/digital/center/api_gateway/ApiGatewayConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/awb/digital/center/api_gateway/ApiGatewayConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/DashboardConstComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/DashboardConstComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/services/DashboardEnConst.js" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/services/DashboardEnConst.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
