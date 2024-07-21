@@ -1,45 +1,43 @@
-import React from 'react'
+import React from 'react';
 
 const ProjectComponent = () => {
     return (
-        <div className='container' style={{ paddingTop : '12px'}}>
+        <div className='container'>
             <div className='row'>
                 <div className='col-12'>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title">Présentation Projet</h2>
-                            <p class="card-text"><strong>Nom:</strong></p>
-                            <p class="card-text"><strong>Owner:</strong> Charaf JRA</p>
-                            <p class="card-text"><strong>Date démarrage:</strong> XX/XX/XXXX</p>
-                            <p class="card-text"><strong>Date fin prévue:</strong> XX/XX/XXXX</p>
-                            <p class="card-text"><strong>Description:</strong> Mise en place de solution d'authentification forte basée sur le facteur "Device enrollé", et implémentation sur la Canal Selfcare Retail (et CIB)</p>
-
+                    <div className="card">
+                        <div className="card-body">
+                            <h2 className="card-title">Présentation Projet</h2>
+                            <p className="card-text"><strong>Nom:</strong></p>
+                            <p className="card-text"><strong>Owner:</strong> Charaf JRA</p>
+                            <p className="card-text"><strong>Date démarrage:</strong> XX/XX/XXXX</p>
+                            <p className="card-text"><strong>Date fin prévue:</strong> XX/XX/XXXX</p>
+                            <p className="card-text"><strong>Description:</strong> Mise en place de solution d'authentification forte basée sur le facteur "Device enrollé", et implémentation sur la Canal Selfcare Retail (et CIB)</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div className='row'>
                 <div className='col-6'>
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title">Fait marquants</h2>
+                    <div className="card">
+                        <div className="card-body">
+                            <h4 className="card-title">Fait marquants</h4>
                             <ul>
-                                <li class="card-text">Démarrage des tests de Sécurité</li>
-                                <li class="card-text">Initiation Architecture Production</li>
-                                <li class="card-text">Finalisation des dév API et iOS</li>
+                                <li className="card-text">Démarrage des tests de Sécurité</li>
+                                <li className="card-text">Initiation Architecture Production</li>
+                                <li className="card-text">Finalisation des dév API et iOS</li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div className='col-6'>
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title">Prochains réalisation</h2>
+                    <div className="card">
+                        <div className="card-body">
+                            <h4 className="card-title">Prochains réalisation</h4>
                             <ul>
-                                <li class="card-text">Initiation des tests de performances</li>
-                                <li class="card-text">Affectation de ressource Intégration</li>
-                                <li class="card-text">Finalisation Architecture Production</li>
+                                <li className="card-text">Initiation des tests de performances</li>
+                                <li className="card-text">Affectation de ressource Intégration</li>
+                                <li className="card-text">Finalisation Architecture Production</li>
                             </ul>
                         </div>
                     </div>
@@ -47,8 +45,8 @@ const ProjectComponent = () => {
             </div>
             <div className='row'>
                 <div className='col-4'>
-                    <h3>Principales Etapes</h3>
-                    <h3>Phases</h3>
+                    <h4>Principales Etapes</h4>
+                    <h5>Phases</h5>
                     <table className='table table-striped table-bordered'>
                         <thead>
                             <tr>
@@ -57,12 +55,12 @@ const ProjectComponent = () => {
                             </tr>
                         </thead>
                         <tbody>
-
+                            
                         </tbody>
                     </table>
                 </div>
                 <div className='col-4'>
-                    <h3>KPIs de pilotage</h3>
+                    <h4>KPIs de pilotage</h4>
                     <table className='table table-striped table-bordered'>
                         <thead>
                             <tr>
@@ -72,10 +70,10 @@ const ProjectComponent = () => {
                             </tr>
                         </thead>
                         <tbody>
-
+                            
                         </tbody>
                     </table>
-                    <h3>Suivi de budget</h3>
+                    <h4>Suivi de budget</h4>
                     <table className='table table-striped table-bordered'>
                         <thead>
                             <tr>
@@ -85,12 +83,12 @@ const ProjectComponent = () => {
                             </tr>
                         </thead>
                         <tbody>
-
+                            
                         </tbody>
                     </table>
                 </div>
                 <div className='col-4'>
-                    <h3>Risques et remarques</h3>
+                    <h4>Risques et remarques</h4>
                     <table className='table table-striped table-bordered'>
                         <thead>
                             <tr>
@@ -99,13 +97,13 @@ const ProjectComponent = () => {
                             </tr>
                         </thead>
                         <tbody>
-
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default ProjectComponent
+export default ProjectComponent;

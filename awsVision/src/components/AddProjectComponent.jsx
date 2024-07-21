@@ -52,8 +52,8 @@ const AddProjectComponent = () => {
     }, [])
     return (
 
-        <div className='container' style={{ paddingTop: '12px' }}>
-            <div className="card-body">
+        <div className='center-container' style={{ paddingTop: '12px' }}>
+            <div className="forms">
                 <form>
 
                     <div className="form-group mb-2">
@@ -75,7 +75,7 @@ const AddProjectComponent = () => {
 
                     </div>
                     <div className="form-group mb-2">
-                        <label className='form-label'>Date debut:</label>
+                        <label className='form-label'>Date début:</label>
                         <input type='text' placeholder='Entrer la date debut du projet'
                             name='startDate' value={startDate}
                             onChange={(e) => setStartDate(e.target.value)}
