@@ -10,14 +10,14 @@ const AddProjectComponent = () => {
     const [type, setType] = useState('');
     const [budget, setBudget] = useState('');
     const [description, setDescription] = useState('');
-    const [squads, setSquads] = useState([]);
-    const [squad, setSquad] = useState(null);
+    const [allSquads, setAllSquads] = useState([]);
+    const [squad, setSquad] = useState({ id: '', name: '' });
 
 
     const getSquads = () => {
         listSquads().then(
             (response) => {
-                setSquads(response.data);
+                setAllSquads(response.data);
             }
         )
             .catch(
@@ -47,6 +47,14 @@ const AddProjectComponent = () => {
         console.error("There was an error adding the project:", error);
       });
     };
+
+    const handleSquadChange = (e) => {
+        const selectedSquad = allSquads.find(s => s.id === parseInt(e.target.value));
+        if (selectedSquad) {
+            setSquad({ id: selectedSquad.id, name: selectedSquad.name });
+        }
+    };
+
     useEffect(() => {
         getSquads();
     }, [])
@@ -122,10 +130,11 @@ const AddProjectComponent = () => {
                     <div className="form-group mb-2">
                         <label className='form-label'>Squad:</label>
                         <select name='squad' className={`form-control`}
-                            onChange={(e) => setSquad(squads.find(s => s.id === parseInt(e.target.value)))}>
+                            onChange={handleSquadChange}
+                            >
                             <option value="">Sélectionner une squad</option>
-                            {squads.map((squad) => (
-                                <option key={squad.id}>{squad.name}</option>
+                            {allSquads.map((squad) => (
+                                <option key={squad.id} value={squad.id}>{squad.name}</option>
                             ))}
 
                         </select>

@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9379923-f45f-4707-9244-360df9594255" name="Changes" comment="" />
+    <list default="true" id="b9379923-f45f-4707-9244-360df9594255" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/awsVision/src/components/AddProjectComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/components/AddProjectComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/awsVision/src/services/Project.js" beforeDir="false" afterPath="$PROJECT_DIR$/awsVision/src/services/Project.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
