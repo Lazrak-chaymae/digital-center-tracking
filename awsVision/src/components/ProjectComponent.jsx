@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { listProject } from '../services/Project';
 
 const ProjectComponent = () => {
+    const [project, setProject] = useState([]);
+    const idProject = 4;
+
+    const getProject = () => {
+        listProject(idProject).then(
+            (response) => {
+                setProject(response.data);
+            }
+        )
+            .catch(
+                error => {
+                    console.error(error);
+                }
+            )
+    }
+    useEffect(() => {
+        getProject();
+        console.log(project);
+    }, [])
     return (
         <div className='container'>
             <div className='row'>
@@ -8,11 +28,11 @@ const ProjectComponent = () => {
                     <div className="card">
                         <div className="card-body">
                             <h2 className="card-title">Présentation Projet</h2>
-                            <p className="card-text"><strong>Nom:</strong></p>
-                            <p className="card-text"><strong>Owner:</strong> Charaf JRA</p>
-                            <p className="card-text"><strong>Date démarrage:</strong> XX/XX/XXXX</p>
-                            <p className="card-text"><strong>Date fin prévue:</strong> XX/XX/XXXX</p>
-                            <p className="card-text"><strong>Description:</strong> Mise en place de solution d'authentification forte basée sur le facteur "Device enrollé", et implémentation sur la Canal Selfcare Retail (et CIB)</p>
+                            <p className="card-text"><strong>Nom:</strong>{project.name}</p>
+                            <p className="card-text"><strong>Owner:</strong>{project.owner}</p>
+                            <p className="card-text"><strong>Date démarrage:</strong>{project.startDate}</p>
+                            <p className="card-text"><strong>Date fin prévue:</strong>{project.expectedEndDate}</p>
+                            <p className="card-text"><strong>Description:</strong>{project.description}</p>
                         </div>
                     </div>
                 </div>
@@ -55,7 +75,7 @@ const ProjectComponent = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -70,7 +90,7 @@ const ProjectComponent = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
                     <h4>Suivi de budget</h4>
@@ -83,7 +103,9 @@ const ProjectComponent = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            
+                               <td>{project.allocatedSprintCount}</td>
+                               <td>{project.consumedSprintCount}</td>
+                               <td>{project.completionPercentage}</td>
                         </tbody>
                     </table>
                 </div>
@@ -97,7 +119,7 @@ const ProjectComponent = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
                 </div>
