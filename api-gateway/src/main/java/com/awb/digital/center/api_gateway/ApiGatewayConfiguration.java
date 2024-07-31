@@ -22,7 +22,7 @@ public class ApiGatewayConfiguration {
                         .uri("lb://project-service"))
                 .route(p -> p.path("/api/auth/**")
                         .filters(f -> f.rewritePath("/api/auth/(?<segment>.*)", "/api/auth/${segment}"))
-                        .uri("lb://authentication-service"))
+                        .uri("lb://authentification-service"))
                 .route(p -> p.path("/api/business-kpis/**")
                         .filters(f -> f.rewritePath("/api/business-kpis/(?<segment>.*)", "/api/business-kpis/${segment}"))
                         .uri("lb://dashboard-service"))

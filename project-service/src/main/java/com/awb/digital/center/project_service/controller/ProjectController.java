@@ -19,6 +19,7 @@ public class ProjectController {
 
     private ProjectService service;
 
+
     @GetMapping("/under-construction/status/{status}/squad/{squadId}")
     public ResponseEntity<List<UnderConstructionProjectDto>> getAllUnderConstructionProjects(@PathVariable String status, @PathVariable Long squadId) {
         List<UnderConstructionProjectDto> projects = service.getAllUnderConstructionProject(status, squadId);
