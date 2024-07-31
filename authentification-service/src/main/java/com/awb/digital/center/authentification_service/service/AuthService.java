@@ -1,7 +1,10 @@
 package com.awb.digital.center.authentification_service.service;
 
+import com.awb.digital.center.authentification_service.dto.JwtAuthResponse;
 import com.awb.digital.center.authentification_service.dto.LoginDto;
+import com.awb.digital.center.authentification_service.dto.RegisterDto;
 
 public interface AuthService {
-    String login(LoginDto loginDto);
+    JwtAuthResponse login(LoginDto loginDto);
+    String register(RegisterDto registerDto);
 }
