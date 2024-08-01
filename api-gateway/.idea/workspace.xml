@@ -5,29 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c75cb9bd-9a9c-4c47-88bb-84b610e8bd79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/dto/JwtAuthResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/dto/RegisterDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/dto/RoleDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/entity/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/exception/UserAPIException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/repository/RoleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/security/JwtAuthenticationEntryPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/security/JwtAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/security/JwtTokenProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/awb/digital/center/api_gateway/ApiGatewayConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/awb/digital/center/api_gateway/ApiGatewayConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/config/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/dto/UserDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/service/AuthService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/service/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/service/AuthServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/service/UserServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
