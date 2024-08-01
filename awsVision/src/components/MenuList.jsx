@@ -6,7 +6,7 @@ const MenuList = () => {
     
   return (
      <Menu theme='light' mode='inline' className='menu-bar'>
-        <Menu.Item key="home" icon={<HomeOutlined />} ><a href='/' style={{ textDecoration: 'none' }}>Home</a></Menu.Item>
+        <Menu.Item key="home" icon={<HomeOutlined />} ><a href='/home' style={{ textDecoration: 'none' }}>Home</a></Menu.Item>
         <Menu.SubMenu 
         key='dashboard' 
         icon={<AppstoreOutlined />} 

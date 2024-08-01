@@ -49,6 +49,8 @@ public class SecurityConfiguration {
 
                             authorize.requestMatchers(HttpMethod.POST,"/api/auth/**")
                                     .permitAll();
+                            authorize.requestMatchers(HttpMethod.GET,"/api/auth/**")
+                                    .permitAll();
                             authorize.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll();
 
                             authorize.anyRequest().authenticated();

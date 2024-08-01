@@ -3,6 +3,7 @@ package com.awb.digital.center.authentification_service.service;
 import com.awb.digital.center.authentification_service.dto.JwtAuthResponse;
 import com.awb.digital.center.authentification_service.dto.LoginDto;
 import com.awb.digital.center.authentification_service.dto.RegisterDto;
+import com.awb.digital.center.authentification_service.dto.RoleDto;
 import com.awb.digital.center.authentification_service.entity.Role;
 import com.awb.digital.center.authentification_service.entity.User;
 import com.awb.digital.center.authentification_service.exception.UserAPIException;
@@ -10,6 +11,7 @@ import com.awb.digital.center.authentification_service.repository.RoleRepository
 import com.awb.digital.center.authentification_service.repository.UserRepository;
 import com.awb.digital.center.authentification_service.security.JwtTokenProvider;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,7 +19,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @AllArgsConstructor
@@ -29,6 +34,7 @@ public class AuthServiceImpl implements AuthService{
     private PasswordEncoder passwordEncoder;
     private AuthenticationManager authenticationManager ;
     private JwtTokenProvider jwtTokenProvider;
+    private ModelMapper mapper;
 
     @Override
     public String register(RegisterDto registerDto) {
@@ -46,6 +52,14 @@ public class AuthServiceImpl implements AuthService{
         userRepository.save(user);
 
         return "User Registered Successfully!.";
+    }
+
+    @Override
+    public List<RoleDto> getAllRoles() {
+        List<Role> roles = roleRepository.findAll();
+        return roles.stream()
+                .map((role -> mapper.map(role, RoleDto.class)))
+                .collect(Collectors.toList());
     }
 
     @Override
