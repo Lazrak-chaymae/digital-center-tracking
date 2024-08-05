@@ -74,6 +74,7 @@ const DashboardConstComponent = () => {
                                             <td>{projet.startDate}</td>
                                             <td>{projet.budget}</td>
                                             <td>{projet.consumed}</td>
+                                            <td>{projet.phase}</td>
                                             <td>{projet.milestones}</td>
                                             <td>{projet.upcomingRealizations}</td>
                                             <td>{projet.type}</td>

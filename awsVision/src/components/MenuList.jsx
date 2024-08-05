@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Menu } from 'antd'
 import { HomeOutlined, AppstoreOutlined , FileAddOutlined, BarsOutlined} from '@ant-design/icons'
+import { listProjects } from '../services/Project'
 
 const MenuList = () => {
-    
+   const [projects, setProjects] = useState([]);
+
+   const getAllProjects = () => {
+      listProjects().then(
+         (response) => {
+            setProjects(response.data);
+         }).catch(error => {
+            console.error(error);
+         })    
+   }
+   useEffect(() => {
+      getAllProjects();
+  }, [])
   return (
      <Menu theme='light' mode='inline' className='menu-bar'>
         <Menu.Item key="home" icon={<HomeOutlined />} ><a href='/home' style={{ textDecoration: 'none' }}>Home</a></Menu.Item>
@@ -20,8 +33,13 @@ const MenuList = () => {
             <Menu.Item key="dashboard-7"><a href='/dependency' style={{ textDecoration: 'none' }}>Dépendances</a></Menu.Item>
         </Menu.SubMenu>
         <Menu.SubMenu key='projects' icon={<BarsOutlined />} title="Projets">
-        <Menu.Item key="projet-1"><a href='/project' style={{ textDecoration: 'none' }}>Projet 1</a></Menu.Item>
-        <Menu.Item key="projet-2"><a href='/project' style={{ textDecoration: 'none' }}>Projet 2</a></Menu.Item>
+         { 
+            projects.map(
+               (project) => (
+                  <Menu.Item key={project.id}><a href={`/project/${project.id}`} style={{ textDecoration: 'none' }}>{project.name}</a></Menu.Item>
+               )
+            )
+         }
         </Menu.SubMenu>
         <Menu.Item key="addProject" icon={<FileAddOutlined />}>
         <a href='/add-project' style={{ textDecoration: 'none' }} >Add project</a>

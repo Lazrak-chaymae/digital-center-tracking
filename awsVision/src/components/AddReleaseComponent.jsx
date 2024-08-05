@@ -1,0 +1,127 @@
+import React, { useState } from "react";
+import { Button, Modal } from "antd";
+import { addRelease } from "../services/Release";
+
+const AddReleaseComponent = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [installationDate, setInstallationDate] = useState('');
+  const [version, setVersion] = useState('');
+  const [type, setType] = useState('');
+  const [packages, setPackages] = useState([]);
+  const [hotfixContents, setHotfixContents] = useState([]);
+  const [evolution, setEvolution] = useState('');
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const releaseData = {
+        installationDate,
+        version,
+        type,
+        packages: packages.split(',').map(pkg => pkg.trim()), 
+        hotfixContents: hotfixContents.split(',').map(content => content.trim()),
+        evolution
+    };
+    addRelease(releaseData)
+  .then((response) => {
+    console.log("Release added successfully:", response.data);
+  })
+  .catch((error) => {
+    console.error("There was an error adding the release:", error);
+  });
+  setIsModalOpen(false);
+};
+  return (
+    <>
+      <Button type="primary" onClick={showModal}>
+        Ajouter une version
+      </Button>
+      <Modal
+        title="Ajouter une version"
+        open={isModalOpen}
+        onCancel={handleCancel}
+        footer={null}
+      >
+        <form>
+          <div className="form-group mb-2">
+            <label className="form-label">Date d'installation :</label>
+            <input
+              type="date"
+              name="installationDate"
+              value={installationDate}
+              onChange={(e) => setInstallationDate(e.target.value)}
+              className={`form-control`}
+            ></input>
+          </div>
+          <div className="form-group mb-2">
+            <label className="form-label">Version :</label>
+            <input
+              type="text"
+              placeholder="Entrer la version"
+              name="version"
+              value={version}
+              onChange={(e) => setVersion(e.target.value)}
+              className={`form-control`}
+            ></input>
+          </div>
+          <div className="form-group mb-2">
+            <label className="form-label">Type:</label>
+            <input
+              type="text"
+              placeholder="Entrer le type (Hotfix / Evolution)"
+              name="type"
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              className={`form-control`}
+            ></input>
+          </div>
+          <div className="form-group mb-2">
+            <label className="form-label">Packages:</label>
+            <input
+              type="text"
+              placeholder="Entrer les packages séparés par des virgules (,)"
+              name="packages"
+              value={packages}
+              onChange={(e) => setPackages(e.target.value)}
+              className={`form-control`}
+            ></input>
+          </div>
+          <div className="form-group mb-2">
+            <label className="form-label">Contenu Hotfix:</label>
+            <input
+              type="text"
+              placeholder="Entrer le contenu Hotfix séparés par des virgules (,)"
+              name="hotfixContents"
+              value={hotfixContents}
+              onChange={(e) => setHotfixContents(e.target.value)}
+              className={`form-control`}
+            ></input>
+          </div>
+          <div className="form-group mb-2">
+            <label className="form-label">Contenu Evolution:</label>
+            <input
+              type="text"
+              placeholder="Entrer le contenu evolution"
+              name="evolution"
+              value={evolution}
+              onChange={(e) => setEvolution(e.target.value)}
+              className={`form-control`}
+            ></input>
+          </div>
+          <button className="btn btn-success" onClick={(e) => handleSubmit(e)}>
+            Ajouter
+          </button>
+        </form>
+      </Modal>
+    </>
+  );
+};
+
+export default AddReleaseComponent;

@@ -51,7 +51,7 @@ public class SecurityConfiguration {
                                     .permitAll();
                             authorize.requestMatchers(HttpMethod.GET,"/api/auth/**")
                                     .permitAll();
-                            authorize.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll();
+                            authorize.requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll();
 
                             authorize.anyRequest().authenticated();
                         }
