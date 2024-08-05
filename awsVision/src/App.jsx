@@ -17,7 +17,7 @@ import {
   MenuFoldOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import HomeComponent from "./components/HomeComponent";
 import RegisterComponent from "./components/RegisterComponent";
 import LoginComponent from "./components/LoginComponent";
@@ -25,10 +25,10 @@ import { isUserLoggedIn, logout } from "./services/AuthService"
 
 const { Sider, Header, Content } = Layout;
 function App() {
-
-  const [isAuthenticated, setIsAuthenticated] = useState(isUserLoggedIn());
+  const isAuthenticated = isUserLoggedIn();
   const [collapsed, setCollapsed] = useState(false);
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
+
   const items = [
     {
       key: "1",
@@ -59,19 +59,23 @@ function App() {
   ];
   
   function AuthenticatedRoute({ children }) {
-    if (isAuthenticated ) {
+    if (isAuthenticated) {
       return children;
     }
-    return <Navigate to="/" />
+    return <Navigate to="/login" /> ;
+    
   }
+ 
   function handleLogout(){
     logout();
-    //navigate("/");
-    return <Navigate to="/login" />
-}
+    console.log("is log out"); 
+    navigate("/");
+  }
+  
   return (
     <>
-      <BrowserRouter>
+    
+      
       <Layout>
         {isAuthenticated && (
           <Sider
@@ -114,46 +118,49 @@ function App() {
           )}
           <Content>
             
-              <Routes>
-                <Route path="/home" element={<HomeComponent />}></Route>
+          <Routes>
+                <Route path="/home" element={
+                  <AuthenticatedRoute><HomeComponent /></AuthenticatedRoute>
+                  }></Route>
                 <Route
                   path="/dashboard-inLaunch"
-                  element={<DashboardLcmComponent />}
+                  element={ <AuthenticatedRoute><DashboardLcmComponent /></AuthenticatedRoute>}
                 ></Route>
                 <Route
                   path="/dashboard-underConstruction"
-                  element={<DashboardConstComponent />}
+                  element={<AuthenticatedRoute><DashboardConstComponent /></AuthenticatedRoute>}
                 ></Route>
-                <Route path="/support" element={<SupportComponent />}></Route>
-                <Route path="/release" element={<ReleaseComponent />}></Route>
+                <Route path="/support" element={<AuthenticatedRoute><SupportComponent /></AuthenticatedRoute>}></Route>
+                <Route path="/release" element={<AuthenticatedRoute><ReleaseComponent /></AuthenticatedRoute>}></Route>
                 <Route
                   path="/dependency"
-                  element={<DependencyComponent />}
+                  element={<AuthenticatedRoute><DependencyComponent /></AuthenticatedRoute>}
                 ></Route>
                 <Route
                   path="/technical-debt"
-                  element={<DetteTechComponent />}
+                  element={<AuthenticatedRoute><DetteTechComponent /></AuthenticatedRoute>}
                 ></Route>
                 <Route
                   path="/kpi-business"
-                  element={<KPIProdComponent />}
+                  element={<AuthenticatedRoute><KPIProdComponent /></AuthenticatedRoute>}
                 ></Route>
-                <Route path="/project" element={<ProjectComponent />}></Route>
+                <Route path="/project/:id" element={<AuthenticatedRoute><ProjectComponent /></AuthenticatedRoute>}></Route>
                 <Route
                   path="/add-project"
-                  element={<AddProjectComponent />}
+                  element={<AuthenticatedRoute><AddProjectComponent /></AuthenticatedRoute>}
                 ></Route>
 
                 <Route path='/' element={ <LoginComponent />}></Route>
                 <Route path='/login' element={ <LoginComponent />}></Route>
                 <Route path="/register" element={<RegisterComponent />}></Route>
-      
-              </Routes>
+                </Routes>
+              
             
           </Content>
         </Layout>
       </Layout>
-    </BrowserRouter>  
+    
+ 
     </>
   );
 }

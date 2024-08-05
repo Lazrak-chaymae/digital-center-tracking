@@ -1,9 +1,6 @@
 package com.awb.digital.center.project_service.controller;
 
-import com.awb.digital.center.project_service.dto.InLaunchProjectDto;
-import com.awb.digital.center.project_service.dto.ProjectCreationDto;
-import com.awb.digital.center.project_service.dto.ProjectDto;
-import com.awb.digital.center.project_service.dto.UnderConstructionProjectDto;
+import com.awb.digital.center.project_service.dto.*;
 import com.awb.digital.center.project_service.service.ProjectService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -36,12 +33,22 @@ public class ProjectController {
         ProjectDto project = service.getProjectById(id);
         return ResponseEntity.ok(project);
     }
-
-    @PostMapping
-    public ResponseEntity<ProjectCreationDto> addProject(@RequestBody ProjectCreationDto projectCreationDto) {
-        ProjectCreationDto createdProject = service.createProject(projectCreationDto);
-        return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
+    @GetMapping
+    public ResponseEntity<List<ProjectItemDto>> getAllProjects(){
+        List<ProjectItemDto> projects = service.getAllProjects();
+        return ResponseEntity.ok(projects);
     }
+
+//    @PostMapping
+//    public ResponseEntity<ProjectCreationDto> addProject(@RequestBody ProjectCreationDto projectCreationDto) {
+//        ProjectCreationDto createdProject = service.createProject(projectCreationDto);
+//        return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
+//    }
+@PostMapping
+public ResponseEntity<ProjectDto> addProject(@RequestBody ProjectDto projectCreationDto) {
+    ProjectDto createdProject = service.createProject(projectCreationDto);
+    return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
+}
 
     @PutMapping("/{id}")
     public ResponseEntity<ProjectDto> updateProject(@PathVariable Long id, @RequestBody ProjectDto projectDto) {

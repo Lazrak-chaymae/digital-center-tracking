@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { listReleases } from '../services/Release';
+import AddReleaseComponent from './AddReleaseComponent';
 
 const ReleaseComponent = () => {
   const [releases, setReleases] = useState([]);
@@ -38,15 +39,26 @@ const ReleaseComponent = () => {
                  <tr key={release.id}>
                     <td>{release.installationDate}</td>
                     <td>{release.version}</td>
-                    <td>{release.Hotfix}</td>
-                    <td>{release.packages}</td>
-                    <td>{release.hotfixContents}</td>
+                    <td>{release.type}</td>
+                    <td>{ release.packages.map((pkg, index) => (
+                  <span key={index}>
+                    {pkg}
+                    <br />
+                  </span>
+                ))}</td>
+                    <td>{release.hotfixContents.map((content, index) => (
+                  <span key={index}>
+                    {content}
+                    <br />
+                  </span>
+                ))}</td>
                     <td>{release.evolution}</td>
 
                  </tr>
              ))}
         </tbody>
     </table>
+    <AddReleaseComponent />
 </div>
   )
 }

@@ -1,16 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProjectCard from './ProjectCard'
-
+import { listProjects } from '../services/Project'
 
 
 const HomeComponent = () => {
+  const [projects,setProjects] = useState([]);
+  const getAllProjects = () =>
+  {
+       listProjects().then(
+         (response) =>
+         {
+            setProjects(response.data);
+         }).catch(
+          error =>
+         {
+           console.error(error);
+         }
+       )
+  }
 
-  const projects = [
-    { title: 'Projet 1', status: 'Statut', phase: 'Phase', squad: 'Squad', date: 'Date', detailsLink: '/project' },
-    { title: 'Projet 2', status: 'Statut', phase: 'Phase', squad: 'Squad', date: 'Date', detailsLink: '/project' },
-    { title: 'Projet 3', status: 'Statut', phase: 'Phase', squad: 'Squad', date: 'Date', detailsLink: '/project' },
-    { title: 'Projet 4', status: 'Statut', phase: 'Phase', squad: 'Squad', date: 'Date', detailsLink: '/project' },
-  ];
+ 
+  useEffect(() => {
+    getAllProjects();
+}, [])
+
   return (
     <div className='container' style={{ paddingTop: '12px' }}>
       <h3 className='text-center'>Projets</h3>

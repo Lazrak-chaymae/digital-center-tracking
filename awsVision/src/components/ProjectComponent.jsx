@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { listProject } from '../services/Project';
+import { DetailProject } from '../services/Project';
+import { useParams } from 'react-router-dom';
 
 const ProjectComponent = () => {
-    const [project, setProject] = useState([]);
-    const idProject = 4;
+    const [project, setProject] = useState({});
+    const { id } = useParams() ;
 
     const getProject = () => {
-        listProject(idProject).then(
+        DetailProject(id).then(
             (response) => {
                 setProject(response.data);
             }
@@ -19,7 +20,6 @@ const ProjectComponent = () => {
     }
     useEffect(() => {
         getProject();
-        console.log(project);
     }, [])
     return (
         <div className='container'>
@@ -43,9 +43,11 @@ const ProjectComponent = () => {
                         <div className="card-body">
                             <h4 className="card-title">Fait marquants</h4>
                             <ul>
-                                <li className="card-text">Démarrage des tests de Sécurité</li>
-                                <li className="card-text">Initiation Architecture Production</li>
-                                <li className="card-text">Finalisation des dév API et iOS</li>
+                              { 
+                                    (project.milestones || []).map(( milestone, index) => (
+                                        <li className="card-text" key={index}>{milestone}</li>
+                                    ))
+                              }
                             </ul>
                         </div>
                     </div>
@@ -55,9 +57,11 @@ const ProjectComponent = () => {
                         <div className="card-body">
                             <h4 className="card-title">Prochains réalisation</h4>
                             <ul>
-                                <li className="card-text">Initiation des tests de performances</li>
-                                <li className="card-text">Affectation de ressource Intégration</li>
-                                <li className="card-text">Finalisation Architecture Production</li>
+                                { 
+                                    (project.upcomingRealizations || []).map(( realization, index) => (
+                                        <li className="card-text" key={index}>{realization}</li>
+                                    ))
+                                }
                             </ul>
                         </div>
                     </div>

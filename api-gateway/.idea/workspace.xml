@@ -5,11 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c75cb9bd-9a9c-4c47-88bb-84b610e8bd79" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/dto/PhaseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/dto/ProjectItemDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/dto/TaskDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/repository/PhaseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/repository/TaskRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/service/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/service/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../awsVision/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/HomeComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/HomeComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/MenuList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/MenuList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/ProjectCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/ProjectCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/ProjectComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/ProjectComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../awsVision/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../awsVision/src/services/Project.js" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/services/Project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/dto/ReleaseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../dashboard-service/src/main/java/com/awb/digital/center/dashboard_service/dto/ReleaseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/entity/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/ProjectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/ProjectServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +62,7 @@
     "git-widget-placeholder": "dev",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Dell/Desktop/ProjetStage/authentification-service"
+    "last_opened_file_path": "C:/Users/Dell/Desktop/ProjetStage/api-gateway"
   }
 }]]></component>
   <component name="RunManager">

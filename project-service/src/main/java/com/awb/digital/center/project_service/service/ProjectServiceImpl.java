@@ -1,17 +1,19 @@
 package com.awb.digital.center.project_service.service;
 
-import com.awb.digital.center.project_service.dto.InLaunchProjectDto;
-import com.awb.digital.center.project_service.dto.ProjectCreationDto;
-import com.awb.digital.center.project_service.dto.ProjectDto;
-import com.awb.digital.center.project_service.dto.UnderConstructionProjectDto;
+import com.awb.digital.center.project_service.dto.*;
+import com.awb.digital.center.project_service.entity.Phase;
 import com.awb.digital.center.project_service.entity.Project;
 import com.awb.digital.center.project_service.entity.RemarkOrRisk;
+import com.awb.digital.center.project_service.entity.Task;
 import com.awb.digital.center.project_service.exception.ResourceNotFoundException;
+import com.awb.digital.center.project_service.repository.PhaseRepository;
 import com.awb.digital.center.project_service.repository.ProjectRepository;
+import com.awb.digital.center.project_service.repository.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +22,8 @@ import java.util.stream.Collectors;
 public class ProjectServiceImpl implements ProjectService{
 
     private ProjectRepository repository;
+    private PhaseRepository phaseRepository;
+    private TaskRepository taskRepository;
     private ModelMapper mapper;
 
 
@@ -38,23 +42,34 @@ public class ProjectServiceImpl implements ProjectService{
                 .map((project -> mapper.map(project, InLaunchProjectDto.class)))
                 .collect(Collectors.toList());
     }
-
-
     @Override
     public ProjectDto getProjectById(Long id) {
-        Project todo =  repository.findById(id)
+        Project project =  repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + id));
-        return mapper.map(todo, ProjectDto.class);
+        return mapper.map(project, ProjectDto.class);
 
     }
-
     @Override
-    public ProjectCreationDto createProject(ProjectCreationDto projectDto) {
-        Project createdproject = mapper.map(projectDto, Project.class);
-        Project savedProject = repository.save(createdproject);
-        return mapper.map(savedProject, ProjectCreationDto.class);
-
+    public List<ProjectItemDto> getAllProjects(){
+        List<Project> projects = repository.findAll();
+        return projects.stream()
+                .map((project -> mapper.map(project, ProjectItemDto.class)))
+                .collect(Collectors.toList());
     }
+//    @Override
+//    public ProjectCreationDto createProject(ProjectCreationDto projectDto) {
+//        Project createdproject = mapper.map(projectDto, Project.class);
+//        Project savedProject = repository.save(createdproject);
+//        return mapper.map(savedProject, ProjectCreationDto.class);
+//
+//    }
+@Override
+public ProjectDto createProject(ProjectDto projectDto) {
+    Project createdproject = mapper.map(projectDto, Project.class);
+    Project savedProject = repository.save(createdproject);
+    return mapper.map(savedProject, ProjectDto.class);
+
+}
 
     @Override
     public ProjectDto updateProject(Long id, ProjectDto projectDto) {
@@ -77,7 +92,31 @@ public class ProjectServiceImpl implements ProjectService{
         project.setCompletionPercentage(projectDto.getCompletionPercentage());
         project.setSquad(projectDto.getSquad());
         project.setPilotageKpis(projectDto.getPilotageKpis());
-        project.setPhases(projectDto.getPhases());
+        //project.setPhases(projectDto.getPhases());
+        List<Phase> updatedPhases = new ArrayList<>();
+        for (Phase phaseDto : projectDto.getPhases()) {
+            Phase phase = phaseRepository.findById(phaseDto.getId())
+                    .orElse(new Phase()); // Fetch existing or create a new Phase if not found
+            phase.setId(phaseDto.getId());
+            phase.setName(phaseDto.getName());
+            phase.setProject(project); // Set the relationship to the project
+
+            List<Task> tasks = new ArrayList<>();
+            for (Task taskDto : phaseDto.getTasks()) {
+                Task task = taskRepository.findById(taskDto.getId())
+                        .orElse(new Task()); // Fetch existing or create a new Task if not found
+                task.setName(taskDto.getName());
+                task.setProgress(taskDto.getProgress());
+                task.setPhase(phase);// Set the relationship to the phase
+                task.setProject(project);
+                tasks.add(task);
+            }
+            phase.setTasks(tasks); // Set tasks to the phase
+            updatedPhases.add(phase);
+        }
+        project.setPhases(updatedPhases); // Set phases to the project
+
+
         project.setRemarks(projectDto.getRemarks());
         project.setMilestones(projectDto.getMilestones());
         project.setUpcomingRealizations(projectDto.getUpcomingRealizations());
