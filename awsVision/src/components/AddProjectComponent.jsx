@@ -42,12 +42,22 @@ const AddProjectComponent = () => {
         addProject(projectData)
       .then((response) => {
         console.log("Project added successfully:", response.data);
+        resetForm();
       })
       .catch((error) => {
         console.error("There was an error adding the project:", error);
       });
     };
-
+    const resetForm = () => {
+        setName('');
+        setOwner('');
+        setStartDate('');
+        setExpectedEndDate('');
+        setType('');
+        setBudget('');
+        setDescription('');
+        setSquad({ id: '', name: '' });
+    }
     const handleSquadChange = (e) => {
         const selectedSquad = allSquads.find(s => s.id === parseInt(e.target.value));
         if (selectedSquad) {
@@ -131,6 +141,7 @@ const AddProjectComponent = () => {
                         <label className='form-label'>Squad:</label>
                         <select name='squad' className={`form-control`}
                             onChange={handleSquadChange}
+                            value={squad.id}
                             >
                             <option value="">Sélectionner une squad</option>
                             {allSquads.map((squad) => (

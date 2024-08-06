@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import { addRelease } from "../services/Release";
 
-const AddReleaseComponent = () => {
+const AddRelease = ({ refreshReleases }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [installationDate, setInstallationDate] = useState('');
   const [version, setVersion] = useState('');
@@ -19,7 +19,7 @@ const AddReleaseComponent = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const releaseData = {
         installationDate,
@@ -29,14 +29,23 @@ const AddReleaseComponent = () => {
         hotfixContents: hotfixContents.split(',').map(content => content.trim()),
         evolution
     };
-    addRelease(releaseData)
-  .then((response) => {
+//     addRelease(releaseData)
+//   .then((response) => {
+//     console.log("Release added successfully:", response.data);
+//   })
+//   .catch((error) => {
+//     console.error("There was an error adding the release:", error);
+//   });
+//   refreshReleases();
+//   setIsModalOpen(false);
+try {
+    const response = await addRelease(releaseData);
     console.log("Release added successfully:", response.data);
-  })
-  .catch((error) => {
+    refreshReleases();
+    setIsModalOpen(false);
+  } catch (error) {
     console.error("There was an error adding the release:", error);
-  });
-  setIsModalOpen(false);
+  }
 };
   return (
     <>
@@ -124,4 +133,4 @@ const AddReleaseComponent = () => {
   );
 };
 
-export default AddReleaseComponent;
+export default AddRelease;

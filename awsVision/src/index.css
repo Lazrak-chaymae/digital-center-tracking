@@ -6,6 +6,7 @@
   list-style: none;
   box-sizing: border-box;
   font-family: Georgia, 'Times New Roman', Times, serif;
+
 }
 
 .sidebar {
@@ -33,13 +34,14 @@
 }
 
 .menu-bar {
+  width: 200px;
   height: 88vh;
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 15px;
   font-size: 1rem;
-  position: relative;
+  overflow-y: auto;
 }
 .menu-bar a{
   text-decoration: none;

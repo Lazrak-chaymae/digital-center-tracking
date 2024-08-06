@@ -9,10 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class JwtAuthResponse {
+public class ChangePasswordDto {
 
-    private String accessToken;
-    private String tokenType = "Bearer ";
-    private String role;
-    private String name;
+    private String email;
+    private String oldPassword;
+    private String newPassword;
 }

@@ -47,9 +47,11 @@ public class SecurityConfiguration {
                                     .hasAnyRole("DeleveryManager","Manager");
                              */
 
+                            authorize.requestMatchers(HttpMethod.GET,"/api/auth/**")
+                                    .permitAll();
                             authorize.requestMatchers(HttpMethod.POST,"/api/auth/**")
                                     .permitAll();
-                            authorize.requestMatchers(HttpMethod.GET,"/api/auth/**")
+                            authorize.requestMatchers(HttpMethod.PATCH,"/api/auth/**")
                                     .permitAll();
                             authorize.requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll();
 

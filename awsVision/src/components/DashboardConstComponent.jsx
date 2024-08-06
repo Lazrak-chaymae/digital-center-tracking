@@ -66,20 +66,32 @@ const DashboardConstComponent = () => {
                             </thead>
                             <tbody>
                                 {ucProject[squad.id] && ucProject[squad.id].map(
-                                    projet => (
-                                        <tr key={projet.id}>
-                                            <td>Projet {projet.id}</td>
-                                            <td>{projet.name}</td>
-                                            <td>{projet.description}</td>
-                                            <td>{projet.startDate}</td>
-                                            <td>{projet.budget}</td>
-                                            <td>{projet.consumed}</td>
-                                            <td>{projet.phase}</td>
-                                            <td>{projet.milestones}</td>
-                                            <td>{projet.upcomingRealizations}</td>
-                                            <td>{projet.type}</td>
-                                            <td>{projet.remarks}</td>
-                                            <td>{projet.progress}</td>
+                                    project => (
+                                        <tr key={project.id}>
+                                            <td><a href={`/project/${project.id}`} style={{ textDecoration: 'none' }}>Projet {project.id}</a></td>
+                                            <td>{project.name}</td>
+                                            <td>{project.description}</td>
+                                            <td>{project.startDate}</td>
+                                            <td>{project.budget}</td>
+                                            <td>{project.consumed}</td>
+                                            <td>{project.phase}</td>
+                                            <td>{project.milestones.map((milestone, index) => (
+                                                <span key={index}>{milestone}
+                                                 <br/>
+                                                </span>
+                                            ))}</td>
+                                            <td>{project.upcomingRealizations.map((realization,index) => (
+                                                <span key={index}>{realization}
+                                                <br />
+                                                </span>
+                                            ))}</td>
+                                            <td>{project.type}</td>
+                                            <td>{project.remarks.map((remark,index) => (
+                                                <span key={index}>{remark}
+                                                <br />
+                                                </span>
+                                            ))}</td>
+                                            <td>{project.progress}</td>
                                         </tr>
 
 

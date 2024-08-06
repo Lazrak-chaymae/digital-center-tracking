@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -22,5 +24,5 @@ public class Dependency {
     private String priority;
     private String responsibleTeam;
     private String beneficiaryTeam;
-    private String scheduledDate;
+    private LocalDate scheduledDate;
 }

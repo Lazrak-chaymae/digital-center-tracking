@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { listKPIs } from '../services/KPIBusiness';
+import AddKPIProd from './AddKPIProd';
+import { isAdminUser } from '../services/AuthService';
 
 
 const KPIProdComponent = () => {
@@ -42,7 +44,7 @@ const KPIProdComponent = () => {
 
 
     return (
-        <div className='container' style={{padding : '12px'}}>
+        <div className='container'  style={{ paddingTop: '12px'}}>
             <h3 className='text-center'>Principaux KPIs Business</h3>
             
                 {kpiTypes.map(type => (
@@ -78,7 +80,7 @@ const KPIProdComponent = () => {
                 ))}
                
                 
-
+               {isAdminUser() &&  <AddKPIProd  refreshKPIs={fetchData}/> }
         </div>
 
 

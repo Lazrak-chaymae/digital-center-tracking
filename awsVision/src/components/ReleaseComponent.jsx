@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { listReleases } from '../services/Release';
-import AddReleaseComponent from './AddReleaseComponent';
+import AddRelease from './AddRelease';
+import { isAdminUser } from '../services/AuthService';
 
 const ReleaseComponent = () => {
   const [releases, setReleases] = useState([]);
@@ -21,7 +22,7 @@ const ReleaseComponent = () => {
   }, [])
 
   return (
-    <div className='container' style={{ paddingTop : '12px'}}>
+    <div className='container'  style={{ paddingTop: '12px'}}>
     <h3 className='text-center'>Livraisons</h3>
     <table className='table table-striped table-bordered'>
         <thead>
@@ -58,7 +59,7 @@ const ReleaseComponent = () => {
              ))}
         </tbody>
     </table>
-    <AddReleaseComponent />
+    {isAdminUser() &&  <AddRelease refreshReleases={getReleases} /> }
 </div>
   )
 }

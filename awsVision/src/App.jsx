@@ -10,6 +10,7 @@ import DependencyComponent from "./components/DependencyComponent";
 import DetteTechComponent from "./components/DetteTechComponent";
 import KPIProdComponent from "./components/KPIProdComponent";
 import AddProjectComponent from "./components/AddProjectComponent";
+import SettingComponent from "./components/SettingComponent";
 import Logo from "./components/Logo";
 import { Layout, theme, Button, Dropdown, Space } from "antd";
 import {
@@ -36,7 +37,7 @@ function App() {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="#"
+          onClick={()=> navigate("/setting")}
           style={{ textDecoration: "none" }}
         >
           Setting
@@ -57,6 +58,12 @@ function App() {
       ),
     },
   ];
+  const contentStyle = {
+    height: '100%',
+  }
+  const mainStyle = {
+    marginLeft: collapsed ? '80px' : '200px',
+  };
   
   function AuthenticatedRoute({ children }) {
     if (isAuthenticated) {
@@ -84,13 +91,14 @@ function App() {
             trigger={null}
             className="sidebar"
             theme="light"
+            style={{position: 'fixed'}}
           >
             {" "}
             <Logo />
             <MenuList />
           </Sider>
         )}
-        <Layout>
+        <Layout className="main-content" style={mainStyle}>
           {isAuthenticated && (
             <Header className="header">
               <Button
@@ -116,9 +124,9 @@ function App() {
               </Space>
             </Header>
           )}
-          <Content>
+          <Content style={contentStyle}>
             
-          <Routes>
+            <Routes>
                 <Route path="/home" element={
                   <AuthenticatedRoute><HomeComponent /></AuthenticatedRoute>
                   }></Route>
@@ -153,7 +161,8 @@ function App() {
                 <Route path='/' element={ <LoginComponent />}></Route>
                 <Route path='/login' element={ <LoginComponent />}></Route>
                 <Route path="/register" element={<RegisterComponent />}></Route>
-                </Routes>
+                <Route path="/setting" element={<SettingComponent />}></Route>
+            </Routes>
               
             
           </Content>
