@@ -63,7 +63,7 @@ const DashboardLcmComponent = () => {
                 {lcProject[squad.id] && lcProject[squad.id].map(
                   project => (
                     <tr key={project.id}>
-                      <td>Projet {project.id}</td>
+                      <td><a href={`/project/${project.id}`} style={{ textDecoration: 'none' }}>Projet {project.id}</a></td>
                       <td>{project.name}</td>
                       <td>{project.description}</td>
                       <td>{project.actualMepDate}</td>

@@ -13,9 +13,11 @@ export const storeToken = (token) => localStorage.setItem("token", token);
 export const getToken = () => localStorage.getItem("token");
  
 
-export const saveLoggedInUser = (email, role) => {
+export const saveLoggedInUser = (email, role, password, name) => {
     sessionStorage.setItem("authenticatedUser", email);
     sessionStorage.setItem("role", role);
+    sessionStorage.setItem("password", password);
+    sessionStorage.setItem("name", name);
 };
 
 export const isAdminUser = () => {

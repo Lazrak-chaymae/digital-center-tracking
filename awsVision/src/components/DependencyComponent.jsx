@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { listDependencies } from '../services/Dependency';
+import AddDependency from './AddDependency';
+import { isAdminUser } from '../services/AuthService';
 
 const DependencyComponent = () => {
 
@@ -19,7 +21,7 @@ const DependencyComponent = () => {
   }, []);
 
   return (
-    <div className='container' style={{ paddingTop : '12px'}}>
+    <div className='container'  style={{ paddingTop: '12px'}}>
       <h3 className='text-center'>Dépendance entre équipes</h3>
     <table className='table table-striped table-bordered'>
         <thead>
@@ -47,6 +49,9 @@ const DependencyComponent = () => {
             }
         </tbody>
     </table>
+    {isAdminUser() && 
+    <AddDependency refreshDependencies={getDependencies}/>
+    }
 </div>
   )
 }
