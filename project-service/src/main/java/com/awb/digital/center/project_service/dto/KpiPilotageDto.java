@@ -1,25 +1,19 @@
-package com.awb.digital.center.project_service.entity;
+package com.awb.digital.center.project_service.dto;
 
-
-import jakarta.persistence.*;
+import com.awb.digital.center.project_service.entity.Project;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
-@Table(name = "squad")
-public class Squad {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class KpiPilotageDto {
+
     private Long id;
     private String name;
-
-
-
+    private String target;
+    private String current;
 }

@@ -1,5 +1,6 @@
 package com.awb.digital.center.project_service.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,7 +34,7 @@ public class Project {
     private Float consumed;
     private String progress;
     private String description;
-    private String status;
+    private String status = "EnConstruction";
     private Integer allocatedSprintCount;
     private Integer consumedSprintCount;
     private String completionPercentage;
@@ -43,12 +44,15 @@ public class Project {
     private Squad squad;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<KpiPilotage> pilotageKpis;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Phase> phases;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<RemarkOrRisk> remarks;
 
     @ElementCollection
@@ -66,5 +70,16 @@ public class Project {
     @Column(name = "name")
     private List<String> upcomingRealizations = new ArrayList<>();
 
+    public void setPhase(String phase) {
+        this.phase = phase;
+        updateStatusBasedOnPhase();
+    }
 
+    private void updateStatusBasedOnPhase() {
+        if ("pilotage".equalsIgnoreCase(this.phase) || "generalisation".equalsIgnoreCase(this.phase)) {
+            this.status = "EnLancement";
+        } else {
+            this.status = "EnConstruction";
+        }
+    }
 }

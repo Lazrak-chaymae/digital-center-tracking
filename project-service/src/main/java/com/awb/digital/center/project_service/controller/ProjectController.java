@@ -39,16 +39,11 @@ public class ProjectController {
         return ResponseEntity.ok(projects);
     }
 
-//    @PostMapping
-//    public ResponseEntity<ProjectCreationDto> addProject(@RequestBody ProjectCreationDto projectCreationDto) {
-//        ProjectCreationDto createdProject = service.createProject(projectCreationDto);
-//        return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
-//    }
-@PostMapping
-public ResponseEntity<ProjectDto> addProject(@RequestBody ProjectDto projectCreationDto) {
-    ProjectDto createdProject = service.createProject(projectCreationDto);
-    return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
-}
+    @PostMapping
+    public ResponseEntity<ProjectCreationDto> addProject(@RequestBody ProjectCreationDto projectCreationDto) {
+        ProjectCreationDto createdProject = service.createProject(projectCreationDto);
+        return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<ProjectDto> updateProject(@PathVariable Long id, @RequestBody ProjectDto projectDto) {
@@ -72,5 +67,21 @@ public ResponseEntity<ProjectDto> addProject(@RequestBody ProjectDto projectCrea
     public ResponseEntity<String> deleteProject(@PathVariable Long id){
         service.deleteProject(id);
         return ResponseEntity.ok("project deleted successfully");
+    }
+    @PostMapping("/{id}/milestones")
+    public ResponseEntity<String> addMilestoneForProject(@RequestBody MilestoneDto milestone, @PathVariable("id") Long projectId){
+        service.addMilestone(milestone, projectId);
+        return  new ResponseEntity<>("Milestone added successfully",HttpStatus.CREATED);
+    }
+
+    @PostMapping("/{id}/upcomingRealizations")
+    public ResponseEntity<String> addUpcomingRealizationForProject(@RequestBody RealizationDto upcomingRealization, @PathVariable("id") Long projectId){
+        service.addUpcomingRealization(upcomingRealization, projectId);
+        return  new ResponseEntity<>("Realization added successfully",HttpStatus.CREATED);
+    }
+    @PatchMapping("/{id}/phase")
+    public ResponseEntity<String> updateProjectPhase(@RequestBody String newPhase, @PathVariable("id") Long projectId) {
+        service.updateProjectPhase(newPhase, projectId);
+        return new ResponseEntity<>("Project phase updated successfully", HttpStatus.OK);
     }
 }

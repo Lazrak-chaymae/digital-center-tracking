@@ -1,6 +1,7 @@
 package com.awb.digital.center.project_service.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,9 +23,11 @@ public class Task {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "phase_id")
+    @JsonBackReference
     private Phase phase;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
-    private Project project;
+    public Task(String name, String progress) {
+        this.name = name;
+        this.progress = progress;
+    }
 }

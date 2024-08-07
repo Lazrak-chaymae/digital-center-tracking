@@ -28,6 +28,8 @@ public class ProjectCreationDto {
     private String budget;
     private String description;
     private String status;
+    private Integer allocatedSprintCount;
     private Squad squad;
+    private List<Phase> phases;
 
 }
