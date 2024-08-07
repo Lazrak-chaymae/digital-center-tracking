@@ -86,8 +86,8 @@ const DashboardConstComponent = () => {
                                                 </span>
                                             ))}</td>
                                             <td>{project.type}</td>
-                                            <td>{project.remarks.map((remark,index) => (
-                                                <span key={index}>{remark}
+                                            <td>{project.remarks.map((remark) => (
+                                                <span key={remark.id}>{remark.name}
                                                 <br />
                                                 </span>
                                             ))}</td>

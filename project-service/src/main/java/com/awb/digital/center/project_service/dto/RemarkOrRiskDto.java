@@ -1,25 +1,18 @@
-package com.awb.digital.center.project_service.entity;
+package com.awb.digital.center.project_service.dto;
 
-
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
-@Table(name = "squad")
-public class Squad {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class RemarkOrRiskDto {
+
     private Long id;
     private String name;
-
-
+    private String importance;
 
 }

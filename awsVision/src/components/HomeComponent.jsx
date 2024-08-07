@@ -30,7 +30,7 @@ const HomeComponent = () => {
       <div className='row'>
         {projects.map((project, index) => (
           <div className='col-3' key={index}>
-            <ProjectCard {...project} />
+            <ProjectCard {...project} refreshProject={getAllProjects} />
           </div>
         ))}
       </div>

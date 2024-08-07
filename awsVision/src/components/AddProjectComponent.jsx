@@ -10,6 +10,7 @@ const AddProjectComponent = () => {
     const [type, setType] = useState('');
     const [budget, setBudget] = useState('');
     const [description, setDescription] = useState('');
+    const [allocatedSprintCount,setAllocatedSprintCount] = useState('');
     const [allSquads, setAllSquads] = useState([]);
     const [squad, setSquad] = useState({ id: '', name: '' });
 
@@ -36,8 +37,10 @@ const AddProjectComponent = () => {
             type,
             budget,
             description,
+            allocatedSprintCount,
             squad,
-            status
+           status
+           
         };
         addProject(projectData)
       .then((response) => {
@@ -56,6 +59,7 @@ const AddProjectComponent = () => {
         setType('');
         setBudget('');
         setDescription('');
+        setAllocatedSprintCount('');
         setSquad({ id: '', name: '' });
     }
     const handleSquadChange = (e) => {
@@ -133,6 +137,16 @@ const AddProjectComponent = () => {
                         <input type='text' placeholder='Entrer la description du projet'
                             name='description' value={description}
                             onChange={(e) => setDescription(e.target.value)}
+                            className={`form-control`}
+                        ></input>
+
+                    </div>
+                    
+                    <div className="form-group mb-2">
+                        <label className='form-label'>Nombre de sprint alloués:</label>
+                        <input type='text' placeholder='Entrer le nombre de sprint alloués'
+                            name='allocatedSprintCount' value={allocatedSprintCount}
+                            onChange={(e) => setAllocatedSprintCount(e.target.value)}
                             className={`form-control`}
                         ></input>
 
