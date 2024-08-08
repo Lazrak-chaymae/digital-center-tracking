@@ -4,7 +4,6 @@ import com.awb.digital.center.authentification_service.dto.JwtAuthResponse;
 import com.awb.digital.center.authentification_service.dto.LoginDto;
 import com.awb.digital.center.authentification_service.dto.RegisterDto;
 import com.awb.digital.center.authentification_service.dto.RoleDto;
-import com.awb.digital.center.authentification_service.entity.Role;
 
 import java.util.List;
 

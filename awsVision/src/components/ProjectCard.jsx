@@ -50,15 +50,20 @@ const ProjectCard = ({
                 onBlur={handlePhaseBlur}
                 onClick={() => setEditingPhase(true)}
                 onInput={handlePhaseChange}
-                contenteditable="true">{updatedPhase ? updatedPhase : "N/A"}</Button>
+                contenteditable="true">{updatedPhase ? updatedPhase.name : "N/A"}</Button>
       </div>
       <div className="info-row">
         <MenuOutlined className="icon" /> <span className="label">Squad</span>
         <Button className="square-button">{squad ? squad.name : "N/A"}</Button>
       </div>
       <div className="info-row">
-        <CalendarOutlined className="icon" />{" "}
-        <span className="label">Date</span>
+        <CalendarOutlined className="icon" />
+        <span className="label">Date début</span>
+        <Button className="square-button">{date ? date : "N/A"}</Button>
+      </div>
+      <div className="info-row">
+        <CalendarOutlined className="icon" />
+        <span className="label">Date fin</span>
         <Button className="square-button">{date ? date : "N/A"}</Button>
       </div>
       <div className="details-link">

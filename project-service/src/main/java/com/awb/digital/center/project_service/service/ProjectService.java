@@ -18,5 +18,5 @@ public interface ProjectService {
     void deleteProject(Long id);
     void addMilestone(MilestoneDto milestone, Long projectId);
     void addUpcomingRealization(RealizationDto upcomingRealization, Long projectId);
-    void updateProjectPhase(String newPhase, Long projectId);
+    void updateProjectPhase(CustomPhaseDto newPhase, Long projectId);
 }

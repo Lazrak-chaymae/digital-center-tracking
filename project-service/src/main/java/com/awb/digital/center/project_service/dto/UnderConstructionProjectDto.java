@@ -1,9 +1,6 @@
 package com.awb.digital.center.project_service.dto;
 
-import com.awb.digital.center.project_service.entity.KpiPilotage;
-import com.awb.digital.center.project_service.entity.Phase;
-import com.awb.digital.center.project_service.entity.RemarkOrRisk;
-import com.awb.digital.center.project_service.entity.Squad;
+import com.awb.digital.center.project_service.entity.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,10 +20,10 @@ public class UnderConstructionProjectDto {
         private String name;
         private String description;
         private LocalDate startDate;
-        private String budget;
-        private Float consumed;
+        private String completionPercentage;
         private Integer consumedSprintCount;
-        private String phase;
+        private String budget;
+        private CustomPhase phase;
         private List<String> milestones = new ArrayList<>();
         private List<String> upcomingRealizations = new ArrayList<>();
         private String type;

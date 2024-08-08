@@ -80,7 +80,7 @@ public class ProjectController {
         return  new ResponseEntity<>("Realization added successfully",HttpStatus.CREATED);
     }
     @PatchMapping("/{id}/phase")
-    public ResponseEntity<String> updateProjectPhase(@RequestBody String newPhase, @PathVariable("id") Long projectId) {
+    public ResponseEntity<String> updateProjectPhase(@RequestBody CustomPhaseDto newPhase, @PathVariable("id") Long projectId) {
         service.updateProjectPhase(newPhase, projectId);
         return new ResponseEntity<>("Project phase updated successfully", HttpStatus.OK);
     }

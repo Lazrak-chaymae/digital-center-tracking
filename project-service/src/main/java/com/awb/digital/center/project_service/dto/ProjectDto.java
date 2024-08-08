@@ -1,9 +1,6 @@
 package com.awb.digital.center.project_service.dto;
 
-import com.awb.digital.center.project_service.entity.KpiPilotage;
-import com.awb.digital.center.project_service.entity.Phase;
-import com.awb.digital.center.project_service.entity.RemarkOrRisk;
-import com.awb.digital.center.project_service.entity.Squad;
+import com.awb.digital.center.project_service.entity.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,11 +22,9 @@ public class ProjectDto {
     private String owner;
     private LocalDate startDate;
     private LocalDate expectedEndDate;
-    private String phase;
+    private CustomPhase phase;
     private String type;
     private String budget;
-    private Float consumedBudget;
-    private String progress;
     private String description;
     private String status;
     private Integer allocatedSprintCount;

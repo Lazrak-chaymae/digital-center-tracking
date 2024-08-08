@@ -36,6 +36,7 @@ public class AuthServiceImpl implements AuthService{
     private JwtTokenProvider jwtTokenProvider;
     private ModelMapper mapper;
 
+
     @Override
     public String register(RegisterDto registerDto) {
 
@@ -53,6 +54,7 @@ public class AuthServiceImpl implements AuthService{
 
         return "User Registered Successfully!.";
     }
+
 
     @Override
     public List<RoleDto> getAllRoles() {
