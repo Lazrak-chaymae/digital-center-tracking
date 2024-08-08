@@ -23,6 +23,7 @@ import HomeComponent from "./components/HomeComponent";
 import RegisterComponent from "./components/RegisterComponent";
 import LoginComponent from "./components/LoginComponent";
 import { isUserLoggedIn, logout } from "./services/AuthService"
+import awbLogo from './assets/awblogo.png';
 
 const { Sider, Header, Content } = Layout;
 function App() {
@@ -59,12 +60,15 @@ function App() {
     },
   ];
   const contentStyle = {
-    height: '100%',
+    minHeight: '498px',
+  
   }
   const mainStyle = {
+
     marginLeft: collapsed ? '80px' : '200px',
   };
   
+ 
   function AuthenticatedRoute({ children }) {
     if (isAuthenticated) {
       return children;
@@ -82,9 +86,9 @@ function App() {
   return (
     <>
     
-      
+    {isAuthenticated && (
       <Layout>
-        {isAuthenticated && (
+      
           <Sider
             collapsed={collapsed}
             collapsible
@@ -97,9 +101,9 @@ function App() {
             <Logo />
             <MenuList />
           </Sider>
-        )}
+        
         <Layout className="main-content" style={mainStyle}>
-          {isAuthenticated && (
+         
             <Header className="header">
               <Button
                 type="text"
@@ -123,7 +127,8 @@ function App() {
                 </Space>
               </Space>
             </Header>
-          )}
+          
+         
           <Content style={contentStyle}>
             
             <Routes>
@@ -157,19 +162,29 @@ function App() {
                   path="/add-project"
                   element={<AuthenticatedRoute><AddProjectComponent /></AuthenticatedRoute>}
                 ></Route>
-
-                <Route path='/' element={ <LoginComponent />}></Route>
-                <Route path='/login' element={ <LoginComponent />}></Route>
-                <Route path="/register" element={<RegisterComponent />}></Route>
                 <Route path="/setting" element={<SettingComponent />}></Route>
-            </Routes>
-              
+         
+                </Routes>
             
           </Content>
         </Layout>
       </Layout>
-    
- 
+    )}
+    {!isAuthenticated && (
+      <Layout style={{backgroundColor: 'white'}}>
+        <Header  className="header-login">
+           <img src={awbLogo} className="logo-login"/>
+        </Header>
+        <Content className="content">
+        <Routes>
+    <Route path='/' element={ <LoginComponent />}></Route>
+                <Route path='/login' element={ <LoginComponent />}></Route>
+                <Route path="/register" element={<RegisterComponent />}></Route>
+    </Routes>
+        </Content>
+      </Layout>
+   
+    )}
     </>
   );
 }

@@ -46,6 +46,7 @@ const AddKPIProd = ({ refreshKPIs }) => {
         Ajouter une KPI
       </Button>
       <Modal
+        className="text-center"
         title="Ajouter une KPI"
         open={isModalOpen}
         onCancel={handleCancel}
@@ -123,10 +124,11 @@ const AddKPIProd = ({ refreshKPIs }) => {
               ))}
             </select>
           </div>
-          
-          <button className="btn btn-success" onClick={(e) => handleSubmit(e)}>
+          <div className="button-container">
+          <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
             Ajouter
           </button>
+          </div>
         </form>
       </Modal>
     </>

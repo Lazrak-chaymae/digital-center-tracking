@@ -30,25 +30,25 @@ const ProjectComponent = () => {
         <div className="col-12">
           <div className="card">
             <div className="card-body">
-              <h2 className="card-title">Présentation Projet</h2>
+              <h2 className="card-title text-center">Présentation Projet</h2>
               <p className="card-text">
-                <strong>Nom:</strong>
+                <strong>Nom : </strong>
                 {project.name}
               </p>
               <p className="card-text">
-                <strong>Owner:</strong>
+                <strong>Owner : </strong>
                 {project.owner}
               </p>
               <p className="card-text">
-                <strong>Date démarrage:</strong>
+                <strong>Date démarrage : </strong>
                 {project.startDate}
               </p>
               <p className="card-text">
-                <strong>Date fin prévue:</strong>
+                <strong>Date fin prévue : </strong>
                 {project.expectedEndDate}
               </p>
               <p className="card-text">
-                <strong>Description:</strong>
+                <strong>Description : </strong>
                 {project.description}
               </p>
             </div>

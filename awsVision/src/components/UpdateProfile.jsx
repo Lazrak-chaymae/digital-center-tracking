@@ -48,6 +48,7 @@ const UpdateProfile = () => {
         Modifier mot de passe
       </Button>
       <Modal
+        className="text-center"
         title="Modification mot de passe"
         open={isModalOpen}
         onCancel={handleCancel}
@@ -103,9 +104,11 @@ const UpdateProfile = () => {
               )}
             </div>
           </div>
-          <button className="btn btn-success" onClick={(e) => handleUpdateForm(e)}>
+          <div className="button-container">
+          <button className="btn btn-primary" onClick={(e) => handleUpdateForm(e)}>
             Modifier
           </button>
+          </div>
         </form>
       </Modal>
     </>

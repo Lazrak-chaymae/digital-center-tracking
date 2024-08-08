@@ -3,6 +3,8 @@ import { Card, Button, Input } from "antd";
 import { MenuOutlined, CalendarOutlined } from "@ant-design/icons";
 import { updatePhase } from "../services/Project";
 
+
+
 const ProjectCard = ({
   id,
   name,
@@ -34,7 +36,7 @@ const ProjectCard = ({
 
  
   return (
-    <Card title={name} bordered={false} className="custom-card" key={id}>
+    <Card title={name} bordered={false} className="custom-card text-center" key={id} >
       <div className="info-row">
         <MenuOutlined className="icon" /> <span className="label">Statut</span>
         <Button className="square-button">{status}</Button>

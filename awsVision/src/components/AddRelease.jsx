@@ -29,15 +29,7 @@ const AddRelease = ({ refreshReleases }) => {
         hotfixContents: hotfixContents.split(',').map(content => content.trim()),
         evolution
     };
-//     addRelease(releaseData)
-//   .then((response) => {
-//     console.log("Release added successfully:", response.data);
-//   })
-//   .catch((error) => {
-//     console.error("There was an error adding the release:", error);
-//   });
-//   refreshReleases();
-//   setIsModalOpen(false);
+
 try {
     const response = await addRelease(releaseData);
     console.log("Release added successfully:", response.data);
@@ -53,6 +45,7 @@ try {
         Ajouter une version
       </Button>
       <Modal
+       className="text-center"
         title="Ajouter une version"
         open={isModalOpen}
         onCancel={handleCancel}
@@ -124,9 +117,11 @@ try {
               className={`form-control`}
             ></input>
           </div>
-          <button className="btn btn-success" onClick={(e) => handleSubmit(e)}>
+          <div className="button-container">
+          <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
             Ajouter
           </button>
+          </div>
         </form>
       </Modal>
     </>

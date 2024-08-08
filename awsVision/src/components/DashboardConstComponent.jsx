@@ -67,13 +67,14 @@ const DashboardConstComponent = () => {
                             <tbody>
                                 {ucProject[squad.id] && ucProject[squad.id].map(
                                     project => (
+                                        
                                         <tr key={project.id}>
                                             <td><a href={`/project/${project.id}`} style={{ textDecoration: 'none' }}>Projet {project.id}</a></td>
                                             <td>{project.name}</td>
                                             <td>{project.description}</td>
                                             <td>{project.startDate}</td>
                                             <td>{project.budget}</td>
-                                            <td>{project.consumed}</td>
+                                            <td>{project.consumedSprintCount}</td>
                                             <td>{project.phase}</td>
                                             <td>{project.milestones.map((milestone, index) => (
                                                 <span key={index}>{milestone}
