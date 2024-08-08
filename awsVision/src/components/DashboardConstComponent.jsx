@@ -92,7 +92,7 @@ const DashboardConstComponent = () => {
                                                 <br />
                                                 </span>
                                             ))}</td>
-                                            <td>{project.progress}</td>
+                                            <td>{project.completionPercentage}</td>
                                         </tr>
 
 

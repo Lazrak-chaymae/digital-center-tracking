@@ -27,4 +27,10 @@ public class User {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
+//
+//    private boolean enabled;
+//
+//    public boolean isEnabled() {
+//        return enabled;
+//    }
 }

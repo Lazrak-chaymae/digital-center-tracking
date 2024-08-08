@@ -1,9 +1,6 @@
 package com.awb.digital.center.project_service.dto;
 
-import com.awb.digital.center.project_service.entity.KpiPilotage;
-import com.awb.digital.center.project_service.entity.Phase;
-import com.awb.digital.center.project_service.entity.RemarkOrRisk;
-import com.awb.digital.center.project_service.entity.Squad;
+import com.awb.digital.center.project_service.entity.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +19,9 @@ public class ProjectItemDto {
     private Long id;
     private String name;
     private String status;
-    private String phase;
+    private CustomPhase phase;
     private Squad squad;
+    private LocalDate startDate;
     private LocalDate expectedEndDate;
 
 }

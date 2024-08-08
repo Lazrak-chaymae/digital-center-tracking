@@ -1,10 +1,7 @@
 package com.awb.digital.center.project_service.service;
 
 import com.awb.digital.center.project_service.dto.*;
-import com.awb.digital.center.project_service.entity.Phase;
-import com.awb.digital.center.project_service.entity.Project;
-import com.awb.digital.center.project_service.entity.RemarkOrRisk;
-import com.awb.digital.center.project_service.entity.Task;
+import com.awb.digital.center.project_service.entity.*;
 import com.awb.digital.center.project_service.exception.ResourceNotFoundException;
 import com.awb.digital.center.project_service.repository.PhaseRepository;
 import com.awb.digital.center.project_service.repository.ProjectRepository;
@@ -128,8 +125,6 @@ public class ProjectServiceImpl implements ProjectService{
         project.setPhase(projectDto.getPhase());
         project.setType(projectDto.getType());
         project.setBudget(projectDto.getBudget());
-        project.setConsumed(projectDto.getConsumedBudget());
-        project.setProgress(projectDto.getProgress());
         project.setDescription(projectDto.getDescription());
         project.setStatus(projectDto.getStatus());
         project.setAllocatedSprintCount(projectDto.getAllocatedSprintCount());
@@ -197,13 +192,13 @@ public class ProjectServiceImpl implements ProjectService{
         project.setDescription(projectDto.getDescription());
         project.setStartDate(projectDto.getStartDate());
         project.setBudget(projectDto.getBudget());
-        project.setConsumed(projectDto.getConsumed());
+        project.setConsumedSprintCount(projectDto.getConsumedSprintCount());
         project.setPhase(projectDto.getPhase());
         project.setMilestones(projectDto.getMilestones());
         project.setUpcomingRealizations(projectDto.getUpcomingRealizations());
         project.setType(projectDto.getType());
         project.setRemarks(projectDto.getRemarks());
-        project.setProgress(projectDto.getProgress());
+        project.setCompletionPercentage(project.getCompletionPercentage());
         project.setSquad(projectDto.getSquad());
         project.setStatus(projectDto.getStatus());
 
@@ -235,10 +230,11 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     @Override
-    public void updateProjectPhase(String newPhase, Long projectId) {
+    public void updateProjectPhase(CustomPhaseDto newPhase, Long projectId) {
         Project project = repository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found with id : " +projectId));
-        project.setPhase(newPhase);
+        CustomPhase phase = mapper.map(newPhase, CustomPhase.class);
+        project.setPhase(phase);
         repository.save(project);
     }
 }

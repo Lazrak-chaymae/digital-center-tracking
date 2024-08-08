@@ -1,9 +1,6 @@
 package com.awb.digital.center.project_service.dto;
 
-import com.awb.digital.center.project_service.entity.KpiPilotage;
-import com.awb.digital.center.project_service.entity.Phase;
-import com.awb.digital.center.project_service.entity.RemarkOrRisk;
-import com.awb.digital.center.project_service.entity.Squad;
+import com.awb.digital.center.project_service.entity.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,7 +21,7 @@ public class InLaunchProjectDto {
     private String description;
     private LocalDate actualMepDate;
     private LocalDate lastPhaseDate;
-    private String phase;
+    private CustomPhase phase;
     private List<String> kpis = new ArrayList<>();
     private List<RemarkOrRisk> remarks;
     private String type;

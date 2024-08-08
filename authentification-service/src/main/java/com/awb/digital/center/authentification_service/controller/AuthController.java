@@ -5,8 +5,10 @@ import com.awb.digital.center.authentification_service.dto.JwtAuthResponse;
 import com.awb.digital.center.authentification_service.dto.LoginDto;
 import com.awb.digital.center.authentification_service.dto.RegisterDto;
 import com.awb.digital.center.authentification_service.dto.RoleDto;
+import com.awb.digital.center.authentification_service.repository.UserRepository;
 import com.awb.digital.center.authentification_service.service.AuthService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,7 @@ import java.util.List;
 public class AuthController {
 
     private AuthService authService;
+
 
     //Build Register Rest Api
     @PostMapping("/register")
@@ -39,5 +42,6 @@ public class AuthController {
         List<RoleDto> roles = authService.getAllRoles();
         return new ResponseEntity<>(roles, HttpStatus.OK);
     }
+
 
 }

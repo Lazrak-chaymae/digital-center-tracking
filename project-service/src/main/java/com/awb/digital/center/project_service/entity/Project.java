@@ -28,16 +28,19 @@ public class Project {
     private LocalDate expectedEndDate;
     private LocalDate actualMepDate;
     private LocalDate lastPhaseDate;
-    private String phase;
-    private String type;
     private String budget;
-    private Float consumed;
+    private String type;
     private String progress;
     private String description;
     private String status = "EnConstruction";
     private Integer allocatedSprintCount;
     private Integer consumedSprintCount;
     private String completionPercentage;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "phase_id")
+    private CustomPhase phase;
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "squad_id")
@@ -70,13 +73,13 @@ public class Project {
     @Column(name = "name")
     private List<String> upcomingRealizations = new ArrayList<>();
 
-    public void setPhase(String phase) {
+    public void setPhase(CustomPhase phase) {
         this.phase = phase;
         updateStatusBasedOnPhase();
     }
 
     private void updateStatusBasedOnPhase() {
-        if ("pilotage".equalsIgnoreCase(this.phase) || "generalisation".equalsIgnoreCase(this.phase)) {
+        if ("pilotage".equalsIgnoreCase(String.valueOf(this.phase.getName())) || "generalisation".equalsIgnoreCase(String.valueOf(this.phase.getName()))) {
             this.status = "EnLancement";
         } else {
             this.status = "EnConstruction";
