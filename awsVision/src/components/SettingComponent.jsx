@@ -88,7 +88,9 @@ const SettingComponent = () => {
               </div>
             </form>
           </div>
+          <div className='button-container'>
           <UpdateProfile />
+          </div>
         </div>
       </div>
     </div>

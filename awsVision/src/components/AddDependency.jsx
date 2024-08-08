@@ -56,6 +56,7 @@ const AddDependency = ({ refreshDependencies }) => {
       Ajouter une dépendance
       </Button>
       <Modal
+        className="text-center"
         title="Ajouter une dépendance"
         open={isModalOpen}
         onCancel={handleCancel}
@@ -128,10 +129,11 @@ const AddDependency = ({ refreshDependencies }) => {
           </div>
           
           
-          
-          <button className="btn btn-success" onClick={(e) => handleSubmit(e)}>
+          <div className="button-container">
+          <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
             Ajouter
           </button>
+          </div>
         </form>
       </Modal>
     </>

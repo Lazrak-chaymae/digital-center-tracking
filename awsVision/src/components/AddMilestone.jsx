@@ -31,6 +31,7 @@ const AddMilestone = ({ refreshProject, projectId }) => {
     <>
       <PlusCircleOutlined onClick={showModal} />
       <Modal
+       className="text-center"
         title="Ajouter Fait marquant"
         open={isModalOpen}
         onCancel={handleCancel}
@@ -48,9 +49,11 @@ const AddMilestone = ({ refreshProject, projectId }) => {
               className={`form-control`}
             ></input>
           </div>
-          <button className="btn btn-success" onClick={(e) => handleSubmit(e)}>
+          <div className="button-container">
+          <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
             Ajouter
           </button>
+          </div>
         </form>
       </Modal>
     </>

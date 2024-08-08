@@ -165,7 +165,9 @@ const AddProjectComponent = () => {
                         </select>
 
                     </div>
-                    <button className='btn btn-success' onClick={(e) => handleSubmit(e)}>Submit</button>
+                    <div className='button-container'>
+                    <button className='btn btn-primary' onClick={(e) => handleSubmit(e)}>Submit</button>
+                    </div>
                 </form>
 
             </div>

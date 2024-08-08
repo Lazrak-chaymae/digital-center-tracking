@@ -32,11 +32,10 @@ const AddRemarkOrRisk = ({refreshProject, projectId}) => {
         };
   return (
      <>
-    {/* <Button type="primary" onClick={showModal}>
-       <PlusCircleOutlined />
-    </Button> */}
+   
     <PlusCircleOutlined onClick={showModal} />
     <Modal
+     className='text-center'
       title="Ajouter une remarque ou un risque"
       open={isModalOpen}
       onCancel={handleCancel}
@@ -65,10 +64,11 @@ const AddRemarkOrRisk = ({refreshProject, projectId}) => {
             className={`form-control`}
           ></input>
         </div>
-    
-        <button className="btn btn-success" onClick={(e) => handleSubmit(e)}>
+        <div className="button-container">
+        <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
           Ajouter
         </button>
+        </div>
       </form>
     </Modal>
   </>

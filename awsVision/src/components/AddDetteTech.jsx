@@ -44,6 +44,7 @@ const AddDetteTech = ({refreshDebts}) => {
         Ajouter une Dette Technique
       </Button>
       <Modal
+        className="text-center"
         title="Ajouter une Dette Technique"
         open={isModalOpen}
         onCancel={handleCancel}
@@ -116,10 +117,11 @@ const AddDetteTech = ({refreshDebts}) => {
               className={`form-control`}
             ></input>
           </div>
-          
-          <button className="btn btn-success" onClick={(e) => handleSubmit(e)}>
+          <div className='button-container'>
+          <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
             Ajouter
           </button>
+          </div>
         </form>
       </Modal>
     </>

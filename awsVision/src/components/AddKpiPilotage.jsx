@@ -37,6 +37,7 @@ const AddKpiPilotage = ({refreshProject, projectId}) => {
     <>
        <PlusCircleOutlined onClick={showModal}/>
     <Modal
+     className="text-center"
       title="Ajouter une KPI"
       open={isModalOpen}
       onCancel={handleCancel}
@@ -76,10 +77,11 @@ const AddKpiPilotage = ({refreshProject, projectId}) => {
             className={`form-control`}
           ></input>
         </div>
- 
-        <button className="btn btn-success" onClick={(e) => handleSubmit(e)}>
+        <div className='button-container'>
+        <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
           Ajouter
         </button>
+        </div>
       </form>
     </Modal>
   </>

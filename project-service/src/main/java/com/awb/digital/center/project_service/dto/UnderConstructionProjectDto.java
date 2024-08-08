@@ -25,6 +25,7 @@ public class UnderConstructionProjectDto {
         private LocalDate startDate;
         private String budget;
         private Float consumed;
+        private Integer consumedSprintCount;
         private String phase;
         private List<String> milestones = new ArrayList<>();
         private List<String> upcomingRealizations = new ArrayList<>();
