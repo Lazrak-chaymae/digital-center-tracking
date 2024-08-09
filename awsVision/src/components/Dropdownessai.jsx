@@ -15,7 +15,7 @@ const Dropdownessai = ({projectId}) => {
 
 
   const getPhases = () => {
-    getAllPhases()
+    getAllPhases(domainId)
       .then((response) => {
         console.log(response.data);
         setPhases(response.data);
