@@ -10,5 +10,6 @@ export const addRemarkOrRisk = (remarkOrRisk,  projectId) => axios.post('http://
 export const addMilestone = (milestone, projectId) => axios.post('http://localhost:8765/api/projects' + '/' + projectId + '/milestones', milestone);
 export const addRealization = (realization, projectId) => axios.post('http://localhost:8765/api/projects' + '/' + projectId + '/upcomingRealizations', realization);
 export const updatePhase = (updatedPhase, projectId) => axios.patch('http://localhost:8765/api/projects' + '/' + projectId + '/phase', updatedPhase);
-export const getAllPhases = (domainId) => axios.get('http://localhost:8765/api/projects/phases//domain' + '/' + domainId);
+export const getAllPhases = (domainId) => axios.get('http://localhost:8765/api/phases/domain' + '/' + domainId);
 export const addPhases = (phase) => axios.post('http://localhost:8765/api/phases', phase);
+
