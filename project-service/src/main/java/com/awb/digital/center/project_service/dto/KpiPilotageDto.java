@@ -1,6 +1,6 @@
 package com.awb.digital.center.project_service.dto;
 
-import com.awb.digital.center.project_service.entity.Project;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

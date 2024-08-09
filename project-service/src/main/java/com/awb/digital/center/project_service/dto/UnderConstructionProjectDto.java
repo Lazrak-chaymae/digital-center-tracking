@@ -20,15 +20,14 @@ public class UnderConstructionProjectDto {
         private String name;
         private String description;
         private LocalDate startDate;
-        private String completionPercentage;
-        private Integer consumedSprintCount;
         private String budget;
+        private Integer consumedSprintCount;
         private CustomPhase phase;
         private List<String> milestones = new ArrayList<>();
         private List<String> upcomingRealizations = new ArrayList<>();
         private String type;
         private List<RemarkOrRisk> remarks;
-        private String progress;
+        private String completionPercentage;
         private Squad squad;
         private String status;
 

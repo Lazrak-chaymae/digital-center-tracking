@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import ProjectCard from './ProjectCard'
 import { listProjects } from '../services/Project'
-
+import Dropdownessai from './Dropdownessai'
 
 const HomeComponent = () => {
   const [projects,setProjects] = useState([]);
+  const [domainId, setDomainId] = useState(1);
   const getAllProjects = () =>
   {
-       listProjects().then(
+       
+       listProjects(domainId).then(
          (response) =>
          {
             setProjects(response.data);
@@ -34,7 +36,10 @@ const HomeComponent = () => {
           </div>
         ))}
       </div>
-
+      <Dropdownessai projectId={1} />
+      <br/>
+      <br/>
+      <br/>
     </div>
   )
 }

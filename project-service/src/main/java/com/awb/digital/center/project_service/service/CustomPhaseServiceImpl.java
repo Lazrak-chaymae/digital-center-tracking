@@ -19,8 +19,8 @@ public class CustomPhaseServiceImpl implements CustomPhaseService{
 
 
     @Override
-    public List<CustomPhaseDto> getAllPhases() {
-        List<CustomPhase> phases = repository.findAll();
+    public List<CustomPhaseDto> getAllPhases(Integer domainId) {
+        List<CustomPhase> phases = repository.findAllByDomainId(domainId);
         return phases.stream()
                 .map((phase) -> mapper.map(phase, CustomPhaseDto.class))
                 .collect(Collectors.toList());
@@ -28,7 +28,11 @@ public class CustomPhaseServiceImpl implements CustomPhaseService{
 
     @Override
     public CustomPhaseDto addPhase(CustomPhaseDto phaseDto) {
+        if (repository.existsByName(phaseDto.getName())) {
+            throw new IllegalArgumentException("Phase with name " + phaseDto.getName() + " already exists.");
+        }
       CustomPhase  phase = mapper.map(phaseDto, CustomPhase.class);
+
       CustomPhase savedPhase =  repository.save(phase);
          return mapper.map(savedPhase, CustomPhaseDto.class);
     }

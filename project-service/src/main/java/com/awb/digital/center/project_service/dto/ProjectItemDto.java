@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +15,7 @@ import java.util.List;
 public class ProjectItemDto {
 
     private Long id;
+    private Integer domainId;
     private String name;
     private String status;
     private CustomPhase phase;

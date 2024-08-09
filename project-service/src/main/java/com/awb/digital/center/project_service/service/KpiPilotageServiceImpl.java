@@ -28,7 +28,7 @@ public class KpiPilotageServiceImpl implements KpiPilotageService{
         kpiPilotage.setCurrent(kpiPilotageDto.getCurrent());
         kpiPilotage.setTarget(kpiPilotageDto.getTarget());
         Project project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));;
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
         kpiPilotage.setProject(project);
         kpiPilotageRepository.save(kpiPilotage);
         return mapper.map(kpiPilotage, KpiPilotageDto.class);

@@ -12,5 +12,6 @@ import lombok.Setter;
 public class CustomPhaseDto {
 
     private Long id;
+    private Integer domainId;
     private String name;
 }

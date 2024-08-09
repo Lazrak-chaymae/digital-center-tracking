@@ -22,22 +22,31 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
+    private Integer domainId;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String owner;
+    @Column(nullable = false)
     private LocalDate startDate;
+    @Column(nullable = false)
     private LocalDate expectedEndDate;
     private LocalDate actualMepDate;
     private LocalDate lastPhaseDate;
     private String budget;
+    @Column(nullable = false)
     private String type;
-    private String progress;
+    @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
     private String status = "EnConstruction";
+    @Column(nullable = false)
     private Integer allocatedSprintCount;
-    private Integer consumedSprintCount;
-    private String completionPercentage;
+    private Integer consumedSprintCount = 0;
+    private String completionPercentage = "0%";
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "phase_id")
     private CustomPhase phase;
 
@@ -52,7 +61,7 @@ public class Project {
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
-    private List<Phase> phases;
+    private List<Task> tasks;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
@@ -77,7 +86,6 @@ public class Project {
         this.phase = phase;
         updateStatusBasedOnPhase();
     }
-
     private void updateStatusBasedOnPhase() {
         if ("pilotage".equalsIgnoreCase(String.valueOf(this.phase.getName())) || "generalisation".equalsIgnoreCase(String.valueOf(this.phase.getName()))) {
             this.status = "EnLancement";

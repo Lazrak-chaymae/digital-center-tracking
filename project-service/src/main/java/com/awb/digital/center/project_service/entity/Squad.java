@@ -18,8 +18,8 @@ public class Squad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
+    private Integer domainId;
     private String name;
-
-
 
 }

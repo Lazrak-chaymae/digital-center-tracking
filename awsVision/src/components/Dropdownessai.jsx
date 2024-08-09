@@ -5,14 +5,15 @@ import { getAllPhases, addPhases, updatePhase } from "../services/Project";
 
 const { useToken } = theme;
 
-const App = () => {
+const Dropdownessai = ({projectId}) => {
   const [phases, setPhases] = useState([]);
   const [addPhase, setAddPhase] = useState(false);
   const [createdPhase, setCreatedPhase] = useState('');
   const [choosenPhase, setChoosenPhase] = useState('');
-  const id= 1;
-
+  const [domainId, setDomainId] = useState(1);
   
+
+
   const getPhases = () => {
     getAllPhases()
       .then((response) => {
@@ -25,9 +26,13 @@ const App = () => {
   };
 
   const createPhase = () => {
-    addPhases(createdPhase)
+    const phase = { name : createdPhase, domainId : domainId }
+    addPhases(phase)
       .then((response) => {
         console.log(response.data);
+        setAddPhase(false);
+        setCreatedPhase('');
+        getPhases();
       })
       .catch((error) => {
         console.error(error);
@@ -38,15 +43,17 @@ const App = () => {
   },[])
   const handleAddPhase = () => {
     setAddPhase(true);
+    console.log(addPhase);
   }
-  const handleCreatePhase = (e) => {
-       setCreatedPhase(e.target.value);
+  const handleCreatePhase = () => {
+       console.log(createdPhase);
        createPhase();
 
   }
-  const handlePhaseChoose = () => {
-       setChoosenPhase(e.target.value);
-       updatePhase(choosenPhase,id).then((response) => {
+  const handlePhaseChoose = (phaseId, phaseName) => {
+       const phase = { phaseId,phaseName, domainId}
+       setChoosenPhase(phase);
+       updatePhase(choosenPhase,projectId).then((response) => {
         console.log(response.data);
       })
       .catch((error) => {
@@ -64,21 +71,21 @@ const App = () => {
   };
   return (
     <Dropdown
-      menu={{
-        items,
-      }}
-      dropdownRender={() => (
+    menu={{ items: phases.map((phase) => ({
+        key: phase.id,
+        label: (
+          <button  key={phase.id}
+            onClick={() => handlePhaseChoose(phase.id, phase.name)}
+          >
+            {phase.name}
+          </button>
+        ),
+      })) }}
+      dropdownRender={(menu) => (
         <div style={contentStyle}>
-          <Space
-            style={{
-              padding: 8,
-            }}
-          > 
-        
-          {phases && phases.map((phase) => {
-              <button key={phase.id} onClick={handlePhaseChoose}>{phase.name}</button>
-          }}
-          </Space>
+           {React.cloneElement(menu, {
+            style: menuStyle,
+          })}
         
           <Divider
             style={{
@@ -89,13 +96,17 @@ const App = () => {
             style={{
               padding: 8,
             }}
-          >
+          > 
             <Button type="primary" onClick={handleAddPhase}>Ajouter phase</Button>
             {addPhase &&
             <div>
+                <h4>adding</h4>
                 <input type="text" value={createdPhase}
-                name="createdPhase" onChange={handleCreatePhase}
+                name="createdPhase" onChange={(e) => setCreatedPhase(e.target.value)}
+                placeholder="ajouter une phase"
                 />
+                <Button type="primary" onClick={handleCreatePhase}>OK</Button>
+            
             </div>
            }
           </Space>
@@ -111,4 +122,4 @@ const App = () => {
     </Dropdown>
   );
 };
-export default App;
+export default Dropdownessai;

@@ -13,6 +13,7 @@ import lombok.Setter;
 public class SquadDto {
 
     private Long id;
+    private Integer domainId;
     private String name;
 
 }

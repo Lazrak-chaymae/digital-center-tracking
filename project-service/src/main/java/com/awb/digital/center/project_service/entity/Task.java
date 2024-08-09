@@ -22,12 +22,14 @@ public class Task {
     private String progress;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "phase_id")
+    @JoinColumn(name = "etape_id")
     @JsonBackReference
-    private Phase phase;
+    private Etape etape;
 
-    public Task(String name, String progress) {
-        this.name = name;
-        this.progress = progress;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id")
+    @JsonBackReference
+    private Project project;
+
+
 }

@@ -18,10 +18,17 @@ public class SquadServiceImpl implements SquadService{
     private ModelMapper mapper;
 
     @Override
-    public List<SquadDto> GetAllSquads() {
-       List<Squad> squads = repository.findAll();
+    public List<SquadDto> GetAllSquads(Integer domainId) {
+       List<Squad> squads = repository.findAllByDomainId(domainId);
         return squads.stream()
                 .map((squad -> mapper.map(squad,SquadDto.class)))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public SquadDto createSquad(SquadDto squadDto) {
+        Squad squad = mapper.map(squadDto, Squad.class);
+        Squad createdSquad = repository.save(squad);
+        return mapper.map(createdSquad, SquadDto.class);
     }
 }
