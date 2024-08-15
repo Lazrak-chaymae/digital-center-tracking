@@ -79,8 +79,8 @@ public class ProjectController {
         service.addUpcomingRealization(upcomingRealization, projectId);
         return  new ResponseEntity<>("Realization added successfully",HttpStatus.CREATED);
     }
-    @PatchMapping("/{id}/phase")
-    public ResponseEntity<String> updateProjectPhase(@RequestBody CustomPhaseDto phase, @PathVariable("id") Long projectId) {
+    @PatchMapping("/{projectId}/phase")
+    public ResponseEntity<String> updateProjectPhase(@RequestBody CustomPhaseDto phase, @PathVariable Long projectId) {
         service.updateProjectPhase(phase, projectId);
         return new ResponseEntity<>("Project phase updated successfully", HttpStatus.OK);
     }

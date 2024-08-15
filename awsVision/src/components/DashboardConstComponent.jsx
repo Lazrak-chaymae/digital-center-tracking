@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { listProjects, listSquads } from '../services/DashboardEnConst'
+import { listProjects } from '../services/DashboardEnConst'
+import { listSquads } from '../services/Project'
 
 const DashboardConstComponent = () => {
     const [ucProject, setUcProject] = useState([]);
     const [squads, setSquads] = useState([]);
-    const navigator = useNavigate();
+    const domainId = 1;
     
     const GetSquads = async () => {
         try {
-            const response = await listSquads();
+            const response = await listSquads(domainId);
             setSquads(response.data);
         } catch (error) {
             console.error(error);
@@ -75,7 +76,7 @@ const DashboardConstComponent = () => {
                                             <td>{project.startDate}</td>
                                             <td>{project.budget}</td>
                                             <td>{project.consumedSprintCount}</td>
-                                            <td>{project.phase}</td>
+                                            <td>{project.phase ? project.phase.name : "N/A"}</td>
                                             <td>{project.milestones.map((milestone, index) => (
                                                 <span key={index}>{milestone}
                                                  <br/>

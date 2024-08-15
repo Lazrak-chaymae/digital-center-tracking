@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { Card, Button, Input } from "antd";
+import React, { useEffect } from "react";
+import { Card, Button } from "antd";
 import { MenuOutlined, CalendarOutlined } from "@ant-design/icons";
-import { updatePhase } from "../services/Project";
-
-
+import Dropdownessai from "./Dropdownessai";
 
 const ProjectCard = ({
   id,
@@ -11,30 +9,11 @@ const ProjectCard = ({
   status,
   phase,
   squad,
-  date,
+  startDate,
+  expectedEndDate,
   refreshProject,
 }) => {
-     const [editingPhase, setEditingPhase] = useState(false);
-     const [updatedPhase, setUpdatedPhase] = useState(phase);
-    
-     const handlePhaseChange = (e) => {
-        setUpdatedPhase(e.target.innerText);
-      };
-    
-      const handlePhaseBlur = async () => {
-        if (updatedPhase !== phase) {
-          try {
-            await updatePhase(updatedPhase, id);
-            console.log("Phase updated");
-            refreshProject();
-          } catch (error) {
-            console.error('There was an error updating the phase:', error);
-          }
-        }
-        setEditingPhase(false);
-      };
-
- 
+     
   return (
     <Card title={name} bordered={false} className="custom-card text-center" key={id} >
       <div className="info-row">
@@ -43,14 +22,8 @@ const ProjectCard = ({
       </div>
      
       <div className="info-row">
-                <MenuOutlined className="icon" /> <span className="label">Phase</span>
-                <Button className="square-button" 
-                contentEditable={editingPhase}
-                suppressContentEditableWarning={true}
-                onBlur={handlePhaseBlur}
-                onClick={() => setEditingPhase(true)}
-                onInput={handlePhaseChange}
-                contenteditable="true">{updatedPhase ? updatedPhase.name : "N/A"}</Button>
+             <MenuOutlined className="icon" /> <span className="label">Phase</span> 
+             <Dropdownessai projectId={id} refresh={refreshProject} upPhase={phase}/>
       </div>
       <div className="info-row">
         <MenuOutlined className="icon" /> <span className="label">Squad</span>
@@ -59,18 +32,19 @@ const ProjectCard = ({
       <div className="info-row">
         <CalendarOutlined className="icon" />
         <span className="label">Date début</span>
-        <Button className="square-button">{date ? date : "N/A"}</Button>
+        <Button className="square-button">{startDate ? startDate : "N/A"}</Button>
       </div>
       <div className="info-row">
         <CalendarOutlined className="icon" />
         <span className="label">Date fin</span>
-        <Button className="square-button">{date ? date : "N/A"}</Button>
+        <Button className="square-button">{expectedEndDate ? expectedEndDate : "N/A"}</Button>
       </div>
       <div className="details-link">
         <Button type="link" href={`/project/${id}`}>
           Details
         </Button>
       </div>
+      
     </Card>
   );
 };

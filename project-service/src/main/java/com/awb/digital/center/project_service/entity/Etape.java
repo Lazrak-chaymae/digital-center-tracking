@@ -1,6 +1,7 @@
 package com.awb.digital.center.project_service.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,7 +25,8 @@ public class Etape {
     private Integer domainId;
     private String name;
 
-    @OneToMany(mappedBy = "etape", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "etape", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference("etape-task")
     private List<Task> tasks;
 
 

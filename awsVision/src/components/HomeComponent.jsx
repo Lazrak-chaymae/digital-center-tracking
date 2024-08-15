@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import ProjectCard from './ProjectCard'
 import { listProjects } from '../services/Project'
-import Dropdownessai from './Dropdownessai'
+
 
 const HomeComponent = () => {
   const [projects,setProjects] = useState([]);
-  const [domainId, setDomainId] = useState(1);
+  const domainId = 1;
   const getAllProjects = () =>
   {
        
@@ -36,10 +36,6 @@ const HomeComponent = () => {
           </div>
         ))}
       </div>
-      <Dropdownessai projectId={1} />
-      <br/>
-      <br/>
-      <br/>
     </div>
   )
 }

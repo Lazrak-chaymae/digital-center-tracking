@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="c75cb9bd-9a9c-4c47-88bb-84b610e8bd79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/Dropdownessai.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/Dropdownessai.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/dto/TaskDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/dto/TaskDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/entity/Etape.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/entity/Etape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/entity/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/entity/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/TaskServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

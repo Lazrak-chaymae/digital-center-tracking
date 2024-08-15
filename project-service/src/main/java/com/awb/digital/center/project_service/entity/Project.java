@@ -60,7 +60,7 @@ public class Project {
     private List<KpiPilotage> pilotageKpis;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @JsonManagedReference("project-task")
     private List<Task> tasks;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -87,7 +87,7 @@ public class Project {
         updateStatusBasedOnPhase();
     }
     private void updateStatusBasedOnPhase() {
-        if ("pilotage".equalsIgnoreCase(String.valueOf(this.phase.getName())) || "generalisation".equalsIgnoreCase(String.valueOf(this.phase.getName()))) {
+        if ("pilotage".equalsIgnoreCase(String.valueOf(this.phase.getName())) || "généralisation".equalsIgnoreCase(String.valueOf(this.phase.getName()))) {
             this.status = "EnLancement";
         } else {
             this.status = "EnConstruction";

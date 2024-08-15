@@ -16,6 +16,6 @@ public class TaskDto {
     private Long id;
     private String name;
     private String progress;
-    private Etape etape;
-    private Project project;
+    private Long etapeId;
+    private Long projectId;
 }

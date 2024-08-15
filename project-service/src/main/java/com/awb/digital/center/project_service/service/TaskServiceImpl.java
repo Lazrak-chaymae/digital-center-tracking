@@ -1,9 +1,11 @@
 package com.awb.digital.center.project_service.service;
 
 import com.awb.digital.center.project_service.dto.TaskDto;
+import com.awb.digital.center.project_service.entity.Etape;
 import com.awb.digital.center.project_service.entity.Project;
 import com.awb.digital.center.project_service.entity.Task;
 import com.awb.digital.center.project_service.exception.ResourceNotFoundException;
+import com.awb.digital.center.project_service.repository.EtapeRepository;
 import com.awb.digital.center.project_service.repository.ProjectRepository;
 import com.awb.digital.center.project_service.repository.TaskRepository;
 import lombok.AllArgsConstructor;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 public class TaskServiceImpl implements TaskService{
 
     private ProjectRepository projectRepository;
+    private EtapeRepository etapeRepository;
     private TaskRepository taskRepository;
     private ModelMapper mapper;
 
@@ -25,16 +28,29 @@ public class TaskServiceImpl implements TaskService{
     public List<TaskDto> getAllTasks(Long etapeId, Long projectId) {
         List<Task> tasks =   taskRepository.findByEtapeIdAndProjectId(etapeId,projectId);
         return tasks.stream()
-                .map((task -> mapper.map(task, TaskDto.class)))
+                .map((task -> new TaskDto(
+                        task.getId(),
+                        task.getName(),
+                        task.getProgress(),
+                        task.getEtape().getId(),
+                        task.getProject().getId()
+                )))
                 .collect(Collectors.toList());
     }
 
     @Override
     public TaskDto createTask(TaskDto taskDto) {
-        Task task = mapper.map(taskDto, Task.class);
-        Project project = projectRepository.findById(taskDto.getProject().getId())
-                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + taskDto.getProject().getId()));
+
+        Project project = projectRepository.findById(taskDto.getProjectId())
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + taskDto.getProjectId()));
+        Etape etape = etapeRepository.findById(taskDto.getEtapeId())
+                .orElseThrow(() -> new ResourceNotFoundException("Etape not found with id:" + taskDto.getEtapeId()));
+
+        Task task = new Task();
+        task.setName(taskDto.getName());
+        task.setProgress(taskDto.getProgress());
         task.setProject(project);
+        task.setEtape(etape);
         Task createdTask = taskRepository.save(task);
         return mapper.map(createdTask, TaskDto.class);
     }

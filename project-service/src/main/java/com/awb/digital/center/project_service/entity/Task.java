@@ -19,16 +19,16 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String progress;
+    private String progress = "0%";
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "etape_id")
-    @JsonBackReference
+    @JsonBackReference("etape-task")
     private Etape etape;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
-    @JsonBackReference
+    @JsonBackReference("project-task")
     private Project project;
 
 

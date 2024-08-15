@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { DownOutlined } from "@ant-design/icons";
 import { Button, Divider, Dropdown, Space, theme } from "antd";
-import { getAllPhases, addPhases, updatePhase } from "../services/Project";
-
+import { updatePhase } from "../services/Project";
+import { getAllPhases, addPhases } from "../services/Phase";
 const { useToken } = theme;
 
-const Dropdownessai = ({projectId}) => {
+const Dropdownessai = ({ projectId, refresh , upPhase}) => {
   const [phases, setPhases] = useState([]);
   const [addPhase, setAddPhase] = useState(false);
-  const [createdPhase, setCreatedPhase] = useState('');
-  const [choosenPhase, setChoosenPhase] = useState('');
-  const [domainId, setDomainId] = useState(1);
+  const [createdPhase, setCreatedPhase] = useState("");
+  const domainId = 1;
+ const [projectPhase, setProjectPhase] = useState(upPhase);
   
-
-
-  const getPhases = () => {
+ 
+ const getPhases = () => {
     getAllPhases(domainId)
       .then((response) => {
         console.log(response.data);
@@ -26,40 +24,44 @@ const Dropdownessai = ({projectId}) => {
   };
 
   const createPhase = () => {
-    const phase = { name : createdPhase, domainId : domainId }
+    const phase = { name: createdPhase, domainId: domainId };
     addPhases(phase)
       .then((response) => {
         console.log(response.data);
         setAddPhase(false);
-        setCreatedPhase('');
+        setCreatedPhase("");
         getPhases();
       })
       .catch((error) => {
         console.error(error);
       });
   };
-  useEffect(()=> {
+  useEffect(() => {
     getPhases();
-  },[])
+  }, []);
   const handleAddPhase = () => {
     setAddPhase(true);
     console.log(addPhase);
-  }
+  };
   const handleCreatePhase = () => {
-       console.log(createdPhase);
-       createPhase();
-
-  }
-  const handlePhaseChoose = (phaseId, phaseName) => {
-       const phase = { phaseId,phaseName, domainId}
-       setChoosenPhase(phase);
-       updatePhase(choosenPhase,projectId).then((response) => {
+    console.log(createdPhase);
+    if(createdPhase){
+    createPhase();
+    }
+  };
+  const handlePhaseChoose = (phaseId, domain, phaseName) => {
+    const phase = { id: phaseId, domainId: domain, name: phaseName };
+    updatePhase(phase, projectId)
+      .then((response) => {
         console.log(response.data);
+        setProjectPhase(phase);
+        refresh();
       })
       .catch((error) => {
         console.error(error);
       });
-  }
+  };
+  
   const { token } = useToken();
   const contentStyle = {
     backgroundColor: token.colorBgElevated,
@@ -69,55 +71,82 @@ const Dropdownessai = ({projectId}) => {
   const menuStyle = {
     boxShadow: "none",
   };
+  const buttonStyle = {
+    weight: 50,
+  }
   return (
     <Dropdown
-    menu={{ items: phases.map((phase) => ({
-        key: phase.id,
-        label: (
-          <button  key={phase.id}
-            onClick={() => handlePhaseChoose(phase.id, phase.name)}
-          >
-            {phase.name}
-          </button>
-        ),
-      })) }}
+      menu={{
+        items: phases.map((phase) => ({
+          key: phase.id,
+          label: (
+            <button
+              key={phase.id}
+              style={{backgroundColor: "transparent",}}
+              onClick={() =>
+                handlePhaseChoose(phase.id, phase.domainId, phase.name)
+              }
+            >
+              {phase.name}
+            </button>
+          ),
+        })),
+      }}
       dropdownRender={(menu) => (
         <div style={contentStyle}>
-           {React.cloneElement(menu, {
-            style: menuStyle,
-          })}
-        
-          <Divider
-            style={{
-              margin: 0,
-            }}
-          />
-          <Space
-            style={{
-              padding: 8,
-            }}
-          > 
-            <Button type="primary" onClick={handleAddPhase}>Ajouter phase</Button>
-            {addPhase &&
-            <div>
-                <h4>adding</h4>
-                <input type="text" value={createdPhase}
-                name="createdPhase" onChange={(e) => setCreatedPhase(e.target.value)}
-                placeholder="ajouter une phase"
+          <Space split={<Divider type="vertical" 
+          style={{borderColor: "rgb(126, 120, 120)",
+            height: 160
+          }}
+          />}>
+            <Space
+              direction="vertical"
+              size="middle"
+              style={{
+                display: "flex",
+                margin: 8,
+              }}
+            >
+              {React.cloneElement(menu, {
+                style: menuStyle,
+              })}
+
+              <Button type="primary" onClick={handleAddPhase} style={buttonStyle}>
+                Ajouter phase
+              </Button>
+            </Space>
+            {addPhase && (
+              <Space
+                direction="vertical"
+                size="middle"
+                style={{
+                  display: "flex",
+                }}
+              >
+                <input
+                  type="text"
+                  value={createdPhase}
+                  name="createdPhase"
+                  onChange={(e) => setCreatedPhase(e.target.value)}
+                  placeholder="ajouter une phase"
                 />
-                <Button type="primary" onClick={handleCreatePhase}>OK</Button>
-            
-            </div>
-           }
+
+                <Button type="primary" onClick={handleCreatePhase} style={buttonStyle}>
+                  OK
+                </Button>
+              </Space>
+            )}
           </Space>
         </div>
       )}
     >
       <a onClick={(e) => e.preventDefault()}>
-        <Space>
-          Hover me
-          <DownOutlined />
-        </Space>
+       
+      
+                
+                <Button className="square-button2">{projectPhase ? projectPhase.name : "N/A"}</Button>
+               
+        
       </a>
     </Dropdown>
   );

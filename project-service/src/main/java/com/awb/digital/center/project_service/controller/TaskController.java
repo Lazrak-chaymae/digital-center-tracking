@@ -18,7 +18,7 @@ public class TaskController {
 
     private TaskService service;
 
-    @GetMapping("/projet/{projectId}/etape/{etapeId}")
+    @GetMapping("/project/{projectId}/etape/{etapeId}")
     public ResponseEntity<List<TaskDto>> getAllTasks(@PathVariable("etapeId") Long etapeId, @PathVariable("projectId") Long projectId ){
         List<TaskDto> tasks = service.getAllTasks(etapeId, projectId);
         return ResponseEntity.ok(tasks);
