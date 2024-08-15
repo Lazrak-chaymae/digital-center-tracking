@@ -22,7 +22,7 @@ public class Release {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private Integer domainId;
     private LocalDate installationDate;
     private String version;
     private String type;

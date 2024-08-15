@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { listSupport } from "../services/Support";
+import { supportItem } from "../services/Support";
 import AddSupport from "./AddSupport";
 import { isAdminUser } from "../services/AuthService";
 
 const SupportComponent = () => {
-  const [supports, setSupports] = useState([]);
+  const [support, setSupport] = useState({});
+  const domainId = sessionStorage.getItem("domainId");
+ 
   const getSupport = () => {
-    listSupport()
+    supportItem(domainId)
       .then((response) => {
-        setSupports(response.data);
+        setSupport(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
   };
+
   useEffect(() => {
     getSupport();
   }, []);
+
+  const isEmptySupport = !support.ticketCount && !support.effortSpent && (!support.topSubjects || support.topSubjects.length === 0);
+  
   return (
     <div className="container" style={{ paddingTop: "12px" }}>
       <h3 className="text-center">Activité Support N3</h3>
@@ -27,14 +33,14 @@ const SupportComponent = () => {
             <th>Effort mobilisé</th>
           </tr>
         </thead>
+        {support && (
         <tbody>
-          {supports.map((support) => (
             <tr key={support.id}>
               <td>{support.ticketCount}</td>
               <td>{support.effortSpent}</td>
             </tr>
-          ))}
         </tbody>
+        )}
       </table>
       <p>
         Calcul: Pourcentage de l’effort mobilisé par rapport à la capacité de
@@ -47,16 +53,15 @@ const SupportComponent = () => {
           </tr>
         </thead>
         <tbody>
-          {supports.map((support) =>
-            support.topSubjects.map((subject, index) => (
+          {support.topSubjects && support.topSubjects.map((subject, index) => (
               <tr key={index}>
                 <td>{subject}</td>
               </tr>
             ))
-          )}
+          }
         </tbody>
       </table>
-      {supports.length == 0 && isAdminUser() && <AddSupport refreshSupport={getSupport} />}
+      {isEmptySupport && isAdminUser() && <AddSupport refreshSupport={getSupport} domainId={domainId} />}
     </div>
   );
 };

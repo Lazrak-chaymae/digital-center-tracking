@@ -25,9 +25,9 @@ public class BusinessKPIController {
         return new ResponseEntity<>(savedApi, HttpStatus.CREATED);
     }
 
-    @GetMapping("{type}")
-    public ResponseEntity<List<BusinessKPIDto>> getAllKpis(@PathVariable String type){
-        List<BusinessKPIDto> returnedApi = service.getAllKpiByType(type);
+    @GetMapping("/domain/{domainId}/type/{type}")
+    public ResponseEntity<List<BusinessKPIDto>> getAllKpis(@PathVariable String type, @PathVariable Integer domainId){
+        List<BusinessKPIDto> returnedApi = service.getAllKpiByTypeAndDomain(type, domainId);
         return ResponseEntity.ok(returnedApi);
     }
 

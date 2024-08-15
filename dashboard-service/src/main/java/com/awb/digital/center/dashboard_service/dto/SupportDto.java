@@ -16,6 +16,7 @@ import java.util.List;
 public class SupportDto {
 
     private Long id;
+    private Integer domainId;
     private Integer ticketCount;
     private String effortSpent;
     private List<String> topSubjects = new ArrayList<>();

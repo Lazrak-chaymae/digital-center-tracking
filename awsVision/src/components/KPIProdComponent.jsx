@@ -7,13 +7,13 @@ import { isAdminUser } from '../services/AuthService';
 const KPIProdComponent = () => {
     const [dataSource, setDataSource] = useState([]);
     const kpiTypes = ['Habituels', 'Vedettes', 'Qualité'];
-    
+    const domainId = sessionStorage.getItem("domainId");
 
     const fetchData = async () => {
         const data = {};
         const promises = kpiTypes.map(async (type) => {
             try {
-                const response = await listKPIs(type);
+                const response = await listKPIs(type, domainId);
                 data[type] = response.data;
             } catch (error) {
                 console.error(error);
@@ -26,20 +26,6 @@ const KPIProdComponent = () => {
         fetchData();
     }, [kpiTypes]);
 
-
-    // useEffect(() => {
-    //     const data = {};
-    //     for(const type of kpiType){
-    //         listKPIs(type).then((response) => {
-    //            data[type] = response.data;
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //         })
-    //     }
-    //     setDataSource(data); 
-
-    // }, [kpiType])
 
 
 
@@ -80,7 +66,7 @@ const KPIProdComponent = () => {
                 ))}
                
                 
-               {isAdminUser() &&  <AddKPIProd  refreshKPIs={fetchData}/> }
+               {isAdminUser() &&  <AddKPIProd  refreshKPIs={fetchData} domainId={domainId} /> }
         </div>
 
 

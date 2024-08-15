@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface BusinessKPIRepository extends JpaRepository<BusinessKPI, Long> {
-        List<BusinessKPI> findAllByType(String type);
+        List<BusinessKPI> findAllByTypeAndDomainId(String type, Integer domainId);
 }

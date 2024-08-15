@@ -17,6 +17,7 @@ public class BusinessKPI {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Integer domainId;
     private String functionality;
     private String indicator;
     private Integer planned;

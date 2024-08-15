@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Modal } from "antd";
 import { addKPI } from "../services/KPIBusiness";
 
-const AddKPIProd = ({ refreshKPIs }) => {
+const AddKPIProd = ({ refreshKPIs, domainId }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const kpiTypes = ["Habituels", "Vedettes", "Qualité"];
   const [functionality, setFunctionality] = useState("");
@@ -22,6 +22,7 @@ const AddKPIProd = ({ refreshKPIs }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const kpiData = {
+      domainId,
       functionality,
       indicator,
       planned,

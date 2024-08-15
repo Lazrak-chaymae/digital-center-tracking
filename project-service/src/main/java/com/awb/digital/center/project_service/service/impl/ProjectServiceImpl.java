@@ -1,10 +1,11 @@
-package com.awb.digital.center.project_service.service;
+package com.awb.digital.center.project_service.service.impl;
 
 import com.awb.digital.center.project_service.dto.*;
 import com.awb.digital.center.project_service.entity.*;
 import com.awb.digital.center.project_service.exception.ResourceNotFoundException;
 import com.awb.digital.center.project_service.repository.CustomPhaseRepository;
 import com.awb.digital.center.project_service.repository.ProjectRepository;
+import com.awb.digital.center.project_service.service.ProjectService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-public class ProjectServiceImpl implements ProjectService{
+public class ProjectServiceImpl implements ProjectService {
 
     private ProjectRepository repository;
     private CustomPhaseRepository customPhaseRepository;

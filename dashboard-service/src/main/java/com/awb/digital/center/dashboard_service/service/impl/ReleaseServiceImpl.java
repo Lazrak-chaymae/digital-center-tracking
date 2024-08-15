@@ -28,8 +28,8 @@ public class ReleaseServiceImpl implements ReleaseService {
     }
 
     @Override
-    public List<ReleaseDto> getAllRelease() {
-        List<Release> releases = repository.findAll();
+    public List<ReleaseDto> getAllReleases(Integer domainId) {
+        List<Release> releases = repository.findByDomainId(domainId);
         return releases.stream()
                 .map((release -> mapper.map(release, ReleaseDto.class)))
                 .collect(Collectors.toList());

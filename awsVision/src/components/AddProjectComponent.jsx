@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { addProject, listSquads } from "../services/Project";
+import { addProject, listSquadsByDomain } from "../services/Project";
 import {Alert } from "antd"
 import { equals } from "validator";
 
@@ -19,10 +19,10 @@ const AddProjectComponent = () => {
   const [validProject, setValidProject] = useState(true);
   const [success,setSuccess] = useState(false);
   const [validDate, setValidDate] = useState(true);
-  const domainId = 1;
+  const domainId = sessionStorage.getItem("domainId");
 
   const getSquads = () => {
-    listSquads(domainId)
+    listSquadsByDomain(domainId)
       .then((response) => {
         setAllSquads(response.data);
       })

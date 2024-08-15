@@ -15,6 +15,7 @@ import java.time.LocalDate;
 public class DependencyDto {
 
     private Long id;
+    private Integer domainId;
     private String title;
     private String priority;
     private String responsibleTeam;

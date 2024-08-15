@@ -8,7 +8,7 @@ const Dropdownessai = ({ projectId, refresh , upPhase}) => {
   const [phases, setPhases] = useState([]);
   const [addPhase, setAddPhase] = useState(false);
   const [createdPhase, setCreatedPhase] = useState("");
-  const domainId = 1;
+  const domainId = sessionStorage.getItem("domainId");
  const [projectPhase, setProjectPhase] = useState(upPhase);
   
  
@@ -24,6 +24,7 @@ const Dropdownessai = ({ projectId, refresh , upPhase}) => {
   };
 
   const createPhase = () => {
+    console.log("adding phase with domain : " + domainId)
     const phase = { name: createdPhase, domainId: domainId };
     addPhases(phase)
       .then((response) => {

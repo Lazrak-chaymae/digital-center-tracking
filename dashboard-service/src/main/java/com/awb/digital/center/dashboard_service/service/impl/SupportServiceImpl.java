@@ -30,12 +30,9 @@ public class SupportServiceImpl implements SupportService {
     }
 
     @Override
-    public List<SupportDto> getAllSupport() {
-        List<Support> supports = repository.findAll();
-
-        return  supports.stream()
-                .map((support)-> modelMapper.map(support, SupportDto.class))
-                .collect(Collectors.toList());
+    public SupportDto getSupport(Integer domainId) {
+        Support support = repository.findByDomainId(domainId);
+        return modelMapper.map(support, SupportDto.class);
     }
 
     @Override

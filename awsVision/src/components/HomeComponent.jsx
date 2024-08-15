@@ -5,10 +5,11 @@ import { listProjects } from '../services/Project'
 
 const HomeComponent = () => {
   const [projects,setProjects] = useState([]);
-  const domainId = 1;
+  const domainId = sessionStorage.getItem("domainId");
+ 
+
   const getAllProjects = () =>
   {
-       
        listProjects(domainId).then(
          (response) =>
          {
@@ -22,8 +23,9 @@ const HomeComponent = () => {
   }
 
  
-  useEffect(() => {
-    getAllProjects();
+useEffect(() => {
+  getAllProjects();
+  
 }, [])
 
   return (

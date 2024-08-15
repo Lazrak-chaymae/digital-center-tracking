@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Modal } from "antd";
 import { addSupport } from '../services/Support';
 
-const AddSupport = ({refreshSupport}) => {
+const AddSupport = ({refreshSupport, domainId}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [ticketCount, setTicketCount] = useState('');
     const [effortSpent, setEffortSpent] = useState('');
@@ -18,6 +18,7 @@ const AddSupport = ({refreshSupport}) => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         const supportData = {
+          domainId,
           ticketCount,
           effortSpent,
           topSubjects: topSubjects.split(',').map(subject => subject.trim()), 

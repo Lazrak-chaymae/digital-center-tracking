@@ -15,7 +15,7 @@ const ProjectComponent = () => {
   const [project, setProject] = useState({});
   const [etapes, setEtapes] = useState([]);
   const [tasks, setTasks] = useState([]);
-  const domainId = 1;
+  const domainId = sessionStorage.getItem("domainId");
   const { id } = useParams();
 
   const getProject = () => {

@@ -1,4 +1,4 @@
-package com.awb.digital.center.project_service.service;
+package com.awb.digital.center.project_service.service.impl;
 
 import com.awb.digital.center.project_service.dto.TaskDto;
 import com.awb.digital.center.project_service.entity.Etape;
@@ -8,6 +8,7 @@ import com.awb.digital.center.project_service.exception.ResourceNotFoundExceptio
 import com.awb.digital.center.project_service.repository.EtapeRepository;
 import com.awb.digital.center.project_service.repository.ProjectRepository;
 import com.awb.digital.center.project_service.repository.TaskRepository;
+import com.awb.digital.center.project_service.service.TaskService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-public class TaskServiceImpl implements TaskService{
+public class TaskServiceImpl implements TaskService {
 
     private ProjectRepository projectRepository;
     private EtapeRepository etapeRepository;

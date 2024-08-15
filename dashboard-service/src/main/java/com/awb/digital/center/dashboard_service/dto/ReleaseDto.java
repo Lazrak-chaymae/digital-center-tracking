@@ -17,6 +17,7 @@ import java.util.List;
 public class ReleaseDto {
 
     private Long id;
+    private Integer domainId;
     private LocalDate installationDate;
     private String version;
     private String type;

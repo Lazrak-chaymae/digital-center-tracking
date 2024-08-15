@@ -7,7 +7,7 @@ import java.util.List;
 public interface TechnicalDebtService {
 
     TechnicalDebtDto createDebt(TechnicalDebtDto technicalDebtDto);
-    List<TechnicalDebtDto> getAllDebt();
+    List<TechnicalDebtDto> getAllDebt(Integer domainId);
     TechnicalDebtDto updateDebt(Long id, TechnicalDebtDto technicalDebtDto);
     void deleteDebt(Long id);
 }

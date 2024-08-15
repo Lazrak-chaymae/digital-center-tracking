@@ -7,7 +7,7 @@ import java.util.List;
 public interface ReleaseService {
 
     ReleaseDto createRelease(ReleaseDto releaseDto);
-    List<ReleaseDto> getAllRelease();
+    List<ReleaseDto> getAllReleases(Integer domainId);
     ReleaseDto updateRelease(Long id, ReleaseDto releaseDto);
     void deleteRelease(Long id);
 }
