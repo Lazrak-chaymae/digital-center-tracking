@@ -1,7 +1,6 @@
 package com.awb.digital.center.project_service.dto;
 
 import com.awb.digital.center.project_service.entity.*;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

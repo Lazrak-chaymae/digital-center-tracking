@@ -1,6 +1,6 @@
 package com.awb.digital.center.project_service.dto;
 
-import com.awb.digital.center.project_service.entity.Phase;
+import com.awb.digital.center.project_service.entity.Etape;
 import com.awb.digital.center.project_service.entity.Project;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +16,6 @@ public class TaskDto {
     private Long id;
     private String name;
     private String progress;
-    private Phase phase;
-    private Project project;
+    private Long etapeId;
+    private Long projectId;
 }

@@ -6,9 +6,16 @@ import AddRemarkOrRisk from "./AddRemarkOrRisk";
 import AddMilestone from "./AddMilestone";
 import AddRealization from "./AddRealization";
 import { isAdminUser } from '../services/AuthService';
+import { listEtapes } from "../services/Etape";
+import { listTasks } from "../services/Task";
+import AddEtape from "./AddEtape";
+import AddTask from "./AddTask";
 
 const ProjectComponent = () => {
   const [project, setProject] = useState({});
+  const [etapes, setEtapes] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  const domainId = 1;
   const { id } = useParams();
 
   const getProject = () => {
@@ -21,9 +28,41 @@ const ProjectComponent = () => {
         console.error(error);
       });
   };
+  const getEtapes = () => {
+    listEtapes(domainId)
+    .then((response) => {
+        setEtapes(response.data);
+        console.log(response.data);
+    })
+    .catch((error) => {
+       console.error(error);
+    })
+  }
+  const getTasks = async () => {
+    try {
+      const data = {};
+      for (const etape of etapes) {
+          const response = await listTasks(id,etape.id);
+          data[etape.id] = response.data;
+      }
+      setTasks(data);
+      console.log("data" + tasks);
+  } catch (error) {
+      console.error(error);
+  }
+  }
   useEffect(() => {
     getProject();
   }, [id]);
+  useEffect(() => {
+   getEtapes();
+  }, []);
+  useEffect(() => {
+    if (etapes.length > 0) {
+        getTasks();
+    }
+}, [etapes]);
+
   return (
     <div className="container">
       <div className="row">
@@ -110,11 +149,27 @@ const ProjectComponent = () => {
       </div>
       <div className="row">
         <div className="col-4">
-          <h5>Principales Etapes</h5>
-          {project.phases &&
-            project.phases.map((phase) => (
-              <div key={phase.id}>
-                <h6>Phase {phase.name}</h6>
+          <div className="row">
+                  <div className="col-9">
+                  <h5>Principales Etapes</h5>
+                  </div>
+                  <div className="col-3">
+                    {isAdminUser() &&  <AddEtape refreshEtape={getEtapes} domain={domainId}  /> }
+                  </div>
+                </div>
+
+          {etapes &&
+            etapes.map((etape) => (
+              <div key={etape.id}>
+                <div className="row"> 
+                <div className="col-9">
+                  <h6>{etape.name}</h6>
+                  </div>
+                  <div className="col-3">
+                    {isAdminUser() &&  <AddTask refreshEtape={getEtapes} etapeId={etape.id} projectId={id}  /> }
+                  </div>
+                </div>
+               
                 <table className="table table-striped table-bordered">
                   <thead>
                     <tr>
@@ -123,8 +178,8 @@ const ProjectComponent = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {phase.tasks &&
-                      phase.tasks.map((task) => (
+                    {tasks[etape.id] &&
+                      tasks[etape.id].map((task) => (
                         <tr key={task.id}>
                           <td>{task.name}</td>
                           <td>{task.progress}</td>

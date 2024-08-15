@@ -12,13 +12,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-@Table(name = "custom_phase")
+@Table(name = "phase")
 @Entity
 public class CustomPhase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
+    private Integer domainId;
     private String name;
 
 }

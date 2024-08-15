@@ -11,15 +11,15 @@ import java.util.List;
 
 
 @AllArgsConstructor
-@RequestMapping("/api/projects/phases")
+@RequestMapping("/api/phases")
 @RestController
 public class CustomPhaseController {
 
     private CustomPhaseService service;
 
-    @GetMapping
-    public ResponseEntity<List<CustomPhaseDto>> getAllPhases(){
-       List<CustomPhaseDto> phases =  service.getAllPhases();
+    @GetMapping("/domain/{id}")
+    public ResponseEntity<List<CustomPhaseDto>> getAllPhases(@PathVariable("id") Integer domainId){
+       List<CustomPhaseDto> phases =  service.getAllPhases(domainId);
        return new ResponseEntity<>(phases, HttpStatus.OK);
     }
 

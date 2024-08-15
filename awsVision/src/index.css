@@ -149,6 +149,15 @@
   background-color: #f0f0f0;
   color: #000;
 }
+
+.square-button2{
+  width: 92px;
+  border-radius: 0%;
+  padding: 4px 6px;
+  border: 1px solid #d9d9d9;
+  background-color: #f0f0f0;
+  color: #000;
+}
 .details-link {
   display: flex;
   justify-content: center;

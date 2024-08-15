@@ -33,9 +33,9 @@ public class ProjectController {
         ProjectDto project = service.getProjectById(id);
         return ResponseEntity.ok(project);
     }
-    @GetMapping
-    public ResponseEntity<List<ProjectItemDto>> getAllProjects(){
-        List<ProjectItemDto> projects = service.getAllProjects();
+    @GetMapping("/domain/{id}")
+    public ResponseEntity<List<ProjectItemDto>> getAllProjects(@PathVariable("id") Integer domainId){
+        List<ProjectItemDto> projects = service.getAllProjects(domainId);
         return ResponseEntity.ok(projects);
     }
 
@@ -79,9 +79,9 @@ public class ProjectController {
         service.addUpcomingRealization(upcomingRealization, projectId);
         return  new ResponseEntity<>("Realization added successfully",HttpStatus.CREATED);
     }
-    @PatchMapping("/{id}/phase")
-    public ResponseEntity<String> updateProjectPhase(@RequestBody CustomPhaseDto newPhase, @PathVariable("id") Long projectId) {
-        service.updateProjectPhase(newPhase, projectId);
+    @PatchMapping("/{projectId}/phase")
+    public ResponseEntity<String> updateProjectPhase(@RequestBody CustomPhaseDto phase, @PathVariable Long projectId) {
+        service.updateProjectPhase(phase, projectId);
         return new ResponseEntity<>("Project phase updated successfully", HttpStatus.OK);
     }
 }

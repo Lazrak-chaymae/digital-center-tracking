@@ -13,6 +13,5 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
     List<Project> findAllByStatusAndSquad(@Param("status") String status, @Param("squadId") Long squadId);
 
 
-
-
+    List<Project> findAllByDomainId(Integer domainId);
 }

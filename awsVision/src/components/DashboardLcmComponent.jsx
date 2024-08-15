@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { listProjects, listSquads } from '../services/DashboardEnLanc';
+import { listProjects } from '../services/DashboardEnLanc';
+import { listSquads } from '../services/Project';
 
 const DashboardLcmComponent = () => {
 
   const [lcProject, setLcProject] = useState([]);
   const [squads, setSquads] = useState([]);
+  const domainId = 1;
 
   const GetSquads = async () => {
     try {
-      const response = await listSquads();
+      const response = await listSquads(domainId);
       setSquads(response.data);
     } catch (error) {
       console.error(error);
@@ -67,7 +69,7 @@ const DashboardLcmComponent = () => {
                       <td>{project.name}</td>
                       <td>{project.description}</td>
                       <td>{project.actualMepDate}</td>
-                      <td>{project.phase}</td>
+                      <td>{project.phase.name}</td>
                       <td>{project.lastPhaseDate}</td>
                       <td>{project.kpis}</td>
                       <td>

@@ -5,9 +5,11 @@ import { listProjects } from '../services/Project'
 
 const HomeComponent = () => {
   const [projects,setProjects] = useState([]);
+  const domainId = 1;
   const getAllProjects = () =>
   {
-       listProjects().then(
+       
+       listProjects(domainId).then(
          (response) =>
          {
             setProjects(response.data);
@@ -34,7 +36,6 @@ const HomeComponent = () => {
           </div>
         ))}
       </div>
-
     </div>
   )
 }

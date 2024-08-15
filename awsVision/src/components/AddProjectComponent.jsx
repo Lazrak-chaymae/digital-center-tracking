@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { addProject, listSquads } from "../services/Project";
 import {Alert } from "antd"
+import { equals } from "validator";
 
 
 const AddProjectComponent = () => {
@@ -17,9 +18,11 @@ const AddProjectComponent = () => {
   const [squad, setSquad] = useState({ id: "", name: "" });
   const [validProject, setValidProject] = useState(true);
   const [success,setSuccess] = useState(false);
+  const [validDate, setValidDate] = useState(true);
+  const domainId = 1;
 
   const getSquads = () => {
-    listSquads()
+    listSquads(domainId)
       .then((response) => {
         setAllSquads(response.data);
       })
@@ -33,6 +36,7 @@ const AddProjectComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const projectData = {
+      domainId,
       name,
       owner,
       startDate,
@@ -103,7 +107,15 @@ const AddProjectComponent = () => {
         setValidProject(true);
         return;
       }
+     
   }, []);
+  useEffect(() => {
+    if (startDate && expectedEndDate && startDate >= expectedEndDate){
+      setValidDate(false);
+   }else {
+     setValidDate(true);
+   }
+  }, [startDate,expectedEndDate])
   useEffect(() => {
     getSquads();
   }, []);
@@ -221,6 +233,11 @@ const AddProjectComponent = () => {
             <div className="error-message">
               ** Veuillez remplir tous les champs requis **
             </div>
+          )}
+          {!validDate && (
+            <div className="error-message">
+            ** Attention! La date fin du projet est inférieure du date de début du projet  **
+          </div>
           )}
           <div className="button-container">
             <button

@@ -1,7 +1,6 @@
 package com.awb.digital.center.project_service.controller;
 
 import com.awb.digital.center.project_service.dto.KpiPilotageDto;
-import com.awb.digital.center.project_service.dto.ProjectCreationDto;
 import com.awb.digital.center.project_service.service.KpiPilotageService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

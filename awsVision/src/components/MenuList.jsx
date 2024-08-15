@@ -5,9 +5,10 @@ import { listProjects } from '../services/Project'
 
 const MenuList = () => {
    const [projects, setProjects] = useState([]);
+   const domainId = 1;
 
    const getAllProjects = () => {
-      listProjects().then(
+      listProjects(domainId).then(
          (response) => {
             setProjects(response.data);
          }).catch(error => {
@@ -34,8 +35,8 @@ const MenuList = () => {
         </Menu.SubMenu>
         <Menu.SubMenu key='projects' icon={<BarsOutlined />} title="Projets">
          { 
-            projects.map(
-               (project) => (
+            projects.map(  
+               (project) => ( 
                   <Menu.Item key={project.id}><a href={`/project/${project.id}`} style={{ textDecoration: 'none' }}>{project.name}</a></Menu.Item>
                )
             )

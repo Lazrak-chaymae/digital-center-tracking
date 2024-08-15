@@ -1,9 +1,6 @@
 package com.awb.digital.center.project_service.dto;
 
-import com.awb.digital.center.project_service.entity.Phase;
-import com.awb.digital.center.project_service.entity.Project;
 import com.awb.digital.center.project_service.entity.Task;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,10 +12,10 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class PhaseDto {
+public class EtapeDto {
 
     private Long id;
     private String name;
-    private Project project;
+    private Integer domainId;
     private List<Task> tasks;
 }

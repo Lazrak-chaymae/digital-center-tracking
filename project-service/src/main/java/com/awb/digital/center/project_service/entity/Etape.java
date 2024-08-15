@@ -1,6 +1,7 @@
 package com.awb.digital.center.project_service.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,23 +15,19 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "phase")
-public class Phase {
+@Table(name = "etape")
+public class Etape {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
+    private Integer domainId;
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
-    @JsonBackReference
-    private Project project;
-
-    @OneToMany(mappedBy = "phase", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "etape", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference("etape-task")
     private List<Task> tasks;
 
-    public <E> Phase(String name, List<Task> task) {
-        this.name = name;
-        this.tasks = task;
-    }
+
 }
