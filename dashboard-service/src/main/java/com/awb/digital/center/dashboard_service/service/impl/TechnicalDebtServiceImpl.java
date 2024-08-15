@@ -29,8 +29,8 @@ public class TechnicalDebtServiceImpl implements TechnicalDebtService {
     }
 
     @Override
-    public List<TechnicalDebtDto> getAllDebt() {
-        List<TechnicalDebt> debts = repository.findAll();
+    public List<TechnicalDebtDto> getAllDebt(Integer domainId) {
+        List<TechnicalDebt> debts = repository.findByDomainId(domainId);
 
         return debts.stream()
                 .map((debt) -> modelMapper.map(debt, TechnicalDebtDto.class))

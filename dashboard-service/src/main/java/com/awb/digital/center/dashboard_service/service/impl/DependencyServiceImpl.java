@@ -28,8 +28,8 @@ public class DependencyServiceImpl implements DependencyService {
     }
 
     @Override
-    public List<DependencyDto> getAllDependency() {
-        List<Dependency> dependencies = repository.findAll();
+    public List<DependencyDto> getAllDependencies(Integer domainId) {
+        List<Dependency> dependencies = repository.findByDomainId(domainId);
 
         return dependencies.stream()
                 .map((dependency -> modelMapper.map(dependency, DependencyDto.class)))

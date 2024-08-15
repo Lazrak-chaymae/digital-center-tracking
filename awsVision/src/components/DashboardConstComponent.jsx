@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { listProjects } from '../services/DashboardEnConst'
-import { listSquads } from '../services/Project'
+import { listSquadsByDomain } from '../services/Project'
 
 const DashboardConstComponent = () => {
     const [ucProject, setUcProject] = useState([]);
     const [squads, setSquads] = useState([]);
-    const domainId = 1;
+    const domainId = sessionStorage.getItem("domainId");
     
     const GetSquads = async () => {
         try {
-            const response = await listSquads(domainId);
+            const response = await listSquadsByDomain(domainId);
             setSquads(response.data);
         } catch (error) {
             console.error(error);

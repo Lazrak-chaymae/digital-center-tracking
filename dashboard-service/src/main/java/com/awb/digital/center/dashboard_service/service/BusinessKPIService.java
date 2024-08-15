@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BusinessKPIService {
 
-    List<BusinessKPIDto> getAllKpiByType(String type);
+    List<BusinessKPIDto> getAllKpiByTypeAndDomain(String type, Integer domainId);
     BusinessKPIDto createKpi(BusinessKPIDto businessKPIDto);
     BusinessKPIDto updateKpi(Long id, BusinessKPIDto businessKPIDto);
     void deleteKpi(Long id);

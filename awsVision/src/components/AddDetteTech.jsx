@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { Button, Modal } from "antd";
 import { addDebt } from '../services/DetteTechnique';
 
-const AddDetteTech = ({refreshDebts}) => {
+const AddDetteTech = ({refreshDebts, domainId}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [type, setType] = useState('');
@@ -21,6 +21,7 @@ const AddDetteTech = ({refreshDebts}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const debtData = {
+      domainId,
       title,
       type,
       impact,

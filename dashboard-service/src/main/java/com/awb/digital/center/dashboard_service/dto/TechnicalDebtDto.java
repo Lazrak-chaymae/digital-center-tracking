@@ -12,6 +12,7 @@ import lombok.Setter;
 public class TechnicalDebtDto {
 
     private Long id;
+    private Integer domainId;
     private String title;
     private String type;
     private String impact;

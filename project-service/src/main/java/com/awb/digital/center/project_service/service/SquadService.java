@@ -5,6 +5,8 @@ import com.awb.digital.center.project_service.dto.SquadDto;
 import java.util.List;
 
 public interface SquadService {
-    List<SquadDto>  GetAllSquads(Integer domainId);
+
+    List<SquadDto>  GetAllSquadsByDomain(Integer domainId);
+    List<SquadDto>  GetAllSquads();
     SquadDto createSquad(SquadDto squadDto);
 }

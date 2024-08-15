@@ -25,9 +25,9 @@ public class ReleaseController {
         ReleaseDto updatedRelease = service.updateRelease(id, releaseDto);
         return ResponseEntity.ok(updatedRelease);
     }
-    @GetMapping
-    public ResponseEntity<List<ReleaseDto>> getAllReleases(){
-        List<ReleaseDto> releases = service.getAllRelease();
+    @GetMapping("/domain/{domainId}")
+    public ResponseEntity<List<ReleaseDto>> getAllReleases(@PathVariable Integer domainId){
+        List<ReleaseDto> releases = service.getAllReleases(domainId);
         return ResponseEntity.ok(releases);
     }
     @DeleteMapping("{id}")

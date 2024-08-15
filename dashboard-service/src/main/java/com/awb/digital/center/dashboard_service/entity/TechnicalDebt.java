@@ -18,6 +18,7 @@ public class TechnicalDebt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Integer domainId;
     private String title;
     private String type;
     private String impact;

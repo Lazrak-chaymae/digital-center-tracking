@@ -1,8 +1,9 @@
-package com.awb.digital.center.project_service.service;
+package com.awb.digital.center.project_service.service.impl;
 
 import com.awb.digital.center.project_service.dto.CustomPhaseDto;
 import com.awb.digital.center.project_service.entity.CustomPhase;
 import com.awb.digital.center.project_service.repository.CustomPhaseRepository;
+import com.awb.digital.center.project_service.service.CustomPhaseService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-public class CustomPhaseServiceImpl implements CustomPhaseService{
+public class CustomPhaseServiceImpl implements CustomPhaseService {
 
      private CustomPhaseRepository repository;
      private ModelMapper mapper;
@@ -28,8 +29,11 @@ public class CustomPhaseServiceImpl implements CustomPhaseService{
 
     @Override
     public CustomPhaseDto addPhase(CustomPhaseDto phaseDto) {
-        if (repository.existsByName(phaseDto.getName())) {
-            throw new IllegalArgumentException("Phase with name " + phaseDto.getName() + " already exists.");
+//        if (repository.existsByName(phaseDto.getName())) {
+//            throw new IllegalArgumentException("Phase with name " + phaseDto.getName() + " already exists.");
+//        }
+        if (repository.existsByNameAndDomainId(phaseDto.getName(), phaseDto.getDomainId())) {
+            throw new IllegalArgumentException("Phase with name " + phaseDto.getName() + "in this domain" + phaseDto.getDomainId() + "  already exists.");
         }
       CustomPhase  phase = mapper.map(phaseDto, CustomPhase.class);
 

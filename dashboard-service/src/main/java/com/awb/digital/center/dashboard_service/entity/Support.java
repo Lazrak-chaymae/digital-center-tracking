@@ -20,7 +20,7 @@ public class Support {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private Integer domainId;
     private Integer ticketCount;
     private String effortSpent;
 

@@ -8,16 +8,20 @@ export const loginAPICall = (email, password) => axios.post(AUTH_REST_API_URL + 
 
 export const listRoles = () => axios.get(AUTH_REST_API_URL + '/roles');
 
+export const listDomains = () => axios.get(AUTH_REST_API_URL + '/domains')
+
 export const storeToken = (token) => localStorage.setItem("token", token);
 
 export const getToken = () => localStorage.getItem("token");
  
 
-export const saveLoggedInUser = (email, role, password, name) => {
+export const saveLoggedInUser = (email, role, password, name, domainId, domainName) => {
     sessionStorage.setItem("authenticatedUser", email);
     sessionStorage.setItem("role", role);
     sessionStorage.setItem("password", password);
     sessionStorage.setItem("name", name);
+    sessionStorage.setItem("domainId", domainId);
+    sessionStorage.setItem("domainName", domainName);
 };
 
 export const isAdminUser = () => {

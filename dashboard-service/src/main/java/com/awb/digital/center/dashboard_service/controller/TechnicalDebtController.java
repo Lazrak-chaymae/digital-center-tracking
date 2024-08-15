@@ -22,9 +22,9 @@ public class TechnicalDebtController {
         return new ResponseEntity<>(savedDebt, HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<List<TechnicalDebtDto>> getAllDebts(){
-        List<TechnicalDebtDto> returnedDebts = service.getAllDebt();
+    @GetMapping("/domain/{domainId}")
+    public ResponseEntity<List<TechnicalDebtDto>> getAllDebts(@PathVariable Integer domainId){
+        List<TechnicalDebtDto> returnedDebts = service.getAllDebt(domainId);
         return ResponseEntity.ok(returnedDebts);
 
     }

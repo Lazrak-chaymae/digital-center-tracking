@@ -5,8 +5,9 @@ import { isAdminUser } from "../services/AuthService";
 
 const DetteTechComponent = () => {
   const [debts, setDebts] = useState([]);
+  const domainId = sessionStorage.getItem("domainId");
   const GetDebts = () => {
-    listdebts()
+    listdebts(domainId)
       .then((response) => {
         setDebts(response.data);
       })
@@ -45,7 +46,7 @@ const DetteTechComponent = () => {
           ))}
         </tbody>
       </table>
-      {isAdminUser() && <AddDetteTech refreshDebts={GetDebts} />}
+      {isAdminUser() && <AddDetteTech refreshDebts={GetDebts} domainId={domainId} />}
     </div>
   );
 };

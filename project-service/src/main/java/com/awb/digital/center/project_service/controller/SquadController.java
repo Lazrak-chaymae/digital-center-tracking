@@ -18,8 +18,13 @@ public class SquadController {
     private SquadService service;
 
     @GetMapping("/domain/{id}")
-    public ResponseEntity<List<SquadDto>> getAllSquads(@PathVariable("id") Integer domainId){
-        List<SquadDto> squads = service.GetAllSquads(domainId);
+    public ResponseEntity<List<SquadDto>> getAllSquadsByDomain(@PathVariable("id") Integer domainId){
+        List<SquadDto> squads = service.GetAllSquadsByDomain(domainId);
+        return ResponseEntity.ok(squads);
+    }
+    @GetMapping
+    public ResponseEntity<List<SquadDto>> getAllSquads(){
+        List<SquadDto> squads = service.GetAllSquads();
         return ResponseEntity.ok(squads);
     }
 

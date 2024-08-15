@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal } from "antd";
 import { addDependency } from "../services/Dependency";
-import { listSquads } from "../services/Project";
+import { listAllSquads } from "../services/Project";
 
-const AddDependency = ({ refreshDependencies }) => {
+const AddDependency = ({ refreshDependencies, domainId }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [allSquads, setAllSquads] = useState([]);
   const [title, setTitle] = useState("");
@@ -13,7 +13,7 @@ const AddDependency = ({ refreshDependencies }) => {
   const [scheduledDate, setScheduledDate] = useState("");
   
   const getSquads = () => {
-    listSquads()
+    listAllSquads()
       .then((response) => {
         setAllSquads(response.data);
       })
@@ -31,6 +31,7 @@ const AddDependency = ({ refreshDependencies }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const dependencyData = {
+      domainId,
       title,
       priority,
       responsibleTeam,
@@ -95,7 +96,7 @@ const AddDependency = ({ refreshDependencies }) => {
             >
               <option value="">Sélectionner une équipe</option>
               {allSquads.map((squad) => (
-                <option key={squad.id} value={squad.id}>
+                <option key={squad.id} value={squad.name}>
                   {squad.name}
                 </option>
               ))}

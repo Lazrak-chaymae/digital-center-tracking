@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import { addRelease } from "../services/Release";
 
-const AddRelease = ({ refreshReleases }) => {
+const AddRelease = ({ refreshReleases, domainId }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [installationDate, setInstallationDate] = useState('');
   const [version, setVersion] = useState('');
@@ -22,6 +22,7 @@ const AddRelease = ({ refreshReleases }) => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     const releaseData = {
+        domainId,
         installationDate,
         version,
         type,

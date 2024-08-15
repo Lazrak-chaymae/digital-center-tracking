@@ -1,4 +1,4 @@
-package com.awb.digital.center.project_service.service;
+package com.awb.digital.center.project_service.service.impl;
 
 import com.awb.digital.center.project_service.dto.KpiPilotageDto;
 import com.awb.digital.center.project_service.entity.KpiPilotage;
@@ -6,6 +6,7 @@ import com.awb.digital.center.project_service.entity.Project;
 import com.awb.digital.center.project_service.exception.ResourceNotFoundException;
 import com.awb.digital.center.project_service.repository.KpiPilotageRepository;
 import com.awb.digital.center.project_service.repository.ProjectRepository;
+import com.awb.digital.center.project_service.service.KpiPilotageService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
-public class KpiPilotageServiceImpl implements KpiPilotageService{
+public class KpiPilotageServiceImpl implements KpiPilotageService {
 
     private KpiPilotageRepository kpiPilotageRepository;
     private ProjectRepository projectRepository;

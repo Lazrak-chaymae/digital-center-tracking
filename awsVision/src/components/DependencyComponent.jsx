@@ -6,9 +6,10 @@ import { isAdminUser } from '../services/AuthService';
 const DependencyComponent = () => {
 
   const [dependencies, setDependencies] = useState([]);
+  const domainId = sessionStorage.getItem("domainId");
 
   const getDependencies = () => {
-       listDependencies().then(
+       listDependencies(domainId).then(
           (response) => {
               setDependencies(response.data);
           }
@@ -50,7 +51,7 @@ const DependencyComponent = () => {
         </tbody>
     </table>
     {isAdminUser() && 
-    <AddDependency refreshDependencies={getDependencies}/>
+    <AddDependency refreshDependencies={getDependencies} domainId={domainId} />
     }
 </div>
   )

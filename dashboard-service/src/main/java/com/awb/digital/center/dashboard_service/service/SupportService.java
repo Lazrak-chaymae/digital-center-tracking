@@ -9,8 +9,7 @@ import java.util.List;
 public interface SupportService {
 
     SupportDto createSupport(SupportDto supportDto);
-    List<SupportDto> getAllSupport();
+    SupportDto getSupport(Integer domainId);
     SupportDto updateSupport(Long id, SupportDto supportDto);
     void deleteSupport(Long id);
-
 }

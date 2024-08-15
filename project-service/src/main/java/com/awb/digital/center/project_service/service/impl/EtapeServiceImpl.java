@@ -1,9 +1,10 @@
-package com.awb.digital.center.project_service.service;
+package com.awb.digital.center.project_service.service.impl;
 
 import com.awb.digital.center.project_service.dto.EtapeDto;
 import com.awb.digital.center.project_service.entity.Etape;
 import com.awb.digital.center.project_service.exception.ResourceNotFoundException;
 import com.awb.digital.center.project_service.repository.EtapeRepository;
+import com.awb.digital.center.project_service.service.EtapeService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-public class EtapeServiceImpl implements EtapeService{
+public class EtapeServiceImpl implements EtapeService {
 
     private EtapeRepository etapeRepository;
     private ModelMapper mapper;

@@ -27,8 +27,10 @@ const LoginComponent = () => {
         const token = "Bearer " + response.data.accessToken;
         const role = response.data.role;
         const name = response.data.name;
+        const domainId = response.data.domainId;
+        const domainName = response.data.domainName;
         storeToken(token);
-        saveLoggedInUser(email, role, password, name);
+        saveLoggedInUser(email, role, password, name, domainId, domainName);
         navigate("/home");
 
         window.location.reload(false);
@@ -46,84 +48,7 @@ const LoginComponent = () => {
     }
   };
   return (
-    // <div className="container">
-    //   <br />
-
-    //   <div className="row">
-    //     <div className="col-md-6 offset-md-3">
-    //       <div className="card">
-    //         <div className="card-header">
-    //           <h2 className="text-center">Se connecter</h2>
-    //         </div>
-    //         <div className="card-body">
-    //           <form>
-    //             <div className="row mb-3">
-    //               <label className="col-md-3 control-label">Email</label>
-    //               <div className="col-md-9">
-    //                 <input
-    //                   className="form-control"
-    //                   type="text"
-    //                   name="email"
-    //                   placeholder="Entrer votre email"
-    //                   value={email}
-    //                   onChange={handleInputChange(setEmail)}
-    //                 ></input>
-    //               </div>
-    //             </div>
-    //             <div className="row mb-3">
-    //               <label className="col-md-3 control-label">Mot de passe</label>
-    //               <div className="col-md-9">
-    //                 <input
-    //                   className="form-control"
-    //                   type="password"
-    //                   name="password"
-    //                   placeholder="Entrer votre mot de passe"
-    //                   value={password}
-    //                   onChange={handleInputChange(setPassword)}
-    //                 ></input>
-    //               </div>
-    //             </div>
-    //             <div className="mt-3">
-    //               {error && (
-    //                 <small className="text-danger">
-    //                   ** Email ou mot de passe non valide
-    //                 </small>
-    //               )}
-    //             </div>
-    //             <div className="mt-3">
-    //             {!validateLogin && (
-    //                 <small className="text-danger">
-    //                   ** Veuillez remplir tous les champs requis.
-    //                 </small>
-    //               )}
-    //             </div>
-    //             <button
-    //               className="btn btn-primary"
-    //               onClick={(e) => handleLoginForm(e)}
-    //             >
-    //               Submit
-    //             </button>
-
-    //           </form>
-    //           <div className="mt-3 text-center">
-    //               <p>
-    //                 Pas encore de compte ?{" "}
-    //                 <button
-    //                   className="btn btn-link"
-    //                   onClick={() => navigate("/register")}
-    //                 >
-    //                   Inscrivez-vous ici
-    //                 </button>
-    //               </p>
-    //             </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-
-    //new
-
+    
     <div className="login-container">
       <div className="login-form">
         <h2>Se connecter</h2>

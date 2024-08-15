@@ -1,8 +1,9 @@
-package com.awb.digital.center.project_service.service;
+package com.awb.digital.center.project_service.service.impl;
 
 import com.awb.digital.center.project_service.dto.SquadDto;
 import com.awb.digital.center.project_service.entity.Squad;
 import com.awb.digital.center.project_service.repository.SquadRepository;
+import com.awb.digital.center.project_service.service.SquadService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -12,14 +13,22 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class SquadServiceImpl implements SquadService{
+public class SquadServiceImpl implements SquadService {
 
     private SquadRepository repository;
     private ModelMapper mapper;
 
     @Override
-    public List<SquadDto> GetAllSquads(Integer domainId) {
+    public List<SquadDto> GetAllSquadsByDomain(Integer domainId) {
        List<Squad> squads = repository.findAllByDomainId(domainId);
+        return squads.stream()
+                .map((squad -> mapper.map(squad,SquadDto.class)))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<SquadDto> GetAllSquads() {
+        List<Squad> squads = repository.findAll();
         return squads.stream()
                 .map((squad -> mapper.map(squad,SquadDto.class)))
                 .collect(Collectors.toList());

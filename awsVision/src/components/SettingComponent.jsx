@@ -6,12 +6,16 @@ const SettingComponent = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [roleName, setRoleName] = useState("");
-
+  const [domainId, setDomainId] = useState("");
+  const [domainName, setDomainName] = useState("");
+  
   useEffect(() => {
     const email = sessionStorage.getItem("authenticatedUser");
     const role = sessionStorage.getItem("role");
     const password = sessionStorage.getItem("password");
     const name = sessionStorage.getItem("name");
+    const domainId = sessionStorage.getItem("domainId");
+    const domainName = sessionStorage.getItem("domainName");
     
     if (email) {
       setEmail(email);
@@ -26,6 +30,14 @@ const SettingComponent = () => {
 
         setName(name);
     }
+    if (domainId) {
+
+      setDomainId(domainId);
+  }
+  if (domainName) {
+
+    setDomainName(domainName);
+}
 
   }, []);
   return (
@@ -63,6 +75,18 @@ const SettingComponent = () => {
                 </div>
               </div>
               <div className="row mb-3">
+                <label className="col-md-3 control-label">Domaine</label>
+                <div className="col-md-9">
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="domainName"
+                    value={domainName}
+                    readOnly
+                  />
+                </div>
+              </div>
+              <div className="row mb-3">
                 <label className="col-md-3 control-label">Email</label>
                 <div className="col-md-9">
                   <input
@@ -86,6 +110,7 @@ const SettingComponent = () => {
                   />
                 </div>
               </div>
+              
             </form>
           </div>
           <div className='button-container'>

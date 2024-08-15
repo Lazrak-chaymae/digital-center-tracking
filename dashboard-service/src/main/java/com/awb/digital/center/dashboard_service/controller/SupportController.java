@@ -23,9 +23,9 @@ public class SupportController {
         return new ResponseEntity<>(savedSupport, HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<List<SupportDto>> getAllSupports(){
-        List<SupportDto> returnedSupport = supportService.getAllSupport();
+    @GetMapping("/domain/{domainId}")
+    public ResponseEntity<SupportDto> getSupport(@PathVariable Integer domainId){
+        SupportDto returnedSupport = supportService.getSupport(domainId);
         return ResponseEntity.ok(returnedSupport);
     }
 

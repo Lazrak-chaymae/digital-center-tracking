@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerAPICall, listRoles } from "../services/AuthService";
+import { registerAPICall, listRoles, listDomains } from "../services/AuthService";
 import validator from "validator";
 import "../css/LoginComponent.css";
 
@@ -11,7 +11,9 @@ const RegisterComponent = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [roleName, setRoleName] = useState("");
+  const [domainName, setDomainName] = useState("");
   const [roles, setRoles] = useState([]);
+  const [domains, setDomains] = useState([]);
   const [valideRegister, setValideRegister] = useState(true);
   const [validEmail, setValidEmail] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
@@ -28,14 +30,23 @@ const RegisterComponent = () => {
         console.error(error);
       });
   };
+  const getDomains = () => {
+    listDomains()
+      .then((response) => {
+        setDomains(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   function handleRegistrationForm(e) {
     e.preventDefault();
-    if (!name || !email || !password || !confirmPassword || !roleName) {
+    if (!name || !email || !password || !confirmPassword || !roleName || !domainName) {
       setValideRegister(false);
       return;
     }
 
-    const register = { name, email, password, roleName };
+    const register = { name, email, password, roleName, domainName };
     registerAPICall(register)
       .then((response) => {
         console.log(register);
@@ -69,6 +80,9 @@ const RegisterComponent = () => {
   }, [password, confirmPassword, email]);
   useEffect(() => {
     getRoles();
+  }, []);
+  useEffect(() => {
+    getDomains();
   }, []);
   return (
   
@@ -145,6 +159,22 @@ const RegisterComponent = () => {
             {roles.map((role) => (
               <option key={role.id} value={role.name}>
                 {role.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        {/* domain */}
+        <div className="input-group-2">
+          <label>Domaine de travail</label>
+          <select
+            name="domain"
+            value={domainName}
+            onChange={(e) => setDomainName(e.target.value)}
+          >
+            <option value="">Sélectionner votre domaine </option>
+            {domains.map((domain) => (
+              <option key={domain.id} value={domain.name}>
+                {domain.name}
               </option>
             ))}
           </select>

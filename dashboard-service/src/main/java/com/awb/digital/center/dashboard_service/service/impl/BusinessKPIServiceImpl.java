@@ -21,8 +21,8 @@ public class BusinessKPIServiceImpl implements BusinessKPIService {
 
 
     @Override
-    public List<BusinessKPIDto> getAllKpiByType(String type) {
-        List<BusinessKPI> kpis =  repository.findAllByType(type);
+    public List<BusinessKPIDto> getAllKpiByTypeAndDomain(String type, Integer domainId) {
+        List<BusinessKPI> kpis =  repository.findAllByTypeAndDomainId(type, domainId);
 
         return kpis.stream()
                 .map((kpi) -> mapper.map(kpi, BusinessKPIDto.class))

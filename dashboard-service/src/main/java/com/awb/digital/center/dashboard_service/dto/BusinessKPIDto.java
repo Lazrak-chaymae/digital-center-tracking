@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 public class BusinessKPIDto {
     private Long id;
+    private Integer domainId;
     private String functionality;
     private String indicator;
     private Integer planned;

@@ -7,7 +7,7 @@ import java.util.List;
 public interface DependencyService {
 
     DependencyDto createDependency(DependencyDto dependencyDto);
-    List<DependencyDto> getAllDependency();
+    List<DependencyDto> getAllDependencies(Integer domainId);
     DependencyDto updateDependency(Long id, DependencyDto dependencyDto);
     void deleteDependency(Long id);
 }

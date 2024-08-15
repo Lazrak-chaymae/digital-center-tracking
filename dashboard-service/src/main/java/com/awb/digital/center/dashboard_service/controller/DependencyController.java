@@ -20,9 +20,9 @@ public class DependencyController {
         DependencyDto dependency = service.createDependency(dependencyDto);
         return new ResponseEntity<>(dependency, HttpStatus.CREATED);
     }
-    @GetMapping
-    public ResponseEntity<List<DependencyDto>> getAllDependencies(){
-        List<DependencyDto> dependencies = service.getAllDependency();
+    @GetMapping("/domain/{domainId}")
+    public ResponseEntity<List<DependencyDto>> getAllDependencies(@PathVariable Integer domainId){
+        List<DependencyDto> dependencies = service.getAllDependencies(domainId);
         return  ResponseEntity.ok(dependencies);
     }
     @PutMapping("{id}")

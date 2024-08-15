@@ -5,9 +5,10 @@ import { isAdminUser } from '../services/AuthService';
 
 const ReleaseComponent = () => {
   const [releases, setReleases] = useState([]);
+  const domainId = sessionStorage.getItem("domainId");
   
   const getReleases = () => {
-      listReleases().then((response) => {
+      listReleases(domainId).then((response) => {
            setReleases(response.data);
       })
       .catch(
@@ -59,7 +60,7 @@ const ReleaseComponent = () => {
              ))}
         </tbody>
     </table>
-    {isAdminUser() &&  <AddRelease refreshReleases={getReleases} /> }
+    {isAdminUser() &&  <AddRelease refreshReleases={getReleases} domainId={domainId} /> }
 </div>
   )
 }
