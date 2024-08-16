@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { listProjects } from '../services/DashboardEnConst'
 import { listSquadsByDomain } from '../services/Project'
 

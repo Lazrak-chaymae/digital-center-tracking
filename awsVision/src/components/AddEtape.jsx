@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "antd";
 import { PlusCircleOutlined} from '@ant-design/icons'
 import { addEtape } from "../services/Etape";
@@ -8,13 +8,19 @@ const AddEtape = ({refreshEtape, domain}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const domainId = domain;
   const [name, setName] = useState('');
+  const [validName, setValidName] = useState(true);
   
   const handleSubmit = async (e) => {
       e.preventDefault();
       const etape = {domainId, name};
+        if(!name){
+          setValidName(false);
+          return;
+        }
       try {
          const response = await addEtape(etape);
          console.log("Phase added successfully:", response.data);
+         setName('');
          refreshEtape();
          setIsModalOpen(false);
       }catch(error){
@@ -27,7 +33,12 @@ const AddEtape = ({refreshEtape, domain}) => {
   const handleCancel = () => {
     setIsModalOpen(false);
   }
-
+  useEffect(() => {
+    if(name){
+      setValidName(true);
+      return;
+    }
+  }, [name])
   return (
     <>
     <PlusCircleOutlined onClick={showModal} />
@@ -50,6 +61,11 @@ const AddEtape = ({refreshEtape, domain}) => {
             className={`form-control`}
           ></input>
         </div>
+        {!validName && 
+           <div className="error-message">
+              ** Veuillez remplir la case **
+           </div>
+        }
         <div className="button-container">
         <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
           Ajouter

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { Modal } from "antd";
 import { PlusCircleOutlined} from '@ant-design/icons'
 import { addKPI } from '../services/Project';
@@ -9,6 +9,7 @@ const AddKpiPilotage = ({refreshProject, projectId}) => {
     const [name, setName] = useState('');
     const [target, setTarget] = useState('');
     const [current, setCurrent] = useState('');
+    const [validForm, setValidForm] = useState(true);
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -24,15 +25,28 @@ const AddKpiPilotage = ({refreshProject, projectId}) => {
           current,
           target,
         };
+        if( !name || !current || !target  ){
+           setValidForm(false);
+           return ; 
+        }
         try {
             const response = await addKPI(kpiData, projectId);
-            console.log("KPI added successfully:", response.data);
+            console.log(response.data);
+            setName('');
+            setCurrent('');
+            setTarget('');
             refreshProject();
             setIsModalOpen(false);
           } catch (error) {
             console.error("There was an error adding the KPI:", error);
           }
         };
+        useEffect(() => {
+          if( name && current && target  ){
+            setValidForm(true);
+            return ; 
+         }
+        } , [name, current, target])
     return (
     <>
        <PlusCircleOutlined onClick={showModal}/>
@@ -77,6 +91,11 @@ const AddKpiPilotage = ({refreshProject, projectId}) => {
             className={`form-control`}
           ></input>
         </div>
+        {!validForm && 
+         <div className='error-message'>
+             ** Veuillez remplir toutes les cases **
+         </div>
+        }
         <div className='button-container'>
         <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
           Ajouter

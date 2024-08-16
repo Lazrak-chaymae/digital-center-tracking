@@ -11,7 +11,8 @@ const AddDependency = ({ refreshDependencies, domainId }) => {
   const [responsibleTeam, setResponsibleTeam] = useState("");
   const [beneficiaryTeam, setBeneficiaryTeam] = useState("");
   const [scheduledDate, setScheduledDate] = useState("");
-  
+  const [validForm, setValidForm] = useState(true);
+
   const getSquads = () => {
     listAllSquads()
       .then((response) => {
@@ -38,23 +39,52 @@ const AddDependency = ({ refreshDependencies, domainId }) => {
       beneficiaryTeam,
       scheduledDate,
     };
-
+    if (
+      !title ||
+      !priority ||
+      !responsibleTeam ||
+      !beneficiaryTeam ||
+      !scheduledDate
+    ) {
+      setValidForm(false);
+      return;
+    }
     try {
       const response = await addDependency(dependencyData);
       console.log("Dependency added successfully:", response.data);
       refreshDependencies();
+      resetForm();
       setIsModalOpen(false);
     } catch (error) {
       console.error("There was an error adding the dependency:", error);
     }
   };
+  const resetForm = () => {
+     setTitle("");
+     setPriority("");
+     setResponsibleTeam("");
+     setBeneficiaryTeam("");
+     setScheduledDate("");
+  }
+  useEffect(() => {
+    if (
+      title &&
+      priority &&
+      responsibleTeam &&
+      beneficiaryTeam &&
+      scheduledDate
+    ) {
+      setValidForm(true);
+      return;
+    }
+  }, [title, priority, responsibleTeam, beneficiaryTeam, scheduledDate]);
   useEffect(() => {
     getSquads();
   }, []);
   return (
     <>
       <Button type="primary" onClick={showModal}>
-      Ajouter une dépendance
+        Ajouter une dépendance
       </Button>
       <Modal
         className="text-center"
@@ -128,12 +158,18 @@ const AddDependency = ({ refreshDependencies, domainId }) => {
               className={`form-control`}
             ></input>
           </div>
-          
-          
+          {!validForm && 
+             <div className="error-message">
+                 ** Veuillez remplir toutes les cases **
+             </div>
+          }
           <div className="button-container">
-          <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
-            Ajouter
-          </button>
+            <button
+              className="btn btn-primary"
+              onClick={(e) => handleSubmit(e)}
+            >
+              Ajouter
+            </button>
           </div>
         </form>
       </Modal>

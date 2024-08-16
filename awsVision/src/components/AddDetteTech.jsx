@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { Button, Modal } from "antd";
 import { addDebt } from '../services/DetteTechnique';
 
@@ -10,6 +10,7 @@ const AddDetteTech = ({refreshDebts, domainId}) => {
   const [cost, setCost] = useState('');
   const [voluntary, setVoluntary] = useState('');
   const [comment, setComment] = useState('');
+  const [validForm, setValidForm] = useState(true);
   
   const showModal = () => {
     setIsModalOpen(true);
@@ -29,16 +30,39 @@ const AddDetteTech = ({refreshDebts, domainId}) => {
       voluntary,
       comment,
     };
-
+    if(!title || !type || !impact || !cost || !voluntary || !comment ){
+       setValidForm(false);
+       return ;
+    }
     try {
       const response = await addDebt(debtData);
       console.log("Debt added successfully:", response.data);
       refreshDebts();
+      resetForm();
       setIsModalOpen(false);
     } catch (error) {
       console.error("There was an error adding the debt:", error);
     }
   };
+  const resetForm = () => {    
+    setTitle(''); 
+    setType(''); 
+    setImpact(''); 
+    setCost(''); 
+    setVoluntary('');  
+    setComment(''); 
+  }
+  useEffect(() => {
+    if(title && type && impact && cost && voluntary && comment ){
+      setValidForm(true);
+      return ;
+   }
+  } , [title,
+    type,
+    impact,
+    cost,
+    voluntary,
+    comment])
   return (
     <>
       <Button type="primary" onClick={showModal}>
@@ -118,6 +142,11 @@ const AddDetteTech = ({refreshDebts, domainId}) => {
               className={`form-control`}
             ></input>
           </div>
+          {!validForm && 
+            <div className='error-message'> 
+                ** Veuillez remplir toutes les cases **
+            </div>
+          }
           <div className='button-container'>
           <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
             Ajouter

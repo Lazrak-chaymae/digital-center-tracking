@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "antd";
 import { PlusCircleOutlined} from '@ant-design/icons'
 import { addMilestone } from "../services/Project";
@@ -6,6 +6,7 @@ import { addMilestone } from "../services/Project";
 const AddMilestone = ({ refreshProject, projectId }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState("");
+  const [validName, setValidName] = useState(true);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -17,16 +18,27 @@ const AddMilestone = ({ refreshProject, projectId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const milestone = {name};
-    
+    if (!name) {
+        setValidName(false);
+        return ;
+    }
     try {
       const response = await addMilestone(milestone, projectId);
-      console.log("Milestone added successfully:", response.data);
+      console.log(response.data);
+      setName("");
       refreshProject();
       setIsModalOpen(false);
     } catch (error) {
       console.error("There was an error adding the Milestone:", error);
     }
+  
   };
+  useEffect(() => {
+    if (name) {
+      setValidName(true);
+      return ;
+  }
+  } ,[name])
   return (
     <>
       <PlusCircleOutlined onClick={showModal} />
@@ -49,6 +61,11 @@ const AddMilestone = ({ refreshProject, projectId }) => {
               className={`form-control`}
             ></input>
           </div>
+          {!validName &&  
+          <div className="error-message">
+               ** Veuillez remplir la case **
+          </div>
+          }
           <div className="button-container">
           <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
             Ajouter

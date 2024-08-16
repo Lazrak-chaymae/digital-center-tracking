@@ -15,7 +15,8 @@ const AddProjectComponent = () => {
   const [description, setDescription] = useState("");
   const [allocatedSprintCount, setAllocatedSprintCount] = useState("");
   const [allSquads, setAllSquads] = useState([]);
-  const [squad, setSquad] = useState({ id: "", name: "" });
+  //const [squad, setSquad] = useState({ id: "", name: "" });
+  const [squad, setSquad] = useState("");
   const [validProject, setValidProject] = useState(true);
   const [success,setSuccess] = useState(false);
   const [validDate, setValidDate] = useState(true);
@@ -81,34 +82,35 @@ const AddProjectComponent = () => {
     setBudget("");
     setDescription("");
     setAllocatedSprintCount("");
-    setSquad({ id: "", name: "" });
+    // setSquad({ id: "", name: "" });
+    setSquad("");
   };
   const handleSquadChange = (e) => {
     const selectedSquad = allSquads.find(
       (s) => s.id === parseInt(e.target.value)
     );
     if (selectedSquad) {
-      setSquad({ id: selectedSquad.id, name: selectedSquad.name });
+      setSquad({ id: selectedSquad.id, name: selectedSquad.name , domainId: selectedSquad.domainId});
     }
   };
 
   useEffect(() => {
     if (
-        name ||
-        owner ||
-        startDate ||
-        expectedEndDate ||
-        type ||
-        budget ||
-        description ||
-        allocatedSprintCount ||
+        name &&
+        owner &&
+        startDate &&
+        expectedEndDate &&
+        type &&
+        budget &&
+        description &&
+        allocatedSprintCount &&
         squad
       ) {
         setValidProject(true);
         return;
       }
      
-  }, []);
+  }, [name, owner, startDate, expectedEndDate, type, budget, description,  allocatedSprintCount, squad]);
   useEffect(() => {
     if (startDate && expectedEndDate && startDate >= expectedEndDate){
       setValidDate(false);

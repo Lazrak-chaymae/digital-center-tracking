@@ -1,46 +1,63 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { Button, Modal } from "antd";
-import { addSupport } from '../services/Support';
+import { addSupport } from "../services/Support";
 
-const AddSupport = ({refreshSupport, domainId}) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [ticketCount, setTicketCount] = useState('');
-    const [effortSpent, setEffortSpent] = useState('');
-    const [topSubjects, setTopSubjects] = useState([]);
-    
-    const showModal = () => {
-        setIsModalOpen(true);
-      };
-    
-      const handleCancel = () => {
-        setIsModalOpen(false);
-      };
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-        const supportData = {
-          domainId,
-          ticketCount,
-          effortSpent,
-          topSubjects: topSubjects.split(',').map(subject => subject.trim()), 
-        };
-    
-        try {
-          const response = await addSupport(supportData);
-          console.log("Support activity added successfully:", response.data);
-          refreshSupport();
-          setIsModalOpen(false);
-        } catch (error) {
-          console.error("There was an error adding the support activity:", error);
-        }
-      };
-   
+const AddSupport = ({ refreshSupport, domainId }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [ticketCount, setTicketCount] = useState("");
+  const [effortSpent, setEffortSpent] = useState("");
+  const [topSubjects, setTopSubjects] = useState([]);
+  const [validForm, setValidForm] = useState(true);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!ticketCount || !effortSpent || topSubjects.length === 0) {
+      setValidForm(false);
+      return;
+    }
+    const supportData = {
+      domainId,
+      ticketCount,
+      effortSpent,
+      topSubjects: topSubjects.split(",").map((subject) => subject.trim()),
+    };
+
+    try {
+      const response = await addSupport(supportData);
+      console.log("Support activity added successfully:", response.data);
+      refreshSupport();
+      resetForm();
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("There was an error adding the support activity:", error);
+    }
+  };
+  const resetForm = () => {
+      setTicketCount("");
+      setEffortSpent("");
+      setTopSubjects([]);
+  }
+  useEffect(() => {
+    if (ticketCount && effortSpent && topSubjects.length !== 0) {
+      setValidForm(true);
+      return;
+    }
+  }, [ticketCount, effortSpent, topSubjects]);
   return (
     <>
       <Button type="primary" onClick={showModal}>
-      Ajouter Activité support 
+        Ajouter Activité support
       </Button>
       <Modal
-        className='text-center'
+        className="text-center"
         title="Ajouter Activité support "
         open={isModalOpen}
         onCancel={handleCancel}
@@ -70,7 +87,9 @@ const AddSupport = ({refreshSupport, domainId}) => {
             ></input>
           </div>
           <div className="form-group mb-2">
-            <label className="form-label">Top 3 des sujets en support N3 :</label>
+            <label className="form-label">
+              Top 3 des sujets en support N3 :
+            </label>
             <input
               type="text"
               placeholder="Entrer les sujets séparés par des virgules (,)"
@@ -80,15 +99,23 @@ const AddSupport = ({refreshSupport, domainId}) => {
               className={`form-control`}
             ></input>
           </div>
+          {!validForm && 
+            <div className="error-message">
+                ** Veuillez remplir toutes les cases **
+            </div>
+          }
           <div className="button-container">
-          <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
-            Ajouter
-          </button>
+            <button
+              className="btn btn-primary"
+              onClick={(e) => handleSubmit(e)}
+            >
+              Ajouter
+            </button>
           </div>
         </form>
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default AddSupport
+export default AddSupport;
