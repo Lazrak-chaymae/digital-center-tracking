@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { listdebts } from "../services/DetteTechnique";
 import AddDetteTech from "./AddDetteTech";
 import { isAdminUser } from "../services/AuthService";
+import DeleteOutlined from ""
 
 const DetteTechComponent = () => {
   const [debts, setDebts] = useState([]);

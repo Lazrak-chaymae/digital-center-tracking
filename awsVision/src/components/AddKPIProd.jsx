@@ -11,6 +11,7 @@ const AddKPIProd = ({ refreshKPIs, domainId }) => {
   const [achieved, setAchieved] = useState("");
   const [previousMeasure, setPreviousMeasure] = useState("");
   const [type, setType] = useState("");
+  const [validForm, setValidForm] = useState(true);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -30,17 +31,48 @@ const AddKPIProd = ({ refreshKPIs, domainId }) => {
       previousMeasure,
       type,
     };
-
+    if (
+      !functionality ||
+      !indicator ||
+      !planned ||
+      !achieved ||
+      !previousMeasure ||
+      !type
+    ) {
+      setValidForm(false);
+      return;
+    }
     try {
       const response = await addKPI(kpiData);
       console.log("KPI added successfully:", response.data);
       refreshKPIs();
+      resetForm();
       setIsModalOpen(false);
     } catch (error) {
       console.error("There was an error adding the KPI:", error);
     }
   };
-
+  const resetForm = () => {
+    setFunctionality("");
+    setIndicator("");
+    setAchieved("");
+    setPlanned("");
+    setPreviousMeasure("");
+    setType("");
+  };
+  useEffect(() => {
+    if (
+      functionality &&
+      indicator &&
+      planned &&
+      achieved &&
+      previousMeasure &&
+      type
+    ) {
+      setValidForm(true);
+      return;
+    }
+  }, [functionality, indicator, planned, achieved, previousMeasure, type]);
   return (
     <>
       <Button type="primary" onClick={showModal}>
@@ -125,10 +157,18 @@ const AddKPIProd = ({ refreshKPIs, domainId }) => {
               ))}
             </select>
           </div>
+          {!validForm && 
+             <div className="error-message">
+                ** Veuillez remplir toutes les cases **
+             </div>
+          }
           <div className="button-container">
-          <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
-            Ajouter
-          </button>
+            <button
+              className="btn btn-primary"
+              onClick={(e) => handleSubmit(e)}
+            >
+              Ajouter
+            </button>
           </div>
         </form>
       </Modal>

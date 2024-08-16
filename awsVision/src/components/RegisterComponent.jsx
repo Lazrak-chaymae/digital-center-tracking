@@ -18,6 +18,7 @@ const RegisterComponent = () => {
   const [validEmail, setValidEmail] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
   const [utilisable, setUtilisable] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -55,10 +56,17 @@ const RegisterComponent = () => {
       })
       .catch((error) => {
         console.error(error);
-        console.log(register);
+        setErrorMessage(error.response.data);
+        console.log(error.response.data);
         setUtilisable(true);
       });
   }
+  useEffect(() => {
+    if (name && email && password && confirmPassword && roleName && domainName) {
+      setValideRegister(true);
+      return;
+    }
+  },[name, email, password, confirmPassword, roleName, domainName])
   useEffect(() => {
     const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{7,})/;
 
@@ -86,7 +94,7 @@ const RegisterComponent = () => {
   }, []);
   return (
   
-    <div className="login-container-2">
+    <div className="register-container">
     <div className="login-form">
       <h2>Inscription</h2>
       <form>
@@ -113,7 +121,7 @@ const RegisterComponent = () => {
          
         </div>
         {!validEmail && (
-            <div className="error-message">** Email non valide **</div>
+            <div className="error-message">** Email non valid **</div>
           )}
         <div className="input-group-2">
           <label>Mot de passe</label>
@@ -186,7 +194,7 @@ const RegisterComponent = () => {
         )}
         {utilisable && (
              <div className="error-message">
-             ** Utilisateur déja inscrit avec cet email **
+             ** {errorMessage} **
            </div>
         )}
         <div className="button-container">

@@ -42,7 +42,11 @@ public class AuthServiceImpl implements AuthService{
 
         //check if email is already exists
         if(userRepository.existsByEmail(registerDto.getEmail())){
-            throw new UserAPIException(HttpStatus.BAD_REQUEST, "Email is already exists!");
+            throw new UserAPIException(HttpStatus.BAD_REQUEST, "Un utilisateur existe déjà avec cet email !");
+        }
+        //check if user is already exists with a role in a domain
+        if(userRepository.existsByRoleNameAndDomainName(registerDto.getRoleName(),registerDto.getDomainName())){
+            throw new UserAPIException(HttpStatus.BAD_REQUEST, "Un utilisateur existe déjà avec ce rôle dans ce domaine!");
         }
         User user = new User();
         user.setName(registerDto.getName());

@@ -91,14 +91,14 @@ body {
     text-decoration: underline;
   }
   
-  .login-container-2 {
-    margin-top: 20px;
+  .register-container {
+    margin-top: 15px;
     background-color: white;
-    padding: 20px;
+    padding: 18px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 450px;
-    height: 460px;
+    height: 470px;
   }
   
   .input-group-2 {

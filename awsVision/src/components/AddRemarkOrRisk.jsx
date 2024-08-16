@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Button, Modal } from "antd";
 import { PlusCircleOutlined} from '@ant-design/icons'
 import { addRemarkOrRisk } from '../services/Project';
@@ -7,6 +7,7 @@ const AddRemarkOrRisk = ({refreshProject, projectId}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [name, setName] = useState('');
     const [importance, setImportance] = useState('');
+    const [validForm, setValidForm] = useState(true);
     
     const showModal = () => {
         setIsModalOpen(true);
@@ -21,15 +22,27 @@ const AddRemarkOrRisk = ({refreshProject, projectId}) => {
             name,
             importance
         };
+        if( !name || !importance){
+           setValidForm(false);
+           return ;
+        }
         try {
             const response = await addRemarkOrRisk(remarkOrRiskData, projectId);
-            console.log("Remark / Risk added successfully:", response.data);
+            console.log( response.data);
+            setName('');
+            setImportance('');
             refreshProject();
             setIsModalOpen(false);
           } catch (error) {
             console.error("There was an error adding the Remark / Risk:", error);
           }
         };
+        useEffect(() => {
+          if( name && importance){
+            setValidForm(true);
+            return ;
+         }
+        }, [name, importance])
   return (
      <>
    
@@ -64,6 +77,11 @@ const AddRemarkOrRisk = ({refreshProject, projectId}) => {
             className={`form-control`}
           ></input>
         </div>
+        {!validForm &&
+           <div className='error-message'>
+               ** Veuillez remplir toutes les cases **
+           </div>
+        }
         <div className="button-container">
         <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
           Ajouter

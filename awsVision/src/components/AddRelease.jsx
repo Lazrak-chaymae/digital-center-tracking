@@ -1,52 +1,87 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Modal } from "antd";
 import { addRelease } from "../services/Release";
 
 const AddRelease = ({ refreshReleases, domainId }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [installationDate, setInstallationDate] = useState('');
-  const [version, setVersion] = useState('');
-  const [type, setType] = useState('');
+  const [installationDate, setInstallationDate] = useState("");
+  const [version, setVersion] = useState("");
+  const [type, setType] = useState("");
   const [packages, setPackages] = useState([]);
   const [hotfixContents, setHotfixContents] = useState([]);
-  const [evolution, setEvolution] = useState('');
+  const [evolution, setEvolution] = useState("");
+  const [validForm, setValidForm] = useState(true);
 
   const showModal = () => {
     setIsModalOpen(true);
   };
 
-
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      !installationDate ||
+      !version ||
+      !type ||
+      packages.length === 0 ||
+      hotfixContents.length === 0 ||
+      !evolution
+    ) {
+      setValidForm(false);
+      return;
+    }
     const releaseData = {
-        domainId,
-        installationDate,
-        version,
-        type,
-        packages: packages.split(',').map(pkg => pkg.trim()), 
-        hotfixContents: hotfixContents.split(',').map(content => content.trim()),
-        evolution
+      domainId,
+      installationDate,
+      version,
+      type,
+      packages: packages.split(",").map((pkg) => pkg.trim()),
+      hotfixContents: hotfixContents
+        .split(",")
+        .map((content) => content.trim()),
+      evolution,
     };
 
-try {
-    const response = await addRelease(releaseData);
-    console.log("Release added successfully:", response.data);
-    refreshReleases();
-    setIsModalOpen(false);
-  } catch (error) {
-    console.error("There was an error adding the release:", error);
+    try {
+      const response = await addRelease(releaseData);
+      console.log("Release added successfully:", response.data);
+      refreshReleases();
+      resetForm();
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("There was an error adding the release:", error);
+    }
+  };
+  const resetForm = () =>  {
+       setInstallationDate('');
+       setVersion('');
+       setType('');
+       setPackages([]);
+       setHotfixContents([]);
+       setEvolution('');
   }
-};
+  useEffect(() => {
+    if (
+      installationDate &&
+      version &&
+      type &&
+      packages.length !== 0 &&
+      hotfixContents.length !== 0 &&
+      evolution
+    ) {
+      setValidForm(true);
+      return;
+    }
+  }, [installationDate, version, type, packages, hotfixContents, evolution]);
   return (
     <>
       <Button type="primary" onClick={showModal}>
         Ajouter une version
       </Button>
       <Modal
-       className="text-center"
+        className="text-center"
         title="Ajouter une version"
         open={isModalOpen}
         onCancel={handleCancel}
@@ -118,10 +153,18 @@ try {
               className={`form-control`}
             ></input>
           </div>
+          {!validForm && (
+            <div className="error-message">
+              ** Veuillez remplir toutes les cases **
+            </div>
+          )}
           <div className="button-container">
-          <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
-            Ajouter
-          </button>
+            <button
+              className="btn btn-primary"
+              onClick={(e) => handleSubmit(e)}
+            >
+              Ajouter
+            </button>
           </div>
         </form>
       </Modal>

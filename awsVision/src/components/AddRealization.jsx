@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "antd";
 import { PlusCircleOutlined} from '@ant-design/icons'
 import { addRealization } from "../services/Project";
@@ -6,6 +6,7 @@ import { addRealization } from "../services/Project";
 const AddRealization = ({ refreshProject, projectId }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [name, setName] = useState("");
+    const [validName, setValidName] = useState(true);
   
     const showModal = () => {
       setIsModalOpen(true);
@@ -17,15 +18,26 @@ const AddRealization = ({ refreshProject, projectId }) => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       const realization = {name};
+      if(!name){
+        setValidName(false);
+        return ;
+      }
       try {
         const response = await addRealization(realization, projectId);
-        console.log("Realization added successfully:", response.data);
+        console.log(response.data);
+        setName("");
         refreshProject();
         setIsModalOpen(false);
       } catch (error) {
         console.error("There was an error adding the Realization:", error);
       }
     };
+    useEffect(() => {
+      if (name) {
+        setValidName(true);
+        return ;
+    }
+    } ,[name])
   return (
     <>
     <PlusCircleOutlined onClick={showModal} />
@@ -48,6 +60,11 @@ const AddRealization = ({ refreshProject, projectId }) => {
             className={`form-control`}
           ></input>
         </div>
+        {!validName && 
+           <div className="error-message">
+             ** Veuillez remplir la case **
+           </div>
+        }
         <div className="button-container">
         <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
           Ajouter

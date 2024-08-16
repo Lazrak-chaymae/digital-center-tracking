@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "antd";
 import { PlusCircleOutlined} from '@ant-design/icons'
 import { addTask } from "../services/Task";
@@ -8,6 +8,7 @@ const AddTask = ({refreshEtape, etapeId, projectId}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [name, setName] = useState('');
     const [progress, setProgress] = useState('');
+    const [validName, setValidName] = useState(true);
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -19,10 +20,15 @@ const AddTask = ({refreshEtape, etapeId, projectId}) => {
     const handleSubmit = async (e) => {
           e.preventDefault();
           const task = {name,progress, etapeId, projectId};
-
+          if(!name || !progress){
+              setValidName(false);
+              return ;
+          }
           try {
               const response = await addTask(task);
               console.log("Task added successfully :" + response.data);
+              setName('');
+              setProgress('');
               refreshEtape();
               setIsModalOpen(false);
           }catch(error){
@@ -30,6 +36,12 @@ const AddTask = ({refreshEtape, etapeId, projectId}) => {
           }
 
     }
+    useEffect(() => {
+      if(name && progress){
+        setValidName(true);
+        return ;
+    }
+    } , [name, progress])
   return (
     <>
     <PlusCircleOutlined onClick={showModal} />
@@ -63,6 +75,11 @@ const AddTask = ({refreshEtape, etapeId, projectId}) => {
             className={`form-control`}
           ></input>
         </div>
+        {!validName && 
+           <div className="error-message">
+                ** Veuillez remplir toutes les cases ** 
+           </div>
+        }
         <div className="button-container">
         <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
           Ajouter
