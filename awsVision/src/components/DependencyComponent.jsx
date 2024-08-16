@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { listDependencies } from '../services/Dependency';
+import { deleteDependency, listDependencies } from '../services/Dependency';
 import AddDependency from './AddDependency';
 import { isAdminUser } from '../services/AuthService';
+import { DeleteOutlined } from "@ant-design/icons"; 
 
 const DependencyComponent = () => {
 
@@ -16,6 +17,14 @@ const DependencyComponent = () => {
        ).catch(error => {
            console.error(error);
        });
+  }
+  const handleDependencyDelete = (dependencyId) => {
+     deleteDependency(dependencyId).then((response) => {
+         console.log(response.data);
+         getDependencies();
+     }).catch((error) => {
+         console.error(error);
+     })
   }
   useEffect(() => {
      getDependencies();
@@ -32,6 +41,9 @@ const DependencyComponent = () => {
                 <th>Equipe responsable</th>
                 <th>Equipe bénéficiaire</th>
                 <th>Date prévue</th>
+                {isAdminUser() &&
+                <th></th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -43,6 +55,9 @@ const DependencyComponent = () => {
                      <td>{dependency.responsibleTeam}</td>
                      <td>{dependency.beneficiaryTeam}</td>
                      <td>{dependency.scheduledDate}</td>
+                     {isAdminUser() &&
+                     <td><DeleteOutlined onClick={() => handleDependencyDelete(dependency.id)} /></td>
+}
                   </tr>
                )
             )

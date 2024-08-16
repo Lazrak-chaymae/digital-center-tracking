@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c75cb9bd-9a9c-4c47-88bb-84b610e8bd79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/service/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../authentification-service/src/main/java/com/awb/digital/center/authentification_service/service/AuthServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/AddDependency.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/AddDependency.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/AddDetteTech.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/AddDetteTech.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/AddEtape.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/AddEtape.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/AddKPIProd.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/AddKPIProd.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/AddKpiPilotage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/AddKpiPilotage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/AddMilestone.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/AddMilestone.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/AddProjectComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/AddProjectComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/AddRealization.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/AddRealization.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/AddRelease.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/AddRelease.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/AddRemarkOrRisk.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/AddRemarkOrRisk.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/AddSupport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/AddSupport.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/AddTask.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/AddTask.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/src/components/DashboardConstComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/components/DashboardConstComponent.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="c75cb9bd-9a9c-4c47-88bb-84b610e8bd79" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

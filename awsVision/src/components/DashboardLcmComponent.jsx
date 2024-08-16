@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { listProjects } from '../services/DashboardEnLanc';
-import { listSquadsByDomain } from '../services/Project';
+import { deleteProject, listSquadsByDomain } from '../services/Project';
+import { DeleteOutlined } from "@ant-design/icons";
+import { isAdminUser } from '../services/AuthService';
 
 const DashboardLcmComponent = () => {
 
@@ -29,7 +31,14 @@ const DashboardLcmComponent = () => {
       console.error(error);
     }
   }
-
+  const handleProjectDelete = (projectId) => {
+      deleteProject(projectId).then((response) => {
+          console.log(response.data);
+          GetProjects();
+      }).catch((error) => {
+          console.error(error);
+      })
+  }
   useEffect(() => {
     GetSquads();
   }, []);
@@ -58,7 +67,9 @@ const DashboardLcmComponent = () => {
                   <th>KPIs</th>
                   <th>Remarques</th>
                   <th>Type</th>
-
+                  {isAdminUser() && 
+                   <th></th>
+                  } 
                 </tr>
               </thead>
               <tbody>
@@ -78,6 +89,9 @@ const DashboardLcmComponent = () => {
                         ))}
                       </td>
                       <td>{project.type}</td>
+                      {isAdminUser() && 
+                        <td><DeleteOutlined onClick={() => handleProjectDelete(project.id)} /></td>
+                  } 
                     </tr>
                   ))}
               </tbody>
