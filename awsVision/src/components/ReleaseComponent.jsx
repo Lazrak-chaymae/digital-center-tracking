@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { listReleases } from '../services/Release';
+import { deleteRelease, listReleases } from '../services/Release';
 import AddRelease from './AddRelease';
 import { isAdminUser } from '../services/AuthService';
+import { DeleteOutlined } from "@ant-design/icons";
+
 
 const ReleaseComponent = () => {
   const [releases, setReleases] = useState([]);
@@ -17,7 +19,14 @@ const ReleaseComponent = () => {
         }
       )
   }
-
+  const handleReleaseDelete = (releaseId) => {
+      deleteRelease(releaseId).then((response) => {
+         console.log(response.data);
+         getReleases();
+      }).catch((error) => {
+          console.error(error);
+      })
+  }
   useEffect(() => {
      getReleases();
   }, [])
@@ -34,6 +43,9 @@ const ReleaseComponent = () => {
                 <th>Packages</th>
                 <th>Contenu Hotfix</th>
                 <th>Contenu Evolution</th>  
+                {isAdminUser() &&
+                <th></th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -55,7 +67,9 @@ const ReleaseComponent = () => {
                   </span>
                 ))}</td>
                     <td>{release.evolution}</td>
-
+                    {isAdminUser() &&
+                    <td><DeleteOutlined onClick={() => handleReleaseDelete(release.id)}/></td>
+}
                  </tr>
              ))}
         </tbody>

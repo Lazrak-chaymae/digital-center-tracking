@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { listdebts } from "../services/DetteTechnique";
 import AddDetteTech from "./AddDetteTech";
 import { isAdminUser } from "../services/AuthService";
-import DeleteOutlined from ""
+import { DeleteOutlined } from "@ant-design/icons";
+import { deleteDebt } from "../services/DetteTechnique";
 
 const DetteTechComponent = () => {
   const [debts, setDebts] = useState([]);
@@ -16,6 +17,17 @@ const DetteTechComponent = () => {
         console.error(error);
       });
   };
+  const handleDebtDelete = (debtId) => {
+
+      deleteDebt(debtId)
+      .then((response => {
+          console.log(response.data);
+          GetDebts();
+      }))
+      .catch((error) => {
+         console.error(error);
+      })
+  }
   useEffect(() => {
     GetDebts();
   }, []);
@@ -32,6 +44,9 @@ const DetteTechComponent = () => {
             <th>Coût de correction (S/M/L)</th>
             <th>Volentaire / Involentaire</th>
             <th>Commentaire</th>
+            {isAdminUser() &&
+            <th></th>
+}
           </tr>
         </thead>
         <tbody>
@@ -43,6 +58,9 @@ const DetteTechComponent = () => {
               <td>{debt.cost}</td>
               <td>{debt.voluntary}</td>
               <td>{debt.comment}</td>
+              {isAdminUser() &&
+              <td><DeleteOutlined onClick={() => handleDebtDelete(debt.id)}/></td>
+}
             </tr>
           ))}
         </tbody>

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { listProjects } from '../services/DashboardEnConst'
-import { listSquadsByDomain } from '../services/Project'
+import { deleteProject, listSquadsByDomain } from '../services/Project'
+import { DeleteOutlined } from "@ant-design/icons";
+import { isAdminUser } from '../services/AuthService';
+
 
 const DashboardConstComponent = () => {
     const [ucProject, setUcProject] = useState([]);
@@ -27,6 +30,14 @@ const DashboardConstComponent = () => {
         } catch (error) {
             console.error(error);
         }
+    }
+    const handleProjectDelete = (projectId) => {
+         deleteProject(projectId).then((response) => {
+             console.log(response.data);
+             GetProjects();
+         }).catch((error) => {
+            console.error(error);
+         })
     }
     useEffect(() => {
         GetSquads();
@@ -61,6 +72,9 @@ const DashboardConstComponent = () => {
                                     <th>Type</th>
                                     <th>Remarque et risque</th>
                                     <th>Avancement</th>
+                                   {isAdminUser() && 
+                                    <th></th>
+                                   }
 
                                 </tr>
                             </thead>
@@ -93,6 +107,9 @@ const DashboardConstComponent = () => {
                                                 </span>
                                             ))}</td>
                                             <td>{project.completionPercentage}</td>
+                                            {isAdminUser() && 
+                                               <td><DeleteOutlined onClick={() => handleProjectDelete(project.id)}/></td>
+                                            }
                                         </tr>
 
 

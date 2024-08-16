@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { listKPIs } from '../services/KPIBusiness';
+import { deleteKPI, listKPIs } from '../services/KPIBusiness';
 import AddKPIProd from './AddKPIProd';
 import { isAdminUser } from '../services/AuthService';
+import { DeleteOutlined } from "@ant-design/icons";
 
 
 const KPIProdComponent = () => {
@@ -22,6 +23,14 @@ const KPIProdComponent = () => {
         await Promise.all(promises);
         setDataSource(data);
     };
+     const handleKPIDelete = (kpiId) => {
+          deleteKPI(kpiId).then((response) => {
+             console.log(response.data);
+             fetchData();
+          }).catch ((error) => {
+              console.error(error);
+          })
+     }
     useEffect(() => {
         fetchData();
     }, [kpiTypes]);
@@ -44,6 +53,9 @@ const KPIProdComponent = () => {
                             <th>Prévu</th>
                             <th>Réalisé</th>
                             <th>Précédente mesure</th>
+                            {isAdminUser() &&
+                            <th></th>
+                            }
                         </tr>
                     </thead>
                     <tbody>
@@ -55,6 +67,9 @@ const KPIProdComponent = () => {
                                     <td>{kpi.planned}</td>
                                     <td>{kpi.achieved}</td>
                                     <td>{kpi.previousMeasure}</td>
+                                    {isAdminUser() &&
+                                    <td><DeleteOutlined onClick={() => handleKPIDelete(kpi.id)} /></td>
+                                    }
                             </tr>
                             ))}
                     </tbody>
