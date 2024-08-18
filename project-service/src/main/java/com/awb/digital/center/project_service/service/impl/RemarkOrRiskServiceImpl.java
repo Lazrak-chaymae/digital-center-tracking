@@ -30,4 +30,20 @@ public class RemarkOrRiskServiceImpl implements RemarkOrRiskService {
         repository.save(remarkOrRisk);
         return mapper.map(remarkOrRisk, RemarkOrRiskDto.class);
     }
+
+    @Override
+    public void updateRemarkName(String remarkName, Long remarkId) {
+      RemarkOrRisk remarkOrRisk =  repository.findById(remarkId)
+              .orElseThrow(() -> new ResourceNotFoundException("Remark not found with id : " + remarkId));
+      remarkOrRisk.setName(remarkName);
+      repository.save(remarkOrRisk);
+    }
+
+    @Override
+    public void updateRemarkImportance(String remarkImportance, Long remarkId) {
+        RemarkOrRisk remarkOrRisk =  repository.findById(remarkId)
+                .orElseThrow(() -> new ResourceNotFoundException("Remark not found with id : " + remarkId));
+        remarkOrRisk.setImportance(remarkImportance);
+        repository.save(remarkOrRisk);
+    }
 }

@@ -84,4 +84,10 @@ public class ProjectController {
         service.updateProjectPhase(phase, projectId);
         return new ResponseEntity<>("Project phase updated successfully", HttpStatus.OK);
     }
+    @PatchMapping("{projectId}/squad")
+    public ResponseEntity<String> updateProjectSquad(@RequestBody SquadDto squadDto, @PathVariable Long projectId){
+        service.updateProjectSquad(squadDto, projectId);
+        return new ResponseEntity<>("Project squad updated successfully", HttpStatus.OK);
+    }
+
 }

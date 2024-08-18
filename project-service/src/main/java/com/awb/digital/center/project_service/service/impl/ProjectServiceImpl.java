@@ -5,10 +5,13 @@ import com.awb.digital.center.project_service.entity.*;
 import com.awb.digital.center.project_service.exception.ResourceNotFoundException;
 import com.awb.digital.center.project_service.repository.CustomPhaseRepository;
 import com.awb.digital.center.project_service.repository.ProjectRepository;
+import com.awb.digital.center.project_service.repository.SquadRepository;
 import com.awb.digital.center.project_service.service.ProjectService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +21,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     private ProjectRepository repository;
     private CustomPhaseRepository customPhaseRepository;
+    private SquadRepository squadRepository;
     private ModelMapper mapper;
 
 
@@ -175,4 +179,143 @@ public class ProjectServiceImpl implements ProjectService {
         project.setPhase(phase);
         repository.save(project);
     }
+
+    @Override
+    public void updateProjectSquad(SquadDto squadDto, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        Squad squad = squadRepository.findById(squadDto.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Squad not found with id" + squadDto.getId()));
+
+        project.setSquad(squad);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectName(String name, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.setName(name);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectOwner(String owner, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.setOwner(owner);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectStartDate(LocalDate startDate, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.setStartDate(startDate);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectExpectedDate(LocalDate expectedEndDate, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.setExpectedEndDate(expectedEndDate);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectType(String type, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.setType(type);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectBudget(String budget, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.setBudget(budget);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectDescription(String description, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.setDescription(description);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectAllocatedSprintCount(Integer allocatedSprintCount, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.setAllocatedSprintCount(allocatedSprintCount);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectConsumedSprintCount(Integer consumedSprintCount, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.setConsumedSprintCount(consumedSprintCount);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectCompletionPercentage(String ccompletionPercentage, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.setCompletionPercentage(ccompletionPercentage);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectActualMepDate(LocalDate actualMepDate, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.setActualMepDate(actualMepDate);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectLastPhaseDate(LocalDate lastPhaseDate, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.setLastPhaseDate(lastPhaseDate);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectMilestone(String milestone, Integer index, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.getMilestones().set(index, milestone);
+        repository.save(project);
+    }
+
+    @Override
+    public void updateProjectUpcomingRealization(String realization, Integer index, Long projectId) {
+        Project project = repository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+
+        project.getUpcomingRealizations().set(index, realization);
+        repository.save(project);
+    }
+    
 }

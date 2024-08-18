@@ -40,4 +40,6 @@ public class SquadServiceImpl implements SquadService {
         Squad createdSquad = repository.save(squad);
         return mapper.map(createdSquad, SquadDto.class);
     }
+
+
 }
