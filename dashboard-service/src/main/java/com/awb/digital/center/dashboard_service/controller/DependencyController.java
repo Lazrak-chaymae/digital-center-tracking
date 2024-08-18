@@ -46,17 +46,17 @@ public class DependencyController {
         service.updatePriority(id, priority);
         return ResponseEntity.ok("Priority updated successfully!.");
     }
-    @PatchMapping("{id}/responsibleTeam")
+    @PatchMapping("{id}/responsible-team")
     public ResponseEntity<String> updateResponsibleTeam(@PathVariable Long id,@RequestBody String responsibleTeam){
         service.updateResponsibleTeam(id, responsibleTeam);
         return ResponseEntity.ok("Responsible Team updated successfully!.");
     }
-    @PatchMapping("{id}/beneficiaryTeam")
+    @PatchMapping("{id}/beneficiary-team")
     public ResponseEntity<String> updateBeneficiaryTeam(@PathVariable Long id,@RequestBody String beneficiaryTeam){
         service.updateBeneficiaryTeam(id, beneficiaryTeam);
         return ResponseEntity.ok("Beneficiary Team updated successfully!.");
     }
-    @PatchMapping("{id}/scheduledDate")
+    @PatchMapping("{id}/scheduled-date")
     public ResponseEntity<String> updateScheduledDate(@PathVariable Long id, @RequestBody String scheduledDate){
         LocalDate date = LocalDate.parse(scheduledDate);
         service.updateScheduledDate(id, date);

@@ -36,7 +36,7 @@ public class ReleaseController {
         return ResponseEntity.ok("Release deleted successfully!.");
     }
 
-    @PatchMapping("{id}/installationDate")
+    @PatchMapping("{id}/installation-date")
     public ResponseEntity<String> updateInstallationDate(@PathVariable Long id, @RequestBody String installationDate){
         service.updateInstallationDate(id, installationDate);
         return ResponseEntity.ok("Installation Date updated successfully!.");
@@ -56,7 +56,7 @@ public class ReleaseController {
         service.updatePackages(id, index, packages);
         return ResponseEntity.ok("Package updated successfully!.");
     }
-    @PatchMapping("{id}/hotfixContents/{index}")
+    @PatchMapping("{id}/hotfix-contents/{index}")
     public ResponseEntity<String> updateHotfixContents(@PathVariable Long id,@PathVariable Integer index, @RequestBody String hotfixContents){
         service.updateHotfixContents(id, index, hotfixContents);
         return ResponseEntity.ok("Hotfix Content updated successfully!.");

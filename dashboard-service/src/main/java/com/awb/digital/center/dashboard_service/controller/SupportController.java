@@ -41,13 +41,13 @@ public class SupportController {
         return ResponseEntity.ok("Support deleted successfully!.");
     }
 
-    @PatchMapping("{id}/ticket")
+    @PatchMapping("{id}/ticket-count")
     public ResponseEntity<String> updateTicketCount(@PathVariable Long id, @RequestBody Integer ticketCount){
         supportService.updateTicketCount(id, ticketCount);
         return ResponseEntity.ok("TicketCount updated successfully!. ");
     }
 
-    @PatchMapping("{id}/effort")
+    @PatchMapping("{id}/effort-spent")
     public ResponseEntity<String> updateEffortSpent(@PathVariable Long id, @RequestBody String effortSpent){
         supportService.updateEffortSpent(id, effortSpent);
         return ResponseEntity.ok("EffortSpent updated successfully!. ");
