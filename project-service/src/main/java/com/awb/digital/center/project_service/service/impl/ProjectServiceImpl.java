@@ -147,7 +147,6 @@ public class ProjectServiceImpl implements ProjectService {
         Project project = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found with id : " +id));
         repository.delete(project);
-        //repository.deleteById(id);
     }
 
     @Override
@@ -317,5 +316,5 @@ public class ProjectServiceImpl implements ProjectService {
         project.getUpcomingRealizations().set(index, realization);
         repository.save(project);
     }
-    
+
 }

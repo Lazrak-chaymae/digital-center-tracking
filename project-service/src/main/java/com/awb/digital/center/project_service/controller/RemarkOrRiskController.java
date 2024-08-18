@@ -20,5 +20,19 @@ public class RemarkOrRiskController {
         return new ResponseEntity<>(remarkOrRisk, HttpStatus.CREATED);
     }
 
+    @PatchMapping("/{id}/name")
+    public ResponseEntity<String> updateRemarkOrRiskName(@RequestBody String name,
+                                                 @PathVariable Long id) {
+        service.updateRemarkOrRiskName(name, id);
+        return ResponseEntity.ok("Remark or risk name updated successfully!.");
+    }
+
+    @PatchMapping("/{id}/importance")
+    public ResponseEntity<String> updateRemarkOrRiskImportance(@RequestBody String importance,
+                                                       @PathVariable Long id) {
+        service.updateRemarkOrRiskImportance(importance, id);
+        return ResponseEntity.ok("Remark or risk importance updated successfully!.");
+    }
+
 
 }
