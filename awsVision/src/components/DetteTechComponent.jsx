@@ -18,19 +18,17 @@ const DetteTechComponent = () => {
       });
   };
   const handleDebtDelete = (debtId) => {
-
-      deleteDebt(debtId)
-      .then((response => {
-          console.log(response.data);
-          GetDebts();
-      }))
-      .catch((error) => {
-         console.error(error);
+    deleteDebt(debtId)
+      .then((response) => {
+        console.log(response.data);
       })
-  }
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   useEffect(() => {
     GetDebts();
-  }, []);
+  }, [debts]);
 
   return (
     <div className="container" style={{ paddingTop: "12px" }}>
@@ -44,9 +42,7 @@ const DetteTechComponent = () => {
             <th>Coût de correction (S/M/L)</th>
             <th>Volentaire / Involentaire</th>
             <th>Commentaire</th>
-            {isAdminUser() &&
-            <th></th>
-}
+            {isAdminUser() && <th></th>}
           </tr>
         </thead>
         <tbody>
@@ -57,15 +53,26 @@ const DetteTechComponent = () => {
               <td>{debt.impact}</td>
               <td>{debt.cost}</td>
               <td>{debt.voluntary}</td>
-              <td>{debt.comment}</td>
-              {isAdminUser() &&
-              <td><DeleteOutlined onClick={() => handleDebtDelete(debt.id)}/></td>
-}
+              <td>
+                {debt.comments.map((comment, index) => (
+                  <span key={index}>
+                    {comment}
+                    <br />
+                  </span>
+                ))}
+              </td>
+              {isAdminUser() && (
+                <td>
+                  <DeleteOutlined onClick={() => handleDebtDelete(debt.id)} />
+                </td>
+              )}
             </tr>
           ))}
         </tbody>
       </table>
-      {isAdminUser() && <AddDetteTech refreshDebts={GetDebts} domainId={domainId} />}
+      {isAdminUser() && (
+        <AddDetteTech refreshDebts={GetDebts} domainId={domainId} />
+      )}
     </div>
   );
 };

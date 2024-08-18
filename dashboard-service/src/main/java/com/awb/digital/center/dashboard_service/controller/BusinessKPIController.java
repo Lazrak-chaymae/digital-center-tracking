@@ -2,9 +2,7 @@ package com.awb.digital.center.dashboard_service.controller;
 
 
 import com.awb.digital.center.dashboard_service.dto.BusinessKPIDto;
-import com.awb.digital.center.dashboard_service.entity.BusinessKPI;
 import com.awb.digital.center.dashboard_service.service.BusinessKPIService;
-import com.awb.digital.center.dashboard_service.service.impl.BusinessKPIServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +40,32 @@ public class BusinessKPIController {
         service.deleteKpi(id);
         return ResponseEntity.ok("Kpi deleted successfully!.");
     }
+    @PatchMapping("{id}/functionality")
+    public ResponseEntity<String> updateFunctionality(@PathVariable Long id, @RequestBody String functionality){
+        service.updateFunctionality(id, functionality);
+        return ResponseEntity.ok("Functionality deleted successfully!.");
 
+    }
+    @PatchMapping("{id}/indicator")
+    public ResponseEntity<String> updateIndicator(@PathVariable Long id, @RequestBody String indicator){
+        service.updateIndicator(id, indicator);
+        return ResponseEntity.ok("Indicator deleted successfully!.");
+
+    }
+    @PatchMapping("{id}/planned")
+    public ResponseEntity<String> updatePlanned(@PathVariable Long id, @RequestBody Integer planned){
+        service.updatePlanned(id, planned);
+        return ResponseEntity.ok("Planned deleted successfully!.");
+    }
+    @PatchMapping("{id}/achieved")
+    public ResponseEntity<String> updateAchieved(@PathVariable Long id, @RequestBody Integer achieved){
+        service.updateAchieved(id, achieved);
+        return ResponseEntity.ok("Achieved deleted successfully!.");
+    }
+    @PatchMapping("{id}/previousMeasure")
+    public ResponseEntity<String> updatePreviousMeasure(@PathVariable Long id, @RequestBody String previousMeasure){
+        service.updatePreviousMeasure(id, previousMeasure);
+        return ResponseEntity.ok("Previous Measure deleted successfully!.");
+    }
 
 }

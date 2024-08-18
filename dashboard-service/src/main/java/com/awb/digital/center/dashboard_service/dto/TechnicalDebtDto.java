@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -18,5 +21,5 @@ public class TechnicalDebtDto {
     private String impact;
     private String cost;
     private String voluntary;
-    private String comment;
+    private List<String> comments= new ArrayList<>();
 }

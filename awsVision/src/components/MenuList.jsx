@@ -91,7 +91,7 @@ const MenuList = () => {
       {isAdminUser() && (
         <Menu.Item key="addProject" icon={<FileAddOutlined />}>
           <a href="/add-project" style={{ textDecoration: "none" }}>
-            Add project
+            Ajouter projet
           </a>
         </Menu.Item>
       )}

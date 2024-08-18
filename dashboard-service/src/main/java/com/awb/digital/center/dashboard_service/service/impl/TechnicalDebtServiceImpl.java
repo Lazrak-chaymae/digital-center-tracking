@@ -47,7 +47,7 @@ public class TechnicalDebtServiceImpl implements TechnicalDebtService {
         debt.setImpact(technicalDebtDto.getImpact());
         debt.setCost(technicalDebtDto.getCost());
         debt.setVoluntary(technicalDebtDto.getVoluntary());
-        debt.setComment(technicalDebtDto.getComment());
+        debt.setComments(technicalDebtDto.getComments());
 
         TechnicalDebt savedDebt = repository.save(debt);
 
@@ -63,4 +63,53 @@ public class TechnicalDebtServiceImpl implements TechnicalDebtService {
         repository.delete(debt);
 
     }
+
+    @Override
+    public void updateTitle(Long id, String title) {
+        TechnicalDebt debt = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Debt not found with id:" +id));
+        debt.setTitle(title);
+        repository.save(debt);
+    }
+
+    @Override
+    public void updateType(Long id, String type) {
+        TechnicalDebt debt = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Debt not found with id:" +id));
+        debt.setType(type);
+        repository.save(debt);
+    }
+
+    @Override
+    public void updateImpact(Long id, String impact) {
+        TechnicalDebt debt = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Debt not found with id:" +id));
+        debt.setImpact(impact);
+        repository.save(debt);
+    }
+
+    @Override
+    public void updateCost(Long id, String cost) {
+        TechnicalDebt debt = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Debt not found with id:" +id));
+        debt.setCost(cost);
+        repository.save(debt);
+    }
+
+    @Override
+    public void updateVoluntary(Long id, String voluntary) {
+        TechnicalDebt debt = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Debt not found with id:" +id));
+        debt.setVoluntary(voluntary);
+        repository.save(debt);
+    }
+
+    @Override
+    public void updateComments(Long id, Integer index, String comment) {
+        TechnicalDebt debt = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Debt not found with id:" +id));
+        debt.getComments().set(index, comment);
+        repository.save(debt);
+    }
+
 }

@@ -41,4 +41,22 @@ public class SupportController {
         return ResponseEntity.ok("Support deleted successfully!.");
     }
 
+    @PatchMapping("{id}/ticket")
+    public ResponseEntity<String> updateTicketCount(@PathVariable Long id, @RequestBody Integer ticketCount){
+        supportService.updateTicketCount(id, ticketCount);
+        return ResponseEntity.ok("TicketCount updated successfully!. ");
+    }
+
+    @PatchMapping("{id}/effort")
+    public ResponseEntity<String> updateEffortSpent(@PathVariable Long id, @RequestBody String effortSpent){
+        supportService.updateEffortSpent(id, effortSpent);
+        return ResponseEntity.ok("EffortSpent updated successfully!. ");
+    }
+    @PatchMapping("{id}/subject/{index}")
+    public ResponseEntity<String> TopSubjects(@PathVariable Long id,@PathVariable Integer index,@RequestBody String subject){
+        supportService.updateTopSubjects(id, index, subject);
+        return ResponseEntity.ok("Subject updated successfully!. ");
+    }
+
+
 }

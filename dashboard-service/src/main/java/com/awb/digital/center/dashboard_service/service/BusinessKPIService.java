@@ -10,4 +10,10 @@ public interface BusinessKPIService {
     BusinessKPIDto createKpi(BusinessKPIDto businessKPIDto);
     BusinessKPIDto updateKpi(Long id, BusinessKPIDto businessKPIDto);
     void deleteKpi(Long id);
+    void updateFunctionality(Long id, String functionality);
+    void updateIndicator(Long id, String indicator);
+    void updatePlanned(Long id, Integer planned);
+    void updateAchieved(Long id, Integer achieved);
+    void updatePreviousMeasure(Long id, String previousMeasure);
+
 }

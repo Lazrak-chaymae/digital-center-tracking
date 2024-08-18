@@ -61,4 +61,50 @@ public class BusinessKPIServiceImpl implements BusinessKPIService {
 
         repository.deleteById(id);
     }
+
+    @Override
+    public void updateFunctionality(Long id, String functionality) {
+        BusinessKPI kpi = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Kpi not found with id:" +id));
+
+        kpi.setFunctionality(functionality);
+        repository.save(kpi);
+    }
+
+    @Override
+    public void updateIndicator(Long id, String indicator) {
+        BusinessKPI kpi = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Kpi not found with id:" +id));
+
+
+        kpi.setIndicator(indicator);
+        repository.save(kpi);
+    }
+
+    @Override
+    public void updatePlanned(Long id, Integer planned) {
+        BusinessKPI kpi = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Kpi not found with id:" +id));
+
+        kpi.setPlanned(planned);
+        repository.save(kpi);
+    }
+
+    @Override
+    public void updateAchieved(Long id, Integer achieved) {
+        BusinessKPI kpi = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Kpi not found with id:" +id));
+
+        kpi.setAchieved(achieved);
+        repository.save(kpi);
+    }
+
+    @Override
+    public void updatePreviousMeasure(Long id, String previousMeasure) {
+        BusinessKPI kpi = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Kpi not found with id:" +id));
+
+        kpi.setPreviousMeasure(previousMeasure);
+        repository.save(kpi);
+    }
 }
