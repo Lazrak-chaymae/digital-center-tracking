@@ -56,4 +56,26 @@ public class SupportServiceImpl implements SupportService {
 
         repository.delete(support);
     }
+
+    @Override
+    public void updateTicketCount(Long id, Integer ticketCount) {
+         Support support = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Support not found with id:" +id));
+         support .setTicketCount(ticketCount);
+         repository.save(support);
+    }
+
+    @Override
+    public void updateEffortSpent(Long id, String effortSpent) {
+        Support support = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Support not found with id:" + id));
+        support.setEffortSpent(effortSpent);
+        repository.save(support);
+    }
+
+    @Override
+    public void updateTopSubjects(Long id, Integer index, String subject) {
+        Support support = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Support not found with id:" + id));
+        support.getTopSubjects().set(index, subject);
+        repository.save(support);
+
+    }
 }

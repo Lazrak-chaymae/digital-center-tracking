@@ -19,7 +19,7 @@ const SupportComponent = () => {
 
   useEffect(() => {
     getSupport();
-  }, []);
+  }, [support]);
 
   const isEmptySupport = !support.ticketCount && !support.effortSpent && (!support.topSubjects || support.topSubjects.length === 0);
   

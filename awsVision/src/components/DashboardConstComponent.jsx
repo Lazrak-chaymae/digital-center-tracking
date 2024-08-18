@@ -34,7 +34,6 @@ const DashboardConstComponent = () => {
     const handleProjectDelete = (projectId) => {
          deleteProject(projectId).then((response) => {
              console.log(response.data);
-             GetProjects();
          }).catch((error) => {
             console.error(error);
          })
@@ -42,12 +41,12 @@ const DashboardConstComponent = () => {
     useEffect(() => {
         GetSquads();
     }, []);
-
+    
     useEffect(() => {
         if (squads.length > 0) {
             GetProjects();
         }
-    }, [squads]);
+    }, [squads, ucProject]);
 
     return (
         <div className='container' style={{ paddingTop : '12px'}}>

@@ -2,6 +2,8 @@ package com.awb.digital.center.dashboard_service.service;
 
 import com.awb.digital.center.dashboard_service.dto.ReleaseDto;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ReleaseService {
@@ -10,4 +12,12 @@ public interface ReleaseService {
     List<ReleaseDto> getAllReleases(Integer domainId);
     ReleaseDto updateRelease(Long id, ReleaseDto releaseDto);
     void deleteRelease(Long id);
+    void updateInstallationDate(Long id, String installationDate);
+    void updateVersion(Long id, String version);
+    void updateType(Long id, String type);
+    void updatePackages(Long id, Integer index, String packages);
+    void updateHotfixContents(Long id, Integer index, String hotfixContent);
+    void updateEvolution(Long id, String evolution);
+
+
 }

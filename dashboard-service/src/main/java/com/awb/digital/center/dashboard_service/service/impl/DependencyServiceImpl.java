@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,5 +58,45 @@ public class DependencyServiceImpl implements DependencyService {
         Dependency dependency = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Dependency not found with id:" +id));
         repository.delete(dependency);
+    }
+
+    @Override
+    public void updateTitle(Long id, String title) {
+        Dependency dependency = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Dependency not found with id:" +id));
+        dependency.setTitle(title);
+        repository.save(dependency);
+    }
+
+    @Override
+    public void updatePriority(Long id, String priority) {
+        Dependency dependency = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Dependency not found with id:" +id));
+        dependency.setPriority(priority);
+        repository.save(dependency);
+    }
+
+    @Override
+    public void updateResponsibleTeam(Long id, String responsibleTeam) {
+        Dependency dependency = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Dependency not found with id:" +id));
+        dependency.setResponsibleTeam(responsibleTeam);
+        repository.save(dependency);
+    }
+
+    @Override
+    public void updateBeneficiaryTeam(Long id, String beneficiaryTeam) {
+        Dependency dependency = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Dependency not found with id:" +id));
+        dependency.setBeneficiaryTeam(beneficiaryTeam);
+        repository.save(dependency);
+    }
+
+    @Override
+    public void updateScheduledDate(Long id, LocalDate scheduledDate) {
+        Dependency dependency = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Dependency not found with id:" +id));
+        dependency.setScheduledDate(scheduledDate);
+        repository.save(dependency);
     }
 }

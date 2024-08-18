@@ -34,7 +34,6 @@ const DashboardLcmComponent = () => {
   const handleProjectDelete = (projectId) => {
       deleteProject(projectId).then((response) => {
           console.log(response.data);
-          GetProjects();
       }).catch((error) => {
           console.error(error);
       })
@@ -47,7 +46,7 @@ const DashboardLcmComponent = () => {
     if (squads.length > 0) {
       GetProjects();
     }
-  }, [squads]);
+  }, [squads, lcProject]);
   return (
     <div className='container' style={{ paddingTop: '12px' }}>
       <h3 className='text-center'>Sujet en Pilote ou Généralisation</h3>

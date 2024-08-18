@@ -35,4 +35,35 @@ public class ReleaseController {
         service.deleteRelease(id);
         return ResponseEntity.ok("Release deleted successfully!.");
     }
+
+    @PatchMapping("{id}/installationDate")
+    public ResponseEntity<String> updateInstallationDate(@PathVariable Long id, @RequestBody String installationDate){
+        service.updateInstallationDate(id, installationDate);
+        return ResponseEntity.ok("Installation Date updated successfully!.");
+    }
+    @PatchMapping("{id}/version")
+    public ResponseEntity<String> updateVersion(@PathVariable Long id, @RequestBody String version){
+        service.updateVersion(id, version);
+        return ResponseEntity.ok("Version updated successfully!.");
+    }
+    @PatchMapping("{id}/type")
+    public ResponseEntity<String> updateType(@PathVariable Long id, @RequestBody String type){
+        service.updateType(id, type);
+        return ResponseEntity.ok("Type updated successfully!.");
+    }
+    @PatchMapping("{id}/packages/{index}")
+    public ResponseEntity<String> updatePackages(@PathVariable Long id,@PathVariable Integer index, @RequestBody String packages){
+        service.updatePackages(id, index, packages);
+        return ResponseEntity.ok("Package updated successfully!.");
+    }
+    @PatchMapping("{id}/hotfixContents/{index}")
+    public ResponseEntity<String> updateHotfixContents(@PathVariable Long id,@PathVariable Integer index, @RequestBody String hotfixContents){
+        service.updateHotfixContents(id, index, hotfixContents);
+        return ResponseEntity.ok("Hotfix Content updated successfully!.");
+    }
+    @PatchMapping("{id}/evolution")
+    public ResponseEntity<String> updateEvolution(@PathVariable Long id, @RequestBody String evolution){
+        service.updateEvolution(id, evolution);
+        return ResponseEntity.ok("Evolution updated successfully!.");
+    }
 }

@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,5 +27,9 @@ public class TechnicalDebt {
     private String impact;
     private String cost;
     private String voluntary;
-    private String comment;
+
+    @ElementCollection
+    @CollectionTable(name = "comments", joinColumns = @JoinColumn(name = "debt_id"))
+    @Column(name = "name")
+    private List<String> comments = new ArrayList<>();
 }

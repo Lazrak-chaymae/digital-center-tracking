@@ -28,7 +28,7 @@ const DependencyComponent = () => {
   }
   useEffect(() => {
      getDependencies();
-  }, []);
+  }, [dependencies]);
 
   return (
     <div className='container'  style={{ paddingTop: '12px'}}>

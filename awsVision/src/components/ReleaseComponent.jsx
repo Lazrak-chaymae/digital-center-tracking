@@ -29,7 +29,7 @@ const ReleaseComponent = () => {
   }
   useEffect(() => {
      getReleases();
-  }, [])
+  }, [releases])
 
   return (
     <div className='container'  style={{ paddingTop: '12px'}}>

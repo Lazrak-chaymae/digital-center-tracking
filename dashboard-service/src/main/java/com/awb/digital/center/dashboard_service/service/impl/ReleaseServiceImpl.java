@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,5 +59,60 @@ public class ReleaseServiceImpl implements ReleaseService {
                 .orElseThrow(() -> new ResourceNotFoundException("Release not found with id:" +id));
 
         repository.delete(release);
+    }
+
+    @Override
+    public void updateInstallationDate(Long id, String installationDate) {
+        Release release = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Release not found with id:" +id));
+
+        LocalDate date = LocalDate.parse(installationDate);
+        release.setInstallationDate(date);
+        repository.save(release);
+    }
+
+    @Override
+    public void updateVersion(Long id, String version) {
+        Release release = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Release not found with id:" +id));
+
+        release.setVersion(version);
+        repository.save(release);
+    }
+
+    @Override
+    public void updateType(Long id, String type) {
+        Release release = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Release not found with id:" +id));
+
+        release.setType(type);
+        repository.save(release);
+    }
+
+    @Override
+    public void updatePackages(Long id, Integer index, String packages) {
+        Release release = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Release not found with id:" +id));
+
+        release.getPackages().set(index, packages);
+        repository.save(release);
+    }
+
+    @Override
+    public void updateHotfixContents(Long id, Integer index, String hotfixContent) {
+        Release release = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Release not found with id:" +id));
+
+        release.getHotfixContents().set(index, hotfixContent);
+        repository.save(release);
+    }
+
+    @Override
+    public void updateEvolution(Long id, String evolution) {
+        Release release = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Release not found with id:" +id));
+
+        release.setEvolution(evolution);
+        repository.save(release);
     }
 }

@@ -53,10 +53,10 @@ const ProjectComponent = () => {
   }
   useEffect(() => {
     getProject();
-  }, [id]);
+  }, [id, project]);
   useEffect(() => {
    getEtapes();
-  }, []);
+  }, [etapes]);
   useEffect(() => {
     if (etapes.length > 0) {
         getTasks();

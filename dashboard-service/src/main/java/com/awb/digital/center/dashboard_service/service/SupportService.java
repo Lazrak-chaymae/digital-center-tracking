@@ -12,4 +12,9 @@ public interface SupportService {
     SupportDto getSupport(Integer domainId);
     SupportDto updateSupport(Long id, SupportDto supportDto);
     void deleteSupport(Long id);
+    void updateTicketCount(Long id, Integer ticketCount);
+    void updateEffortSpent(Long id, String effortSpent);
+    void updateTopSubjects(Long id, Integer index ,String subject);
+
+
 }
