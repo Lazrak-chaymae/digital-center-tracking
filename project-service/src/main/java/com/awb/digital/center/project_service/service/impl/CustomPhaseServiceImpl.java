@@ -29,9 +29,7 @@ public class CustomPhaseServiceImpl implements CustomPhaseService {
 
     @Override
     public CustomPhaseDto addPhase(CustomPhaseDto phaseDto) {
-//        if (repository.existsByName(phaseDto.getName())) {
-//            throw new IllegalArgumentException("Phase with name " + phaseDto.getName() + " already exists.");
-//        }
+
         if (repository.existsByNameAndDomainId(phaseDto.getName(), phaseDto.getDomainId())) {
             throw new IllegalArgumentException("Phase with name " + phaseDto.getName() + "in this domain" + phaseDto.getDomainId() + "  already exists.");
         }

@@ -35,4 +35,31 @@ public class KpiPilotageServiceImpl implements KpiPilotageService {
         return mapper.map(kpiPilotage, KpiPilotageDto.class);
     }
 
+    @Override
+    public void updateKPIName(String kpiName, Long kpiId) {
+        KpiPilotage kpi = kpiPilotageRepository.findById(kpiId)
+                .orElseThrow(() -> new ResourceNotFoundException("kpi not found with id:" + kpiId));
+
+        kpi.setName(kpiName);
+        kpiPilotageRepository.save(kpi);
+    }
+
+    @Override
+    public void updateKPITarget(String kpiTarget, Long kpiId) {
+        KpiPilotage kpi = kpiPilotageRepository.findById(kpiId)
+                .orElseThrow(() -> new ResourceNotFoundException("kpi not found with id:" + kpiId));
+
+        kpi.setTarget(kpiTarget);
+        kpiPilotageRepository.save(kpi);
+    }
+
+    @Override
+    public void updateKPICurrent(String kpiCurrent, Long kpiId) {
+        KpiPilotage kpi = kpiPilotageRepository.findById(kpiId)
+                .orElseThrow(() -> new ResourceNotFoundException("kpi not found with id:" + kpiId));
+
+        kpi.setCurrent(kpiCurrent);
+        kpiPilotageRepository.save(kpi);
+    }
+
 }

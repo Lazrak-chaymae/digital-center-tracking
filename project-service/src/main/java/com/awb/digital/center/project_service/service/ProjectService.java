@@ -1,8 +1,14 @@
 package com.awb.digital.center.project_service.service;
 
 import com.awb.digital.center.project_service.dto.*;
+import com.awb.digital.center.project_service.entity.CustomPhase;
+import com.awb.digital.center.project_service.entity.KpiPilotage;
+import com.awb.digital.center.project_service.entity.RemarkOrRisk;
+import com.awb.digital.center.project_service.entity.Squad;
 
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ProjectService {
@@ -19,4 +25,20 @@ public interface ProjectService {
     void addMilestone(MilestoneDto milestone, Long projectId);
     void addUpcomingRealization(RealizationDto upcomingRealization, Long projectId);
     void updateProjectPhase(CustomPhaseDto newPhase, Long projectId);
+    void updateProjectSquad(SquadDto squadDto, Long projectId);
+    void updateProjectName(String name, Long projectId);
+    void updateProjectOwner(String owner, Long projectId);
+    void updateProjectStartDate(LocalDate startDate, Long projectId);
+    void updateProjectExpectedDate(LocalDate expectedEndDate, Long projectId);
+    void updateProjectType(String type, Long projectId);
+    void updateProjectBudget(String budget, Long projectId);
+    void updateProjectDescription(String description, Long projectId);
+    void updateProjectAllocatedSprintCount(Integer allocatedSprintCount, Long projectId);
+    void updateProjectConsumedSprintCount(Integer consumedSprintCount, Long projectId);
+    void updateProjectCompletionPercentage(String ccompletionPercentage, Long projectId);
+    void updateProjectActualMepDate(LocalDate actualMepDate, Long projectId);
+    void updateProjectLastPhaseDate(LocalDate lastPhaseDate, Long projectId);
+    void updateProjectMilestone(String milestone, Integer index, Long projectId);
+    void updateProjectUpcomingRealization(String realization, Integer index, Long projectId);
+
 }
