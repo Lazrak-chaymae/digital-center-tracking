@@ -19,21 +19,21 @@ public class KpiPilotageController {
         KpiPilotageDto createdKpi =kpiPilotageService.createKpi(kpiPilotageDto, projectId);
         return new ResponseEntity<>(createdKpi, HttpStatus.CREATED);
     }
-    @PatchMapping("/{kpiId}/name")
+    @PatchMapping("/kpis/{kpiId}/name")
     public ResponseEntity<String> updateKpiName(@RequestBody String name,
                                               @PathVariable Long kpiId) {
         kpiPilotageService.updateKPIName(name, kpiId);
         return ResponseEntity.ok("kpi name updated successfully!.");
     }
 
-    @PatchMapping("/{kpiId}/target")
+    @PatchMapping("/kpis/{kpiId}/target")
     public ResponseEntity<String> updateKpiTarget(@RequestBody String target,
                                                 @PathVariable Long kpiId) {
         kpiPilotageService.updateKPITarget(target, kpiId);
         return ResponseEntity.ok("kpi target updated successfully!.");
     }
 
-    @PatchMapping("/{kpiId}/current")
+    @PatchMapping("/kpis/{kpiId}/current")
     public ResponseEntity<String> updateKpiCurrent(@RequestBody String current,
                                                  @PathVariable Long kpiId) {
         kpiPilotageService.updateKPICurrent(current, kpiId);

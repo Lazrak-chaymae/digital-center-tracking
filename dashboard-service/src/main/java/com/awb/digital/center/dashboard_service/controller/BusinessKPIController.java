@@ -62,7 +62,7 @@ public class BusinessKPIController {
         service.updateAchieved(id, achieved);
         return ResponseEntity.ok("Achieved deleted successfully!.");
     }
-    @PatchMapping("{id}/previousMeasure")
+    @PatchMapping("{id}/previous-measure")
     public ResponseEntity<String> updatePreviousMeasure(@PathVariable Long id, @RequestBody String previousMeasure){
         service.updatePreviousMeasure(id, previousMeasure);
         return ResponseEntity.ok("Previous Measure deleted successfully!.");
