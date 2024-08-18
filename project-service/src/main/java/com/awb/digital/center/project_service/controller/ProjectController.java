@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
@@ -89,5 +90,102 @@ public class ProjectController {
         service.updateProjectSquad(squadDto, projectId);
         return new ResponseEntity<>("Project squad updated successfully", HttpStatus.OK);
     }
+    @PatchMapping("/{projectId}/name")
+    public ResponseEntity<String> updateProjectName(
+            @RequestBody String name, @PathVariable Long projectId) {
+        service.updateProjectName(name, projectId);
+        return ResponseEntity.ok("Project name updated successfully");
+    }
+
+    @PatchMapping("/{projectId}/owner")
+    public ResponseEntity<String> updateProjectOwner(
+            @RequestBody String owner, @PathVariable Long projectId) {
+        service.updateProjectOwner(owner, projectId);
+        return ResponseEntity.ok("Project name updated successfully");
+    }
+
+    @PatchMapping("/{projectId}/start-date")
+    public ResponseEntity<String> updateProjectStartDate(
+            @RequestBody LocalDate startDate, @PathVariable Long projectId) {
+        service.updateProjectStartDate(startDate, projectId);
+        return ResponseEntity.ok("Project Start date updated successfully");
+    }
+
+    @PatchMapping("/{projectId}/expected-date")
+    public ResponseEntity<String> updateProjectExpectedDate(
+            @RequestBody LocalDate expectedEndDate, @PathVariable Long projectId) {
+        service.updateProjectExpectedDate(expectedEndDate, projectId);
+        return ResponseEntity.ok("Project expected date updated successfully");
+    }
+
+    @PatchMapping("/{projectId}/type")
+    public ResponseEntity<String> updateProjectType(
+            @RequestBody String type, @PathVariable Long projectId) {
+        service.updateProjectType(type, projectId);
+        return ResponseEntity.ok("Project type updated successfully");
+    }
+
+    @PatchMapping("/{projectId}/budget")
+    public ResponseEntity<String> updateProjectBudget(
+            @RequestBody String budget, @PathVariable Long projectId) {
+        service.updateProjectBudget(budget, projectId);
+        return ResponseEntity.ok("Project budget updated successfully");
+    }
+
+    @PatchMapping("/{projectId}/description")
+    public ResponseEntity<String> updateProjectDescription(
+            @RequestBody String description, @PathVariable Long projectId) {
+        service.updateProjectDescription(description, projectId);
+        return ResponseEntity.ok("Project description updated successfully");
+    }
+
+    @PatchMapping("/{projectId}/allocated-sprint")
+    public ResponseEntity<String> updateProjectAllocatedSprintCount(
+            @RequestBody Integer allocatedSprintCount, @PathVariable Long projectId) {
+        service.updateProjectAllocatedSprintCount(allocatedSprintCount, projectId);
+        return ResponseEntity.ok("Project allocated sprint updated successfully");
+    }
+
+    @PatchMapping("/{projectId}/consumed-sprint")
+    public ResponseEntity<String> updateProjectConsumedSprintCount(
+            @RequestBody Integer consumedSprintCount, @PathVariable Long projectId) {
+        service.updateProjectConsumedSprintCount(consumedSprintCount, projectId);
+        return ResponseEntity.ok("Project consumed sprint updated successfully");
+    }
+
+    @PatchMapping("/{projectId}/completion-percentage")
+    public ResponseEntity<String> updateProjectCompletionPercentage(
+            @RequestBody String completionPercentage, @PathVariable Long projectId) {
+        service.updateProjectCompletionPercentage(completionPercentage, projectId);
+        return ResponseEntity.ok("Project completion percentage updated successfully");
+    }
+
+    @PatchMapping("/{projectId}/actual-mep-date")
+    public ResponseEntity<String> updateProjectActualMepDate(
+            @RequestBody LocalDate actualMepDate, @PathVariable Long projectId) {
+        service.updateProjectActualMepDate(actualMepDate, projectId);
+        return ResponseEntity.ok("Project actual mep date updated successfully");
+    }
+
+    @PatchMapping("/{projectId}/last-phase-date")
+    public ResponseEntity<String> updateProjectLastPhaseDate(
+            @RequestBody LocalDate lastPhaseDate, @PathVariable Long projectId) {
+        service.updateProjectLastPhaseDate(lastPhaseDate, projectId);
+        return ResponseEntity.ok("Project last phase date updated successfully");
+    }
+    @PatchMapping("/{projectId}/milestone/{index}")
+    public ResponseEntity<String> updateProjectMilestone(
+            @RequestBody String milestone, @PathVariable Integer index, @PathVariable Long projectId) {
+        service.updateProjectMilestone(milestone, index, projectId);
+        return ResponseEntity.ok("Project milestone updated successfully");
+    }
+
+    @PatchMapping("/{projectId}/realization/{index}")
+    public ResponseEntity<String> updateProjectUpcomingRealization(
+            @RequestBody String realization, @PathVariable Integer index, @PathVariable Long projectId) {
+        service.updateProjectUpcomingRealization(realization, index, projectId);
+        return ResponseEntity.ok("Project realization updated successfully");
+    }
+
 
 }
