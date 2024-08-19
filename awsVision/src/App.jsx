@@ -31,6 +31,8 @@ function App() {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
 
+  console.log(isUserLoggedIn());
+
   const items = [
     {
       key: "1",
@@ -70,23 +72,25 @@ function App() {
   
  
   function AuthenticatedRoute({ children }) {
-    if (isAuthenticated) {
-      return children;
+    //const Authenticated = isUserLoggedIn();
+    if (!isUserLoggedIn()) {
+      console.log("User is not authenticated, redirecting to login");
+      return <Navigate to="/login" replace />; 
     }
-    return <Navigate to="/login" /> ;
+    return children ;
     
   }
  
   function handleLogout(){
     logout();
     console.log("is log out"); 
-    navigate("/");
+    navigate("/login");
   }
   
   return (
     <>
     
-    {isAuthenticated && (
+    {isUserLoggedIn() ? (
       <Layout>
       
           <Sider
@@ -132,9 +136,13 @@ function App() {
           <Content style={contentStyle}>
             
             <Routes>
-                <Route path="/home" element={
+                {/* <Route path="/home" element={
                   <AuthenticatedRoute><HomeComponent /></AuthenticatedRoute>
+                  }></Route> */}
+                  <Route path="/home" element={
+                  isUserLoggedIn() ? <HomeComponent /> : <Navigate to="/login" />
                   }></Route>
+                  
                 <Route
                   path="/dashboard-inLaunch"
                   element={ <AuthenticatedRoute><DashboardLcmComponent /></AuthenticatedRoute>}
@@ -169,8 +177,8 @@ function App() {
           </Content>
         </Layout>
       </Layout>
-    )}
-    {!isAuthenticated && (
+    ) :
+    (
       <Layout style={{backgroundColor: 'white'}}>
         <Header  className="header-login">
            <img src={awbLogo} className="logo-login"/>
@@ -184,7 +192,7 @@ function App() {
         </Content>
       </Layout>
    
-    )}
+    ) }
     </>
   );
 }

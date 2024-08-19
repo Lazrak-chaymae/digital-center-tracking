@@ -28,16 +28,16 @@ public interface ProjectService {
     void updateProjectSquad(SquadDto squadDto, Long projectId);
     void updateProjectName(String name, Long projectId);
     void updateProjectOwner(String owner, Long projectId);
-    void updateProjectStartDate(LocalDate startDate, Long projectId);
-    void updateProjectExpectedDate(LocalDate expectedEndDate, Long projectId);
+    void updateProjectStartDate(String startDate, Long projectId);
+    void updateProjectExpectedDate(String expectedEndDate, Long projectId);
     void updateProjectType(String type, Long projectId);
     void updateProjectBudget(String budget, Long projectId);
     void updateProjectDescription(String description, Long projectId);
     void updateProjectAllocatedSprintCount(Integer allocatedSprintCount, Long projectId);
     void updateProjectConsumedSprintCount(Integer consumedSprintCount, Long projectId);
     void updateProjectCompletionPercentage(String ccompletionPercentage, Long projectId);
-    void updateProjectActualMepDate(LocalDate actualMepDate, Long projectId);
-    void updateProjectLastPhaseDate(LocalDate lastPhaseDate, Long projectId);
+    void updateProjectActualMepDate(String actualMepDate, Long projectId);
+    void updateProjectLastPhaseDate(String lastPhaseDate, Long projectId);
     void updateProjectMilestone(String milestone, Integer index, Long projectId);
     void updateProjectUpcomingRealization(String realization, Integer index, Long projectId);
 

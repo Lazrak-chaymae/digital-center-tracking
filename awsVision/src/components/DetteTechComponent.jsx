@@ -32,7 +32,7 @@ const DetteTechComponent = () => {
     const updatedTitle = e.target.textContent.trim();
     if (updatedTitle  === '') {
       e.target.classList.add('cell-error');
-      getSupport();
+      GetDebts();
       setTimeout(() => {
         e.target.classList.remove('cell-error');
       }, 2000);
@@ -59,7 +59,7 @@ const DetteTechComponent = () => {
     const updatedImpact = e.target.textContent.trim();
     if (updatedImpact  === '') {
       e.target.classList.add('cell-error');
-      getSupport();
+      GetDebts();
       setTimeout(() => {
         e.target.classList.remove('cell-error');
       }, 2000);
@@ -86,7 +86,7 @@ const DetteTechComponent = () => {
     const updatedCost = e.target.textContent.trim();
     if (updatedCost  === '') {
       e.target.classList.add('cell-error');
-      getSupport();
+      GetDebts();
       setTimeout(() => {
         e.target.classList.remove('cell-error');
       }, 2000);
@@ -114,7 +114,7 @@ const DetteTechComponent = () => {
     const updatedType = e.target.textContent.trim();
     if (updatedType === '') {
       e.target.classList.add('cell-error');
-      getSupport();
+      GetDebts();
       setTimeout(() => {
         e.target.classList.remove('cell-error');
       }, 2000);
@@ -141,7 +141,7 @@ const DetteTechComponent = () => {
     const updatedVoluntary = e.target.textContent.trim();
     if (updatedVoluntary === '') {
       e.target.classList.add('cell-error');
-      getSupport();
+      GetDebts();
       setTimeout(() => {
         e.target.classList.remove('cell-error');
       }, 2000);
@@ -168,7 +168,7 @@ const DetteTechComponent = () => {
     const updatedComment = e.target.textContent.trim();
     if (updatedComment === '') {
       e.target.classList.add('cell-error');
-      getSupport();
+      GetDebts();
       setTimeout(() => {
         e.target.classList.remove('cell-error');
       }, 2000);

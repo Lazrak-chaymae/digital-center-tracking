@@ -3,6 +3,7 @@ import { deleteRelease, listReleases } from '../services/Release';
 import AddRelease from './AddRelease';
 import { isAdminUser } from '../services/AuthService';
 import { DeleteOutlined } from "@ant-design/icons";
+import { Input } from 'antd';
 import { updateVersion, updateType, updateInstallationDate, updateEvolution, updateHotfixContents, updatePackages } from '../services/Release';
 
 
@@ -33,7 +34,7 @@ const ReleaseComponent = () => {
     const updatedVersion = e.target.textContent.trim();
     if (updatedVersion === '') {
       e.target.classList.add('cell-error');
-      getSupport();
+      getReleases();
       setTimeout(() => {
         e.target.classList.remove('cell-error');
       }, 2000);
@@ -60,7 +61,7 @@ const ReleaseComponent = () => {
     const updatedType = e.target.textContent.trim();
     if (updatedType === '') {
       e.target.classList.add('cell-error');
-      getSupport();
+      getReleases();
       setTimeout(() => {
         e.target.classList.remove('cell-error');
       }, 2000);
@@ -87,7 +88,7 @@ const ReleaseComponent = () => {
     const updatedEvolution = e.target.textContent.trim();
     if (updatedEvolution === '') {
       e.target.classList.add('cell-error');
-      getSupport();
+      getReleases();
       setTimeout(() => {
         e.target.classList.remove('cell-error');
       }, 2000);
@@ -114,7 +115,7 @@ const ReleaseComponent = () => {
     const updatedContent = e.target.textContent.trim();
     if (updatedContent === '') {
       e.target.classList.add('cell-error');
-      getSupport();
+      getReleases();
       setTimeout(() => {
         e.target.classList.remove('cell-error');
       }, 2000);
@@ -136,12 +137,39 @@ const ReleaseComponent = () => {
       }, 2000);
     }
   };
+  const handleUpdateInstallationDate = async (releaseId, e) => {
+  
+    const updatedDate = e.target.value;
+    if (updatedDate === '') {
+      e.target.classList.add('cell-error');
+      getReleases();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateInstallationDate(releaseId, updatedDate);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Installation date:', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
   const handleUpdatePackage = async (releaseId, index, e) => {
   
     const updatedPackage = e.target.textContent.trim();
     if (updatedPackage === '') {
       e.target.classList.add('cell-error');
-      getSupport();
+      getReleases();
       setTimeout(() => {
         e.target.classList.remove('cell-error');
       }, 2000);
@@ -187,7 +215,12 @@ const ReleaseComponent = () => {
         <tbody>
              {  releases.map( (release) => (
                  <tr key={release.id}>
-                    <td>{release.installationDate}</td>
+                    <td>
+                    <Input type="date" value= {release.installationDate} 
+                     style={{width: '140px'}}
+                     onChange={(e) => handleUpdateInstallationDate(release.id, e)}
+                    />
+                     </td>
                     <td
                     contentEditable="true"
                     onBlur={(e) => handleUpdateVersion(release.id, e)}

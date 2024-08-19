@@ -10,5 +10,6 @@ public interface TaskService {
       TaskDto  createTask(TaskDto taskDto);
       TaskDto updateTask(TaskDto taskDto, Long id);
       void deleteTask(Long id);
-
+      void updateTaskName(Long id, String name);
+      void updateTaskProgress(Long id, String progress);
 }

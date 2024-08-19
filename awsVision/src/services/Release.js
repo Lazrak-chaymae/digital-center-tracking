@@ -6,7 +6,10 @@ export const listReleases = (domainId) => axios.get(REST_API_BASE_URL + '/domain
 export const addRelease = (release) => axios.post(REST_API_BASE_URL,release);
 export const deleteRelease = (releaseId) => axios.delete(REST_API_BASE_URL + '/' + releaseId);
 
-export const updateInstallationDate = (releaseId, installationDate) => axios.patch(REST_API_BASE_URL + '/' + releaseId + '/installation-date', installationDate);
+export const updateInstallationDate = (releaseId, installationDate) => axios.patch(REST_API_BASE_URL + '/' + releaseId + '/installation-date', installationDate,{ headers: {
+  "Content-Type": "text/plain",
+},
+});
 export const updateVersion = (releaseId, version) => axios.patch(REST_API_BASE_URL + '/' + releaseId + '/version', version, {
     headers: {
       "Content-Type": "text/plain",

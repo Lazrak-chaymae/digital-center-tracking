@@ -24,15 +24,27 @@ export const updatePriority = (dependencyId, priority) =>
 export const updateResponsibleTeam = (dependencyId, responsibleTeam) =>
   axios.patch(
     REST_API_BASE_URL + "/" + dependencyId + "/responsible-team",
-    responsibleTeam
+    responsibleTeam, {
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    }
   );
 export const updateBeneficiaryTeam = (dependencyId, beneficiaryTeam) =>
   axios.patch(
     REST_API_BASE_URL + "/" + dependencyId + "/beneficiary-team",
-    beneficiaryTeam
+    beneficiaryTeam, {
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    }
   );
 export const updateScheduledDate = (dependencyId, scheduledDate) =>
   axios.patch(
     REST_API_BASE_URL + "/" + dependencyId + "/scheduled-date",
-    scheduledDate
+    scheduledDate,{
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    }
   );

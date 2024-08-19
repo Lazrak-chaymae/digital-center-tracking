@@ -10,5 +10,5 @@ public interface EtapeService {
        EtapeDto  addEtape(EtapeDto etapeDto);
        EtapeDto  updateEtape(EtapeDto etapeDto, Long id);
        void deleteEtape(Long id);
-
+       void updateEtapeName(Long id, String name);
 }

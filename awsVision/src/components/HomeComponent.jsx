@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ProjectCard from './ProjectCard'
 import { listProjects } from '../services/Project'
+import TinyCompo from './TinyCompo'
 
 
 const HomeComponent = () => {
@@ -38,7 +39,12 @@ useEffect(() => {
           </div>
         ))}
       </div>
+       <h4>Tiny</h4>
+      <div>
+        <TinyCompo />
+      </div>
     </div>
+   
   )
 }
 
