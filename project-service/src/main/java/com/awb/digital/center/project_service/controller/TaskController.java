@@ -40,4 +40,14 @@ public class TaskController {
         service.deleteTask(id);
         return ResponseEntity.ok("Task deleted successfully !.");
     }
+    @PatchMapping("/{id}/name")
+    public ResponseEntity<String> updateTaskName(@PathVariable Long id, @RequestBody String name){
+        service.updateTaskName(id, name);
+        return ResponseEntity.ok("Task name updated successfully !.");
+    }
+    @PatchMapping("/{id}/progress")
+    public ResponseEntity<String> updateTaskProgress(@PathVariable Long id, @RequestBody String progress){
+        service.updateTaskProgress(id, progress);
+        return ResponseEntity.ok("Task progress updated successfully !.");
+    }
 }

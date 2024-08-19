@@ -106,14 +106,14 @@ public class ProjectController {
 
     @PatchMapping("/{projectId}/start-date")
     public ResponseEntity<String> updateProjectStartDate(
-            @RequestBody LocalDate startDate, @PathVariable Long projectId) {
+            @RequestBody String startDate, @PathVariable Long projectId) {
         service.updateProjectStartDate(startDate, projectId);
         return ResponseEntity.ok("Project Start date updated successfully");
     }
 
     @PatchMapping("/{projectId}/expected-date")
     public ResponseEntity<String> updateProjectExpectedDate(
-            @RequestBody LocalDate expectedEndDate, @PathVariable Long projectId) {
+            @RequestBody String expectedEndDate, @PathVariable Long projectId) {
         service.updateProjectExpectedDate(expectedEndDate, projectId);
         return ResponseEntity.ok("Project expected date updated successfully");
     }
@@ -162,14 +162,14 @@ public class ProjectController {
 
     @PatchMapping("/{projectId}/actual-mep-date")
     public ResponseEntity<String> updateProjectActualMepDate(
-            @RequestBody LocalDate actualMepDate, @PathVariable Long projectId) {
+            @RequestBody String actualMepDate, @PathVariable Long projectId) {
         service.updateProjectActualMepDate(actualMepDate, projectId);
         return ResponseEntity.ok("Project actual mep date updated successfully");
     }
 
     @PatchMapping("/{projectId}/last-phase-date")
     public ResponseEntity<String> updateProjectLastPhaseDate(
-            @RequestBody LocalDate lastPhaseDate, @PathVariable Long projectId) {
+            @RequestBody String lastPhaseDate, @PathVariable Long projectId) {
         service.updateProjectLastPhaseDate(lastPhaseDate, projectId);
         return ResponseEntity.ok("Project last phase date updated successfully");
     }

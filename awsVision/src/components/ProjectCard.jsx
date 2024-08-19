@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Card, Button } from "antd";
 import { MenuOutlined, CalendarOutlined } from "@ant-design/icons";
 import Dropdownessai from "./Dropdownessai";
+import DropDownSquad from "./DropDownSquad";
 
 const ProjectCard = ({
   id,
@@ -27,7 +28,7 @@ const ProjectCard = ({
       </div>
       <div className="info-row">
         <MenuOutlined className="icon" /> <span className="label">Squad</span>
-        <Button className="square-button">{squad ? squad.name : "N/A"}</Button>
+        <DropDownSquad  projectId={id} refresh={refreshProject}  upSquad={squad}/>
       </div>
       <div className="info-row">
         <CalendarOutlined className="icon" />

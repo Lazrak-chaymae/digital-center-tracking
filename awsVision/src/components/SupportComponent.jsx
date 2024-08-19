@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { supportItem } from "../services/Support";
 import AddSupport from "./AddSupport";
 import { isAdminUser } from "../services/AuthService";
+import { updateTicketCount } from "../services/Support";
+import { updateEffortSpent } from "../services/Support";
+import { updateTopSubjects } from "../services/Support";
 
 const SupportComponent = () => {
   const [support, setSupport] = useState({});
@@ -16,6 +19,90 @@ const SupportComponent = () => {
         console.error(error);
       });
   };
+
+ 
+  const handleUpdateTicketCount = async (e, supportId) => {
+  
+    const updatedCount = e.target.textContent.trim();
+    if (updatedCount === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateTicketCount(supportId, updatedCount);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating ticket count:', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+  const handleUpdateEffortSpent = async (e, supportId) => {
+  
+    const updatedEffort = e.target.textContent.trim();
+    if (updatedEffort === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateEffortSpent(supportId, updatedEffort);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Effort :', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+  const handleUpdateTopSubject = async (e, index, supportId) => {
+  
+    const updatedSubject = e.target.textContent.trim();
+    if (updatedSubject === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateTopSubjects(supportId, index, updatedSubject);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Subject:', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+  
 
   useEffect(() => {
     getSupport();
@@ -36,8 +123,16 @@ const SupportComponent = () => {
         {support && (
         <tbody>
             <tr key={support.id}>
-              <td>{support.ticketCount}</td>
-              <td>{support.effortSpent}</td>
+              <td
+               contentEditable="true"
+               onBlur={(e) => handleUpdateTicketCount(e, support.id)}
+               suppressContentEditableWarning={true}
+              >{support.ticketCount}</td>
+              <td
+              contentEditable="true"
+              onBlur={(e) => handleUpdateEffortSpent(e, support.id)}
+              suppressContentEditableWarning={true}
+              >{support.effortSpent}</td>
             </tr>
         </tbody>
         )}
@@ -55,7 +150,11 @@ const SupportComponent = () => {
         <tbody>
           {support.topSubjects && support.topSubjects.map((subject, index) => (
               <tr key={index}>
-                <td>{subject}</td>
+                <td
+                contentEditable="true"
+                onBlur={(e) => handleUpdateTopSubject(e, index, support.id)}
+                suppressContentEditableWarning={true}
+                >{subject}</td>
               </tr>
             ))
           }

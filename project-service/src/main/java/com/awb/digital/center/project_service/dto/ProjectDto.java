@@ -26,7 +26,7 @@ public class ProjectDto {
     private String type;
     private String budget;
     private String description;
-    //private String status;
+    private String status;
     private Integer allocatedSprintCount;
     private Integer consumedSprintCount;
     private String completionPercentage;
@@ -35,5 +35,7 @@ public class ProjectDto {
     private List<RemarkOrRisk> remarks;
     private List<String> milestones = new ArrayList<>();
     private List<String> upcomingRealizations = new ArrayList<>();
+    private LocalDate actualMepDate;
+    private LocalDate lastPhaseDate;
 
 }

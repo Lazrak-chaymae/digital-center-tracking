@@ -210,20 +210,22 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void updateProjectStartDate(LocalDate startDate, Long projectId) {
+    public void updateProjectStartDate(String startDate, Long projectId) {
+        LocalDate date = LocalDate.parse(startDate);
         Project project = repository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
 
-        project.setStartDate(startDate);
+        project.setStartDate(date);
         repository.save(project);
     }
 
     @Override
-    public void updateProjectExpectedDate(LocalDate expectedEndDate, Long projectId) {
+    public void updateProjectExpectedDate(String expectedEndDate, Long projectId) {
+        LocalDate date = LocalDate.parse(expectedEndDate);
         Project project = repository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
 
-        project.setExpectedEndDate(expectedEndDate);
+        project.setExpectedEndDate(date);
         repository.save(project);
     }
 
@@ -282,20 +284,22 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void updateProjectActualMepDate(LocalDate actualMepDate, Long projectId) {
+    public void updateProjectActualMepDate(String actualMepDate, Long projectId) {
+        LocalDate date = LocalDate.parse(actualMepDate);
         Project project = repository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
 
-        project.setActualMepDate(actualMepDate);
+        project.setActualMepDate(date);
         repository.save(project);
     }
 
     @Override
-    public void updateProjectLastPhaseDate(LocalDate lastPhaseDate, Long projectId) {
+    public void updateProjectLastPhaseDate(String lastPhaseDate, Long projectId) {
+        LocalDate date = LocalDate.parse(lastPhaseDate);
         Project project = repository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
 
-        project.setLastPhaseDate(lastPhaseDate);
+        project.setLastPhaseDate(date);
         repository.save(project);
     }
 

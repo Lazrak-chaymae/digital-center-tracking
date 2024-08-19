@@ -51,4 +51,13 @@ public class EtapeServiceImpl implements EtapeService {
 
         etapeRepository.delete(etape);
     }
+
+    @Override
+    public void updateEtapeName(Long id, String name) {
+        Etape etape = etapeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Etape doesn't exists with id : " + id));
+
+        etape.setName(name);
+        etapeRepository.save(etape);
+    }
 }

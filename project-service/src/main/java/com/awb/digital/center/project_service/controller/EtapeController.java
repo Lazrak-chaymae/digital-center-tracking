@@ -2,6 +2,7 @@ package com.awb.digital.center.project_service.controller;
 
 import com.awb.digital.center.project_service.dto.EtapeDto;
 import com.awb.digital.center.project_service.service.EtapeService;
+import jakarta.ws.rs.PATCH;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,5 +40,11 @@ public class EtapeController {
     public ResponseEntity<String> deleteEtape(@PathVariable Long id){
         service.deleteEtape(id);
         return ResponseEntity.ok("Etape deleted successfully !.");
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<String> updateEtapeName(@PathVariable Long id, @RequestBody String name){
+        service.updateEtapeName(id, name);
+        return ResponseEntity.ok("Etape name updated successfully !.");
     }
 }

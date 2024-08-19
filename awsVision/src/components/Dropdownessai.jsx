@@ -9,7 +9,7 @@ const Dropdownessai = ({ projectId, refresh , upPhase}) => {
   const [addPhase, setAddPhase] = useState(false);
   const [createdPhase, setCreatedPhase] = useState("");
   const domainId = sessionStorage.getItem("domainId");
- const [projectPhase, setProjectPhase] = useState(upPhase);
+  const [projectPhase, setProjectPhase] = useState(upPhase);
   
  
  const getPhases = () => {
