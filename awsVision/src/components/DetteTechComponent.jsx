@@ -4,6 +4,7 @@ import AddDetteTech from "./AddDetteTech";
 import { isAdminUser } from "../services/AuthService";
 import { DeleteOutlined } from "@ant-design/icons";
 import { deleteDebt } from "../services/DetteTechnique";
+import { updateType, updateComments, updateCost, updateImpact, updateTitle, updateVoluntary } from "../services/DetteTechnique";
 
 const DetteTechComponent = () => {
   const [debts, setDebts] = useState([]);
@@ -25,6 +26,169 @@ const DetteTechComponent = () => {
       .catch((error) => {
         console.error(error);
       });
+  };
+  const handleUpdateTitle = async (debtId, e) => {
+  
+    const updatedTitle = e.target.textContent.trim();
+    if (updatedTitle  === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateTitle(debtId, updatedTitle );
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Title :', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+  const handleUpdateImpact= async (debtId, e) => {
+  
+    const updatedImpact = e.target.textContent.trim();
+    if (updatedImpact  === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateImpact(debtId, updatedImpact );
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Impact :', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+  const handleUpdateCost= async (debtId, e) => {
+  
+    const updatedCost = e.target.textContent.trim();
+    if (updatedCost  === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateCost(debtId, updatedCost );
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Cost :', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+  
+  const handleUpdateType = async (debtId, e) => {
+  
+    const updatedType = e.target.textContent.trim();
+    if (updatedType === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateType(debtId, updatedType);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Type:', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+  const handleUpdateVoluntary = async (debtId, e) => {
+  
+    const updatedVoluntary = e.target.textContent.trim();
+    if (updatedVoluntary === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateVoluntary(debtId, updatedVoluntary);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Voluntary:', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+  const handleUpdateComment = async (debtId, index, e) => {
+  
+    const updatedComment = e.target.textContent.trim();
+    if (updatedComment === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateComments(debtId, index, updatedComment);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Comment:', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
   };
   useEffect(() => {
     GetDebts();
@@ -48,14 +212,38 @@ const DetteTechComponent = () => {
         <tbody>
           {debts.map((debt) => (
             <tr key={debt.id}>
-              <td>{debt.title}</td>
-              <td>{debt.type}</td>
-              <td>{debt.impact}</td>
-              <td>{debt.cost}</td>
-              <td>{debt.voluntary}</td>
+              <td
+              contentEditable="true"
+              onBlur={(e) => handleUpdateTitle(debt.id, e)}
+              suppressContentEditableWarning={true}
+              >{debt.title}</td>
+              <td
+              contentEditable="true"
+              onBlur={(e) => handleUpdateType(debt.id, e)}
+              suppressContentEditableWarning={true}
+              >{debt.type}</td>
+              <td
+              contentEditable="true"
+              onBlur={(e) => handleUpdateImpact(debt.id, e)}
+              suppressContentEditableWarning={true}
+              >{debt.impact}</td>
+              <td
+              contentEditable="true"
+              onBlur={(e) => handleUpdateCost(debt.id, e)}
+              suppressContentEditableWarning={true}
+              >{debt.cost}</td>
+              <td
+              contentEditable="true"
+              onBlur={(e) => handleUpdateVoluntary(debt.id, e)}
+              suppressContentEditableWarning={true}
+              >{debt.voluntary}</td>
               <td>
                 {debt.comments.map((comment, index) => (
-                  <span key={index}>
+                  <span key={index}
+                  contentEditable="true"
+               onBlur={(e) => handleUpdateComment(debt.id, index, e)}
+               suppressContentEditableWarning={true}
+                  >
                     {comment}
                     <br />
                   </span>

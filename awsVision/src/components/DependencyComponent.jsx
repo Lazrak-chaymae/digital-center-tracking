@@ -3,6 +3,7 @@ import { deleteDependency, listDependencies } from '../services/Dependency';
 import AddDependency from './AddDependency';
 import { isAdminUser } from '../services/AuthService';
 import { DeleteOutlined } from "@ant-design/icons"; 
+import { updateTitle, updatePriority } from '../services/Dependency';
 
 const DependencyComponent = () => {
 
@@ -26,6 +27,61 @@ const DependencyComponent = () => {
          console.error(error);
      })
   }
+  const handleUpdateTitle = async (e, dependencyId) => {
+  
+    const updatedTitle = e.target.textContent.trim();
+    if ( updatedTitle === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateTitle(dependencyId, updatedTitle);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Title:', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+ 
+  const  handleUpdatePriority = async (e, dependencyId) => {
+  
+    const updatedPriority = e.target.textContent.trim();
+    if ( updatedPriority === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updatePriority(dependencyId, updatedPriority);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Priority:', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
   useEffect(() => {
      getDependencies();
   }, [dependencies]);
@@ -50,8 +106,16 @@ const DependencyComponent = () => {
             { dependencies.map(
                dependency => (
                   <tr key={dependency.id}>
-                     <td>{dependency.title}</td>
-                     <td>{dependency.priority}</td>
+                     <td
+                     contentEditable= 'true'
+                     onBlur={(e) => handleUpdateTitle(e, dependency.id)}
+                     suppressContentEditableWarning={true}
+                     >{dependency.title}</td>
+                     <td
+                     contentEditable= 'true'
+                     onBlur={(e) => handleUpdatePriority(e, dependency.id)}
+                     suppressContentEditableWarning={true}
+                     >{dependency.priority}</td>
                      <td>{dependency.responsibleTeam}</td>
                      <td>{dependency.beneficiaryTeam}</td>
                      <td>{dependency.scheduledDate}</td>

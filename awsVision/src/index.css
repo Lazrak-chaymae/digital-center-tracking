@@ -253,3 +253,15 @@ button {
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.05);
 }
+
+/* update */
+
+.cell-success {
+  border: 2px solid green;
+  background-color: green;
+}
+
+.cell-error {
+  border: 2px solid red;
+  background-color: red;
+}

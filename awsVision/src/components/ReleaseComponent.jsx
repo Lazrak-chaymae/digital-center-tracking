@@ -3,6 +3,7 @@ import { deleteRelease, listReleases } from '../services/Release';
 import AddRelease from './AddRelease';
 import { isAdminUser } from '../services/AuthService';
 import { DeleteOutlined } from "@ant-design/icons";
+import { updateVersion, updateType, updateInstallationDate, updateEvolution, updateHotfixContents, updatePackages } from '../services/Release';
 
 
 const ReleaseComponent = () => {
@@ -27,6 +28,141 @@ const ReleaseComponent = () => {
           console.error(error);
       })
   }
+  const handleUpdateVersion = async (releaseId, e) => {
+  
+    const updatedVersion = e.target.textContent.trim();
+    if (updatedVersion === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateVersion(releaseId, updatedVersion);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Version :', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+  const handleUpdateType = async (releaseId, e) => {
+  
+    const updatedType = e.target.textContent.trim();
+    if (updatedType === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateType(releaseId, updatedType);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Type:', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+  const handleUpdateEvolution = async (releaseId, e) => {
+  
+    const updatedEvolution = e.target.textContent.trim();
+    if (updatedEvolution === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateEvolution(releaseId, updatedEvolution);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Evolution:', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+  const handleUpdateContent = async (releaseId, index, e) => {
+  
+    const updatedContent = e.target.textContent.trim();
+    if (updatedContent === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updateHotfixContents(releaseId, index, updatedContent);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Content:', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
+  const handleUpdatePackage = async (releaseId, index, e) => {
+  
+    const updatedPackage = e.target.textContent.trim();
+    if (updatedPackage === '') {
+      e.target.classList.add('cell-error');
+      getSupport();
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+      return; 
+    }
+    try {
+      const response = await updatePackages(releaseId, index, updatedPackage);
+      console.log(response.data);
+  
+      e.target.classList.add('cell-success');
+      setTimeout(() => {
+      e.target.classList.remove('cell-success');
+      }, 2000);
+    } catch (error) {
+      console.error('Error updating Package:', error);
+      e.target.classList.add('cell-error');
+      setTimeout(() => {
+        e.target.classList.remove('cell-error');
+      }, 2000);
+    }
+  };
   useEffect(() => {
      getReleases();
   }, [releases])
@@ -52,21 +188,41 @@ const ReleaseComponent = () => {
              {  releases.map( (release) => (
                  <tr key={release.id}>
                     <td>{release.installationDate}</td>
-                    <td>{release.version}</td>
-                    <td>{release.type}</td>
+                    <td
+                    contentEditable="true"
+                    onBlur={(e) => handleUpdateVersion(release.id, e)}
+                    suppressContentEditableWarning={true}
+                    >{release.version}</td>
+                    <td
+                    contentEditable="true"
+                    onBlur={(e) => handleUpdateType(release.id, e)}
+                    suppressContentEditableWarning={true}
+                    >{release.type}</td>
                     <td>{ release.packages.map((pkg, index) => (
-                  <span key={index}>
+                  <span key={index}
+                  contentEditable="true"
+                  onBlur={(e) => handleUpdatePackage(release.id, index, e)}
+                  suppressContentEditableWarning={true}
+                  >
                     {pkg}
                     <br />
                   </span>
                 ))}</td>
                     <td>{release.hotfixContents.map((content, index) => (
-                  <span key={index}>
+                  <span key={index}
+                  contentEditable="true"
+                  onBlur={(e) => handleUpdateContent(release.id, index, e)}
+                  suppressContentEditableWarning={true}
+                  >
                     {content}
                     <br />
                   </span>
                 ))}</td>
-                    <td>{release.evolution}</td>
+                    <td
+                    contentEditable="true"
+                    onBlur={(e) => handleUpdateEvolution(release.id, e)}
+                    suppressContentEditableWarning={true}
+                    >{release.evolution}</td>
                     {isAdminUser() &&
                     <td><DeleteOutlined onClick={() => handleReleaseDelete(release.id)}/></td>
 }
