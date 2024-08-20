@@ -138,28 +138,33 @@ const DependencyComponent = () => {
                dependency => (
                   <tr key={dependency.id}>
                      <td
-                     contentEditable= 'true'
+                     contentEditable= {isAdminUser ? 'true' : 'false'}
                      onBlur={(e) => handleUpdateTitle(e, dependency.id)}
                      suppressContentEditableWarning={true}
                      >{dependency.title}</td>
                      <td
-                     contentEditable= 'true'
+                     contentEditable= {isAdminUser ? 'true' : 'false'}
                      onBlur={(e) => handleUpdatePriority(e, dependency.id)}
                      suppressContentEditableWarning={true}
                      >{dependency.priority}</td>
                      <td>
-                     <DropDownAllSquad2 dependencyId={dependency.id} refresh={getDependencies} upTeam={dependency.responsibleTeam}/>
-                      {/* {dependency.responsibleTeam} */}
+                     {isAdminUser ? 
+                      <DropDownAllSquad2 dependencyId={dependency.id} refresh={getDependencies} upTeam={dependency.responsibleTeam}/>
+                
+                     : dependency.responsibleTeam }
+                    
                       </td>
                      <td>
+                     {isAdminUser ? 
                       <DropDownAllSquad dependencyId={dependency.id} refresh={getDependencies} upTeam={dependency.beneficiaryTeam}/>
-                      {/* {dependency.beneficiaryTeam} */}
+                     : dependency.beneficiaryTeam }
                       </td>
                      <td>
+                     {isAdminUser ? 
                      <Input type="date" value= {dependency.scheduledDate} 
                      style={{width: '140px'}}
                      onChange={(e) => handleUpdateScheduledDate(e, dependency.id)}
-                    />
+                    /> : dependency.scheduledDate }
                      </td>
                      {isAdminUser() &&
                      <td><DeleteOutlined onClick={() => handleDependencyDelete(dependency.id)} /></td>

@@ -3,6 +3,7 @@ import { Card, Button } from "antd";
 import { MenuOutlined, CalendarOutlined } from "@ant-design/icons";
 import Dropdownessai from "./Dropdownessai";
 import DropDownSquad from "./DropDownSquad";
+import { isAdminUser } from "../services/AuthService";
 
 const ProjectCard = ({
   id,
@@ -24,11 +25,15 @@ const ProjectCard = ({
      
       <div className="info-row">
              <MenuOutlined className="icon" /> <span className="label">Phase</span> 
+             {isAdminUser ? 
              <Dropdownessai projectId={id} refresh={refreshProject} upPhase={phase}/>
+             :  <Button className="square-button">{phase ? phase.name : "N/A"}</Button> }
       </div>
       <div className="info-row">
         <MenuOutlined className="icon" /> <span className="label">Squad</span>
+        {isAdminUser ? 
         <DropDownSquad  projectId={id} refresh={refreshProject}  upSquad={squad}/>
+        : <Button className="square-button">{squad ? squad.name : "N/A"} </Button> }
       </div>
       <div className="info-row">
         <CalendarOutlined className="icon" />

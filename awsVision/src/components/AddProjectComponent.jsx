@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { addProject, listSquadsByDomain } from "../services/Project";
 import {Alert } from "antd"
-import { equals } from "validator";
+import { useNavigate } from "react-router-dom";
+
 
 
 const AddProjectComponent = () => {
@@ -21,6 +22,8 @@ const AddProjectComponent = () => {
   const [success,setSuccess] = useState(false);
   const [validDate, setValidDate] = useState(true);
   const domainId = sessionStorage.getItem("domainId");
+  const navigate = useNavigate();
+
 
   const getSquads = () => {
     listSquadsByDomain(domainId)
@@ -65,9 +68,14 @@ const AddProjectComponent = () => {
     }
     addProject(projectData)
       .then((response) => {
+        const id = response.data.id;
         console.log("Project added successfully:", response.data);
+        console.log("project with id : " , response.data.id)
         setSuccess(true);
+        navigate(`/project/${id}`);
+        
         resetForm();
+
       })
       .catch((error) => {
         console.error("There was an error adding the project:", error);

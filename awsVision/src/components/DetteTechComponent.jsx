@@ -213,34 +213,34 @@ const DetteTechComponent = () => {
           {debts.map((debt) => (
             <tr key={debt.id}>
               <td
-              contentEditable="true"
+              contentEditable={isAdminUser ? 'true' : 'false'}
               onBlur={(e) => handleUpdateTitle(debt.id, e)}
               suppressContentEditableWarning={true}
               >{debt.title}</td>
               <td
-              contentEditable="true"
+              contentEditable={isAdminUser ? 'true' : 'false'}
               onBlur={(e) => handleUpdateType(debt.id, e)}
               suppressContentEditableWarning={true}
               >{debt.type}</td>
               <td
-              contentEditable="true"
+              contentEditable={isAdminUser ? 'true' : 'false'}
               onBlur={(e) => handleUpdateImpact(debt.id, e)}
               suppressContentEditableWarning={true}
               >{debt.impact}</td>
               <td
-              contentEditable="true"
+              contentEditable={isAdminUser ? 'true' : 'false'}
               onBlur={(e) => handleUpdateCost(debt.id, e)}
               suppressContentEditableWarning={true}
               >{debt.cost}</td>
               <td
-              contentEditable="true"
+              contentEditable={isAdminUser ? 'true' : 'false'}
               onBlur={(e) => handleUpdateVoluntary(debt.id, e)}
               suppressContentEditableWarning={true}
               >{debt.voluntary}</td>
               <td>
                 {debt.comments.map((comment, index) => (
                   <span key={index}
-                  contentEditable="true"
+                  contentEditable={isAdminUser ? 'true' : 'false'}
                onBlur={(e) => handleUpdateComment(debt.id, index, e)}
                suppressContentEditableWarning={true}
                   >

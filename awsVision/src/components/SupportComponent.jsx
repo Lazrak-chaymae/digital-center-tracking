@@ -124,12 +124,12 @@ const SupportComponent = () => {
         <tbody>
             <tr key={support.id}>
               <td
-               contentEditable="true"
+               contentEditable={isAdminUser ? 'true' : 'false'}
                onBlur={(e) => handleUpdateTicketCount(e, support.id)}
                suppressContentEditableWarning={true}
               >{support.ticketCount}</td>
               <td
-              contentEditable="true"
+              contentEditable={isAdminUser ? 'true' : 'false'}
               onBlur={(e) => handleUpdateEffortSpent(e, support.id)}
               suppressContentEditableWarning={true}
               >{support.effortSpent}</td>
@@ -151,7 +151,7 @@ const SupportComponent = () => {
           {support.topSubjects && support.topSubjects.map((subject, index) => (
               <tr key={index}>
                 <td
-                contentEditable="true"
+                contentEditable={isAdminUser ? 'true' : 'false'}
                 onBlur={(e) => handleUpdateTopSubject(e, index, support.id)}
                 suppressContentEditableWarning={true}
                 >{subject}</td>

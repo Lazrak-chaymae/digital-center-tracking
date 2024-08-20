@@ -216,24 +216,26 @@ const ReleaseComponent = () => {
              {  releases.map( (release) => (
                  <tr key={release.id}>
                     <td>
+                    {isAdminUser ? 
                     <Input type="date" value= {release.installationDate} 
                      style={{width: '140px'}}
                      onChange={(e) => handleUpdateInstallationDate(release.id, e)}
                     />
+                    :  release.installationDate }
                      </td>
                     <td
-                    contentEditable="true"
+                    contentEditable={isAdminUser ? 'true' : 'false'}
                     onBlur={(e) => handleUpdateVersion(release.id, e)}
                     suppressContentEditableWarning={true}
                     >{release.version}</td>
                     <td
-                    contentEditable="true"
+                    contentEditable={isAdminUser ? 'true' : 'false'}
                     onBlur={(e) => handleUpdateType(release.id, e)}
                     suppressContentEditableWarning={true}
                     >{release.type}</td>
                     <td>{ release.packages.map((pkg, index) => (
                   <span key={index}
-                  contentEditable="true"
+                  contentEditable={isAdminUser ? 'true' : 'false'}
                   onBlur={(e) => handleUpdatePackage(release.id, index, e)}
                   suppressContentEditableWarning={true}
                   >
@@ -243,7 +245,7 @@ const ReleaseComponent = () => {
                 ))}</td>
                     <td>{release.hotfixContents.map((content, index) => (
                   <span key={index}
-                  contentEditable="true"
+                  contentEditable={isAdminUser ? 'true' : 'false'}
                   onBlur={(e) => handleUpdateContent(release.id, index, e)}
                   suppressContentEditableWarning={true}
                   >
@@ -252,7 +254,7 @@ const ReleaseComponent = () => {
                   </span>
                 ))}</td>
                     <td
-                    contentEditable="true"
+                    contentEditable={isAdminUser ? 'true' : 'false'}
                     onBlur={(e) => handleUpdateEvolution(release.id, e)}
                     suppressContentEditableWarning={true}
                     >{release.evolution}</td>
