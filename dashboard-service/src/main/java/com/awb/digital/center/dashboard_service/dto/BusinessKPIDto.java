@@ -15,8 +15,8 @@ public class BusinessKPIDto {
     private Integer domainId;
     private String functionality;
     private String indicator;
-    private Integer planned;
-    private Integer achieved;
+    private String planned;
+    private String achieved;
     private String previousMeasure;
     private String type;
 }

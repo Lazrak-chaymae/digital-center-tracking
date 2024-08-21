@@ -53,12 +53,12 @@ public class BusinessKPIController {
 
     }
     @PatchMapping("{id}/planned")
-    public ResponseEntity<String> updatePlanned(@PathVariable Long id, @RequestBody Integer planned){
+    public ResponseEntity<String> updatePlanned(@PathVariable Long id, @RequestBody String planned){
         service.updatePlanned(id, planned);
         return ResponseEntity.ok("Planned deleted successfully!.");
     }
     @PatchMapping("{id}/achieved")
-    public ResponseEntity<String> updateAchieved(@PathVariable Long id, @RequestBody Integer achieved){
+    public ResponseEntity<String> updateAchieved(@PathVariable Long id, @RequestBody String achieved){
         service.updateAchieved(id, achieved);
         return ResponseEntity.ok("Achieved deleted successfully!.");
     }

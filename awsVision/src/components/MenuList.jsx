@@ -26,7 +26,7 @@ const MenuList = () => {
     getAllProjects();
   }, []);
   return (
-    <Menu theme="light" mode="inline" className="menu-bar">
+    <Menu theme="light" mode="inline" className="menu-bar" style={{backgroundColor: '#FFF8E1'}}>
       <Menu.Item key="home" icon={<HomeOutlined />}>
         <a href="/home" style={{ textDecoration: "none" }}>
           Home

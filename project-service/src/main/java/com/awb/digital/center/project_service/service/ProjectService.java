@@ -31,7 +31,6 @@ public interface ProjectService {
     void updateProjectStartDate(String startDate, Long projectId);
     void updateProjectExpectedDate(String expectedEndDate, Long projectId);
     void updateProjectType(String type, Long projectId);
-    void updateProjectBudget(String budget, Long projectId);
     void updateProjectDescription(String description, Long projectId);
     void updateProjectAllocatedSprintCount(Integer allocatedSprintCount, Long projectId);
     void updateProjectConsumedSprintCount(Integer consumedSprintCount, Long projectId);

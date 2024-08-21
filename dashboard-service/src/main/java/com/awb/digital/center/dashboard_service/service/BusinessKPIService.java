@@ -12,8 +12,8 @@ public interface BusinessKPIService {
     void deleteKpi(Long id);
     void updateFunctionality(Long id, String functionality);
     void updateIndicator(Long id, String indicator);
-    void updatePlanned(Long id, Integer planned);
-    void updateAchieved(Long id, Integer achieved);
+    void updatePlanned(Long id, String planned);
+    void updateAchieved(Long id, String achieved);
     void updatePreviousMeasure(Long id, String previousMeasure);
 
 }
