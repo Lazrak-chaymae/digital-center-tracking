@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { addProject, listSquadsByDomain } from "../services/Project";
 import {Alert } from "antd"
-import { equals } from "validator";
+import { useNavigate } from "react-router-dom";
+
 
 
 const AddProjectComponent = () => {
@@ -11,16 +12,15 @@ const AddProjectComponent = () => {
   const [startDate, setStartDate] = useState("");
   const [expectedEndDate, setExpectedEndDate] = useState("");
   const [type, setType] = useState("");
-  const [budget, setBudget] = useState("");
   const [description, setDescription] = useState("");
   const [allocatedSprintCount, setAllocatedSprintCount] = useState("");
   const [allSquads, setAllSquads] = useState([]);
-  //const [squad, setSquad] = useState({ id: "", name: "" });
   const [squad, setSquad] = useState("");
   const [validProject, setValidProject] = useState(true);
-  const [success,setSuccess] = useState(false);
   const [validDate, setValidDate] = useState(true);
   const domainId = sessionStorage.getItem("domainId");
+  const navigate = useNavigate();
+
 
   const getSquads = () => {
     listSquadsByDomain(domainId)
@@ -43,7 +43,6 @@ const AddProjectComponent = () => {
       startDate,
       expectedEndDate,
       type,
-      budget,
       description,
       allocatedSprintCount,
       squad,
@@ -55,7 +54,6 @@ const AddProjectComponent = () => {
       !startDate ||
       !expectedEndDate ||
       !type ||
-      !budget ||
       !description ||
       !allocatedSprintCount ||
       !squad
@@ -65,9 +63,13 @@ const AddProjectComponent = () => {
     }
     addProject(projectData)
       .then((response) => {
+        const id = response.data.id;
         console.log("Project added successfully:", response.data);
-        setSuccess(true);
+        console.log("project with id : " , response.data.id)
+        navigate(`/project/${id}`);
+        
         resetForm();
+
       })
       .catch((error) => {
         console.error("There was an error adding the project:", error);
@@ -79,10 +81,8 @@ const AddProjectComponent = () => {
     setStartDate("");
     setExpectedEndDate("");
     setType("");
-    setBudget("");
     setDescription("");
     setAllocatedSprintCount("");
-    // setSquad({ id: "", name: "" });
     setSquad("");
   };
   const handleSquadChange = (e) => {
@@ -101,7 +101,6 @@ const AddProjectComponent = () => {
         startDate &&
         expectedEndDate &&
         type &&
-        budget &&
         description &&
         allocatedSprintCount &&
         squad
@@ -110,7 +109,7 @@ const AddProjectComponent = () => {
         return;
       }
      
-  }, [name, owner, startDate, expectedEndDate, type, budget, description,  allocatedSprintCount, squad]);
+  }, [name, owner, startDate, expectedEndDate, type, description,  allocatedSprintCount, squad]);
   useEffect(() => {
     if (startDate && expectedEndDate && startDate >= expectedEndDate){
       setValidDate(false);
@@ -125,7 +124,7 @@ const AddProjectComponent = () => {
     <div className="center-container" style={{ paddingTop: "10px" }}>
       
       <div className="forms">
-      {success &&  <Alert message="Projet créé avec succes" type="success" showIcon closable afterClose={handleClose} />}
+      {/* {success &&  <Alert message="Projet créé avec succes" type="success" showIcon closable afterClose={handleClose} />} */}
         <form>
           <div className="form-group mb-2">
             <label className="form-label">Nom :</label>
@@ -182,17 +181,6 @@ const AddProjectComponent = () => {
             ></input>
           </div>
           <div className="form-group mb-2">
-            <label className="form-label">Budget:</label>
-            <input
-              type="text"
-              placeholder="Entrer le budget du projet"
-              name="budget"
-              value={budget}
-              onChange={(e) => setBudget(e.target.value)}
-              className={`form-control`}
-            ></input>
-          </div>
-          <div className="form-group mb-2">
             <label className="form-label">Description:</label>
             <input
               type="text"
@@ -205,10 +193,10 @@ const AddProjectComponent = () => {
           </div>
 
           <div className="form-group mb-2">
-            <label className="form-label">Nombre de sprint alloués:</label>
+            <label className="form-label">Budget:</label>
             <input
               type="text"
-              placeholder="Entrer le nombre de sprint alloués"
+              placeholder="Entrer le budget du projet"
               name="allocatedSprintCount"
               value={allocatedSprintCount}
               onChange={(e) => setAllocatedSprintCount(e.target.value)}

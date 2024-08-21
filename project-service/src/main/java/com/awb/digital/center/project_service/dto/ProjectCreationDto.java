@@ -20,7 +20,6 @@ public class ProjectCreationDto {
     private LocalDate startDate;
     private LocalDate expectedEndDate;
     private String type;
-    private String budget;
     private String description;
     private String status;
     private Integer allocatedSprintCount;

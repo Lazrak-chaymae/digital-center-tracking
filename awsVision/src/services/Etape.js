@@ -9,3 +9,5 @@ export const updateEtape = (etapeId, name) => axios.patch('http://localhost:8765
       "Content-Type": "text/plain",
     },
   }); 
+
+  export const deleteEtape = (etapeId) => axios.delete('http://localhost:8765/api/etapes' + '/' + etapeId);

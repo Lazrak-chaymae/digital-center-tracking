@@ -24,7 +24,6 @@ public class ProjectDto {
     private LocalDate expectedEndDate;
     private CustomPhase phase;
     private String type;
-    private String budget;
     private String description;
     private String status;
     private Integer allocatedSprintCount;

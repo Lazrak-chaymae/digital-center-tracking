@@ -34,7 +34,6 @@ public class Project {
     private LocalDate expectedEndDate;
     private LocalDate actualMepDate;
     private LocalDate lastPhaseDate;
-    private String budget;
     @Column(nullable = false)
     private String type;
     @Column(nullable = false)
@@ -66,11 +65,6 @@ public class Project {
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<RemarkOrRisk> remarks;
-
-    @ElementCollection
-    @CollectionTable(name = "kpis", joinColumns = @JoinColumn(name = "project_id"))
-    @Column(name = "name")
-    private List<String> kpis = new ArrayList<>();
 
     @ElementCollection
     @CollectionTable(name = "milestones", joinColumns = @JoinColumn(name = "project_id"))

@@ -8,7 +8,7 @@ import AddMilestone from "./AddMilestone";
 import AddRealization from "./AddRealization";
 import { isAdminUser } from '../services/AuthService';
 import { listEtapes } from "../services/Etape";
-import { listTasks } from "../services/Task";
+import { deleteTask, listTasks } from "../services/Task";
 import AddEtape from "./AddEtape";
 import AddTask from "./AddTask";
 import { updateName, updateDescription, updateActualMepDate, updateAllocatedSprintCount, updateCompletionPercentage, updateConsumedSprintCount,
@@ -17,8 +17,8 @@ updateRemarkOrRiskImportance, updateRemarkOrRiskName
 } from "../services/Project";
 
 import { updateTaskName, updateTaskProgress } from "../services/Task";
-import { updateEtape } from "../services/Etape";
-
+import { updateEtape, deleteEtape } from "../services/Etape";
+import {DeleteOutlined} from "@ant-design/icons"
 
 const ProjectComponent = () => {
   const [project, setProject] = useState({});
@@ -84,7 +84,26 @@ const ProjectComponent = () => {
       console.error(error);
   }
   }
-
+  const handleEtapeDelete = async(etapeId) => {
+    try {
+     
+          const response = await deleteEtape(etapeId);
+          console.log(response.data);
+          getEtapes();
+  } catch (error) {
+      console.error(error);
+  }
+  }
+  const handleTaskDelete = async(taskId) => {
+    try {
+     
+          const response = await deleteTask(taskId);
+          console.log(response.data);
+          getTasks();
+  } catch (error) {
+      console.error(error);
+  }
+  }
   const handleUpdateName = async (e, projectId) => {
     const updatedName = e.target.textContent.trim();
     if (updatedName === '') {
@@ -442,7 +461,7 @@ const ProjectComponent = () => {
     }
   };
   
-  const handleUpdateRemarkName = async (e, projectId) => {
+  const handleUpdateRemarkName = async (e, remarkId) => {
     const updatedValue = e.target.textContent.trim();
     if (updatedValue === '') {
       e.target.classList.add('cell-error');
@@ -452,7 +471,7 @@ const ProjectComponent = () => {
       return;
     }
     try {
-      const response = await updateRemarkOrRiskName(updatedValue, projectId);
+      const response = await updateRemarkOrRiskName(updatedValue, remarkId);
       console.log(response.data);
       e.target.classList.add('cell-success');
       setTimeout(() => {
@@ -466,7 +485,7 @@ const ProjectComponent = () => {
       }, 2000);
     }
   };
-  const handleUpdateRemarkImportance = async (e, projectId) => {
+  const handleUpdateRemarkImportance = async (e, remarkId) => {
     const updatedValue = e.target.textContent.trim();
     if (updatedValue === '') {
       e.target.classList.add('cell-error');
@@ -476,7 +495,7 @@ const ProjectComponent = () => {
       return;
     }
     try {
-      const response = await updateRemarkOrRiskImportance(updatedValue, projectId,);
+      const response = await updateRemarkOrRiskImportance(updatedValue, remarkId,);
       console.log(response.data);
       e.target.classList.add('cell-success');
       setTimeout(() => {
@@ -589,8 +608,8 @@ const ProjectComponent = () => {
                 {(project.milestones || []).map((milestone, index) => (
                   <li className="card-text" key={index}
                   contentEditable="true"
-                onBlur={(e) => handleUpdateMilestone(e, index, id)}
-                suppressContentEditableWarning={true}
+                  onBlur={(e) => handleUpdateMilestone(e, index, id)}
+                  suppressContentEditableWarning={true}
                   >
                     {milestone}
                   </li>
@@ -653,15 +672,18 @@ const ProjectComponent = () => {
                   >{etape.name}</h6>
                   </div>
                   <div className="col-3">
-                    {isAdminUser() &&  <AddTask refreshEtape={getEtapes} etapeId={etape.id} projectId={id}  /> }
+                    {isAdminUser() &&  <div> <AddTask refreshEtape={getTasks} etapeId={etape.id} projectId={id}  /> 
+                    <DeleteOutlined onClick={() => handleEtapeDelete(etape.id)}/> </div>
+                    }
                   </div>
                 </div>
-               
+                
                 <table className="table table-striped table-bordered">
                   <thead>
                     <tr>
                       <th>Tache</th>
                       <th>Avancement</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -678,6 +700,9 @@ const ProjectComponent = () => {
                            onBlur={(e) => handleUpdateTaskProgress(task.id, e)}
                            suppressContentEditableWarning={true}
                           >{task.progress}</td>
+                          <td>
+                          <DeleteOutlined onClick={() => handleTaskDelete(task.id)}/> 
+                          </td>
                         </tr>
                       ))}
                   </tbody>

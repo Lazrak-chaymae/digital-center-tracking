@@ -21,7 +21,7 @@ public class InLaunchProjectDto {
     private LocalDate actualMepDate;
     private LocalDate lastPhaseDate;
     private CustomPhase phase;
-    private List<String> kpis = new ArrayList<>();
+    private List<KpiPilotage> pilotageKpis;
     private List<RemarkOrRisk> remarks;
     private String type;
     private String status;

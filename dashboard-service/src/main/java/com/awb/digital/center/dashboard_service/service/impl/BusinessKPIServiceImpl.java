@@ -82,7 +82,7 @@ public class BusinessKPIServiceImpl implements BusinessKPIService {
     }
 
     @Override
-    public void updatePlanned(Long id, Integer planned) {
+    public void updatePlanned(Long id, String planned) {
         BusinessKPI kpi = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Kpi not found with id:" +id));
 
@@ -91,7 +91,7 @@ public class BusinessKPIServiceImpl implements BusinessKPIService {
     }
 
     @Override
-    public void updateAchieved(Long id, Integer achieved) {
+    public void updateAchieved(Long id, String achieved) {
         BusinessKPI kpi = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Kpi not found with id:" +id));
 

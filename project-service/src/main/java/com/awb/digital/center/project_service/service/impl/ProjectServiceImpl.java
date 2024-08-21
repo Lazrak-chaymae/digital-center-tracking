@@ -64,7 +64,6 @@ public class ProjectServiceImpl implements ProjectService {
         project.setStartDate(projectDto.getStartDate());
         project.setExpectedEndDate(projectDto.getExpectedEndDate());
         project.setType(projectDto.getType());
-        project.setBudget(projectDto.getBudget());
         project.setDescription(projectDto.getDescription());
 //        project.setStatus(projectDto.getStatus());
         project.setSquad(projectDto.getSquad());
@@ -85,7 +84,6 @@ public class ProjectServiceImpl implements ProjectService {
         project.setExpectedEndDate(projectDto.getExpectedEndDate());
         project.setPhase(projectDto.getPhase());
         project.setType(projectDto.getType());
-        project.setBudget(projectDto.getBudget());
         project.setDescription(projectDto.getDescription());
         //project.setStatus(projectDto.getStatus());
         project.setAllocatedSprintCount(projectDto.getAllocatedSprintCount());
@@ -110,11 +108,10 @@ public class ProjectServiceImpl implements ProjectService {
         project.setActualMepDate(projectDto.getActualMepDate());
         project.setLastPhaseDate(projectDto.getLastPhaseDate());
         project.setPhase(projectDto.getPhase());
-        project.setKpis(projectDto.getKpis());
         project.setRemarks(projectDto.getRemarks());
         project.setType(projectDto.getType());
         project.setStatus(projectDto.getStatus());
-
+        project.setPilotageKpis(projectDto.getPilotageKpis());
         Project savedProject = repository.save(project);
         return mapper.map(savedProject, InLaunchProjectDto.class);
     }
@@ -127,7 +124,7 @@ public class ProjectServiceImpl implements ProjectService {
         project.setName(projectDto.getName());
         project.setDescription(projectDto.getDescription());
         project.setStartDate(projectDto.getStartDate());
-        project.setBudget(projectDto.getBudget());
+        project.setAllocatedSprintCount(projectDto.getAllocatedSprintCount());
         project.setConsumedSprintCount(projectDto.getConsumedSprintCount());
         project.setPhase(projectDto.getPhase());
         project.setMilestones(projectDto.getMilestones());
@@ -238,14 +235,7 @@ public class ProjectServiceImpl implements ProjectService {
         repository.save(project);
     }
 
-    @Override
-    public void updateProjectBudget(String budget, Long projectId) {
-        Project project = repository.findById(projectId)
-                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
 
-        project.setBudget(budget);
-        repository.save(project);
-    }
 
     @Override
     public void updateProjectDescription(String description, Long projectId) {

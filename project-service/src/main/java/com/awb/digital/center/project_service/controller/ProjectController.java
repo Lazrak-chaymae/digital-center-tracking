@@ -125,12 +125,7 @@ public class ProjectController {
         return ResponseEntity.ok("Project type updated successfully");
     }
 
-    @PatchMapping("/{projectId}/budget")
-    public ResponseEntity<String> updateProjectBudget(
-            @RequestBody String budget, @PathVariable Long projectId) {
-        service.updateProjectBudget(budget, projectId);
-        return ResponseEntity.ok("Project budget updated successfully");
-    }
+
 
     @PatchMapping("/{projectId}/description")
     public ResponseEntity<String> updateProjectDescription(

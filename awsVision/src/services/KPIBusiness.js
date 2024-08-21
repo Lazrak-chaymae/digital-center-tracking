@@ -22,13 +22,13 @@ export const updateIndicator = (kpiId, indicator) => axios.patch(REST_API_BASE_U
 export const updatePlanned = (kpiId, planned) => axios.patch(REST_API_BASE_URL + '/' + kpiId + '/planned', planned,
     {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "text/plain",
       },
     });
 export const updateAchieved = (kpiId, achieved) => axios.patch(REST_API_BASE_URL + '/' + kpiId + '/achieved', achieved,
     {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "text/plain",
       },
     });
 export const updatePreviousMeasure = (kpiId, previousMeasure) => axios.patch(REST_API_BASE_URL + '/' + kpiId + '/previous-measure', previousMeasure,

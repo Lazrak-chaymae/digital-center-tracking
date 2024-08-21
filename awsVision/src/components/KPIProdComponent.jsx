@@ -201,27 +201,27 @@ const KPIProdComponent = () => {
                             kpi => (
                                 <tr key={kpi.id}>
                                     <td
-                                    contentEditable="true"
+                                    contentEditable={isAdminUser ? 'true' : 'false'}
                                     onBlur={(e) => handleUpdateFunctionality(kpi.id, e)}
                                     suppressContentEditableWarning={true}
                                     >{kpi.functionality}</td>
                                     <td
-                                    contentEditable="true"
+                                    contentEditable={isAdminUser ? 'true' : 'false'}
                                     onBlur={(e) => handleUpdateIndicator(kpi.id, e)}
                                     suppressContentEditableWarning={true}
                                     >{kpi.indicator}</td>
                                     <td
-                                     contentEditable="true"
+                                     contentEditable={isAdminUser ? 'true' : 'false'}
                                      onBlur={(e) => handleUpdatePlanned(kpi.id, e)}
                                      suppressContentEditableWarning={true}
                                     >{kpi.planned}</td>
                                     <td
-                                     contentEditable="true"
+                                     contentEditable={isAdminUser ? 'true' : 'false'}
                                      onBlur={(e) => handleUpdateAchieved(kpi.id, e)}
                                      suppressContentEditableWarning={true}
                                     >{kpi.achieved}</td>
                                     <td
-                                     contentEditable="true"
+                                     contentEditable={isAdminUser ? 'true' : 'false'}
                                      onBlur={(e) => handleUpdateMeasure(kpi.id, e)}
                                      suppressContentEditableWarning={true}
                                     >{kpi.previousMeasure}</td>
