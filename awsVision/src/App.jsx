@@ -24,6 +24,7 @@ import RegisterComponent from "./components/RegisterComponent";
 import LoginComponent from "./components/LoginComponent";
 import { isUserLoggedIn, logout } from "./services/AuthService"
 import awbLogo from './assets/awblogo.png';
+import TodoComponent from "./components/TodoComponent";
 
 const { Sider, Header, Content } = Layout;
 function App() {
@@ -143,6 +144,10 @@ function App() {
                   <Route path="/home" element={
                   isUserLoggedIn() ? <HomeComponent /> : <Navigate to="/login" />
                   }></Route>
+                 <Route
+                  path="/todo"
+                  element={ <AuthenticatedRoute><TodoComponent /></AuthenticatedRoute>}
+                ></Route>
                   
                 <Route
                   path="/dashboard-inLaunch"

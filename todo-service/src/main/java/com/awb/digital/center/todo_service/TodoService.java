@@ -13,7 +13,8 @@ public interface TodoService {
      void updateTodoDetail(Long todoId, String detail);
      void updateTodoDeadline(Long todoId, String deadline);
      void updateTodoStatus(Long todoId, String status);
-     void updateTodoUser(Long todoId, Integer userId);
+     void updateTodoUser(Long todoId, String userName);
+     void updateTodoResponsible(Long todoId, String responsible);
 
 
 
