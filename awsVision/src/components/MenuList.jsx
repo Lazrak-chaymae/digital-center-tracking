@@ -5,6 +5,7 @@ import {
   AppstoreOutlined,
   FileAddOutlined,
   BarsOutlined,
+  CheckCircleOutlined 
 } from "@ant-design/icons";
 import { listProjects } from "../services/Project";
 import { isAdminUser } from "../services/AuthService";
@@ -88,6 +89,11 @@ const MenuList = () => {
           </Menu.Item>
         ))}
       </Menu.SubMenu>
+      <Menu.Item key="todo" icon={<CheckCircleOutlined />}>
+          <a href="/todo" style={{ textDecoration: "none" }}>
+            Todos
+          </a>
+        </Menu.Item>
       {isAdminUser() && (
         <Menu.Item key="addProject" icon={<FileAddOutlined />}>
           <a href="/add-project" style={{ textDecoration: "none" }}>

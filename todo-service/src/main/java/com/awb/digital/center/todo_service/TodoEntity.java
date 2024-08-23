@@ -27,6 +27,7 @@ public class TodoEntity {
     private String status;
     private Integer projectId;
     private Integer domainId;
-    private Integer userId;
+    private String userName;
+    private String responsible;
 
 }

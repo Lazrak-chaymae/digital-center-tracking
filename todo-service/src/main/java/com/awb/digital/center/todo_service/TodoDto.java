@@ -16,13 +16,12 @@ import java.time.LocalDate;
 public class TodoDto {
 
     private Long id;
-    @Column(nullable = false)
     private String name;
     private String detail;
     private LocalDate deadline;
     private String status;
     private Integer projectId;
-    @Column(nullable = false)
     private Integer domainId;
-    private Integer userId;
+    private String userName;
+    private String responsible;
 }

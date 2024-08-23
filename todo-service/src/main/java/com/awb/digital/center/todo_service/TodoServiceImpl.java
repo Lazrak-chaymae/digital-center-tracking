@@ -33,6 +33,7 @@ public class TodoServiceImpl implements TodoService{
 
     @Override
     public TodoDto addTodo(TodoDto todoDto) {
+
          TodoEntity todo = mapper.map(todoDto, TodoEntity.class);
          TodoEntity createdTodo = todoRepository.save(todo);
         return mapper.map(createdTodo, TodoDto.class);
@@ -46,7 +47,8 @@ public class TodoServiceImpl implements TodoService{
         todo.setDetail(todoDto.getDetail());
         todo.setDeadline(todoDto.getDeadline());
         todo.setStatus(todoDto.getStatus());
-        todo.setUserId(todoDto.getUserId());
+        todo.setUserName(todoDto.getUserName());
+        todo.setResponsible(todoDto.getResponsible());
         todoRepository.save(todo);
         return mapper.map(todo, TodoDto.class);
     }
@@ -92,10 +94,18 @@ public class TodoServiceImpl implements TodoService{
     }
 
     @Override
-    public void updateTodoUser(Long todoId, Integer userId) {
+    public void updateTodoUser(Long todoId, String userName) {
         TodoEntity todo = todoRepository.findById(todoId)
                 .orElseThrow(() -> new ResourceNotFoundException("Todo not found with id:" + todoId));
-        todo.setUserId(userId);
+        todo.setUserName((userName));
+        todoRepository.save(todo);
+    }
+
+    @Override
+    public void updateTodoResponsible(Long todoId, String responsible) {
+        TodoEntity todo = todoRepository.findById(todoId)
+                .orElseThrow(() -> new ResourceNotFoundException("Todo not found with id:" + todoId));
+        todo.setResponsible(responsible);
         todoRepository.save(todo);
     }
 }
