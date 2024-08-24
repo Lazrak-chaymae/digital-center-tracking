@@ -31,144 +31,16 @@ const KPIProdComponent = () => {
           }).catch ((error) => {
               console.error(error);
           })
-     }
-
-     const handleUpdateFunctionality = async (kpiId, e) => {
-  
-        const updatedFunctionality = e.target.textContent.trim();
-        if (updatedFunctionality === '') {
-          e.target.classList.add('cell-error');
-          fetchData();
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-          return; 
-        }
+     } 
+      const handleUpdate = async(handleFc, kpiId, value) => {
+        
         try {
-          const response = await updateFunctionality(kpiId, updatedFunctionality);
+          const response = await handleFc(kpiId, value);
           console.log(response.data);
-      
-          e.target.classList.add('cell-success');
-          setTimeout(() => {
-          e.target.classList.remove('cell-success');
-          }, 2000);
         } catch (error) {
-          console.error('Error updating Functionality:', error);
-          e.target.classList.add('cell-error');
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
+          console.error('Error updating KPI informations :', error);
         }
-      };
-      const handleUpdateIndicator = async (kpiId, e) => {
-  
-        const updatedIndicator = e.target.textContent.trim();
-        if (updatedIndicator === '') {
-          e.target.classList.add('cell-error');
-          fetchData();
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-          return; 
-        }
-        try {
-          const response = await updateIndicator(kpiId, updatedIndicator);
-          console.log(response.data);
-      
-          e.target.classList.add('cell-success');
-          setTimeout(() => {
-          e.target.classList.remove('cell-success');
-          }, 2000);
-        } catch (error) {
-          console.error('Error updating Indicator:', error);
-          e.target.classList.add('cell-error');
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-        }
-      };
-      const handleUpdateAchieved = async (kpiId, e) => {
-  
-        const updatedAchieved = e.target.textContent.trim();
-        if (updatedAchieved === '') {
-          e.target.classList.add('cell-error');
-          fetchData();
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-          return; 
-        }
-        try {
-          const response = await updateAchieved(kpiId, updatedAchieved);
-          console.log(response.data);
-      
-          e.target.classList.add('cell-success');
-          setTimeout(() => {
-          e.target.classList.remove('cell-success');
-          }, 2000);
-        } catch (error) {
-          console.error('Error updating Achieved:', error);
-          e.target.classList.add('cell-error');
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-        }
-      };
-      const handleUpdatePlanned = async (kpiId, e) => {
-  
-        const updatedPlanned = e.target.textContent.trim();
-        if (updatedPlanned === '') {
-          e.target.classList.add('cell-error');
-          fetchData();
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-          return; 
-        }
-        try {
-          const response = await updatePlanned(kpiId, updatedPlanned);
-          console.log(response.data);
-      
-          e.target.classList.add('cell-success');
-          setTimeout(() => {
-          e.target.classList.remove('cell-success');
-          }, 2000);
-        } catch (error) {
-          console.error('Error updating Planned:', error);
-          e.target.classList.add('cell-error');
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-        }
-      };
-      const handleUpdateMeasure = async (kpiId, e) => {
-  
-        const updatedMeasure = e.target.textContent.trim();
-        if (updatedMeasure === '') {
-          e.target.classList.add('cell-error');
-          fetchData();
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-          return; 
-        }
-        try {
-          const response = await updatePreviousMeasure(kpiId, updatedMeasure);
-          console.log(response.data);
-      
-          e.target.classList.add('cell-success');
-          setTimeout(() => {
-          e.target.classList.remove('cell-success');
-          }, 2000);
-        } catch (error) {
-          console.error('Error updating Measure:', error);
-          e.target.classList.add('cell-error');
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-        }
-      };
-      
+      }
     useEffect(() => {
         fetchData();
     }, [kpiTypes]);
@@ -202,27 +74,27 @@ const KPIProdComponent = () => {
                                 <tr key={kpi.id}>
                                     <td
                                     contentEditable={isAdminUser ? 'true' : 'false'}
-                                    onBlur={(e) => handleUpdateFunctionality(kpi.id, e)}
+                                    onBlur={(e) => handleUpdate(updateFunctionality, kpi.id, e.target.textContent.trim())}
                                     suppressContentEditableWarning={true}
                                     >{kpi.functionality}</td>
                                     <td
                                     contentEditable={isAdminUser ? 'true' : 'false'}
-                                    onBlur={(e) => handleUpdateIndicator(kpi.id, e)}
+                                    onBlur={(e) => handleUpdate(updateIndicator, kpi.id, e.target.textContent.trim())}
                                     suppressContentEditableWarning={true}
                                     >{kpi.indicator}</td>
                                     <td
                                      contentEditable={isAdminUser ? 'true' : 'false'}
-                                     onBlur={(e) => handleUpdatePlanned(kpi.id, e)}
+                                     onBlur={(e) => handleUpdate(updatePlanned, kpi.id, e.target.textContent.trim())}
                                      suppressContentEditableWarning={true}
                                     >{kpi.planned}</td>
                                     <td
                                      contentEditable={isAdminUser ? 'true' : 'false'}
-                                     onBlur={(e) => handleUpdateAchieved(kpi.id, e)}
+                                     onBlur={(e) => handleUpdate(updateAchieved, kpi.id, e.target.textContent.trim())}
                                      suppressContentEditableWarning={true}
                                     >{kpi.achieved}</td>
                                     <td
                                      contentEditable={isAdminUser ? 'true' : 'false'}
-                                     onBlur={(e) => handleUpdateMeasure(kpi.id, e)}
+                                     onBlur={(e) => handleUpdate(updatePreviousMeasure, kpi.id, e.target.textContent.trim())}
                                      suppressContentEditableWarning={true}
                                     >{kpi.previousMeasure}</td>
                                     {isAdminUser() &&

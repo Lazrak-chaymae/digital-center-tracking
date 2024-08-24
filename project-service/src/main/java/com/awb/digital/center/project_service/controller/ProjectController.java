@@ -101,7 +101,7 @@ public class ProjectController {
     public ResponseEntity<String> updateProjectOwner(
             @RequestBody String owner, @PathVariable Long projectId) {
         service.updateProjectOwner(owner, projectId);
-        return ResponseEntity.ok("Project name updated successfully");
+        return ResponseEntity.ok("Project owner updated successfully");
     }
 
     @PatchMapping("/{projectId}/start-date")

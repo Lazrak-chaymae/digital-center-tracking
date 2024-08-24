@@ -43,29 +43,29 @@ public class BusinessKPIController {
     @PatchMapping("{id}/functionality")
     public ResponseEntity<String> updateFunctionality(@PathVariable Long id, @RequestBody String functionality){
         service.updateFunctionality(id, functionality);
-        return ResponseEntity.ok("Functionality deleted successfully!.");
+        return ResponseEntity.ok("Functionality updated successfully!.");
 
     }
     @PatchMapping("{id}/indicator")
     public ResponseEntity<String> updateIndicator(@PathVariable Long id, @RequestBody String indicator){
         service.updateIndicator(id, indicator);
-        return ResponseEntity.ok("Indicator deleted successfully!.");
+        return ResponseEntity.ok("Indicator updated successfully!.");
 
     }
     @PatchMapping("{id}/planned")
     public ResponseEntity<String> updatePlanned(@PathVariable Long id, @RequestBody String planned){
         service.updatePlanned(id, planned);
-        return ResponseEntity.ok("Planned deleted successfully!.");
+        return ResponseEntity.ok("Planned updated successfully!.");
     }
     @PatchMapping("{id}/achieved")
     public ResponseEntity<String> updateAchieved(@PathVariable Long id, @RequestBody String achieved){
         service.updateAchieved(id, achieved);
-        return ResponseEntity.ok("Achieved deleted successfully!.");
+        return ResponseEntity.ok("Achieved updated successfully!.");
     }
     @PatchMapping("{id}/previous-measure")
     public ResponseEntity<String> updatePreviousMeasure(@PathVariable Long id, @RequestBody String previousMeasure){
         service.updatePreviousMeasure(id, previousMeasure);
-        return ResponseEntity.ok("Previous Measure deleted successfully!.");
+        return ResponseEntity.ok("Previous Measure updated successfully!.");
     }
 
 }

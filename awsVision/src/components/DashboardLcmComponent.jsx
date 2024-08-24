@@ -44,148 +44,24 @@ const DashboardLcmComponent = () => {
           console.error(error);
       })
   }
-  const handleUpdateName = async (e, projectId) => {
-    const updatedName = e.target.textContent.trim();
-    if (updatedName === '') {
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return;
-    }
+
+  const handleUpdate = async( { handleFc, id, value, index }) => {
+        
     try {
-      const response = await updateName(updatedName, projectId);
+
+    let response;
+    if (index !== undefined && index !== null) {
+      response = await handleFc(id, index, value);
       console.log(response.data);
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-        e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating Project Name:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
-  const handleUpdateDescription = async (e, projectId) => {
-    const updatedDescription = e.target.textContent.trim();
-    try {
-      const response = await updateDescription(updatedDescription, projectId);
+    } else {
+      response = await handleFc(value, id);
       console.log(response.data);
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-        e.target.classList.remove('cell-success');
-      }, 2000);
+    }
+      
     } catch (error) {
-      console.error('Error updating Project Description:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
+      console.error('Error updating project informations :', error);
     }
-  };
-  
-  const handleUpdateMepDate = async (e, projectId) => {
-    const updatedMepDate = e.target.value;
-    try {
-      const response = await updateActualMepDate(updatedMepDate, projectId);
-      console.log(response.data);
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-        e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating Project MEP Date:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
-  
-  const handleUpdatePhaseDate = async (e, projectId) => {
-    const updatedPhaseDate = e.target.value;
-    try {
-      const response = await updateLastPhaseDate(updatedPhaseDate, projectId);
-      console.log(response.data);
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-        e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating Project Phase Date:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
-  const handleUpdateKpiName = async (e, kpiId) => {
-    const updatedKpiName = e.target.textContent.trim();
-    try {
-      const response = await updateKpiName(updatedKpiName, kpiId);
-      console.log(response.data);
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-        e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating KPI Name:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
-  const handleUpdateRemarkName = async (e, remarkId) => {
-    const updatedValue = e.target.textContent.trim();
-    if (updatedValue === '') {
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return;
-    }
-    try {
-      const response = await updateRemarkOrRiskName(updatedValue, remarkId);
-      console.log(response.data);
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-        e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error(`Error updating remark or risk name:`, error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
-  const handleUpdateType = async (e, projectId) => {
-    const updatedType = e.target.textContent.trim();
-    if (updatedType === '') {
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return;
-    }
-    try {
-      const response = await updateType(updatedType, projectId);
-      console.log(response.data);
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-        e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating Project Type:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
+  }
   useEffect(() => {
     GetSquads();
   }, []);
@@ -226,19 +102,19 @@ const DashboardLcmComponent = () => {
                       <td><a href={`/project/${project.id}`} style={{ textDecoration: 'none' }}>Projet {project.id}</a></td>
                       <td
                        contentEditable="true"
-                       onBlur={(e) => handleUpdateName(e, project.id)}
+                       onBlur={(e) => handleUpdate({ handleFc: updateName, id: project.id, value: e.target.textContent.trim()})}
                        suppressContentEditableWarning={true}
                       >{project.name}</td>
                       <td
                       contentEditable="true"
-                      onBlur={(e) => handleUpdateDescription(e, project.id)}
+                      onBlur={(e) => handleUpdate({ handleFc: updateDescription, id: project.id, value: e.target.textContent.trim()})}
                       suppressContentEditableWarning={true}
                       >{project.description}</td>
                       <td>
                       {isAdminUser ? 
                       <Input type="date" value={project.actualMepDate} 
                  style={{width: '115px'}}
-                 onChange={(e) => handleUpdateMepDate(e, project.id)}
+                 onChange={(e) => handleUpdate({ handleFc: updateActualMepDate, id: project.id, value: e.target.value})}
                 />    :  project.actualMepDate}
                         </td>
                       <td>
@@ -250,26 +126,26 @@ const DashboardLcmComponent = () => {
                       {isAdminUser ? 
                       <Input type="date" value={project.lastPhaseDate} 
                        style={{width: '115px'}}
-                       onChange={(e) => handleUpdatePhaseDate(e, project.id)} />
+                       onChange={(e) => handleUpdate({ handleFc: updateLastPhaseDate, id: project.id, value: e.target.value})} />
                        :  project.lastPhaseDate}
                        </td>
                       <td>{project.pilotageKpis.map(kpi => (<div key={kpi.id}
                       contentEditable="true"
-                      onBlur={(e) => handleUpdateKpiName(e, kpi.id)}
+                      onBlur={(e) => handleUpdate({ handleFc: updateKpiName, id: kpi.id, value: e.target.textContent.trim()})}
                       suppressContentEditableWarning={true}
                       >{kpi.name}</div>))}</td>
                       <td>
                         {project.remarks.map(remark => (
                           <div key={remark.id}
                           contentEditable="true"
-                       onBlur={(e) => handleUpdateRemarkName(e, remark.id)}
+                       onBlur={(e) => handleUpdate({ handleFc: updateRemarkOrRiskName, id: remark.id, value: e.target.textContent.trim()})}
                        suppressContentEditableWarning={true}
                           >{remark.name}</div>
                         ))}
                       </td>
                       <td
                       contentEditable="true"
-                      onBlur={(e) => handleUpdateType(e, project.id)}
+                      onBlur={(e) => handleUpdate({ handleFc: updateType, id: project.id, value: e.target.textContent.trim()})}
                       suppressContentEditableWarning={true}
                       >{project.type}</td>
                       {isAdminUser() && 
