@@ -306,8 +306,11 @@ public class ProjectServiceImpl implements ProjectService {
     public void updateProjectUpcomingRealization(String realization, Integer index, Long projectId) {
         Project project = repository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
-
-        project.getUpcomingRealizations().set(index, realization);
+        if (realization == null || realization.isEmpty()) {
+            project.getUpcomingRealizations().remove(index);
+        }else {
+            project.getUpcomingRealizations().set(index, realization);
+        }
         repository.save(project);
     }
 

@@ -30,89 +30,16 @@ const DependencyComponent = () => {
          console.error(error);
      })
   }
-  const handleUpdateTitle = async (e, dependencyId) => {
-  
-    const updatedTitle = e.target.textContent.trim();
-    if ( updatedTitle === '') {
-      e.target.classList.add('cell-error');
-      getDependencies();
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return; 
-    }
-    try {
-      const response = await updateTitle(dependencyId, updatedTitle);
-      console.log(response.data);
-  
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-      e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating Title:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
- 
-  const  handleUpdatePriority = async (e, dependencyId) => {
-  
-    const updatedPriority = e.target.textContent.trim();
-    if ( updatedPriority === '') {
-      e.target.classList.add('cell-error');
-      getDependencies();
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return; 
-    }
-    try {
-      const response = await updatePriority(dependencyId, updatedPriority);
-      console.log(response.data);
-  
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-      e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating Priority:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
 
-  const  handleUpdateScheduledDate = async (e, dependencyId) => {
-  
-    const updatedDate = e.target.value;
-    if (updatedDate === '') {
-      e.target.classList.add('cell-error');
-      getDependencies();
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return; 
-    }
+  const handleUpdate = async(handleFc, dependencyId, value) => {
+        
     try {
-      const response = await updateScheduledDate(dependencyId, updatedDate);
+      const response = await handleFc(dependencyId, value);
       console.log(response.data);
-  
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-      e.target.classList.remove('cell-success');
-      }, 2000);
     } catch (error) {
-      console.error('Error updating Date:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
+      console.error('Error updating dependency informations :', error);
     }
-  };
+  }
   useEffect(() => {
      getDependencies();
   }, [dependencies]);
@@ -139,12 +66,12 @@ const DependencyComponent = () => {
                   <tr key={dependency.id}>
                      <td
                      contentEditable= {isAdminUser ? 'true' : 'false'}
-                     onBlur={(e) => handleUpdateTitle(e, dependency.id)}
+                     onBlur={(e) => handleUpdate(updateTitle, dependency.id, e.target.textContent.trim())}
                      suppressContentEditableWarning={true}
                      >{dependency.title}</td>
                      <td
                      contentEditable= {isAdminUser ? 'true' : 'false'}
-                     onBlur={(e) => handleUpdatePriority(e, dependency.id)}
+                     onBlur={(e) => handleUpdate(updatePriority, dependency.id, e.target.textContent.trim())}
                      suppressContentEditableWarning={true}
                      >{dependency.priority}</td>
                      <td>
@@ -163,7 +90,7 @@ const DependencyComponent = () => {
                      {isAdminUser ? 
                      <Input type="date" value= {dependency.scheduledDate} 
                      style={{width: '140px'}}
-                     onChange={(e) => handleUpdateScheduledDate(e, dependency.id)}
+                     onChange={(e) => handleUpdate(updateScheduledDate, dependency.id, e.target.value)}
                     /> : dependency.scheduledDate }
                      </td>
                      {isAdminUser() &&

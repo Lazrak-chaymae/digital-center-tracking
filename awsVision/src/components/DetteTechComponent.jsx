@@ -190,6 +190,23 @@ const DetteTechComponent = () => {
       }, 2000);
     }
   };
+  const handleUpdate = async( { handleFc, debtId, value, index }) => {
+        
+    try {
+
+    let response;
+    if (index !== undefined && index !== null) {
+      response = await handleFc(debtId, index, value);
+      console.log(response.data);
+    } else {
+      response = await handleFc(debtId, value);
+      console.log(response.data);
+    }
+      
+    } catch (error) {
+      console.error('Error updating debt informations :', error);
+    }
+  }
   useEffect(() => {
     GetDebts();
   }, [debts]);
@@ -214,34 +231,34 @@ const DetteTechComponent = () => {
             <tr key={debt.id}>
               <td
               contentEditable={isAdminUser ? 'true' : 'false'}
-              onBlur={(e) => handleUpdateTitle(debt.id, e)}
+              onBlur={(e) => handleUpdate({ handleFc: updateTitle,debtId: debt.id, value: e.target.textContent.trim()})}
               suppressContentEditableWarning={true}
               >{debt.title}</td>
               <td
               contentEditable={isAdminUser ? 'true' : 'false'}
-              onBlur={(e) => handleUpdateType(debt.id, e)}
+              onBlur={(e) => handleUpdate({ handleFc: updateType,debtId: debt.id, value: e.target.textContent.trim()})}
               suppressContentEditableWarning={true}
               >{debt.type}</td>
               <td
               contentEditable={isAdminUser ? 'true' : 'false'}
-              onBlur={(e) => handleUpdateImpact(debt.id, e)}
+              onBlur={(e) => handleUpdate({ handleFc: updateImpact,debtId: debt.id, value: e.target.textContent.trim()})}
               suppressContentEditableWarning={true}
               >{debt.impact}</td>
               <td
               contentEditable={isAdminUser ? 'true' : 'false'}
-              onBlur={(e) => handleUpdateCost(debt.id, e)}
+              onBlur={(e) => handleUpdate({ handleFc: updateCost,debtId: debt.id, value: e.target.textContent.trim()})}
               suppressContentEditableWarning={true}
               >{debt.cost}</td>
               <td
               contentEditable={isAdminUser ? 'true' : 'false'}
-              onBlur={(e) => handleUpdateVoluntary(debt.id, e)}
+              onBlur={(e) => handleUpdate({ handleFc: updateVoluntary,debtId: debt.id, value: e.target.textContent.trim()})}
               suppressContentEditableWarning={true}
               >{debt.voluntary}</td>
               <td>
                 {debt.comments.map((comment, index) => (
                   <span key={index}
                   contentEditable={isAdminUser ? 'true' : 'false'}
-               onBlur={(e) => handleUpdateComment(debt.id, index, e)}
+               onBlur={(e) => handleUpdate({ handleFc: updateComments,debtId: debt.id, value: e.target.textContent.trim(), index: index})}
                suppressContentEditableWarning={true}
                   >
                     {comment}

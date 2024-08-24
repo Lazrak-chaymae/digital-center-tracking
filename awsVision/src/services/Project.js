@@ -78,12 +78,12 @@ export const updateLastPhaseDate = (lastPhaseDate, projectId) => axios.patch('ht
     },
   });
 
-export const updateMilestone = (supportId, index, milestone) => axios.patch('http://localhost:8765/api/projects' + '/' + supportId + '/milestone/' + index, milestone,{
+export const updateMilestone = (projectId, index, milestone) => axios.patch('http://localhost:8765/api/projects' + '/' + projectId + '/milestone/' + index, milestone,{
     headers: {
       "Content-Type": "text/plain",
     },
   });
-export const updateUpcomingRealization = (supportId, index, upcomingRealization) => axios.patch('http://localhost:8765/api/projects' + '/' + supportId + '/realization/' + index, upcomingRealization,{
+export const updateUpcomingRealization = (projectId, index, upcomingRealization) => axios.patch('http://localhost:8765/api/projects' + '/' + projectId + '/realization/' + index, upcomingRealization,{
     headers: {
       "Content-Type": "text/plain",
     },

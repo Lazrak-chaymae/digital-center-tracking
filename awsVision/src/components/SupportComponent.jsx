@@ -19,89 +19,26 @@ const SupportComponent = () => {
         console.error(error);
       });
   };
+ 
+  const handleUpdate = async( { handleFc, supportId, value, index }) => {
+        
+    try {
+
+    let response;
+    if (index !== undefined && index !== null) {
+      response = await handleFc(supportId, index, value);
+      console.log(response.data);
+    } else {
+      response = await handleFc(supportId, value);
+      console.log(response.data);
+    }
+      
+    } catch (error) {
+      console.error('Error updating support informations :', error);
+    }
+  }
 
  
-  const handleUpdateTicketCount = async (e, supportId) => {
-  
-    const updatedCount = e.target.textContent.trim();
-    if (updatedCount === '') {
-      e.target.classList.add('cell-error');
-      getSupport();
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return; 
-    }
-    try {
-      const response = await updateTicketCount(supportId, updatedCount);
-      console.log(response.data);
-  
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-      e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating ticket count:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
-  const handleUpdateEffortSpent = async (e, supportId) => {
-  
-    const updatedEffort = e.target.textContent.trim();
-    if (updatedEffort === '') {
-      e.target.classList.add('cell-error');
-      getSupport();
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return; 
-    }
-    try {
-      const response = await updateEffortSpent(supportId, updatedEffort);
-      console.log(response.data);
-  
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-      e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating Effort :', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
-  const handleUpdateTopSubject = async (e, index, supportId) => {
-  
-    const updatedSubject = e.target.textContent.trim();
-    if (updatedSubject === '') {
-      e.target.classList.add('cell-error');
-      getSupport();
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return; 
-    }
-    try {
-      const response = await updateTopSubjects(supportId, index, updatedSubject);
-      console.log(response.data);
-  
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-      e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating Subject:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
   
 
   useEffect(() => {
@@ -122,15 +59,17 @@ const SupportComponent = () => {
         </thead>
         {support && (
         <tbody>
+          
             <tr key={support.id}>
               <td
                contentEditable={isAdminUser ? 'true' : 'false'}
-               onBlur={(e) => handleUpdateTicketCount(e, support.id)}
+               onBlur={(e) => handleUpdate({handleFc: updateTicketCount, supportId: support.id, value: e.target.textContent.trim()})}
                suppressContentEditableWarning={true}
               >{support.ticketCount}</td>
+               
               <td
               contentEditable={isAdminUser ? 'true' : 'false'}
-              onBlur={(e) => handleUpdateEffortSpent(e, support.id)}
+              onBlur={(e) => handleUpdate({handleFc: updateEffortSpent,  supportId: support.id, value: e.target.textContent.trim()})}
               suppressContentEditableWarning={true}
               >{support.effortSpent}</td>
             </tr>
@@ -152,7 +91,7 @@ const SupportComponent = () => {
               <tr key={index}>
                 <td
                 contentEditable={isAdminUser ? 'true' : 'false'}
-                onBlur={(e) => handleUpdateTopSubject(e, index, support.id)}
+                onBlur={(e) => handleUpdate({handleFc: updateTopSubjects, supportId: support.id,  value: e.target.textContent.trim(), index: index})}
                 suppressContentEditableWarning={true}
                 >{subject}</td>
               </tr>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Input } from "antd";
-import { DetailProject, updateStartDate } from "../services/Project";
+import { DetailProject, updateStartDate, updateUpcomingRealization } from "../services/Project";
 import { useParams } from "react-router-dom";
 import AddKpiPilotage from "./AddKpiPilotage";
 import AddRemarkOrRisk from "./AddRemarkOrRisk";
@@ -49,7 +49,6 @@ const ProjectComponent = () => {
         try { 
         const response = await listTodosByProject(id);
         setTodos(response.data);
-        console.log(response.data);
         }
         catch(error){
             console.error(error);
@@ -63,144 +62,10 @@ const ProjectComponent = () => {
           console.error(error);
       })
   }
-  const handleUpdateTodoName = async (todoId, e) => {
-  
-    const updatedName = e.target.textContent.trim();
-    if (updatedName === '') {
-      e.target.classList.add('cell-error');
-      getTodosByProject();
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return; 
-    }
-    try {
-      const response = await updateTodoName(todoId, updatedName);
-      console.log(response.data);
-  
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-      e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating name:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
-  const handleUpdateTodoDetail = async (todoId, e) => {
 
-    const updatedDetail = e.target.textContent.trim();
-    if (updatedDetail === '') {
-      e.target.classList.add('cell-error');
-      getTodosByProject();
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return; 
-    }
-    try {
-      const response = await updateTodoDetail(todoId, updatedDetail);
-      console.log(response.data);
-  
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-      e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating Detail:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
-  const handleUpdateTodoDeadline = async (todoId, e) => {
-
-    const updatedDeadline = e.target.value;
-    if (updatedDeadline === '') {
-      e.target.classList.add('cell-error');
-      getTodosByProject();
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return; 
-    }
-    try {
-      const response = await updateTodoDeadline(todoId, updatedDeadline);
-      console.log(response.data);
-  
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-      e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating Deadline:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
-  const handleUpdateTodoStatus = async (todoId, e) => {
-
-    const updatedStatus = e.target.textContent.trim();
-    if (updatedStatus === '') {
-      e.target.classList.add('cell-error');
-      getTodosByProject();
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return; 
-    }
-    try {
-      const response = await updateTodoStatus(todoId, updatedStatus);
-      console.log(response.data);
-  
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-      e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating status:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
-  const handleUpdateTodoResponsible = async (todoId, e) => {
-
-    const updateResponsible = e.target.textContent.trim();
-    if (updateResponsible === '') {
-      e.target.classList.add('cell-error');
-      getTodosByProject();
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-      return; 
-    }
-    try {
-      const response = await updateTodoResponsible(todoId, updateResponsible);
-      console.log(response.data);
-  
-      e.target.classList.add('cell-success');
-      setTimeout(() => {
-      e.target.classList.remove('cell-success');
-      }, 2000);
-    } catch (error) {
-      console.error('Error updating responsible:', error);
-      e.target.classList.add('cell-error');
-      setTimeout(() => {
-        e.target.classList.remove('cell-error');
-      }, 2000);
-    }
-  };
     useEffect(() => {
         getTodosByProject();
-    } ,[])
+    } ,[todos])
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -275,426 +140,26 @@ const ProjectComponent = () => {
       console.error(error);
     }
   };
-  const handleUpdateName = async (e, projectId) => {
-    const updatedName = e.target.textContent.trim();
-    if (updatedName === "") {
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-      return;
-    }
-    try {
-      const response = await updateName(updatedName, projectId);
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating Project Name:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
+ ;
 
-  const handleUpdateOwner = async (e, projectId) => {
-    const updatedOwner = e.target.textContent.trim();
+  const handleUpdate = async( { handleFc, id, value, index }) => {
+        
     try {
-      const response = await updateOwner(updatedOwner, projectId);
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating Project Owner:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
 
-  const handleUpdateStartDate = async (e, projectId) => {
-    const updatedStartDate = e.target.value;
-    try {
-      const response = await updateStartDate(updatedStartDate, projectId);
+    let response;
+    if (index !== undefined && index !== null) {
+      response = await handleFc(id, index, value);
       console.log(response.data);
-      getProject();
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating Project Start Date:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateEndDate = async (e, projectId) => {
-    const updatedEndDate = e.target.value;
-    try {
-      const response = await updateExpectedDate(updatedEndDate, projectId);
+    } else {
+      response = await handleFc(value, id);
       console.log(response.data);
-      getProject();
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
+    }
+      
     } catch (error) {
-      console.error("Error updating Project End Date:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
+      console.error('Error updating project informations :', error);
     }
-  };
-
-  const handleUpdateDescription = async (e, projectId) => {
-    const updatedDescription = e.target.textContent.trim();
-    try {
-      const response = await updateDescription(updatedDescription, projectId);
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating Project Description:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateMepDate = async (e, projectId) => {
-    const updatedMepDate = e.target.value;
-    try {
-      const response = await updateActualMepDate(updatedMepDate, projectId);
-      console.log(response.data);
-      getProject();
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating Project MEP Date:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdatePhaseDate = async (e, projectId) => {
-    const updatedPhaseDate = e.target.value;
-    try {
-      const response = await updateLastPhaseDate(updatedPhaseDate, projectId);
-      console.log(response.data);
-      getProject();
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating Project Phase Date:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateMilestone = async (e, milestoneId, projectId) => {
-    const updatedMilestone = e.target.textContent.trim();
-    try {
-      const response = await updateMilestone(
-        projectId,
-        milestoneId,
-        updatedMilestone
-      );
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating Milestone:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateRealization = async (e, realizationId, projectId) => {
-    const updatedRealization = e.target.textContent.trim();
-    try {
-      const response = await updateMilestone(
-        projectId,
-        realizationId,
-        updatedRealization
-      );
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating Realization:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateEtape = async (etapeId, e) => {
-    const updatedEtape = e.target.textContent.trim();
-    try {
-      const response = await updateEtape(etapeId, updatedEtape);
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating Etape:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateTaskName = async (taskId, e) => {
-    const updatedTaskName = e.target.textContent.trim();
-    try {
-      const response = await updateTaskName(taskId, updatedTaskName);
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating Task Name:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateTaskProgress = async (taskId, e) => {
-    const updatedTaskProgress = e.target.textContent.trim();
-    try {
-      const response = await updateTaskProgress(taskId, updatedTaskProgress);
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating Task Progress:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateKpiName = async (e, kpiId) => {
-    const updatedKpiName = e.target.textContent.trim();
-    try {
-      const response = await updateKpiName(updatedKpiName, kpiId);
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating KPI Name:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateKpiTarget = async (e, kpiId) => {
-    const updatedKpiTarget = e.target.textContent.trim();
-    try {
-      const response = await updateKpiTarget(updatedKpiTarget, kpiId);
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating KPI Target:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateKpiCurrent = async (e, kpiId) => {
-    const updatedKpiCurrent = e.target.textContent.trim();
-    try {
-      const response = await updateKpiCurrent(updatedKpiCurrent, kpiId);
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error("Error updating KPI Current:", error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-  const handleUpdateAllocatedSprintCount = async (e, projectId) => {
-    const updatedValue = e.target.textContent.trim();
-    if (updatedValue === "") {
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-      return;
-    }
-    try {
-      const response = await updateAllocatedSprintCount(
-        updatedValue,
-        projectId
-      );
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error(`Error updating allocated sprint count:`, error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateCompletionPercentage = async (e, projectId) => {
-    const updatedValue = e.target.textContent.trim();
-    if (updatedValue === "") {
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-      return;
-    }
-    try {
-      const response = await updateCompletionPercentage(
-        updatedValue,
-        projectId
-      );
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error(`Error updating completion percentage:`, error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateConsumedSprintCount = async (e, projectId) => {
-    const updatedValue = e.target.textContent.trim();
-    if (updatedValue === "") {
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-      return;
-    }
-    try {
-      const response = await updateConsumedSprintCount(updatedValue, projectId);
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error(`Error updating consumed sprint count:`, error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-
-  const handleUpdateRemarkName = async (e, remarkId) => {
-    const updatedValue = e.target.textContent.trim();
-    if (updatedValue === "") {
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-      return;
-    }
-    try {
-      const response = await updateRemarkOrRiskName(updatedValue, remarkId);
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error(`Error updating remark or risk name:`, error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
-  const handleUpdateRemarkImportance = async (e, remarkId) => {
-    const updatedValue = e.target.textContent.trim();
-    if (updatedValue === "") {
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-      return;
-    }
-    try {
-      const response = await updateRemarkOrRiskImportance(
-        updatedValue,
-        remarkId
-      );
-      console.log(response.data);
-      e.target.classList.add("cell-success");
-      setTimeout(() => {
-        e.target.classList.remove("cell-success");
-      }, 2000);
-    } catch (error) {
-      console.error(`Error updating remark or risk importance:`, error);
-      e.target.classList.add("cell-error");
-      setTimeout(() => {
-        e.target.classList.remove("cell-error");
-      }, 2000);
-    }
-  };
+  }
+ 
   //   useEffect(() => {
   //     getProject();
   //   }, [project]);
@@ -715,10 +180,11 @@ const ProjectComponent = () => {
             <div className="card-body">
               <h2 className="card-title text-center">Présentation Projet</h2>
               <p className="card-text">
+            
                 <strong>Nom : </strong>
                 <span
                   contentEditable="true"
-                  onBlur={(e) => handleUpdateName(e, id)}
+                  onBlur={(e) => handleUpdate({ handleFc: updateName, id: id, value: e.target.textContent.trim()})}
                   suppressContentEditableWarning={true}
                 >
                   {project.name}
@@ -728,7 +194,7 @@ const ProjectComponent = () => {
                 <strong>Owner : </strong>
                 <span
                   contentEditable="true"
-                  onBlur={(e) => handleUpdateOwner(e, id)}
+                  onBlur={(e) => handleUpdate({ handleFc: updateOwner, id: id, value: e.target.textContent.trim()})}
                   suppressContentEditableWarning={true}
                 >
                   {project.owner}
@@ -740,7 +206,7 @@ const ProjectComponent = () => {
                   type="date"
                   value={project.startDate}
                   style={{ width: "140px" }}
-                  onChange={(e) => handleUpdateStartDate(e, id)}
+                  onChange={(e) => handleUpdate({ handleFc: updateStartDate, id: id, value: e.target.value})}
                 />
               </p>
               <p className="card-text">
@@ -749,14 +215,14 @@ const ProjectComponent = () => {
                   type="date"
                   value={project.expectedEndDate}
                   style={{ width: "140px" }}
-                  onChange={(e) => handleUpdateEndDate(e, id)}
+                  onChange={(e) => handleUpdate({ handleFc: updateExpectedDate, id: id, value: e.target.value})}
                 />
               </p>
               <p className="card-text">
                 <strong>Description : </strong>
                 <span
                   contentEditable="true"
-                  onBlur={(e) => handleUpdateDescription(e, id)}
+                  onBlur={(e) => handleUpdate({ handleFc: updateDescription, id: id, value: e.target.textContent.trim()})}
                   suppressContentEditableWarning={true}
                 >
                   {project.description}
@@ -769,7 +235,7 @@ const ProjectComponent = () => {
                     type="date"
                     value={project.actualMepDate}
                     style={{ width: "140px" }}
-                    onChange={(e) => handleUpdateMepDate(e, id)}
+                    onChange={(e) => handleUpdate({ handleFc: updateActualMepDate, id: id, value: e.target.value})}
                   />
                 </p>
               )}
@@ -780,7 +246,7 @@ const ProjectComponent = () => {
                     type="date"
                     value={project.lastPhaseDate}
                     style={{ width: "140px" }}
-                    onChange={(e) => handleUpdatePhaseDate(e, id)}
+                    onChange={(e) => handleUpdate({ handleFc: updateLastPhaseDate, id: id, value: e.target.value})}
                   />
                 </p>
               )}
@@ -814,7 +280,7 @@ const ProjectComponent = () => {
                     className="card-text"
                     key={index}
                     contentEditable="true"
-                    onBlur={(e) => handleUpdateMilestone(e, index, id)}
+                    onBlur={(e) => handleUpdate({ handleFc: updateMilestone, id: id, value: e.target.textContent.trim(), index: index})}
                     suppressContentEditableWarning={true}
                   >
                     {milestone}
@@ -850,7 +316,7 @@ const ProjectComponent = () => {
                       className="card-text"
                       key={index}
                       contentEditable="true"
-                      onBlur={(e) => handleUpdateRealization(e, index, id)}
+                      onBlur={(e) => handleUpdate({ handleFc: updateUpcomingRealization, id: id, value: e.target.textContent.trim(), index: index})}
                       suppressContentEditableWarning={true}
                     >
                       {realization}
@@ -882,7 +348,7 @@ const ProjectComponent = () => {
                   <div className="col-9">
                     <h6
                       contentEditable="true"
-                      onBlur={(e) => handleUpdateEtape(etape.id, e)}
+                      onBlur={(e) => handleUpdate({ handleFc: updateEtape, id: etape.id, value: e.target.textContent.trim()})}
                       suppressContentEditableWarning={true}
                     >
                       {etape.name}
@@ -919,14 +385,14 @@ const ProjectComponent = () => {
                         <tr key={task.id}>
                           <td
                             contentEditable="true"
-                            onBlur={(e) => handleUpdateTaskName(task.id, e)}
+                            onBlur={(e) => handleUpdate({ handleFc: updateTaskName, id: task.id, value: e.target.textContent.trim()})}
                             suppressContentEditableWarning={true}
                           >
                             {task.name}
                           </td>
                           <td
                             contentEditable="true"
-                            onBlur={(e) => handleUpdateTaskProgress(task.id, e)}
+                            onBlur={(e) => handleUpdate({ handleFc: updateTaskProgress, id: task.id, value: e.target.textContent.trim()})}
                             suppressContentEditableWarning={true}
                           >
                             {task.progress}
@@ -977,14 +443,14 @@ const ProjectComponent = () => {
                             <tr key={kpi.id}>
                               <td
                                 contentEditable="true"
-                                onBlur={(e) => handleUpdateKpiName(e, kpi.id)}
+                                onBlur={(e) => handleUpdate({ handleFc: updateKpiName, id: kpi.id, value: e.target.textContent.trim()})}
                                 suppressContentEditableWarning={true}
                               >
                                 {kpi.name}
                               </td>
                               <td
                                 contentEditable="true"
-                                onBlur={(e) => handleUpdateKpiTarget(e, kpi.id)}
+                                onBlur={(e) => handleUpdate({ handleFc: updateKpiTarget, id: kpi.id, value: e.target.textContent.trim()})}
                                 suppressContentEditableWarning={true}
                               >
                                 {kpi.target}
@@ -992,7 +458,7 @@ const ProjectComponent = () => {
                               <td
                                 contentEditable="true"
                                 onBlur={(e) =>
-                                  handleUpdateKpiCurrent(e, kpi.id)
+                                  handleUpdate({ handleFc: updateKpiCurrent, id: kpi.id, value: e.target.textContent.trim()})
                                 }
                                 suppressContentEditableWarning={true}
                               >
@@ -1016,7 +482,7 @@ const ProjectComponent = () => {
                         <td
                           contentEditable="true"
                           onBlur={(e) =>
-                            handleUpdateAllocatedSprintCount(e, id)
+                            handleUpdate({ handleFc: updateAllocatedSprintCount, id: id, value: e.target.textContent.trim()})
                           }
                           suppressContentEditableWarning={true}
                         >
@@ -1024,7 +490,7 @@ const ProjectComponent = () => {
                         </td>
                         <td
                           contentEditable="true"
-                          onBlur={(e) => handleUpdateConsumedSprintCount(e, id)}
+                          onBlur={(e) => handleUpdate({ handleFc: updateConsumedSprintCount, id: id, value: e.target.textContent.trim()})}
                           suppressContentEditableWarning={true}
                         >
                           {project.consumedSprintCount
@@ -1034,7 +500,7 @@ const ProjectComponent = () => {
                         <td
                           contentEditable="true"
                           onBlur={(e) =>
-                            handleUpdateCompletionPercentage(e, id)
+                            handleUpdate({ handleFc: updateCompletionPercentage, id: id, value: e.target.textContent.trim()})
                           }
                           suppressContentEditableWarning={true}
                         >
@@ -1079,7 +545,7 @@ const ProjectComponent = () => {
                               <td
                                 contentEditable="true"
                                 onBlur={(e) =>
-                                  handleUpdateRemarkName(e, remark.id)
+                                  handleUpdate({ handleFc: updateRemarkOrRiskName, id: remark.id, value: e.target.textContent.trim()})
                                 }
                                 suppressContentEditableWarning={true}
                               >
@@ -1088,7 +554,7 @@ const ProjectComponent = () => {
                               <td
                                 contentEditable="true"
                                 onBlur={(e) =>
-                                  handleUpdateRemarkImportance(e, remark.id)
+                                  handleUpdate({ handleFc: updateRemarkOrRiskImportance, id: remark.id, value: e.target.textContent.trim()})
                                 }
                                 suppressContentEditableWarning={true}
                               >
@@ -1103,7 +569,11 @@ const ProjectComponent = () => {
             
             </div>
           </div>
-          <div className="row">
+          
+        </div>
+      </div>
+      <div className="row">
+      <div className="row">
             <div className="col-12">
               <h5>Taches</h5>
               <table className="table table-striped table-bordered">
@@ -1123,21 +593,21 @@ const ProjectComponent = () => {
             <tr key={todo.id}>
             <td
             contentEditable='true' 
-            onBlur={(e) => handleUpdateTodoName(todo.id, e)}
+            onBlur={(e) => handleUpdate({ handleFc: updateTodoName, id: todo.id, value: e.target.textContent.trim()})}
             suppressContentEditableWarning={true}
             >{todo.name}</td>
             <td
             contentEditable='true' 
-            onBlur={(e) => handleUpdateTodoDetail(todo.id, e)}
+            onBlur={(e) => handleUpdate({ handleFc: updateTodoDetail, id: todo.id, value: e.target.textContent.trim()})}
             suppressContentEditableWarning={true}
             >{todo.detail}</td>
             <td> <Input type="date" value= {todo.deadline} 
                      style={{width: '115px'}}
-                     onChange={(e) => handleUpdateTodoDeadline(todo.id, e)}
+                     onChange={(e) => handleUpdate({ handleFc: updateTodoDeadline, id: todo.id, value: e.target.value})}
             /></td>
             <td
             contentEditable='true' 
-            onBlur={(e) => handleUpdateTodoStatus(todo.id, e)}
+            onBlur={(e) => handleUpdate({ handleFc: updateTodoStatus, id: todo.id, value: e.target.textContent.trim()})}
             suppressContentEditableWarning={true}
             >{todo.status}</td>
              <td>
@@ -1145,7 +615,7 @@ const ProjectComponent = () => {
             </td>
             <td
             contentEditable='true' 
-            onBlur={(e) => handleUpdateTodoResponsible(todo.id, e)}
+            onBlur={(e) => handleUpdate({ handleFc: updateTodoResponsible, id: todo.id, value: e.target.textContent.trim()})}
             suppressContentEditableWarning={true}
             >
                 {todo.responsible}
@@ -1159,7 +629,6 @@ const ProjectComponent = () => {
       <AddTodo  refreshTodo={getTodosByProject} domain={domainId} defaultProject={id}/>
             </div>
           </div>
-        </div>
       </div>
     </div>
   );

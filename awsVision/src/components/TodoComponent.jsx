@@ -27,141 +27,15 @@ const TodoComponent = () => {
             console.error(error);
         })
     }
-    const handleUpdateTodoName = async (todoId, e) => {
-  
-        const updatedName = e.target.textContent.trim();
-        if (updatedName === '') {
-          e.target.classList.add('cell-error');
-          getTodosByDomain();
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-          return; 
-        }
+    const handleUpdate = async(handleFc, todoId, value) => {
+        
         try {
-          const response = await updateTodoName(todoId, updatedName);
+          const response = await handleFc(value, todoId);
           console.log(response.data);
-      
-          e.target.classList.add('cell-success');
-          setTimeout(() => {
-          e.target.classList.remove('cell-success');
-          }, 2000);
         } catch (error) {
-          console.error('Error updating name:', error);
-          e.target.classList.add('cell-error');
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
+          console.error('Error updating Todo informations :', error);
         }
-      };
-      const handleUpdateTodoDetail = async (todoId, e) => {
-  
-        const updatedDetail = e.target.textContent.trim();
-        if (updatedDetail === '') {
-          e.target.classList.add('cell-error');
-          getTodosByDomain();
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-          return; 
-        }
-        try {
-          const response = await updateTodoDetail(todoId, updatedDetail);
-          console.log(response.data);
-      
-          e.target.classList.add('cell-success');
-          setTimeout(() => {
-          e.target.classList.remove('cell-success');
-          }, 2000);
-        } catch (error) {
-          console.error('Error updating Detail:', error);
-          e.target.classList.add('cell-error');
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-        }
-      };
-      const handleUpdateTodoDeadline = async (todoId, e) => {
-  
-        const updatedDeadline = e.target.value;
-        if (updatedDeadline === '') {
-          e.target.classList.add('cell-error');
-          getTodosByDomain();
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-          return; 
-        }
-        try {
-          const response = await updateTodoDeadline(todoId, updatedDeadline);
-          console.log(response.data);
-      
-          e.target.classList.add('cell-success');
-          setTimeout(() => {
-          e.target.classList.remove('cell-success');
-          }, 2000);
-        } catch (error) {
-          console.error('Error updating Deadline:', error);
-          e.target.classList.add('cell-error');
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-        }
-      };
-      const handleUpdateTodoStatus = async (todoId, e) => {
-  
-        const updatedStatus = e.target.textContent.trim();
-        if (updatedStatus === '') {
-          e.target.classList.add('cell-error');
-          getTodosByDomain();
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-          return; 
-        }
-        try {
-          const response = await updateTodoStatus(todoId, updatedStatus);
-          console.log(response.data);
-      
-          e.target.classList.add('cell-success');
-          setTimeout(() => {
-          e.target.classList.remove('cell-success');
-          }, 2000);
-        } catch (error) {
-          console.error('Error updating status:', error);
-          e.target.classList.add('cell-error');
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-        }
-      };
-      const handleUpdateTodoResponsible = async (todoId, e) => {
-  
-        const updateResponsible = e.target.textContent.trim();
-        if (updateResponsible === '') {
-          e.target.classList.add('cell-error');
-          getTodosByDomain();
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-          return; 
-        }
-        try {
-          const response = await updateTodoResponsible(todoId, updateResponsible);
-          console.log(response.data);
-      
-          e.target.classList.add('cell-success');
-          setTimeout(() => {
-          e.target.classList.remove('cell-success');
-          }, 2000);
-        } catch (error) {
-          console.error('Error updating responsible:', error);
-          e.target.classList.add('cell-error');
-          setTimeout(() => {
-            e.target.classList.remove('cell-error');
-          }, 2000);
-        }
-      };
+      }
     useEffect(() => {
         getTodosByDomain();
     } ,[todos])
@@ -185,23 +59,23 @@ const TodoComponent = () => {
             <tr key={todo.id}>
             <td
             contentEditable='true' 
-            onBlur={(e) => handleUpdateTodoName(todo.id, e)}
+            onBlur={(e) => handleUpdate( updateTodoName, todo.id, e.target.textContent.trim())}
             suppressContentEditableWarning={true}
             >{todo.name}</td>
             <td
             contentEditable='true' 
-            onBlur={(e) => handleUpdateTodoDetail(todo.id, e)}
+            onBlur={(e) => handleUpdate( updateTodoDetail, todo.id,  e.target.textContent.trim())}
             suppressContentEditableWarning={true}
             >{todo.detail}</td>
             <td>
             <Input type="date" value= {todo.deadline} 
                      style={{width: '115px'}}
-                     onChange={(e) => handleUpdateTodoDeadline(todo.id, e)}
+                     onChange={(e) => handleUpdate( updateTodoDeadline,  todo.id, e.target.value)}
             />
             </td>
             <td
             contentEditable='true' 
-            onBlur={(e) => handleUpdateTodoStatus(todo.id, e)}
+            onBlur={(e) => handleUpdate( updateTodoStatus, todo.id, e.target.textContent.trim())}
             suppressContentEditableWarning={true}
             >{todo.status}</td>
             <td>
@@ -209,7 +83,7 @@ const TodoComponent = () => {
             </td>
             <td
             contentEditable='true' 
-            onBlur={(e) => handleUpdateTodoResponsible(todo.id, e)}
+            onBlur={(e) => handleUpdate(updateTodoResponsible, todo.id, e.target.textContent.trim())}
             suppressContentEditableWarning={true}
             >
                 {todo.responsible}
