@@ -21,5 +21,5 @@ public class TechnicalDebtDto {
     private String impact;
     private String cost;
     private String voluntary;
-    private List<String> comments= new ArrayList<>();
+    private String comments;
 }

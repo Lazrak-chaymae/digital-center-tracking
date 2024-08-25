@@ -7,8 +7,8 @@ const AddRelease = ({ refreshReleases, domainId }) => {
   const [installationDate, setInstallationDate] = useState("");
   const [version, setVersion] = useState("");
   const [type, setType] = useState("");
-  const [packages, setPackages] = useState([]);
-  const [hotfixContents, setHotfixContents] = useState([]);
+  const [packages, setPackages] = useState("");
+  const [hotfixContents, setHotfixContents] = useState("");
   const [evolution, setEvolution] = useState("");
   const [validForm, setValidForm] = useState(true);
 
@@ -25,8 +25,8 @@ const AddRelease = ({ refreshReleases, domainId }) => {
       !installationDate ||
       !version ||
       !type ||
-      packages.length === 0 ||
-      hotfixContents.length === 0 ||
+      !packages  ||
+      !hotfixContents ||
       !evolution
     ) {
       setValidForm(false);
@@ -37,10 +37,8 @@ const AddRelease = ({ refreshReleases, domainId }) => {
       installationDate,
       version,
       type,
-      packages: packages.split(",").map((pkg) => pkg.trim()),
-      hotfixContents: hotfixContents
-        .split(",")
-        .map((content) => content.trim()),
+      packages,
+      hotfixContents,
       evolution,
     };
 
@@ -58,8 +56,8 @@ const AddRelease = ({ refreshReleases, domainId }) => {
        setInstallationDate('');
        setVersion('');
        setType('');
-       setPackages([]);
-       setHotfixContents([]);
+       setPackages('');
+       setHotfixContents('');
        setEvolution('');
   }
   useEffect(() => {
@@ -67,8 +65,8 @@ const AddRelease = ({ refreshReleases, domainId }) => {
       installationDate &&
       version &&
       type &&
-      packages.length !== 0 &&
-      hotfixContents.length !== 0 &&
+      packages &&
+      hotfixContents &&
       evolution
     ) {
       setValidForm(true);
@@ -124,7 +122,7 @@ const AddRelease = ({ refreshReleases, domainId }) => {
             <label className="form-label">Packages:</label>
             <input
               type="text"
-              placeholder="Entrer les packages séparés par des virgules (,)"
+              placeholder="Entrer les packages "
               name="packages"
               value={packages}
               onChange={(e) => setPackages(e.target.value)}
@@ -135,7 +133,7 @@ const AddRelease = ({ refreshReleases, domainId }) => {
             <label className="form-label">Contenu Hotfix:</label>
             <input
               type="text"
-              placeholder="Entrer le contenu Hotfix séparés par des virgules (,)"
+              placeholder="Entrer du contenu hotfix"
               name="hotfixContents"
               value={hotfixContents}
               onChange={(e) => setHotfixContents(e.target.value)}

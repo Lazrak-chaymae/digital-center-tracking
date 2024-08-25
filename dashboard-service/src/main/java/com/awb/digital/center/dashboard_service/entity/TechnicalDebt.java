@@ -28,8 +28,7 @@ public class TechnicalDebt {
     private String cost;
     private String voluntary;
 
-    @ElementCollection
-    @CollectionTable(name = "comments", joinColumns = @JoinColumn(name = "debt_id"))
-    @Column(name = "name")
-    private List<String> comments = new ArrayList<>();
+    @Lob
+    @Column(name = "comments", columnDefinition = "TEXT")
+    private String comments;
 }

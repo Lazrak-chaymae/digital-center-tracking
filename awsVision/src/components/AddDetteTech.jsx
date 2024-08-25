@@ -9,7 +9,7 @@ const AddDetteTech = ({refreshDebts, domainId}) => {
   const [impact, setImpact] = useState('');
   const [cost, setCost] = useState('');
   const [voluntary, setVoluntary] = useState('');
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState('');
   const [validForm, setValidForm] = useState(true);
   
   const showModal = () => {
@@ -28,9 +28,9 @@ const AddDetteTech = ({refreshDebts, domainId}) => {
       impact,
       cost,
       voluntary,
-      comments: comments.split(",").map((comment) => comment.trim()),
+      comments,
     };
-    if(!title || !type || !impact || !cost || !voluntary || comments.length === 0 ){
+    if(!title || !type || !impact || !cost || !voluntary || !comments ){
        setValidForm(false);
        return ;
     }
@@ -50,10 +50,10 @@ const AddDetteTech = ({refreshDebts, domainId}) => {
     setImpact(''); 
     setCost(''); 
     setVoluntary('');  
-    setComments([]); 
+    setComments(''); 
   }
   useEffect(() => {
-    if(title && type && impact && cost && voluntary && comments.length !== 0 ){
+    if(title && type && impact && cost && voluntary && comments ){
       setValidForm(true);
       return ;
    }
@@ -135,7 +135,7 @@ const AddDetteTech = ({refreshDebts, domainId}) => {
             <label className="form-label">Commentaire :</label>
             <input
               type="text"
-              placeholder="Entrer les commentaires séparés par des virgules (,)"
+              placeholder="Entrer des commentaires "
               name="comment"
               value={comments}
               onChange={(e) => setComments(e.target.value)}

@@ -5,7 +5,7 @@ import { isAdminUser } from '../services/AuthService';
 import { DeleteOutlined } from "@ant-design/icons";
 import { Input } from 'antd';
 import { updateVersion, updateType, updateInstallationDate, updateEvolution, updateHotfixContents, updatePackages } from '../services/Release';
-
+import TinyCompo from './TinyCompo';
 
 const ReleaseComponent = () => {
   const [releases, setReleases] = useState([]);
@@ -29,18 +29,13 @@ const ReleaseComponent = () => {
           console.error(error);
       })
   }
-  const handleUpdate = async( { handleFc, releaseId, value, index }) => {
+  const handleUpdate = async( { handleFc, releaseId, value}) => {
         
     try {
+    
+      const response = await handleFc(releaseId, value);
+      console.log(response.data);
 
-    let response;
-    if (index !== undefined && index !== null) {
-      response = await handleFc(releaseId, index, value);
-      console.log(response.data);
-    } else {
-      response = await handleFc(releaseId, value);
-      console.log(response.data);
-    }
       
     } catch (error) {
       console.error('Error updating support informations :', error);
@@ -88,26 +83,14 @@ const ReleaseComponent = () => {
                     onBlur={(e) => handleUpdate({ handleFc: updateType,releaseId: release.id, value: e.target.textContent.trim()})}
                     suppressContentEditableWarning={true}
                     >{release.type}</td>
-                    <td>{ release.packages.map((pkg, index) => (
-                  <span key={index}
-                  contentEditable={isAdminUser ? 'true' : 'false'}
-                  onBlur={(e) => handleUpdate({ handleFc: updatePackages,releaseId: release.id, value: e.target.textContent.trim(), index: index})}
-                  suppressContentEditableWarning={true}
-                  >
-                    {pkg}
-                    <br />
-                  </span>
-                ))}</td>
-                    <td>{release.hotfixContents.map((content, index) => (
-                  <span key={index}
-                  contentEditable={isAdminUser ? 'true' : 'false'}
-                  onBlur={(e) => handleUpdate({ handleFc: updateHotfixContents,releaseId: release.id, value: e.target.textContent.trim(), index: index})}
-                  suppressContentEditableWarning={true}
-                  >
-                    {content}
-                    <br />
-                  </span>
-                ))}</td>
+                    
+                   <td>
+                   <TinyCompo id={release.id} value={release.packages} fonction={updatePackages} admin={isAdminUser}/>
+                   </td>
+                   
+                    <td>
+                   <TinyCompo id={release.id} value={release.hotfixContents} fonction={updateHotfixContents} admin={isAdminUser} />
+                   </td>
                     <td
                     contentEditable={isAdminUser ? 'true' : 'false'}
                     onBlur={(e) => handleUpdate({ handleFc: updateEvolution,releaseId: release.id, value: e.target.textContent.trim()})}

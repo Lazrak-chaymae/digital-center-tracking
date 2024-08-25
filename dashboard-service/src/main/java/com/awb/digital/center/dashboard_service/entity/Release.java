@@ -27,15 +27,13 @@ public class Release {
     private String version;
     private String type;
 
-    @ElementCollection
-    @CollectionTable(name = "packages", joinColumns = @JoinColumn(name = "release_id"))
-    @Column(name = "name")
-    private List<String> packages = new ArrayList<>();
+    @Lob
+    @Column(name = "packages", columnDefinition = "TEXT")
+    private String packages ;
 
-    @ElementCollection
-    @CollectionTable(name = "hotfix_contents", joinColumns = @JoinColumn(name = "release_id"))
-    @Column(name = "name")
-    private List<String> hotfixContents = new ArrayList<>();
+    @Lob
+    @Column(name = "hotfixContents", columnDefinition = "TEXT")
+    private String hotfixContents ;
 
     private String evolution;
 }

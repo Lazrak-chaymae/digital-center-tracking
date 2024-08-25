@@ -39,10 +39,7 @@ useEffect(() => {
           </div>
         ))}
       </div>
-       <h4>Tiny</h4>
-      <div>
-        <TinyCompo />
-      </div>
+      
     </div>
    
   )

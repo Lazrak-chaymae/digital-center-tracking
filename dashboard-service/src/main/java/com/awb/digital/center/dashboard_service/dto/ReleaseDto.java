@@ -21,7 +21,7 @@ public class ReleaseDto {
     private LocalDate installationDate;
     private String version;
     private String type;
-    private List<String> packages = new ArrayList<>();
-    private List<String> hotfixContents = new ArrayList<>();
+    private String packages;
+    private String hotfixContents;
     private String evolution;
 }

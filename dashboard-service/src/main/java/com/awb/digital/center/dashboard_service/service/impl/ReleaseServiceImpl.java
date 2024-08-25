@@ -90,20 +90,20 @@ public class ReleaseServiceImpl implements ReleaseService {
     }
 
     @Override
-    public void updatePackages(Long id, Integer index, String packages) {
+    public void updatePackages(Long id, String packages) {
         Release release = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Release not found with id:" +id));
 
-        release.getPackages().set(index, packages);
+        release.setPackages(packages);
         repository.save(release);
     }
 
     @Override
-    public void updateHotfixContents(Long id, Integer index, String hotfixContent) {
+    public void updateHotfixContents(Long id, String hotfixContent) {
         Release release = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Release not found with id:" +id));
 
-        release.getHotfixContents().set(index, hotfixContent);
+        release.setHotfixContents(hotfixContent);
         repository.save(release);
     }
 

@@ -31,7 +31,7 @@ import {
 
 import { updateTaskName, updateTaskProgress } from "../services/Task";
 import { updateEtape, deleteEtape } from "../services/Etape";
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined} from "@ant-design/icons";
 import { listTodosByProject, deleteTodo, updateTodoName, updateTodoDeadline, updateTodoDetail, updateTodoStatus, updateTodoResponsible} from "../services/Todo";
 import AddTodo from "./AddTodo";
 import DropDownUser from "./DropDownUser";
