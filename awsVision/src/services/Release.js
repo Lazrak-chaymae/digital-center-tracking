@@ -20,12 +20,12 @@ export const updateType = (releaseId, type) => axios.patch(REST_API_BASE_URL + '
       "Content-Type": "text/plain",
     },
   });
-export const updatePackages = (releaseId, index, packages) => axios.patch(REST_API_BASE_URL + '/' + releaseId + '/packages/' + index, packages, {
+export const updatePackages = (releaseId, packages) => axios.patch(REST_API_BASE_URL + '/' + releaseId + '/packages', packages, {
     headers: {
       "Content-Type": "text/plain",
     },
   });
-export const updateHotfixContents = (releaseId, index, hotfixContents) => axios.patch(REST_API_BASE_URL + '/' + releaseId + '/hotfix-contents/' + index, hotfixContents, {
+export const updateHotfixContents = (releaseId, hotfixContents) => axios.patch(REST_API_BASE_URL + '/' + releaseId + '/hotfix-contents', hotfixContents, {
     headers: {
       "Content-Type": "text/plain",
     },

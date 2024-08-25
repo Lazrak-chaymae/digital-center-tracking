@@ -105,10 +105,10 @@ public class TechnicalDebtServiceImpl implements TechnicalDebtService {
     }
 
     @Override
-    public void updateComments(Long id, Integer index, String comment) {
+    public void updateComments(Long id, String comment) {
         TechnicalDebt debt = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Debt not found with id:" +id));
-        debt.getComments().set(index, comment);
+        debt.setComments(comment);
         repository.save(debt);
     }
 

@@ -67,9 +67,9 @@ public class TechnicalDebtController {
         service.updateVoluntary(id, voluntary);
         return ResponseEntity.ok("Voluntary updated successfully!.");
     }
-    @PatchMapping("{id}/comments/{index}")
-    public ResponseEntity<String> updateComments(@PathVariable Long id, @PathVariable Integer index, @RequestBody String comment){
-        service.updateComments(id, index, comment);
+    @PatchMapping("{id}/comments")
+    public ResponseEntity<String> updateComments(@PathVariable Long id, @RequestBody String comment){
+        service.updateComments(id, comment);
         return ResponseEntity.ok("Comment updated successfully!.");
     }
 

@@ -51,14 +51,14 @@ public class ReleaseController {
         service.updateType(id, type);
         return ResponseEntity.ok("Type updated successfully!.");
     }
-    @PatchMapping("{id}/packages/{index}")
-    public ResponseEntity<String> updatePackages(@PathVariable Long id,@PathVariable Integer index, @RequestBody String packages){
-        service.updatePackages(id, index, packages);
+    @PatchMapping("{id}/packages")
+    public ResponseEntity<String> updatePackages(@PathVariable Long id, @RequestBody String packages){
+        service.updatePackages(id, packages);
         return ResponseEntity.ok("Package updated successfully!.");
     }
-    @PatchMapping("{id}/hotfix-contents/{index}")
-    public ResponseEntity<String> updateHotfixContents(@PathVariable Long id,@PathVariable Integer index, @RequestBody String hotfixContents){
-        service.updateHotfixContents(id, index, hotfixContents);
+    @PatchMapping("{id}/hotfix-contents")
+    public ResponseEntity<String> updateHotfixContents(@PathVariable Long id, @RequestBody String hotfixContents){
+        service.updateHotfixContents(id, hotfixContents);
         return ResponseEntity.ok("Hotfix Content updated successfully!.");
     }
     @PatchMapping("{id}/evolution")

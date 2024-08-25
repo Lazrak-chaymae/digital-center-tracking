@@ -5,6 +5,7 @@ import { isAdminUser } from "../services/AuthService";
 import { DeleteOutlined } from "@ant-design/icons";
 import { deleteDebt } from "../services/DetteTechnique";
 import { updateType, updateComments, updateCost, updateImpact, updateTitle, updateVoluntary } from "../services/DetteTechnique";
+import TinyCompo from "./TinyCompo";
 
 const DetteTechComponent = () => {
   const [debts, setDebts] = useState([]);
@@ -190,19 +191,12 @@ const DetteTechComponent = () => {
       }, 2000);
     }
   };
-  const handleUpdate = async( { handleFc, debtId, value, index }) => {
+  const handleUpdate = async( { handleFc, debtId, value }) => {
         
     try {
-
-    let response;
-    if (index !== undefined && index !== null) {
-      response = await handleFc(debtId, index, value);
+   
+      const response = await handleFc(debtId, value);
       console.log(response.data);
-    } else {
-      response = await handleFc(debtId, value);
-      console.log(response.data);
-    }
-      
     } catch (error) {
       console.error('Error updating debt informations :', error);
     }
@@ -218,9 +212,9 @@ const DetteTechComponent = () => {
         <thead>
           <tr>
             <th>Titre</th>
-            <th>Type (Compléxité, Duplication, Violation, Instabilité PROD)</th>
-            <th>Impact sur le logiciel (S/M/L)</th>
-            <th>Coût de correction (S/M/L)</th>
+            <th>Type</th>
+            <th>Impact sur le logiciel </th>
+            <th>Coût de correction </th>
             <th>Volentaire / Involentaire</th>
             <th>Commentaire</th>
             {isAdminUser() && <th></th>}
@@ -255,17 +249,9 @@ const DetteTechComponent = () => {
               suppressContentEditableWarning={true}
               >{debt.voluntary}</td>
               <td>
-                {debt.comments.map((comment, index) => (
-                  <span key={index}
-                  contentEditable={isAdminUser ? 'true' : 'false'}
-               onBlur={(e) => handleUpdate({ handleFc: updateComments,debtId: debt.id, value: e.target.textContent.trim(), index: index})}
-               suppressContentEditableWarning={true}
-                  >
-                    {comment}
-                    <br />
-                  </span>
-                ))}
+                <TinyCompo id={debt.id} value={debt.comments} fonction={updateComments} />
               </td>
+            
               {isAdminUser() && (
                 <td>
                   <DeleteOutlined onClick={() => handleDebtDelete(debt.id)} />
@@ -278,6 +264,7 @@ const DetteTechComponent = () => {
       {isAdminUser() && (
         <AddDetteTech refreshDebts={GetDebts} domainId={domainId} />
       )}
+      
     </div>
   );
 };

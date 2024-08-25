@@ -38,9 +38,9 @@ export const updateVoluntary = (supportId, voluntary) =>
       "Content-Type": "text/plain",
     },
   });
-export const updateComments = (supportId, index, comment) =>
+export const updateComments = (supportId, comment) =>
   axios.patch(
-    REST_API_BASE_URL + "/" + supportId + "/comments/" + index,
+    REST_API_BASE_URL + "/" + supportId + "/comments",
     comment,
     {
       headers: {

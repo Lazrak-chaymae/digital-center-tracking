@@ -16,6 +16,6 @@ public interface TechnicalDebtService {
     void updateImpact(Long id, String impact);
     void updateCost(Long id, String cost);
     void updateVoluntary(Long id, String voluntary);
-    void updateComments(Long id, Integer index, String comment);
+    void updateComments(Long id, String comment);
 
 }
