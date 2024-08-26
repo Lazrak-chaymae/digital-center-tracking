@@ -46,4 +46,11 @@ public class RemarkOrRiskServiceImpl implements RemarkOrRiskService {
         remarkOrRisk.setImportance(importance);
         repository.save(remarkOrRisk);
     }
+
+    @Override
+    public void deleteRemarkOrRisk(Long id) {
+        RemarkOrRisk remarkOrRisk =  repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Remark or risk not found with id : " + id));
+        repository.delete(remarkOrRisk);
+    }
 }

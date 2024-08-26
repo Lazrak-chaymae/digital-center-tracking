@@ -297,8 +297,12 @@ public class ProjectServiceImpl implements ProjectService {
     public void updateProjectMilestone(String milestone, Integer index, Long projectId) {
         Project project = repository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
+        if(milestone == null || milestone.isEmpty()){
+            project.getMilestones().remove(index.intValue());
+        }else {
+            project.getMilestones().set(index, milestone);
+        }
 
-        project.getMilestones().set(index, milestone);
         repository.save(project);
     }
 
@@ -307,9 +311,10 @@ public class ProjectServiceImpl implements ProjectService {
         Project project = repository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found with id:" + projectId));
         if (realization == null || realization.isEmpty()) {
-            project.getUpcomingRealizations().remove(index);
+            project.getUpcomingRealizations().remove(index.intValue());
         }else {
             project.getUpcomingRealizations().set(index, realization);
+
         }
         repository.save(project);
     }

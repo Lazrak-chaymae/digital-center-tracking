@@ -19,6 +19,11 @@ public class RemarkOrRiskController {
         RemarkOrRiskDto remarkOrRisk = service.createRemarkOrRisk(remarkOrRiskDto,projectId);
         return new ResponseEntity<>(remarkOrRisk, HttpStatus.CREATED);
     }
+    @DeleteMapping("/remarks/{id}")
+    public ResponseEntity<String> deleteRemarkOrRisk(@PathVariable Long id){
+        service.deleteRemarkOrRisk(id);
+        return ResponseEntity.ok("Remark or risk deleted successfully!.");
+    }
 
     @PatchMapping("/remarks/{id}/name")
     public ResponseEntity<String> updateRemarkOrRiskName(@RequestBody String name,

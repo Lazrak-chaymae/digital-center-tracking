@@ -249,7 +249,7 @@ const DetteTechComponent = () => {
               suppressContentEditableWarning={true}
               >{debt.voluntary}</td>
               <td>
-                <TinyCompo id={debt.id} value={debt.comments} fonction={updateComments} />
+                <TinyCompo id={debt.id} value={debt.comments} fonction={updateComments} admin={isAdminUser}/>
               </td>
             
               {isAdminUser() && (

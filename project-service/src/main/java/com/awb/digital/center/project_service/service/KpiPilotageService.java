@@ -7,6 +7,7 @@ public interface KpiPilotageService {
           void updateKPIName(String kpiName, Long kpiId);
           void updateKPITarget(String kpiTarget, Long kpiId);
           void updateKPICurrent(String kpiCurrent, Long kpiId);
+          void deleteKPI(Long kpiId);
 
 
 }

@@ -62,4 +62,12 @@ public class KpiPilotageServiceImpl implements KpiPilotageService {
         kpiPilotageRepository.save(kpi);
     }
 
+    @Override
+    public void deleteKPI(Long kpiId) {
+        KpiPilotage kpi = kpiPilotageRepository.findById(kpiId)
+                .orElseThrow(() -> new ResourceNotFoundException("kpi not found with id:" + kpiId));
+
+        kpiPilotageRepository.delete(kpi);
+    }
+
 }
