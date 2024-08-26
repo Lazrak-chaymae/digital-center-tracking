@@ -170,14 +170,14 @@ public class ProjectController {
     }
     @PatchMapping("/{projectId}/milestone/{index}")
     public ResponseEntity<String> updateProjectMilestone(
-            @RequestBody String milestone, @PathVariable Integer index, @PathVariable Long projectId) {
+            @RequestBody(required = false) String milestone, @PathVariable Integer index, @PathVariable Long projectId) {
         service.updateProjectMilestone(milestone, index, projectId);
         return ResponseEntity.ok("Project milestone updated successfully");
     }
 
     @PatchMapping("/{projectId}/realization/{index}")
     public ResponseEntity<String> updateProjectUpcomingRealization(
-            @RequestBody String realization, @PathVariable Integer index, @PathVariable Long projectId) {
+            @RequestBody(required = false) String realization, @PathVariable Integer index, @PathVariable Long projectId) {
         service.updateProjectUpcomingRealization(realization, index, projectId);
         return ResponseEntity.ok("Project realization updated successfully");
     }

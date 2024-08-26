@@ -3,11 +3,14 @@ import { listProjects } from '../services/DashboardEnLanc';
 import { deleteProject, listSquadsByDomain } from '../services/Project';
 import { DeleteOutlined } from "@ant-design/icons";
 import { isAdminUser } from '../services/AuthService';
-import { Input } from 'antd';
+import { Input, Divider } from 'antd';
 import { updateName, updateDescription, updateActualMepDate, updateType,
    updateKpiName, updateLastPhaseDate, updateRemarkOrRiskName
   } from "../services/Project";
 import Dropdownessai from "./Dropdownessai";
+import AddRemarkOrRisk from './AddRemarkOrRisk';
+import AddKpiPilotage from './AddKpiPilotage';
+
 
 
 const DashboardLcmComponent = () => {
@@ -129,19 +132,43 @@ const DashboardLcmComponent = () => {
                        onChange={(e) => handleUpdate({ handleFc: updateLastPhaseDate, id: project.id, value: e.target.value})} />
                        :  project.lastPhaseDate}
                        </td>
-                      <td>{project.pilotageKpis.map(kpi => (<div key={kpi.id}
+                      <td>{project.pilotageKpis.map(kpi => (<span key={kpi.id}
                       contentEditable="true"
                       onBlur={(e) => handleUpdate({ handleFc: updateKpiName, id: kpi.id, value: e.target.textContent.trim()})}
                       suppressContentEditableWarning={true}
-                      >{kpi.name}</div>))}</td>
+                      > 
+                        {kpi.name}
+                        <Divider style={{padding: 3, margin: 0}}/>
+                        </span>
+                     
+                      ))}
+                      {isAdminUser && 
+                      <AddKpiPilotage refreshProject={GetProjects}
+                        projectId={project.id} />
+                      }
+                      </td>
                       <td>
-                        {project.remarks.map(remark => (
-                          <div key={remark.id}
+                        {project.remarks.map((remark) => (
+                        <span
+                          key={remark.id}
                           contentEditable="true"
-                       onBlur={(e) => handleUpdate({ handleFc: updateRemarkOrRiskName, id: remark.id, value: e.target.textContent.trim()})}
-                       suppressContentEditableWarning={true}
-                          >{remark.name}</div>
-                        ))}
+                          onBlur={(e) =>
+                            handleUpdate({
+                              handleFc: updateRemarkOrRiskName,
+                              id: remark.id,
+                              value: e.target.textContent.trim(),
+                            })
+                          }
+                          suppressContentEditableWarning={true}
+                        >
+                          {remark.name}
+                          <Divider style={{padding: 3, margin: 0}}/>
+                        </span>
+                      ))}
+                      {isAdminUser && 
+                      <AddRemarkOrRisk  refreshProject={GetProjects}
+                        projectId={project.id} />
+                      }
                       </td>
                       <td
                       contentEditable="true"

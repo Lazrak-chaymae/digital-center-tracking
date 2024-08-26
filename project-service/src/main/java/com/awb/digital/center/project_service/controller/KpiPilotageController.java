@@ -2,6 +2,7 @@ package com.awb.digital.center.project_service.controller;
 
 import com.awb.digital.center.project_service.dto.KpiPilotageDto;
 import com.awb.digital.center.project_service.service.KpiPilotageService;
+import jakarta.ws.rs.Path;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,11 @@ public class KpiPilotageController {
     public ResponseEntity<KpiPilotageDto> addKpiForProject(@RequestBody KpiPilotageDto kpiPilotageDto, @PathVariable("id") Long projectId) {
         KpiPilotageDto createdKpi =kpiPilotageService.createKpi(kpiPilotageDto, projectId);
         return new ResponseEntity<>(createdKpi, HttpStatus.CREATED);
+    }
+    @DeleteMapping("/kpis/{kpiId}")
+    public ResponseEntity<String> deleteKpi(@PathVariable Long kpiId){
+        kpiPilotageService.deleteKPI(kpiId);
+        return ResponseEntity.ok("kpi deleted successfully!.");
     }
     @PatchMapping("/kpis/{kpiId}/name")
     public ResponseEntity<String> updateKpiName(@RequestBody String name,

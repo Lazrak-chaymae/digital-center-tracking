@@ -6,6 +6,6 @@ public interface RemarkOrRiskService {
           RemarkOrRiskDto createRemarkOrRisk(RemarkOrRiskDto remarkOrRiskDto, Long projectId);
     void updateRemarkOrRiskName(String name, Long id);
     void updateRemarkOrRiskImportance(String importance, Long id);
-
+    void deleteRemarkOrRisk(Long id);
 
 }

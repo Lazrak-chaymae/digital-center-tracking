@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { EditOutlined } from "@ant-design/icons";
 import { Button } from 'antd';
+import parse from 'html-react-parser';
 
 const TinyCompo = ({id, value, fonction, admin}) => {
     const editorRef = useRef(null);
@@ -35,7 +36,9 @@ const TinyCompo = ({id, value, fonction, admin}) => {
       {!isUpdate ?  
       
       (<div>
-        <p dangerouslySetInnerHTML={{ __html: firstComment }}></p>
+        {/* <p dangerouslySetInnerHTML={{ __html: firstComment }}></p> */}
+        {parse(firstComment)}
+     
         {admin &&  <EditOutlined onClick={() => setIsUpdate(true)} /> }
        
       </div>): 

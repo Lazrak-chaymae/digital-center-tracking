@@ -177,7 +177,11 @@ function App() {
                   element={<AuthenticatedRoute><AddProjectComponent /></AuthenticatedRoute>}
                 ></Route>
                 <Route path="/setting" element={<SettingComponent />}></Route>
-         
+                
+                {/* <Route path='/' element={<LoginComponent />} />
+                <Route path='/login' element={<LoginComponent />} />
+                <Route path="/register" element={<RegisterComponent />} /> */}
+
                 </Routes>
             
           </Content>
@@ -191,10 +195,10 @@ function App() {
         </Header>
         <Content className="content">
         <Routes>
-    <Route path='/' element={ <LoginComponent />}></Route>
+                <Route path='/' element={ <LoginComponent />}></Route>
                 <Route path='/login' element={ <LoginComponent />}></Route>
                 <Route path="/register" element={<RegisterComponent />}></Route>
-    </Routes>
+       </Routes>
         </Content>
       </Layout>
    

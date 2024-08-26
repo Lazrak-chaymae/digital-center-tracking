@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Input } from "antd";
-import { DetailProject, updateStartDate, updateUpcomingRealization } from "../services/Project";
+import { DetailProject, updateStartDate, updateUpcomingRealization, deleteKpi, deleteRemarkOrRisk } from "../services/Project";
 import { useParams } from "react-router-dom";
 import AddKpiPilotage from "./AddKpiPilotage";
 import AddRemarkOrRisk from "./AddRemarkOrRisk";
@@ -11,6 +11,7 @@ import { listEtapes } from "../services/Etape";
 import { deleteTask, listTasks } from "../services/Task";
 import AddEtape from "./AddEtape";
 import AddTask from "./AddTask";
+
 import {
   updateName,
   updateDescription,
@@ -140,7 +141,24 @@ const ProjectComponent = () => {
       console.error(error);
     }
   };
- ;
+  const handleKpiDelete = async (kpiId) => {
+    try {
+      const response = await deleteKpi(kpiId);
+      console.log(response.data);
+      getProject();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleRemarkDelete = async (id) => {
+    try {
+      const response = await deleteRemarkOrRisk(id);
+      console.log(response.data);
+      getProject();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleUpdate = async( { handleFc, id, value, index }) => {
         
@@ -152,6 +170,7 @@ const ProjectComponent = () => {
       console.log(response.data);
     } else {
       response = await handleFc(value, id);
+      getProject();
       console.log(response.data);
     }
       
@@ -160,9 +179,9 @@ const ProjectComponent = () => {
     }
   }
  
-  //   useEffect(() => {
-  //     getProject();
-  //   }, [project]);
+    useEffect(() => {
+      getProject();
+    }, [project]);
   //   useEffect(() => {
   //    getEtapes();
   //   }, [etapes]);
@@ -274,10 +293,10 @@ const ProjectComponent = () => {
                 </div>
               </div>
 
-              <ul>
+              <ul class="list-group list-group-flush">
                 {(project.milestones || []).map((milestone, index) => (
-                  <li
-                    className="card-text"
+                  <li 
+                   class="list-group-item card-text"
                     key={index}
                     contentEditable="true"
                     onBlur={(e) => handleUpdate({ handleFc: updateMilestone, id: id, value: e.target.textContent.trim(), index: index})}
@@ -309,11 +328,11 @@ const ProjectComponent = () => {
                 </div>
               </div>
 
-              <ul>
+              <ul class="list-group list-group-flush">
                 {(project.upcomingRealizations || []).map(
                   (realization, index) => (
                     <li
-                      className="card-text"
+                      className="list-group-item card-text"
                       key={index}
                       contentEditable="true"
                       onBlur={(e) => handleUpdate({ handleFc: updateUpcomingRealization, id: id, value: e.target.textContent.trim(), index: index})}
@@ -435,6 +454,7 @@ const ProjectComponent = () => {
                           <th>KPIs</th>
                           <th>Cible</th>
                           <th>Actuel</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -464,6 +484,8 @@ const ProjectComponent = () => {
                               >
                                 {kpi.current}
                               </td>
+                              <td><DeleteOutlined onClick={() => handleKpiDelete(kpi.id)}/></td>
+                              
                             </tr>
                           ))}
                       </tbody>
@@ -536,6 +558,7 @@ const ProjectComponent = () => {
                         <tr>
                           <th>Risque ou remarque</th>
                           <th>Importance</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -560,6 +583,7 @@ const ProjectComponent = () => {
                               >
                                 {remark.importance}
                               </td>
+                              <td><DeleteOutlined onClick={() => handleRemarkDelete(remark.id)}/></td>
                             </tr>
                           ))}
                       </tbody>
