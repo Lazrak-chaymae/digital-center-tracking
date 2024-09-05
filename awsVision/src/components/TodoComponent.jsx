@@ -114,6 +114,7 @@ import {
 import { DeleteOutlined } from '@ant-design/icons';
 import { Input, Table } from 'antd';
 import DropDownUser from './DropDownUser';
+import { isAdminUser } from '../services/AuthService';
 
 const TodoComponent = () => {
   const domainId = sessionStorage.getItem('domainId');
@@ -260,7 +261,10 @@ const TodoComponent = () => {
     <div className="container" style={{ paddingTop: '12px' }}>
       <h3 className="text-center">Todo</h3>
       <Table dataSource={todos} columns={columns} rowKey="id" onChange={onChange} pagination={{ pageSize: 5 }} />
-      <AddTodo refreshTodo={getTodosByDomain} domain={domainId} />
+      {isAdminUser() &&  
+       <AddTodo refreshTodo={getTodosByDomain} domain={domainId} />
+      }
+      
     </div>
   );
 };
