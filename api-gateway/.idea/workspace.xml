@@ -6,17 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c75cb9bd-9a9c-4c47-88bb-84b610e8bd79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../awsVision/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../awsVision/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../awsVision/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/controller/KpiPilotageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/controller/KpiPilotageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/controller/RemarkOrRiskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/controller/RemarkOrRiskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/KpiPilotageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/KpiPilotageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/RemarkOrRiskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/RemarkOrRiskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/impl/KpiPilotageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/impl/KpiPilotageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/impl/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/impl/RemarkOrRiskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project-service/src/main/java/com/awb/digital/center/project_service/service/impl/RemarkOrRiskServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

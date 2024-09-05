@@ -94,7 +94,7 @@ function App() {
     
     {isUserLoggedIn() ? (
       <Layout>
-      
+        
           <Sider
             collapsed={collapsed}
             collapsible
@@ -187,6 +187,8 @@ function App() {
           </Content>
         </Layout>
       </Layout>
+
+     
     ) :
     (
       <Layout style={{backgroundColor: 'white'}}>
