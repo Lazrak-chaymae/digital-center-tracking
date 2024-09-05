@@ -46,7 +46,7 @@ const ProjectCard = ({
         <Button className="square-button">{expectedEndDate ? expectedEndDate : "N/A"}</Button>
       </div>
       <div className="details-link">
-        <Button type="link" href={`/project/${id}`}>
+        <Button type="link" href={`/project/${id}`} style={{color: "#ec6836"}} >
           Details
         </Button>
       </div>

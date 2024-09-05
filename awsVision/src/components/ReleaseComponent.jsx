@@ -58,7 +58,7 @@ const ReleaseComponent = () => {
                 <th>Contenu Hotfix</th>
                 <th>Contenu Evolution</th>  
                 {isAdminUser() &&
-                <th></th>
+                <th>Actions</th>
                 }
             </tr>
         </thead>
@@ -97,7 +97,9 @@ const ReleaseComponent = () => {
                     suppressContentEditableWarning={true}
                     >{release.evolution}</td>
                     {isAdminUser() &&
-                    <td><DeleteOutlined onClick={() => handleReleaseDelete(release.id)}/></td>
+                    <td><DeleteOutlined onClick={() => handleReleaseDelete(release.id)}
+                    style={{color: "red"}}
+                    /></td>
 }
                  </tr>
              ))}

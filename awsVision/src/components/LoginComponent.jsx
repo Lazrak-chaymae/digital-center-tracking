@@ -94,6 +94,7 @@ const LoginComponent = () => {
             Pas encore de compte ?{" "}
             <button
               className="btn btn-link"
+              style={{color: "#ec6836"}}
               onClick={() => navigate("/register")}
             >
               Inscrivez-vous ici

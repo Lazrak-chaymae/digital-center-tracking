@@ -39,7 +39,7 @@ const TinyCompo = ({id, value, fonction, admin}) => {
         {/* <p dangerouslySetInnerHTML={{ __html: firstComment }}></p> */}
         {parse(firstComment)}
      
-        {admin &&  <EditOutlined onClick={() => setIsUpdate(true)} /> }
+        {admin &&  <EditOutlined onClick={() => setIsUpdate(true)} style={{color: "#ec6836"}}/> }
        
       </div>): 
       ( <div>
@@ -63,7 +63,9 @@ const TinyCompo = ({id, value, fonction, admin}) => {
           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
         }}
       />
-      <Button onClick={log}>Submit</Button>
+      <Button onClick={log} 
+      style={{backgroundColor: "#ec6836",color: "white"}}
+      >Submit</Button>
       </div>
       )
       }

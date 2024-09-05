@@ -231,8 +231,9 @@ const AddProjectComponent = () => {
           )}
           <div className="button-container">
             <button
-              className="btn btn-primary"
+              className="btn"
               onClick={(e) => handleSubmit(e)}
+              style={{backgroundColor: "#ec6836", color: "white"}}
             >
               Submit
             </button>

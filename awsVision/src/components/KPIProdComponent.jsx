@@ -64,7 +64,7 @@ const KPIProdComponent = () => {
                             <th>Réalisé</th>
                             <th>Précédente mesure</th>
                             {isAdminUser() &&
-                            <th></th>
+                            <th>Actions</th>
                             }
                         </tr>
                     </thead>
@@ -98,7 +98,7 @@ const KPIProdComponent = () => {
                                      suppressContentEditableWarning={true}
                                     >{kpi.previousMeasure}</td>
                                     {isAdminUser() &&
-                                    <td><DeleteOutlined onClick={() => handleKPIDelete(kpi.id)} /></td>
+                                    <td><DeleteOutlined onClick={() => handleKPIDelete(kpi.id)} style={{ color: "red"}}/></td>
                                     }
                             </tr>
                             ))}

@@ -75,7 +75,9 @@ const AddKPIProd = ({ refreshKPIs, domainId }) => {
   }, [functionality, indicator, planned, achieved, previousMeasure, type]);
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" onClick={showModal}
+      style={{backgroundColor: "#ec6836", color: "white"}}
+      >
         Ajouter une KPI
       </Button>
       <Modal
@@ -166,6 +168,7 @@ const AddKPIProd = ({ refreshKPIs, domainId }) => {
             <button
               className="btn btn-primary"
               onClick={(e) => handleSubmit(e)}
+              style={{backgroundColor: "#ec6836", color: "white"}}
             >
               Ajouter
             </button>

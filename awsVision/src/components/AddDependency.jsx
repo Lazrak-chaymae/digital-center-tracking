@@ -83,7 +83,7 @@ const AddDependency = ({ refreshDependencies, domainId }) => {
   }, []);
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" onClick={showModal} style={{backgroundColor: "#ec6836", color: "white"}}>
         Ajouter une dépendance
       </Button>
       <Modal
@@ -165,13 +165,16 @@ const AddDependency = ({ refreshDependencies, domainId }) => {
           }
           <div className="button-container">
             <button
-              className="btn btn-primary"
+              className="btn "
               onClick={(e) => handleSubmit(e)}
+              style={{backgroundColor: "#ec6836", color: "white"}}
             >
               Ajouter
             </button>
           </div>
         </form>
+        
+            
       </Modal>
     </>
   );

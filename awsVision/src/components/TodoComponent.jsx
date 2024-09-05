@@ -249,10 +249,12 @@ const TodoComponent = () => {
       ),
     },
     {
-      title: '',
+      title: 'Actions',
       key: 'action',
       render: (text, record) => (
-        <DeleteOutlined onClick={() => handleTodoDelete(record.id)} />
+        <DeleteOutlined onClick={() => handleTodoDelete(record.id)} 
+        style={{color: "red"}}
+        />
       ),
     },
   ];

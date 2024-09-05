@@ -64,7 +64,7 @@ function App() {
   ];
   const contentStyle = {
     minHeight: '498px',
-    backgroundColor: 'white' ,
+    backgroundColor: '#F5F7F8' ,
   
   }
   const mainStyle = {
@@ -101,7 +101,7 @@ function App() {
             trigger={null}
             className="sidebar"
             theme="light"
-            style={{position: 'fixed', backgroundColor: '#FFF8E1'}}
+            style={{position: 'fixed', backgroundColor: '#dddfe3'}}
           >
             {" "}
             <Logo />
@@ -110,7 +110,7 @@ function App() {
         
         <Layout className="main-content" style={mainStyle}>
          
-            <Header className="header" style={{backgroundColor: '#FFF8E1'}}>
+            <Header className="header" style={{backgroundColor: 'white'}}>
               <Button
                 type="text"
                 className="toggle"

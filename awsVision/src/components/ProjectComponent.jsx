@@ -384,6 +384,7 @@ const ProjectComponent = () => {
                         />
                         <DeleteOutlined
                           onClick={() => handleEtapeDelete(etape.id)}
+                          style={{color: "red"}}
                         />{" "}
                       </div>
                     )}
@@ -419,6 +420,7 @@ const ProjectComponent = () => {
                           <td>
                             <DeleteOutlined
                               onClick={() => handleTaskDelete(task.id)}
+                              style={{color: "red"}}
                             />
                           </td>
                         </tr>
@@ -484,7 +486,7 @@ const ProjectComponent = () => {
                               >
                                 {kpi.current}
                               </td>
-                              <td><DeleteOutlined onClick={() => handleKpiDelete(kpi.id)}/></td>
+                              <td><DeleteOutlined onClick={() => handleKpiDelete(kpi.id)} style={{color: "red"}}/></td>
                               
                             </tr>
                           ))}
@@ -583,7 +585,7 @@ const ProjectComponent = () => {
                               >
                                 {remark.importance}
                               </td>
-                              <td><DeleteOutlined onClick={() => handleRemarkDelete(remark.id)}/></td>
+                              <td><DeleteOutlined onClick={() => handleRemarkDelete(remark.id)} style={{color: "red"}}/></td>
                             </tr>
                           ))}
                       </tbody>
@@ -609,7 +611,7 @@ const ProjectComponent = () => {
           <th>Statut</th>
           <th>Porteur</th>
           <th>Responsable</th>
-          <th></th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -645,7 +647,9 @@ const ProjectComponent = () => {
                 {todo.responsible}
             </td>
            
-            <td><DeleteOutlined onClick={() => handleTodoDelete(todo.id)}/></td>
+            <td><DeleteOutlined onClick={() => handleTodoDelete(todo.id)}
+              style={{color: "red"}}
+              /></td>
             </tr>
          ))}
       </tbody>

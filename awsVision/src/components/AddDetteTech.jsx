@@ -65,7 +65,7 @@ const AddDetteTech = ({refreshDebts, domainId}) => {
     comments])
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" onClick={showModal} style={{backgroundColor: "#ec6836", color: "white"}}>
         Ajouter une Dette Technique
       </Button>
       <Modal
@@ -148,7 +148,7 @@ const AddDetteTech = ({refreshDebts, domainId}) => {
             </div>
           }
           <div className='button-container'>
-          <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
+          <button className="btn" onClick={(e) => handleSubmit(e)} style={{backgroundColor: "#ec6836", color: "white"}}>
             Ajouter
           </button>
           </div>

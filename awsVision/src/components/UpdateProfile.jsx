@@ -44,7 +44,9 @@ const UpdateProfile = () => {
     }, [newPassword, confirmPassword]);
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" 
+      style={{backgroundColor: "#ec6836", color: "white"}}
+      onClick={showModal}>
         Modifier mot de passe
       </Button>
       <Modal
@@ -105,7 +107,9 @@ const UpdateProfile = () => {
             </div>
           </div>
           <div className="button-container">
-          <button className="btn btn-primary" onClick={(e) => handleUpdateForm(e)}>
+          <button className="btn"
+          style={{backgroundColor: "#ec6836", color: "white"}}
+          onClick={(e) => handleUpdateForm(e)}>
             Modifier
           </button>
           </div>

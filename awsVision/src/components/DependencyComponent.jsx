@@ -56,7 +56,7 @@ const DependencyComponent = () => {
                 <th>Equipe bénéficiaire</th>
                 <th>Date prévue</th>
                 {isAdminUser() &&
-                <th></th>
+                <th>Actions</th>
                 }
             </tr>
         </thead>
@@ -94,7 +94,9 @@ const DependencyComponent = () => {
                     /> : dependency.scheduledDate }
                      </td>
                      {isAdminUser() &&
-                     <td><DeleteOutlined onClick={() => handleDependencyDelete(dependency.id)} /></td>
+                     <td><DeleteOutlined onClick={() => handleDependencyDelete(dependency.id)} 
+                     style={{color: "red"}}
+                     /></td>
 }
                   </tr>
                )
