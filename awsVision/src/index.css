@@ -229,6 +229,7 @@ ul li {
 
 button {
   margin-left: 5px;
+  background-color: #ec6836;
 }
 
 .col-3,
@@ -265,3 +266,6 @@ button {
   border: 2px solid red;
   background-color: red;
 }
+  
+
+

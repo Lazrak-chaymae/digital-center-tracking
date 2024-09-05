@@ -94,7 +94,7 @@ const DashboardLcmComponent = () => {
                   <th>Remarques</th>
                   <th>Type</th>
                   {isAdminUser() && 
-                   <th></th>
+                   <th>Actions</th>
                   } 
                 </tr>
               </thead>
@@ -102,7 +102,7 @@ const DashboardLcmComponent = () => {
                 {lcProject[squad.id] && lcProject[squad.id].map(
                   project => (
                     <tr key={project.id}>
-                      <td><a href={`/project/${project.id}`} style={{ textDecoration: 'none' }}>Projet {project.id}</a></td>
+                      <td><a href={`/project/${project.id}`} style={{ textDecoration: 'none', color:"#ec6836" }}>Projet {project.id}</a></td>
                       <td
                        contentEditable="true"
                        onBlur={(e) => handleUpdate({ handleFc: updateName, id: project.id, value: e.target.textContent.trim()})}
@@ -176,7 +176,9 @@ const DashboardLcmComponent = () => {
                       suppressContentEditableWarning={true}
                       >{project.type}</td>
                       {isAdminUser() && 
-                        <td><DeleteOutlined onClick={() => handleProjectDelete(project.id)} /></td>
+                        <td><DeleteOutlined onClick={() => handleProjectDelete(project.id)}
+                        style={{color: "red"}}
+                        /></td>
                   } 
                     </tr>
                   ))}

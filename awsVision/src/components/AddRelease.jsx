@@ -75,7 +75,9 @@ const AddRelease = ({ refreshReleases, domainId }) => {
   }, [installationDate, version, type, packages, hotfixContents, evolution]);
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" onClick={showModal}
+      style={{backgroundColor: "#ec6836", color: "white"}}
+      >
         Ajouter une version
       </Button>
       <Modal
@@ -160,6 +162,7 @@ const AddRelease = ({ refreshReleases, domainId }) => {
             <button
               className="btn btn-primary"
               onClick={(e) => handleSubmit(e)}
+              style={{backgroundColor: "#ec6836", color: "white"}}
             >
               Ajouter
             </button>

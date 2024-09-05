@@ -44,7 +44,9 @@ const AddTask = ({refreshEtape, etapeId, projectId}) => {
     } , [name, progress])
   return (
     <>
-    <PlusCircleOutlined onClick={showModal} />
+    <PlusCircleOutlined onClick={showModal} 
+    
+    />
     <Modal
       className="text-center"
       title="Ajouter tache"
@@ -81,7 +83,9 @@ const AddTask = ({refreshEtape, etapeId, projectId}) => {
            </div>
         }
         <div className="button-container">
-        <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
+        <button className="btn"
+        style={{backgroundColor: "#ec6836", color: "white"}}
+        onClick={(e) => handleSubmit(e)}>
           Ajouter
         </button>
         </div>

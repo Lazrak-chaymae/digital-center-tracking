@@ -120,7 +120,9 @@ const AddTodo = ({refreshTodo, domain, defaultProject}) => {
           
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" onClick={showModal}
+      style={{backgroundColor: "#ec6836", color: "white"}}
+      >
         Ajouter une tâche
       </Button>
       <Modal
@@ -210,7 +212,7 @@ const AddTodo = ({refreshTodo, domain, defaultProject}) => {
             <label className="form-label">Responsable :</label>
             <input
               type="text"
-              placeholder="Entrer le nom d"
+              placeholder="Entrer le nom du responsable "
               name="responsible"
               value={responsible}
               onChange={(e) => setResponsible(e.target.value)}
@@ -224,8 +226,9 @@ const AddTodo = ({refreshTodo, domain, defaultProject}) => {
           )}
           <div className="button-container">
             <button
-              className="btn btn-primary"
+              className="btn"
               onClick={(e) => handleSubmit(e)}
+              style={{backgroundColor: "#ec6836", color: "white"}}
             >
               Ajouter
             </button>

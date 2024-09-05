@@ -41,7 +41,9 @@ const AddMilestone = ({ refreshProject, projectId }) => {
   } ,[name])
   return (
     <>
-      <PlusCircleOutlined onClick={showModal} />
+      <PlusCircleOutlined onClick={showModal}
+      style={{ color: "#ec6838"}}
+      />
       <Modal
        className="text-center"
         title="Ajouter Fait marquant"
@@ -67,7 +69,9 @@ const AddMilestone = ({ refreshProject, projectId }) => {
           </div>
           }
           <div className="button-container">
-          <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
+          <button className="btn"
+          style={{backgroundColor: "#ec6836", color: "white"}}
+          onClick={(e) => handleSubmit(e)}>
             Ajouter
           </button>
           </div>

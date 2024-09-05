@@ -142,7 +142,7 @@ const DashboardConstComponent = () => {
                 <th>Type</th>
                 <th>Remarque et risque</th>
                 <th>Avancement</th>
-                {isAdminUser() && <th></th>}
+                {isAdminUser() && <th>Actions</th>}
               </tr>
             </thead>
             <tbody>
@@ -152,7 +152,7 @@ const DashboardConstComponent = () => {
                     <td>
                       <a
                         href={`/project/${project.id}`}
-                        style={{ textDecoration: "none" }}
+                        style={{ textDecoration: "none", color:"#ec6836" }}
                       >
                         Projet {project.id}
                       </a>
@@ -383,6 +383,7 @@ const DashboardConstComponent = () => {
                       <td>
                         <DeleteOutlined
                           onClick={() => handleProjectDelete(project.id)}
+                          style={{color: "red"}}
                         />
                       </td>
                     )}

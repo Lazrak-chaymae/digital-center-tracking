@@ -57,14 +57,14 @@ body {
     padding: 3px 15px;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
+    background-color: #ec6836;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
   }
   
   .login-button:hover {
-    background-color: #0056b3;
+    background-color: #ec541c;
   }
   
   .error-message {
@@ -80,7 +80,7 @@ body {
   
   .signup-link button {
     border: none;
-    color: #007bff;
+    color: #ec6836;
     cursor: pointer;
     text-decoration: none;
     padding: 2px;
@@ -89,6 +89,7 @@ body {
   
   .signup-link button:hover {
     text-decoration: underline;
+    color: #ec6836;
   }
   
   .register-container {

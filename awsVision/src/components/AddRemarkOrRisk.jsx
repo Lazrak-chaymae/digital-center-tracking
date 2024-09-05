@@ -46,7 +46,9 @@ const AddRemarkOrRisk = ({refreshProject, projectId}) => {
   return (
      <>
    
-    <PlusCircleOutlined onClick={showModal} />
+    <PlusCircleOutlined onClick={showModal} 
+    style={{color: "#ec6836"}}
+    />
     <Modal
      className='text-center'
       title="Ajouter une remarque ou un risque"
@@ -83,7 +85,9 @@ const AddRemarkOrRisk = ({refreshProject, projectId}) => {
            </div>
         }
         <div className="button-container">
-        <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
+        <button className="btn" 
+        style={{backgroundColor: "#ec6836", color: "white"}}
+        onClick={(e) => handleSubmit(e)}>
           Ajouter
         </button>
         </div>

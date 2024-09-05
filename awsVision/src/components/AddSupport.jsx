@@ -53,7 +53,9 @@ const AddSupport = ({ refreshSupport, domainId }) => {
   }, [ticketCount, effortSpent, topSubjects]);
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" onClick={showModal}
+      style={{backgroundColor: "#ec6836", color: "white"}}
+      >
         Ajouter Activité support
       </Button>
       <Modal
@@ -108,6 +110,7 @@ const AddSupport = ({ refreshSupport, domainId }) => {
             <button
               className="btn btn-primary"
               onClick={(e) => handleSubmit(e)}
+              style={{backgroundColor: "#ec6836", color: "white"}}
             >
               Ajouter
             </button>

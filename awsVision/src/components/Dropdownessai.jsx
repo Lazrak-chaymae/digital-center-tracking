@@ -74,7 +74,11 @@ const Dropdownessai = ({ projectId, refresh , upPhase}) => {
   };
   const buttonStyle = {
     weight: 50,
+    backgroundColor : "#ec6836",
+    color : "white",
+
   }
+  
   return (
     <Dropdown
       menu={{

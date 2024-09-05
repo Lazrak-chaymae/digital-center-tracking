@@ -217,7 +217,7 @@ const DetteTechComponent = () => {
             <th>Coût de correction </th>
             <th>Volentaire / Involentaire</th>
             <th>Commentaire</th>
-            {isAdminUser() && <th></th>}
+            {isAdminUser() && <th>Actions</th>}
           </tr>
         </thead>
         <tbody>
@@ -254,7 +254,8 @@ const DetteTechComponent = () => {
             
               {isAdminUser() && (
                 <td>
-                  <DeleteOutlined onClick={() => handleDebtDelete(debt.id)} />
+                  <DeleteOutlined onClick={() => handleDebtDelete(debt.id)} 
+                    style={{color: "red"}}/>
                 </td>
               )}
             </tr>

@@ -41,7 +41,7 @@ const AddEtape = ({refreshEtape, domain}) => {
   }, [name])
   return (
     <>
-    <PlusCircleOutlined onClick={showModal} />
+    <PlusCircleOutlined onClick={showModal} style={{color: "#ec6836"}} />
     <Modal
       className="text-center"
       title="Ajouter étape "
@@ -67,7 +67,7 @@ const AddEtape = ({refreshEtape, domain}) => {
            </div>
         }
         <div className="button-container">
-        <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
+        <button className="btn" onClick={(e) => handleSubmit(e)} style={{backgroundColor: "#ec6836", color: "black"}}>
           Ajouter
         </button>
         </div>
