@@ -27,7 +27,9 @@ const MenuList = () => {
     getAllProjects();
   }, []);
   return (
-    <Menu theme="light" mode="inline" className="menu-bar" style={{backgroundColor: '#dddfe3'}}>
+    <Menu theme="light" mode="inline" className="menu-bar" style={{backgroundColor: '#dddfe3'}}
+      
+    >
       <Menu.Item key="home" icon={<HomeOutlined />}>
         <a href="/home" style={{ textDecoration: "none" }}>
           Home
@@ -37,19 +39,18 @@ const MenuList = () => {
         key="dashboard"
         icon={<AppstoreOutlined />}
         title="Dashboard"
+        
       >
         <Menu.Item key="dashboard-1">
           <a
             href="/dashboard-underConstruction"
             style={{ textDecoration: "none" }}
           >
-            Dashboard en construction
+          En construction
           </a>
         </Menu.Item>
         <Menu.Item key="dashboard-2">
-          <a href="/dashboard-inLaunch" style={{ textDecoration: "none" }}>
-            Dashboard en lancement
-          </a>
+          <a href="/dashboard-inLaunch" style={{ textDecoration: "none" }}>En lancement</a>
         </Menu.Item>
         <Menu.Item key="dashboard-3">
           <a href="/technical-debt" style={{ textDecoration: "none" }}>
@@ -58,7 +59,7 @@ const MenuList = () => {
         </Menu.Item>
         <Menu.Item key="dashboard-4">
           <a href="/support" style={{ textDecoration: "none" }}>
-            Support Niveau 3
+            Support N3
           </a>
         </Menu.Item>
         <Menu.Item key="dashboard-5">

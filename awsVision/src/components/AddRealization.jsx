@@ -45,7 +45,7 @@ const AddRealization = ({ refreshProject, projectId }) => {
     />
     <Modal
       className="text-center"
-      title="Ajouter Fait marquant"
+      title="Ajouter réalisation"
       open={isModalOpen}
       onCancel={handleCancel}
       footer={null}
