@@ -121,6 +121,8 @@ const AddProjectComponent = () => {
     getSquads();
   }, []);
   return (
+    <>
+    <h3 className="text-center" style={{ paddingTop: "6px" }}>Ajouter un projet</h3>
     <div className="center-container" style={{ paddingTop: "10px" }}>
       
       <div className="forms">
@@ -241,6 +243,7 @@ const AddProjectComponent = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

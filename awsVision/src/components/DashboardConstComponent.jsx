@@ -142,7 +142,7 @@ const DashboardConstComponent = () => {
                 <th>Type</th>
                 <th>Remarque et risque</th>
                 <th>Avancement</th>
-                {isAdminUser() && <th>Actions</th>}
+                {isAdminUser() && <th></th>}
               </tr>
             </thead>
             <tbody>
@@ -298,10 +298,11 @@ const DashboardConstComponent = () => {
                       </ul>
                     </td>
                     <td>
+                      <ul>
                       {project.upcomingRealizations.map(
                         (realization, index) => (
-                          <div>
-                          <span
+                         
+                          <li
                             key={index}
                             contentEditable={isAdminUser ? "true" : "false"}
                             onBlur={(e) =>
@@ -316,19 +317,23 @@ const DashboardConstComponent = () => {
                           >
                             {realization}
                            
-                          </span>
-                           <Divider style={{padding: 3, margin: 0}}/>
-                           </div>
+                          </li>
+                           
+                           
                         )
                       )}
                        {isAdminUser && 
+                       <li>
                       <Input type="text" placeholder="  Ajouter" 
                         value={newGoal}
                         onChange={(e) => setNewGoal(e.target.value)}
                         onPressEnter={() => handleAddGoal(project.id)}
                         
                         />
+                         </li>
                        }
+                      
+                       </ul>
                     </td>
                     <td
                       contentEditable={isAdminUser ? "true" : "false"}
