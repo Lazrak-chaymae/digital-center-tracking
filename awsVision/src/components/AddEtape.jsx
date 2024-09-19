@@ -67,7 +67,7 @@ const AddEtape = ({refreshEtape, domain}) => {
            </div>
         }
         <div className="button-container">
-        <button className="btn" onClick={(e) => handleSubmit(e)} style={{backgroundColor: "#ec6836", color: "black"}}>
+        <button className="btn" onClick={(e) => handleSubmit(e)} style={{backgroundColor: "#ec6836", color: "white"}}>
           Ajouter
         </button>
         </div>

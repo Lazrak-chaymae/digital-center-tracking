@@ -244,32 +244,11 @@ const DashboardConstComponent = () => {
                     <td>
                     
                     <ul>
-                        {project.milestones.map((milestone, index) => (
-                         
-                          //   <span
-                          //   className="list-group-item"
-                          //   key={index}
-                          //   contentEditable={isAdminUser ? "true" : "false"}
-                          //   onBlur={(e) =>
-                          //     handleUpdate({
-                          //       handleFc: updateMilestone,
-                          //       id: project.id,
-                          //       value: e.target.textContent.trim(),
-                          //       index: index,
-                          //     })
-                          //   }
-                          //   suppressContentEditableWarning={true}
-                          // >
-
-                          //   {milestone}
-                          //   <Divider style={{padding: 3, margin: 0}}/>
-                          // </span>
-                       
-                              
+                        {project.milestones.map((milestone, index) => (        
                                 <li
                                 key={index}
-                            contentEditable={isAdminUser ? "true" : "false"}
-                            onBlur={(e) =>
+                                contentEditable={isAdminUser ? "true" : "false"}
+                                onBlur={(e) =>
                               handleUpdate({
                                 handleFc: updateMilestone,
                                 id: project.id,
@@ -279,18 +258,13 @@ const DashboardConstComponent = () => {
                             }
                             suppressContentEditableWarning={true}
                                 >{milestone}</li>
-                              
-                        
-                          
-                       
                         ))}
                         {isAdminUser && 
                        <li>
-                       <Input type="text" placeholder="  Ajouter" 
+                       <Input type="text" placeholder="Ajouter" 
                         value={newMilestone}
                         onChange={(e) => setNewMilestone(e.target.value)}
                         onPressEnter={() => handleAddMilestone(project.id)}
-                        
                         />
                         </li>
                         }
@@ -324,7 +298,7 @@ const DashboardConstComponent = () => {
                       )}
                        {isAdminUser && 
                        <li>
-                      <Input type="text" placeholder="  Ajouter" 
+                      <Input type="text" placeholder="Ajouter" 
                         value={newGoal}
                         onChange={(e) => setNewGoal(e.target.value)}
                         onPressEnter={() => handleAddGoal(project.id)}

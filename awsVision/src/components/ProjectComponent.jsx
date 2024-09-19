@@ -396,7 +396,9 @@ const ProjectComponent = () => {
                     <tr>
                       <th>Tache</th>
                       <th>Avancement</th>
+                      {isAdminUser() &&
                       <th></th>
+}
                     </tr>
                   </thead>
                   <tbody>
@@ -417,12 +419,14 @@ const ProjectComponent = () => {
                           >
                             {task.progress}
                           </td>
+                          {isAdminUser() &&
                           <td>
                             <DeleteOutlined
                               onClick={() => handleTaskDelete(task.id)}
                               style={{color: "red"}}
                             />
                           </td>
+}
                         </tr>
                       ))}
                   </tbody>
@@ -456,7 +460,9 @@ const ProjectComponent = () => {
                           <th>KPIs</th>
                           <th>Cible</th>
                           <th>Actuel</th>
+                          {isAdminUser() &&
                           <th></th>
+}
                         </tr>
                       </thead>
                       <tbody>
@@ -486,8 +492,9 @@ const ProjectComponent = () => {
                               >
                                 {kpi.current}
                               </td>
+                              {isAdminUser() &&
                               <td><DeleteOutlined onClick={() => handleKpiDelete(kpi.id)} style={{color: "red"}}/></td>
-                              
+}
                             </tr>
                           ))}
                       </tbody>
@@ -560,7 +567,9 @@ const ProjectComponent = () => {
                         <tr>
                           <th>Risque ou remarque</th>
                           <th>Importance</th>
+                          {isAdminUser() &&
                           <th></th>
+}
                         </tr>
                       </thead>
                       <tbody>
@@ -585,8 +594,10 @@ const ProjectComponent = () => {
                               >
                                 {remark.importance}
                               </td>
+                              {isAdminUser() &&
                               <td><DeleteOutlined onClick={() => handleRemarkDelete(remark.id)} style={{color: "red"}}/></td>
-                            </tr>
+                              }
+                              </tr>
                           ))}
                       </tbody>
                     </table>
