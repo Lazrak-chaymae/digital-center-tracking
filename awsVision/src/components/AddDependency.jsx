@@ -165,7 +165,7 @@ const AddDependency = ({ refreshDependencies, domainId }) => {
           }
           <div className="button-container">
             <button
-              className="btn "
+              className="btn"
               onClick={(e) => handleSubmit(e)}
               style={{backgroundColor: "#ec6836", color: "white"}}
             >

@@ -263,9 +263,9 @@ const TodoComponent = () => {
     <div className="container" style={{ paddingTop: '12px' }}>
       <h3 className="text-center">Todo</h3>
       <Table dataSource={todos} columns={columns} rowKey="id" onChange={onChange} pagination={{ pageSize: 5 }} />
-      {isAdminUser() &&  
+       <div style={{paddingTop: "6px"}}>
        <AddTodo refreshTodo={getTodosByDomain} domain={domainId} />
-      }
+      </div>
       
     </div>
   );
